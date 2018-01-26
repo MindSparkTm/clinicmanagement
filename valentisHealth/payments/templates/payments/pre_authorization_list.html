@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<p><a class="btn btn-default" href="{% url 'payments_pre_authorization_list' %}">pre_authorization Listing</a></p>
+<table class="table">
+    <tr>
+        <td>ID</td>
+        <td>Link</td>
+        <td>name</td>
+        <td>slug</td>
+        <td>created</td>
+        <td>last_updated</td>
+        <td>member_no</td>
+        <td>provider</td>
+        <td>date_reported</td>
+        <td>reported_by</td>
+        <td>authorized_by</td>
+        <td>date_authorized</td>
+        <td>pre_diagnosis</td>
+        <td>authority_type</td>
+        <td>ward</td>
+        <td>available_limit</td>
+        <td>admit_days</td>
+        <td>reserve</td>
+        <td>notes</td>
+        <td>anniv</td>
+        <!-- <td>auth_batch_no</td> -->
+        <td>day_bed_charge</td>
+        <td>date_admitted</td>
+        <td>code</td>
+    </tr>
+    {% for object in object_list %}
+    <tr>
+        <td>{{object.pk}}</td>
+        <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+        <td>{{ object.name }}</td>
+        <td>{{ object.slug }}</td>
+        <td>{{ object.created }}</td>
+        <td>{{ object.last_updated }}</td>
+        <td>{{ object.member_no }}</td>
+        <td>{{ object.provider }}</td>
+        <td>{{ object.date_reported }}</td>
+        <td>{{ object.reported_by }}</td>
+        <td>{{ object.authorized_by }}</td>
+        <td>{{ object.date_authorized }}</td>
+        <td>{{ object.pre_diagnosis }}</td>
+        <td>{{ object.authority_type }}</td>
+        <td>{{ object.ward }}</td>
+        <td>{{ object.available_limit }}</td>
+        <td>{{ object.admit_days }}</td>
+        <td>{{ object.reserve }}</td>
+        <td>{{ object.notes }}</td>
+        <td>{{ object.anniv }}</td>
+        <!-- <td>{{ object.auth_batch_no }}</td> -->
+        <td>{{ object.day_bed_charge }}</td>
+        <td>{{ object.date_admitted }}</td>
+        <td>{{ object.code }}</td>
+    </tr>
+    {% endfor %}
+</table><a class="btn btn-primary" href="{% url 'payments_pre_authorization_create' %}">Create new pre_authorization</a> {% endblock %}

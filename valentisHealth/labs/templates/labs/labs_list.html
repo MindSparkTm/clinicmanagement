@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'labs_labs_list' %}">labs Listing</a></p>
+<table class="table">
+<tr>
+<td>ID</td><td>Link</td>
+    <td>slug</td>
+    <td>created</td>
+    <td>last_updated</td>
+    <td>lab_name</td>
+    <td>h01</td>
+    <td>h02</td>
+    <td>h03</td>
+    <td>h04</td>
+    <td>h05</td>
+    <td>h06</td>
+    <td>h07</td>
+    <td>h08</td>
+    <td>h09</td>
+    <td>c01</td>
+    <td>c02</td>
+    <td>p01</td>
+    <td>p02</td>
+    <td>p03</td>
+    <td>p04</td>
+    <td>p05</td>
+    <td>p06</td>
+    <td>mbs01</td>
+    <td>mbs02</td>
+    <td>mbs03</td>
+    <td>ge01</td>
+    <td>lks01</td>
+    <td>lks02</td>
+    <td>lks03</td>
+    <td>lks04</td>
+    <td>lks05</td>
+    <td>lks06</td>
+    <td>lks07</td>
+    <td>gm01</td>
+    <td>gm02</td>
+    <td>gm03</td>
+    <td>lm01</td>
+    <td>lm02</td>
+    <td>lm03</td>
+    <td>lm04</td>
+    <td>lpg01</td>
+    <td>lpg02</td>
+    <td>lpg03</td>
+    <td>lpg04</td>
+    <td>lpg05</td>
+    <td>lpg06</td>
+    <td>lpg06</td>
+    <td>lpg07</td>
+    <td>lpg08</td>
+    <td>hv01</td>
+    <td>hv02</td>
+    <td>hv03</td>
+    <td>i01</td>
+    <td>i02</td>
+    <td>i03</td>
+    <td>m01</td>
+    <td>m02</td>
+    <td>m03</td>
+    <td>M04</td>
+    <td>m05</td>
+    <td>m06</td>
+    <td>m07</td>
+    <td>m08</td>
+    <td>g01</td>
+    <td>other</td>
+    <td>diagnosis</td>
+    <td>h01_alergy</td>
+    <td>h02_alergy</td>
+    <td>h03_alergy</td>
+    <td>h04_alergy</td>
+    <td>h06_alergy</td>
+    <td>h07_alergy</td>
+    <td>h08_alergy</td>
+    <td>c01_iron_studies</td>
+    <td>c01_cardiac_markers</td>
+    <td>c02_cardiac_markers</td>
+    <td>c02_cardiac_markers_1</td>
+    <td>lks01_antenatal_screen</td>
+    <td>lks02_antenatal_screen</td>
+    <td>lks04_antenatal_screen</td>
+    <td>lks05_antenatal_screen</td>
+    <td>lks06_antenatal_screen</td>
+    <td>lks07_antenatal_screen</td>
+    <td>gm01_antenatal_screen</td>
+    <td>fsh_menopausal_screen</td>
+    <td>oestradiol_menopausal_screen</td>
+    <td>albumin_menopausal_screen</td>
+    <td>hv02_menopausal_screen</td>
+    <td>hv03_menopausal_screen</td>
+    <td>ast_menopausal_screen</td>
+    <td>i01_menopausal_screen</td>
+    <td>i02_menopausal_screen</td>
+    <td>i03_menopausal_screen</td>
+    <td>patient_id</td>
+</tr>
+{% for object in object_list %}
+<tr>
+    <td>{{object.pk}}</td>
+    <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
+    <td>{{ object.slug }}</td>
+    <td>{{ object.created }}</td>
+    <td>{{ object.last_updated }}</td>
+    <td>{{ object.lab_name }}</td>
+    <td>{{ object.h01 }}</td>
+    <td>{{ object.h02 }}</td>
+    <td>{{ object.h03 }}</td>
+    <td>{{ object.h04 }}</td>
+    <td>{{ object.h05 }}</td>
+    <td>{{ object.h06 }}</td>
+    <td>{{ object.h07 }}</td>
+    <td>{{ object.h08 }}</td>
+    <td>{{ object.h09 }}</td>
+    <td>{{ object.c01 }}</td>
+    <td>{{ object.c02 }}</td>
+    <td>{{ object.p01 }}</td>
+    <td>{{ object.p02 }}</td>
+    <td>{{ object.p03 }}</td>
+    <td>{{ object.p04 }}</td>
+    <td>{{ object.p05 }}</td>
+    <td>{{ object.p06 }}</td>
+    <td>{{ object.mbs01 }}</td>
+    <td>{{ object.mbs02 }}</td>
+    <td>{{ object.mbs03 }}</td>
+    <td>{{ object.ge01 }}</td>
+    <td>{{ object.lks01 }}</td>
+    <td>{{ object.lks02 }}</td>
+    <td>{{ object.lks03 }}</td>
+    <td>{{ object.lks04 }}</td>
+    <td>{{ object.lks05 }}</td>
+    <td>{{ object.lks06 }}</td>
+    <td>{{ object.lks07 }}</td>
+    <td>{{ object.gm01 }}</td>
+    <td>{{ object.gm02 }}</td>
+    <td>{{ object.gm03 }}</td>
+    <td>{{ object.lm01 }}</td>
+    <td>{{ object.lm02 }}</td>
+    <td>{{ object.lm03 }}</td>
+    <td>{{ object.lm04 }}</td>
+    <td>{{ object.lpg01 }}</td>
+    <td>{{ object.lpg02 }}</td>
+    <td>{{ object.lpg03 }}</td>
+    <td>{{ object.lpg04 }}</td>
+    <td>{{ object.lpg05 }}</td>
+    <td>{{ object.lpg06 }}</td>
+    <td>{{ object.lpg06 }}</td>
+    <td>{{ object.lpg07 }}</td>
+    <td>{{ object.lpg08 }}</td>
+    <td>{{ object.hv01 }}</td>
+    <td>{{ object.hv02 }}</td>
+    <td>{{ object.hv03 }}</td>
+    <td>{{ object.i01 }}</td>
+    <td>{{ object.i02 }}</td>
+    <td>{{ object.i03 }}</td>
+    <td>{{ object.m01 }}</td>
+    <td>{{ object.m02 }}</td>
+    <td>{{ object.m03 }}</td>
+    <td>{{ object.M04 }}</td>
+    <td>{{ object.m05 }}</td>
+    <td>{{ object.m06 }}</td>
+    <td>{{ object.m07 }}</td>
+    <td>{{ object.m08 }}</td>
+    <td>{{ object.g01 }}</td>
+    <td>{{ object.other }}</td>
+    <td>{{ object.diagnosis }}</td>
+    <td>{{ object.h01_alergy }}</td>
+    <td>{{ object.h02_alergy }}</td>
+    <td>{{ object.h03_alergy }}</td>
+    <td>{{ object.h04_alergy }}</td>
+    <td>{{ object.h06_alergy }}</td>
+    <td>{{ object.h07_alergy }}</td>
+    <td>{{ object.h08_alergy }}</td>
+    <td>{{ object.c01_iron_studies }}</td>
+    <td>{{ object.c01_cardiac_markers }}</td>
+    <td>{{ object.c02_cardiac_markers }}</td>
+    <td>{{ object.c02_cardiac_markers_1 }}</td>
+    <td>{{ object.lks01_antenatal_screen }}</td>
+    <td>{{ object.lks02_antenatal_screen }}</td>
+    <td>{{ object.lks04_antenatal_screen }}</td>
+    <td>{{ object.lks05_antenatal_screen }}</td>
+    <td>{{ object.lks06_antenatal_screen }}</td>
+    <td>{{ object.lks07_antenatal_screen }}</td>
+    <td>{{ object.gm01_antenatal_screen }}</td>
+    <td>{{ object.fsh_menopausal_screen }}</td>
+    <td>{{ object.oestradiol_menopausal_screen }}</td>
+    <td>{{ object.albumin_menopausal_screen }}</td>
+    <td>{{ object.hv02_menopausal_screen }}</td>
+    <td>{{ object.hv03_menopausal_screen }}</td>
+    <td>{{ object.ast_menopausal_screen }}</td>
+    <td>{{ object.i01_menopausal_screen }}</td>
+    <td>{{ object.i02_menopausal_screen }}</td>
+    <td>{{ object.i03_menopausal_screen }}</td>
+    <td>{{ object.patient_id }}</td>
+</tr>
+{% endfor %}
+</table><a class="btn btn-primary" href="{% url 'labs_labs_create' %}">Create new labs</a>
+{% endblock %}

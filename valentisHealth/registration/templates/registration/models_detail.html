@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'registration_models_list' %}">models Listing</a></p>
+<table class="table">
+<tr><td>patient_id</td><td>{{ object.patient_id }}</td></tr>
+<tr><td>created</td><td>{{ object.created }}</td></tr>
+<tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
+<tr><td>first_name</td><td>{{ object.first_name }}</td></tr>
+<tr><td>middle_name</td><td>{{ object.middle_name }}</td></tr>
+<tr><td>last_name</td><td>{{ object.last_name }}</td></tr>
+<tr><td>Gender</td><td>{{ object.Gender }}</td></tr>
+<tr><td>street_name</td><td>{{ object.street_name }}</td></tr>
+<tr><td>apartment_name</td><td>{{ object.apartment_name }}</td></tr>
+<tr><td>postal_code</td><td>{{ object.postal_code }}</td></tr>
+<tr><td>postal_address</td><td>{{ object.postal_address }}</td></tr>
+<tr><td>city</td><td>{{ object.city }}</td></tr>
+<tr><td>country</td><td>{{ object.country }}</td></tr>
+<tr><td>age</td><td>{{ object.age }}</td></tr>
+<tr><td>next_of_kin</td><td>{{ object.next_of_kin }}</td></tr>
+<tr><td>n_of_kin_rel</td><td>{{ object.n_of_kin_rel }}</td></tr>
+<tr><td>email</td><td>{{ object.email }}</td></tr>
+<tr><td>phone</td><td>{{ object.phone }}</td></tr>
+<tr><td>primary_insurance</td><td>{{ object.primary_insurance }}</td></tr>
+<tr><td>secondary_insurance</td><td>{{ object.secondary_insurance }}</td></tr>
+<tr><td>pri_ins_sub</td><td>{{ object.pri_ins_sub }}</td></tr>
+<tr><td>sec_ins_sub</td><td>{{ object.sec_ins_sub }}</td></tr>
+<tr><td>other_ins_subscriber</td><td>{{ object.other_ins_subscriber }}</td></tr>
+<tr><td>subscriber_relationship</td><td>{{ object.subscriber_relationship }}</td></tr>
+<tr><td>sub_address</td><td>{{ object.sub_address }}</td></tr>
+<tr><td>ss_number</td><td>{{ object.ss_number }}</td></tr>
+<tr><td>sub_ss_number</td><td>{{ object.sub_ss_number }}</td></tr>
+<tr><td>alt_phone</td><td>{{ object.alt_phone }}</td></tr>
+<tr><td>sub_work_phone</td><td>{{ object.sub_work_phone }}</td></tr>
+<tr><td>dob</td><td>{{ object.dob }}</td></tr>
+<tr><td>sub_dob</td><td>{{ object.sub_dob }}</td></tr>
+<tr><td>sub_employer</td><td>{{ object.sub_employer }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit models</a>
+
+{% endblock %}

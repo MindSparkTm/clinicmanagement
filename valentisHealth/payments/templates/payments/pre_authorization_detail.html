@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<p><a class="btn btn-default" >pre_authorization Form</a></p>
+<div class="mdl-grid">
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--5-col mdl-typography--text-right">
+    <tr>
+        <td>name</td>
+        <td>{{ object.name }}</td>
+    </tr>
+
+    <tr>
+        <td>created</td>
+        <td>{{ object.created }}</td>
+    </tr>
+
+    <tr>
+        <td>member_no</td>
+        <td>{{ object.member_no }}</td>
+    </tr>
+    <tr>
+        <td>provider</td>
+        <td>{{ object.provider }}</td>
+    </tr>
+    <tr>
+        <td>date_reported</td>
+        <td>{{ object.date_reported }}</td>
+    </tr>
+    <tr>
+        <td>reported_by</td>
+        <td>{{ object.reported_by }}</td>
+    </tr>
+    <tr>
+        <td>authorized_by</td>
+        <td>{{ object.authorized_by }}</td>
+    </tr>
+    <tr>
+        <td>date_authorized</td>
+        <td>{{ object.date_authorized }}</td>
+    </tr>
+    <tr>
+        <td>pre_diagnosis</td>
+        <td>{{ object.pre_diagnosis }}</td>
+    </tr>
+    <tr>
+        <td>authority_type</td>
+        <td>{{ object.authority_type }}</td>
+    </tr>
+    <tr>
+        <td>ward</td>
+        <td>{{ object.ward }}</td>
+    </tr>
+    <tr>
+        <td>available_limit</td>
+        <td>{{ object.available_limit }}</td>
+    </tr>
+    <tr>
+        <td>admit_days</td>
+        <td>{{ object.admit_days }}</td>
+    </tr>
+    <tr>
+        <td>reserve</td>
+        <td>{{ object.reserve }}</td>
+    </tr>
+    <tr>
+        <td>notes</td>
+        <td>{{ object.notes }}</td>
+    </tr>
+    <tr>
+        <td>anniv</td>
+        <td>{{ object.anniv }}</td>
+    </tr>
+    <!-- <tr><td>auth_batch_no</td><td>{{ object.auth_batch_no }}</td></tr> -->
+    <tr>
+        <td>day_bed_charge</td>
+        <td>{{ object.day_bed_charge }}</td>
+    </tr>
+    <tr>
+        <td>date_admitted</td>
+        <td>{{ object.date_admitted }}</td>
+    </tr>
+    <tr>
+        <td>Reference No</td>
+        <td>{{ object.code }}</td>
+    </tr>
+    <tr>
+        <td>Batch No</td>
+        <td>{{ object.code }}</td>
+    </tr>
+</table>
+
+</div>
+{% endblock %}
