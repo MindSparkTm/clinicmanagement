@@ -3,7 +3,7 @@ from .models import member_info, member_benefits, member_anniversary, member_acc
 from django.contrib.admin.widgets import AdminDateWidget
 
 # from . import demo as forms
-from material import Layout, Row, Column, Fieldset, Span2, Span3, Span5, Span6, Span10
+# from material import Layout, Row, Column, Fieldset, Span2, Span3, Span5, Span6, Span10
 
 
 COUNTRY_CHOICES = (
@@ -249,16 +249,16 @@ class pre_authorizationForm(forms.ModelForm):
             'date_reported': DateInput(),
             'date_admitted': DateInput(),
         }
-        layout = Layout(
-            Fieldset("Personal Details ",
-                     Row(Span2('name'), Span10('member_no')),
-                     Row(Column('date_reported',
-                                'reported_by',
-                                'authorised_by'),
-                         Column('authority_type',
-                                Row('mobile_no', 'existing_bank_account'),
-                                'partner_name')))
-        )
+        # layout = Layout(
+        #     Fieldset("Personal Details ",
+        #              Row(Span2('name'), Span10('member_no')),
+        #              Row(Column('date_reported',
+        #                         'reported_by',
+        #                         'authorised_by'),
+        #                  Column('authority_type',
+        #                         Row('mobile_no', 'existing_bank_account'),
+        #                         'partner_name')))
+        # )
 
 class providerForm(forms.ModelForm):
     class Meta:

@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+</head>
+<body>
+        <header class="mdl-layout__header mdl-layout__header--scroll" style="background-color: #0F2737">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Valentis Health</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+        </header>
+    <div class="navigation">
+        <ul class="navigation-tabs">
+            <li class="current"><a href="navbar.html">One</a></li>
+            <li><a href="navbar.1.html">Two</a></li>
+            <li><a href="navbar.2.html">Three</a></li>
+            <li><a href="navbar.3.html">Four</a></li>
+            <li><a href="#">Five</a></li>
+        </ul>
+    </div>
+
+{#        content goes here#}
+        {% block content %}
+
+        {% endblock %}
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
