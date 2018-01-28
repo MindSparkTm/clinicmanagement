@@ -106,6 +106,10 @@ class searchView(ListView):
         return 'payments/search_member.html'
 
 class pre_authorizationCreateView(CreateView):
+    model = pre_authorization
+    form_class = pre_authorizationForm
+
+class pre_authorform:
 
     def get_template_names(self):
         return 'payments/preauthsform.html'
