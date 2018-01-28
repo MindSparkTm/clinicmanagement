@@ -99,11 +99,33 @@ class principal_applicantUpdateView(UpdateView):
 class pre_authorizationListView(ListView):
     model = pre_authorization
 
+class searchView(ListView):
+    # updatebenefit = member_benefitsUpdateView()
+    model = pre_authorization
+    def get_template_names(self):
+        return 'payments/search_member.html'
 
 class pre_authorizationCreateView(CreateView):
-    updatebenefit = member_benefitsUpdateView()
-    model = pre_authorization
+
+    def get_template_names(self):
+        return 'payments/preauthsform.html'
+
     form_class = pre_authorizationForm
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        member_id = self.kwargs['member_id']
+        try:
+            benefits = member_benefits.objects.filter(slug__icontains=member_id)
+            print(benefits)
+            return benefits
+        except:
+            print(404)
+            raise Http404('Requested user not found.')
+
 
 
 class pre_authorizationDetailView(DetailView):
