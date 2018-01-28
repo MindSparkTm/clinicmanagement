@@ -28,9 +28,19 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Custom user model
+AUTH_USER_MODEL = 'account.CustomUser'
+
+# Custom authentication backend using email and password
+AUTHENTICATION_BACKENDS = ('valentisHealth.backends.EmailAuthBackend', )
+
+# URL to redirect to if one ain't logged in
+LOGIN_URL = '/account/log-in/'
+
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'valentisHealth.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'valentisHealth.urls'
@@ -109,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -122,8 +133,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+
+# Email settings
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'redpulse'
+EMAIL_HOST_PASSWORD = 'redpulse2016'
+SERVER_EMAIL = 'hello@redpulse.co.ke'
+DEFAULT_FROM_EMAIL = 'Valentis <no-reply@ongataworks.com>'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_DEBUG = True

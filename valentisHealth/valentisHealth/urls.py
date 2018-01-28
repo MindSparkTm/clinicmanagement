@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from account.views import Home
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,5 +24,7 @@ urlpatterns = [
     url(r'^medication/', include('medication.urls')),
     url(r'^labs/', include('labs.urls')),
     url(r'^clinic/', include('labs.urls')),
-    url(r'^payments/', include('payments.urls'))
+    url(r'^payments/', include('payments.urls')),
+    url(r'^account/', include('account.urls')),
+    url(r'^$', Home.as_view(), name='home')
 ]
