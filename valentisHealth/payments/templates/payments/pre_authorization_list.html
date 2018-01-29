@@ -5,9 +5,6 @@
         <td>ID</td>
         <td>Link</td>
         <td>name</td>
-        <td>slug</td>
-        <td>created</td>
-        <td>last_updated</td>
         <td>member_no</td>
         <td>provider</td>
         <td>date_reported</td>
@@ -18,23 +15,20 @@
         <td>authority_type</td>
         <td>ward</td>
         <td>available_limit</td>
-        <td>admit_days</td>
+        <td>Days to be admitted</td>
         <td>reserve</td>
         <td>notes</td>
         <td>anniv</td>
         <!-- <td>auth_batch_no</td> -->
-        <td>day_bed_charge</td>
+        <td>daily_bed_charge</td>
         <td>date_admitted</td>
-        <td>code</td>
+        <td>Reference No</td>
     </tr>
     {% for object in object_list %}
     <tr>
         <td>{{object.pk}}</td>
         <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
         <td>{{ object.name }}</td>
-        <td>{{ object.slug }}</td>
-        <td>{{ object.created }}</td>
-        <td>{{ object.last_updated }}</td>
         <td>{{ object.member_no }}</td>
         <td>{{ object.provider }}</td>
         <td>{{ object.date_reported }}</td>

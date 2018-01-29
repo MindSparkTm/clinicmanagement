@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^nurse/', include('nurse.urls')),
     url(r'^medication/', include('medication.urls')),
     url(r'^labs/', include('labs.urls')),
-    url(r'^clinic/', include('labs.urls')),
+    url(r'^clinic/', include('clinic.urls')),
     url(r'^payments/', include('payments.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^$', Home.as_view(), name='home')

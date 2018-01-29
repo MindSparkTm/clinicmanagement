@@ -4,7 +4,7 @@ from . import api
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'models', api.modelsViewSet)
+router.register(r'patientvisit', api.patientVisitViewSet)
 
 
 urlpatterns = (
@@ -13,10 +13,10 @@ urlpatterns = (
 )
 
 urlpatterns += (
-    # urls for models
-    url(r'^clinic/models/$', views.modelsListView.as_view(), name='clinic_models_list'),
-    url(r'^clinic/models/create/$', views.modelsCreateView.as_view(), name='clinic_models_create'),
-    url(r'^clinic/models/detail/(?P<slug>\S+)/$', views.modelsDetailView.as_view(), name='clinic_models_detail'),
-    url(r'^clinic/models/update/(?P<slug>\S+)/$', views.modelsUpdateView.as_view(), name='clinic_models_update'),
+    # urls for patientVisit
+    url(r'^patientvisit/$', views.patientVisitListView.as_view(), name='clinic_patientvisit_list'),
+    url(r'^patientvisit/create/$', views.patientVisitCreateView.as_view(), name='clinic_patientvisit_create'),
+    url(r'^patientvisit/detail/(?P<slug>\S+)/$', views.patientVisitDetailView.as_view(), name='clinic_patientvisit_detail'),
+    url(r'^patientvisit/update/(?P<slug>\S+)/$', views.patientVisitUpdateView.as_view(), name='clinic_patientvisit_update'),
 )
 
