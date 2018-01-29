@@ -22,10 +22,10 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for member_info
-    url(r'^payments/member_info/$', views.member_infoListView.as_view(), name='payments_member_info_list'),
-    url(r'^payments/member_info/create/$', views.member_infoCreateView.as_view(), name='payments_member_info_create'),
-    url(r'^payments/member_info/detail/(?P<slug>\S+)/$', views.member_infoDetailView.as_view(), name='payments_member_info_detail'),
-    url(r'^payments/member_info/update/(?P<slug>\S+)/$', views.member_infoUpdateView.as_view(), name='payments_member_info_update'),
+    url(r'^member_info/$', views.member_infoListView.as_view(), name='payments_member_info_list'),
+    url(r'^member_info/create/$', views.member_infoCreateView.as_view(), name='payments_member_info_create'),
+    url(r'^member_info/detail/(?P<slug>\S+)/$', views.member_infoDetailView.as_view(), name='payments_member_info_detail'),
+    url(r'^member_info/update/(?P<slug>\S+)/$', views.member_infoUpdateView.as_view(), name='payments_member_info_update'),
     url('^member_info/(?P<member_id>.+)/$', views.getUser.as_view()),
     url('^member_benefits/(?P<member_id>.+)/$', views.getBenefits.as_view()),
     url('^member_anniversary/(?P<member_id>.+)/$', views.getAniversary.as_view()),
@@ -35,59 +35,59 @@ urlpatterns += (
 
 urlpatterns += (
     # urls for member_benefits
-    url(r'^payments/member_benefits/$', views.member_benefitsListView.as_view(), name='payments_member_benefits_list'),
-    url(r'^payments/member_benefits/create/$', views.member_benefitsCreateView.as_view(), name='payments_member_benefits_create'),
-    url(r'^payments/member_benefits/detail/(?P<slug>\S+)/$', views.member_benefitsDetailView.as_view(), name='payments_member_benefits_detail'),
-    url(r'^payments/member_benefits/update/(?P<slug>\S+)/$', views.member_benefitsUpdateView.as_view(), name='payments_member_benefits_update'),
+    url(r'^member_benefits/$', views.member_benefitsListView.as_view(), name='payments_member_benefits_list'),
+    url(r'^member_benefits/create/$', views.member_benefitsCreateView.as_view(), name='payments_member_benefits_create'),
+    url(r'^member_benefits/detail/(?P<slug>\S+)/$', views.member_benefitsDetailView.as_view(), name='payments_member_benefits_detail'),
+    url(r'^member_benefits/update/(?P<slug>\S+)/$', views.member_benefitsUpdateView.as_view(), name='payments_member_benefits_update'),
 )
 
 urlpatterns += (
     # urls for member_anniversary
-    url(r'^payments/member_anniversary/$', views.member_anniversaryListView.as_view(), name='payments_member_anniversary_list'),
-    url(r'^payments/member_anniversary/create/$', views.member_anniversaryCreateView.as_view(), name='payments_member_anniversary_create'),
-    url(r'^payments/member_anniversary/detail/(?P<slug>\S+)/$', views.member_anniversaryDetailView.as_view(), name='payments_member_anniversary_detail'),
-    url(r'^payments/member_anniversary/update/(?P<slug>\S+)/$', views.member_anniversaryUpdateView.as_view(), name='payments_member_anniversary_update'),
+    url(r'^member_anniversary/$', views.member_anniversaryListView.as_view(), name='payments_member_anniversary_list'),
+    url(r'^member_anniversary/create/$', views.member_anniversaryCreateView.as_view(), name='payments_member_anniversary_create'),
+    url(r'^member_anniversary/detail/(?P<slug>\S+)/$', views.member_anniversaryDetailView.as_view(), name='payments_member_anniversary_detail'),
+    url(r'^member_anniversary/update/(?P<slug>\S+)/$', views.member_anniversaryUpdateView.as_view(), name='payments_member_anniversary_update'),
 )
 
 urlpatterns += (
     # urls for member_acceptance
-    url(r'^payments/member_acceptance/$', views.member_acceptanceListView.as_view(), name='payments_member_acceptance_list'),
-    url(r'^payments/member_acceptance/create/$', views.member_acceptanceCreateView.as_view(), name='payments_member_acceptance_create'),
-    url(r'^payments/member_acceptance/detail/(?P<slug>\S+)/$', views.member_acceptanceDetailView.as_view(), name='payments_member_acceptance_detail'),
-    url(r'^payments/member_acceptance/update/(?P<slug>\S+)/$', views.member_acceptanceUpdateView.as_view(), name='payments_member_acceptance_update'),
+    url(r'^member_acceptance/$', views.member_acceptanceListView.as_view(), name='payments_member_acceptance_list'),
+    url(r'^member_acceptance/create/$', views.member_acceptanceCreateView.as_view(), name='payments_member_acceptance_create'),
+    url(r'^member_acceptance/detail/(?P<slug>\S+)/$', views.member_acceptanceDetailView.as_view(), name='payments_member_acceptance_detail'),
+    url(r'^member_acceptance/update/(?P<slug>\S+)/$', views.member_acceptanceUpdateView.as_view(), name='payments_member_acceptance_update'),
 )
 
 urlpatterns += (
     # urls for principal_applicant
-    url(r'^payments/principal_applicant/$', views.principal_applicantListView.as_view(), name='payments_principal_applicant_list'),
-    url(r'^payments/principal_applicant/create/$', views.principal_applicantCreateView.as_view(), name='payments_principal_applicant_create'),
-    url(r'^payments/principal_applicant/detail/(?P<slug>\S+)/$', views.principal_applicantDetailView.as_view(), name='payments_principal_applicant_detail'),
-    url(r'^payments/principal_applicant/update/(?P<slug>\S+)/$', views.principal_applicantUpdateView.as_view(), name='payments_principal_applicant_update'),
+    url(r'^principal_applicant/$', views.principal_applicantListView.as_view(), name='payments_principal_applicant_list'),
+    url(r'^principal_applicant/create/$', views.principal_applicantCreateView.as_view(), name='payments_principal_applicant_create'),
+    url(r'^principal_applicant/detail/(?P<slug>\S+)/$', views.principal_applicantDetailView.as_view(), name='payments_principal_applicant_detail'),
+    url(r'^principal_applicant/update/(?P<slug>\S+)/$', views.principal_applicantUpdateView.as_view(), name='payments_principal_applicant_update'),
 )
 
 urlpatterns += (
     # urls for pre_authorization
-    url(r'^payments/pre_authorization/$', views.pre_authorizationListView.as_view(), name='payments_pre_authorization_list'),
-    url(r'^payments/pre_authorization/create/$', views.pre_authorizationCreateView.as_view(), name='payments_pre_authorization_create'),
-    url(r'^payments/search_member/$', views.searchView.as_view(), name='payments_search_member'),
-    url(r'^payments/pre_authorization/detail/(?P<slug>\S+)/$', views.pre_authorizationDetailView.as_view(), name='payments_pre_authorization_detail'),
-    url(r'^payments/pre_authorization/update/(?P<slug>\S+)/$', views.pre_authorizationUpdateView.as_view(), name='payments_pre_authorization_update'),
+    url(r'^pre_authorization/$', views.pre_authorizationListView.as_view(), name='payments_pre_authorization_list'),
+    url(r'^pre_authorization/create/$', views.pre_authorizationCreateView.as_view(), name='payments_pre_authorization_create'),
+    url(r'^search_member/$', views.searchView.as_view(), name='payments_search_member'),
+    url(r'^pre_authorization/detail/(?P<slug>\S+)/$', views.pre_authorizationDetailView.as_view(), name='payments_pre_authorization_detail'),
+    url(r'^pre_authorization/update/(?P<slug>\S+)/$', views.pre_authorizationUpdateView.as_view(), name='payments_pre_authorization_update'),
 )
 
 urlpatterns += (
     # urls for provider
-    url(r'^payments/provider/$', views.providerListView.as_view(), name='payments_provider_list'),
-    url(r'^payments/provider/create/$', views.providerCreateView.as_view(), name='payments_provider_create'),
-    url(r'^payments/provider/detail/(?P<slug>\S+)/$', views.providerDetailView.as_view(), name='payments_provider_detail'),
-    url(r'^payments/provider/update/(?P<slug>\S+)/$', views.providerUpdateView.as_view(), name='payments_provider_update'),
+    url(r'^provider/$', views.providerListView.as_view(), name='payments_provider_list'),
+    url(r'^provider/create/$', views.providerCreateView.as_view(), name='payments_provider_create'),
+    url(r'^provider/detail/(?P<slug>\S+)/$', views.providerDetailView.as_view(), name='payments_provider_detail'),
+    url(r'^provider/update/(?P<slug>\S+)/$', views.providerUpdateView.as_view(), name='payments_provider_update'),
 )
 
 urlpatterns += (
     # urls for cash
-    url(r'^payments/cash/$', views.cashListView.as_view(), name='payments_cash_list'),
-    url(r'^payments/cash/create/$', views.cashCreateView.as_view(), name='payments_cash_create'),
-    url(r'^payments/cash/detail/(?P<slug>\S+)/$', views.cashDetailView.as_view(), name='payments_cash_detail'),
-    url(r'^payments/cash/update/(?P<slug>\S+)/$', views.cashUpdateView.as_view(), name='payments_cash_update'),
+    url(r'^cash/$', views.cashListView.as_view(), name='payments_cash_list'),
+    url(r'^cash/create/$', views.cashCreateView.as_view(), name='payments_cash_create'),
+    url(r'^cash/detail/(?P<slug>\S+)/$', views.cashDetailView.as_view(), name='payments_cash_detail'),
+    url(r'^cash/update/(?P<slug>\S+)/$', views.cashUpdateView.as_view(), name='payments_cash_update'),
 
 )
 

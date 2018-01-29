@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<p><a class="btn btn-default" href="{% url 'clinic_models_list' %}">models Listing</a></p>
+<p><a class="btn btn-default" href="{% url 'clinic_patientvisit_list' %}">patientVisit Listing</a></p>
 <form method="post">
 {% csrf_token %}
 {{form|crispy}}

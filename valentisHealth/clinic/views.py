@@ -1,22 +1,22 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
-from .models import models
-from .forms import modelsForm
+from .models import patientVisit
+from .forms import patientVisitForm
 
 
-class modelsListView(ListView):
-    model = models
+class patientVisitListView(ListView):
+    model = patientVisit
 
 
-class modelsCreateView(CreateView):
-    model = models
-    form_class = modelsForm
+class patientVisitCreateView(CreateView):
+    model = patientVisit
+    form_class = patientVisitForm
 
 
-class modelsDetailView(DetailView):
-    model = models
+class patientVisitDetailView(DetailView):
+    model = patientVisit
 
 
-class modelsUpdateView(UpdateView):
-    model = models
-    form_class = modelsForm
+class patientVisitUpdateView(UpdateView):
+    model = patientVisit
+    form_class = patientVisitForm
 
