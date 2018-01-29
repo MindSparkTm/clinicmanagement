@@ -1,3 +1,7 @@
+           <script>
+         $("#pre_authorization_tab").addClass("current").siblings().removeClass("current")
+
+</script>
 {% extends "base.html" %} {% load static %} {% block content %}
 <p><a class="btn btn-default" href="{% url 'payments_pre_authorization_list' %}">pre_authorization Listing</a></p>
 <table class="table">

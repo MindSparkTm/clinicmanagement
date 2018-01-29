@@ -15,10 +15,10 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for labs
-    url(r'^labs/$', views.labsListView.as_view(), name='labs_labs_list'),
-    url(r'^labs/create/$', views.labsCreateView.as_view(), name='labs_labs_create'),
-    url(r'^labs/detail/(?P<slug>\S+)/$', views.labsDetailView.as_view(), name='labs_labs_detail'),
-    url(r'^labs/update/(?P<slug>\S+)/$', views.labsUpdateView.as_view(), name='labs_labs_update'),
+    url(r'^$', views.labsListView.as_view(), name='labs_labs_list'),
+    url(r'^create/$', views.labsCreateView.as_view(), name='labs_labs_create'),
+    url(r'^detail/(?P<slug>\S+)/$', views.labsDetailView.as_view(), name='labs_labs_detail'),
+    url(r'^update/(?P<slug>\S+)/$', views.labsUpdateView.as_view(), name='labs_labs_update'),
 )
 
 urlpatterns += (

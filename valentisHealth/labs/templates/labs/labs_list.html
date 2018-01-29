@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+           <script>
+         $("#labs_tab").addClass("current").siblings().removeClass("current")
+
+</script>
 <p><a class="btn btn-default" href="{% url 'labs_labs_list' %}">labs Listing</a></p>
 <table class="table">
 <tr>

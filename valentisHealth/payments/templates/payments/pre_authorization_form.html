@@ -4,6 +4,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+           <script>
+         $("#pre_authorization_tab").addClass("current").siblings().removeClass("current")
+
+</script>
+
     <p><a class="btn btn-default" href="{% url 'payments_pre_authorization_list' %}">pre_authorization Listing</a></p>
 
 
@@ -250,7 +255,6 @@
 
                                 success: function (json) {
                                     var data = json
-                                    console.log("http://127.0.0.1:8000/payments/member_info/" +strng.toLowerCase())
                                     console.log(json)
                                     var data = json
                                     var benefitslist =[]

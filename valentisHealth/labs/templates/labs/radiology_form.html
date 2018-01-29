@@ -2,6 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+           <script>
+         $("#radiology_tab").addClass("current").siblings().removeClass("current")
+
+</script>
 <p><a class="btn btn-default" href="{% url 'labs_radiology_list' %}">radiology Listing</a></p>
 <form method="post">
 {% csrf_token %}

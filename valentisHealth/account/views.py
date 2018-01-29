@@ -10,7 +10,7 @@ from django.template.loader import get_template
 from django.http import HttpResponse
 from xhtml2pdf import pisa
 from django.utils.html import escape
-# from django.conf import settings
+from django.conf import settings
 
 from .forms import LoginForm
 
