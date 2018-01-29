@@ -14,15 +14,10 @@ class modelsCreateView(CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.status = 2
-        # if (instance.status >= 0):
-        #      instance.season -= 1
-        # else:
-        #     instance.season = 0
-
         instance.save()
         print(instance.status)
 
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("/registration/models/create/?sucess=true")
 
 
 class modelsDetailView(DetailView):
