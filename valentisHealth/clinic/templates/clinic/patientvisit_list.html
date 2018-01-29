@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
+   <script>
+         $("#clinic_tab").addClass("current").siblings().removeClass("current")
+
+</script>
+
 <p><a class="btn btn-default" href="{% url 'clinic_patientvisit_list' %}">patientVisit Listing</a></p>
 <table class="table">
 <tr>

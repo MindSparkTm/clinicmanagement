@@ -5,10 +5,8 @@
     <p><a class="btn btn-default" href="{% url 'nurse_models_list' %}">models Listing</a></p>
 
     <script>
-        $("li:not(.current)").on("click", function () {
-            $(this).addClass("current");
-            $(this).siblings().removeClass("current");
-        });
+     $("#triage_tab").addClass("current").siblings().removeClass("current")
+
 
     function populateTriage(patient_id, first_name, last_name){
         $("#waiting_list_table").hide()

@@ -1,5 +1,9 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<p><a class="btn btn-default" href="{% url 'medication_models_list' %}">models Listing</a></p>
+               <script>
+         $("#prescription_tab").addClass("current").siblings().removeClass("current")
+
+</script>
+    <p><a class="btn btn-default" href="{% url 'medication_models_list' %}">models Listing</a></p>
 <table class="table">
     <tr>
         <td>ID</td>
