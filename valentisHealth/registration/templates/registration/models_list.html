@@ -36,6 +36,7 @@
         <td>dob</td>
         <td>sub_dob</td>
         <td>sub_employer</td>
+        <td>status</td>
     </tr>
     {% for object in object_list %}
     <tr>
@@ -73,6 +74,7 @@
         <td>{{ object.dob }}</td>
         <td>{{ object.sub_dob }}</td>
         <td>{{ object.sub_employer }}</td>
+    <td>{{ object.status }}</td>
     </tr>
     {% endfor %}
 </table><a class="btn btn-primary" href="{% url 'registration_models_create' %}">New Patient</a> {% endblock %}ß

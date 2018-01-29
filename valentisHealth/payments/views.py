@@ -203,7 +203,7 @@ class getBenefits(generics.ListAPIView):
         member_id = self.kwargs['member_id']
         print(member_id)
         try:
-            user = member_benefits.objects.all().filter(slug=member_id)
+            user = member_benefits.objects.filter(slug__icontains=member_id)
             return user
         except:
             raise Http404('Requested user not found.')

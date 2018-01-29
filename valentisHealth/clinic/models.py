@@ -23,7 +23,7 @@ class patientVisit(models.Model):
     notes = models.TextField(max_length=200, null=True, blank=True)
     diagnosis = models.TextField(max_length=100, null=True, blank=True)
     prescription_id = models.CharField(max_length=30, null=True, blank=True)
-    status = models.IntegerField(max_length=2)
+    status = models.DecimalField(max_digits=1,decimal_places=0)
 
 
     class Meta:
