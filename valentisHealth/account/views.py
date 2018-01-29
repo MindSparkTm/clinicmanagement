@@ -59,6 +59,7 @@ class Logout(View):
         logout(request)
         return redirect(reverse('login'))
 
+
 def render_to_pdf(template_src, context_dict, action='view'):
     template = get_template(template_src)
     context = context_dict

@@ -1,8 +1,11 @@
-from django.views.generic import DetailView, ListView, UpdateView, CreateView
+from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
 from .models import member_info, member_benefits, member_anniversary, member_acceptance, principal_applicant, pre_authorization, provider, cash
 from .forms import member_infoForm, member_benefitsForm, member_anniversaryForm, member_acceptanceForm, principal_applicantForm, pre_authorizationForm, providerForm, cashForm
 from rest_framework import generics
+from django.shortcuts import render, get_object_or_404
 from . import serializers
+
+import json
 
 from django.http import HttpResponse, Http404
 
@@ -104,6 +107,49 @@ class searchView(ListView):
     model = pre_authorization
     def get_template_names(self):
         return 'payments/search_member.html'
+
+
+class AjaxPreAuthorizationSearch(View):
+    def get(self, request):
+        if request.is_ajax():
+            q = request.GET.get('q', '')
+            members = member_info.objects.filter(first_name__icontains=q)[:20]
+            results = []
+            for member in members:
+                member_json = dict()
+                member_json['member_no'] = member.member_no
+                member_json['surname'] = member.surname
+                member_json['first_name'] = member.first_name
+                member_json['other_name'] = member.other_name
+                member_json['user_id'] = member.user_id
+                member_json['gender'] = int(member.gender)
+                member_json['passport_no'] = member.passport_no
+                results.append(member_json)
+            data = json.dumps(results)
+        else:
+            data = 'fail'
+        mimetype = 'application/json'
+        print(data)
+        return HttpResponse(data, mimetype)
+
+
+class PreAuthorizationSearch(View):
+    def get(self, request):
+        return render(request, 'payments/search_member_info.html', {})
+
+
+class PreAuthorizationCreateView(View):
+
+    def get(self, request, slug):
+        member = get_object_or_404(member_info, slug=slug)
+        form = pre_authorizationForm()
+        d = {
+            'form': form,
+            'member': member
+        }
+        return render(request, 'payments/pre_authorization_form.1.html', d)
+
+
 
 class pre_authorizationCreateView(CreateView):
     model = pre_authorization

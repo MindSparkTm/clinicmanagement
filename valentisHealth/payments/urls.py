@@ -68,7 +68,10 @@ urlpatterns += (
 urlpatterns += (
     # urls for pre_authorization
     url(r'^pre_authorization/$', views.pre_authorizationListView.as_view(), name='payments_pre_authorization_list'),
+    url(r'^ajax_pre_authorization/$', views.AjaxPreAuthorizationSearch.as_view(), name='payments_ajax_pre_authorization'),
+    url(r'^pre_authorization/search/$', views.PreAuthorizationSearch.as_view(), name='payments_pre_authorization_search'),
     url(r'^pre_authorization/create/$', views.pre_authorizationCreateView.as_view(), name='payments_pre_authorization_create'),
+    url(r'^pre_authorization/new/(?P<slug>\S+)/$', views.PreAuthorizationCreateView.as_view(), name='payments_pre_authorization_new'),
     url(r'^search_member/$', views.searchView.as_view(), name='payments_search_member'),
     url(r'^pre_authorization/detail/(?P<slug>\S+)/$', views.pre_authorizationDetailView.as_view(), name='payments_pre_authorization_detail'),
     url(r'^pre_authorization/update/(?P<slug>\S+)/$', views.pre_authorizationUpdateView.as_view(), name='payments_pre_authorization_update'),

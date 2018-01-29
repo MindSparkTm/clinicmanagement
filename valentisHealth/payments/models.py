@@ -38,12 +38,17 @@ class member_info(models.Model):
     def __unicode__(self):
         return u'%s' % self.slug
 
+    def get_full_name(self):
+        return "{} {}".format(self.first_name, self.surname)
+
     def get_absolute_url(self):
         return reverse('payments_member_info_detail', args=(self.slug,))
 
-
     def get_update_url(self):
         return reverse('payments_member_info_update', args=(self.slug,))
+
+    def get_status(self):
+        pass
 
 
 class member_benefits(models.Model):
