@@ -1,13 +1,15 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 {#<p><a class="btn btn-default" >pre_authorization Form</a></p>#}
 
+    <script defer src="path_to/getmdl-select/getmdl-select.min.js"></script>
     <div class="mdl-grid">
     <!--  profile card -->
         <!-- Square card -->
         <style>
         .demo-card-square.mdl-card {
-          width: 320px;
-          height: 600px;
+          {#width: 320px;#}
+          min-height: 320px;
+          max-height: 450px;
         }
         .demo-card-square > .mdl-card__title {
           color: #fff;
@@ -15,7 +17,7 @@
             url('') bottom right 15% no-repeat #3C5D73;
         }
             {#.mdl-card__supporting-text {#}
-            {#     height: 320px;#}Admit
+            {#     height: 320px;#}
             {#}#}
         </style>
 
@@ -70,7 +72,7 @@
         <!-- end profile card -->
 
 <div class="mdl-shadow--3dp mdl-cell mdl-cell--8-col mdl-typography--text-right">
-    <form method="post">
+    <form method="post" action="{% url 'payments_pre_authorization_create' %}">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <input type="hidden" name="action" value="login"/>
@@ -108,8 +110,9 @@
 {#                                    <input name="auth" type="text" value="" class="mdl-textfield__input"#}
 {#                                           id="authority_type" readonly>#}
 {#                                    <input type="hidden" value="" name="authority_typ">#}
-                <label class="mdl-selectfield__label" for="authority_type" >authority_type</label>
-                <span class="mdl-textfield__error">{{ form.authority_type.errors }}</span>
+                <label class="mdl-selectfield__label" for="authority_type" >Authority Type</label>
+                {{ form.authority_type }}
+{#                <span class="mdl-textfield__error">{{ form.authority_type.errors }}</span>#}
 {#                                    <ul for="authority_type"#}
 {#                                        class="mdl-menu mdl-menu--bottom-left mdl-js-menu" id="benefits">#}
 {#                                        <li class="mdl-menu__item" data-val="1">In-Patient</li>#}
@@ -117,7 +120,7 @@
 {#                                        <li class="mdl-menu__item" data-val="3">Marternity</li>#}
 {##}
 {#                                    </ul>#}
-                <select name="authority_type" class="mdl-selectfield__select" id="benefits">
+{#                <select name="authority_type" class="mdl-selectfield__select" id="benefits">#}
 
 
                 </select>
@@ -127,28 +130,32 @@
 
         <div class="mdl-grid ">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--3-col">
-                <input type="text" value="" class="mdl-textfield__input"
-                       id="provider" readonly>
-                <input type="hidden" value="" name="provider">
-                <label for="provider" class="mdl-textfield__label">provider</label>
-                <span class="mdl-textfield__error">{{ form.provider.errors }}</span>
-                <ul for="provider"
-                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="1">21st Century Insurance</li>
-                    <li class="mdl-menu__item" data-val="2">AARP</li>
-                    <li class="mdl-menu__item" data-val="3">ACE Limited</li>
-                    <li class="mdl-menu__item" data-val="4">Elephant.com</li>
-
-                </ul>
+{#                <input type="text" value="" class="mdl-textfield__input"#}
+{#                       id="provider" readonly>#}
+                    <label class="mdl-textfield__label mdl-color-text--grey"
+                       for="textfield_ward">Provider</label>
+                        {{ form.provider }}
+{#                <input type="hidden" value="" name="provider">#}
+{#                <label for="provider" class="mdl-textfield__label">provider</label>#}
+{#                <span class="mdl-textfield__error">{{ form.provider.errors }}</span>#}
+{#                <ul for="provider"#}
+{#                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu">#}
+{#                    <li class="mdl-menu__item" data-val="1">21st Century Insurance</li>#}
+{#                    <li class="mdl-menu__item" data-val="2">AARP</li>#}
+{#                    <li class="mdl-menu__item" data-val="3">ACE Limited</li>#}
+{#                    <li class="mdl-menu__item" data-val="4">Elephant.com</li>#}
+{##}
+{#                </ul>#}
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
                 <label class="mdl-textfield__label mdl-color-text--grey"
                        for="textfield_ward">Ward</label>
-                <span class="mdl-textfield__error">{{ form.ward.errors }}</span>
-                <input type="number" class="mdl-textfield__input"
-                       id="id_{{ form.ward.name }}"
-                       name="{{ form.ward.name }}" value="{% if form.ward.value != None %}{{ form.ward.value }}{% endif %}"
-                       required>
+{#                <span class="mdl-textfield__error">{{ form.ward.errors }}</span>#}
+                    {{ form.ward }}
+{#                <input type="number" class="mdl-textfield__input"#}
+{#                       id="id_{{ form.ward.name }}"#}
+{#                       name="{{ form.ward.name }}" value="{% if form.ward.value != None %}{{ form.ward.value }}{% endif %}"#}
+{#                       required>#}
             </div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">

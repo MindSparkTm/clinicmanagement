@@ -11,6 +11,26 @@ from django_extensions.db import fields as extension_fields
 import datetime
 
 
+PROVIDER = (
+    (0, 'AAR'),
+    (1, 'ACE'),
+    (2, 'Sanlam'),
+    (3, '21st centuary'),
+)
+
+WARD = (
+    (0, 'General Ward'),
+    (1, 'Maternity Ward'),
+    (2, 'Children Ward'),
+)
+
+AUTHORITY_TYPE = (
+    (0, 'In Patient'),
+    (1, 'Out Patient'),
+    (3, 'Dental'),
+    (4, 'Maternity'),
+)
+
 
 class member_info(models.Model):
 
@@ -198,14 +218,14 @@ class pre_authorization(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     member_no = models.CharField(max_length=15)
 
-    provider = models.DecimalField(max_digits=5, decimal_places=0)
+    provider = models.IntegerField(choices=PROVIDER, default=0)
     date_reported = models.DateField(default=datetime.date.today)
     reported_by = models.CharField(max_length=20)
     authorized_by = models.CharField(max_length=10)
     date_authorized = models.DateField(default=datetime.date.today)
     pre_diagnosis = models.CharField(max_length=60)
-    authority_type = models.DecimalField(max_digits=3, decimal_places=0)
-    ward = models.DecimalField(max_digits=2, decimal_places=0)
+    authority_type = models.IntegerField(choices=AUTHORITY_TYPE, default=0)
+    ward = models.IntegerField(choices=WARD, default=0)
     available_limit = models.DecimalField(max_digits=10, decimal_places=2)
     admit_days = models.DecimalField(max_digits=3, decimal_places=0)
     reserve = models.DecimalField(max_digits=10, decimal_places=2)

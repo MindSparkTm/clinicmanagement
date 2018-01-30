@@ -5,6 +5,10 @@ from rest_framework import generics
 from django.shortcuts import render, get_object_or_404
 from . import serializers
 
+from django.template.loader import get_template
+from django.http import HttpResponse
+from xhtml2pdf import pisa
+
 import json
 
 from django.http import HttpResponse, Http404
@@ -180,6 +184,37 @@ class pre_authorform:
 
 class pre_authorizationDetailView(DetailView):
     model = pre_authorization
+
+
+def render_to_pdf(template_src, context_dict, action='view'):
+    template = get_template(template_src)
+    context = context_dict
+    html = template.render(context)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="Authorization.pdf"'
+
+    pisaStatus = pisa.CreatePDF(
+        html, dest=response)
+
+    if pisaStatus.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    else:
+        return response
+
+
+class PreAuthorizationPrintView(View):
+    def get(self, request, slug):
+        print(slug)
+        pre_auth = get_object_or_404(pre_authorizationForm, slug=slug)
+        d = {
+            'pagesize': 'A4',
+            'supplier': '',
+            'item_details': '',
+            'lpo': '',
+            'site_name': 'name'
+        }
+        return render_to_pdf('pdf.html', d)
 
 
 class pre_authorizationUpdateView(UpdateView):

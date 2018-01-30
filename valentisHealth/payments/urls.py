@@ -74,6 +74,7 @@ urlpatterns += (
     url(r'^pre_authorization/new/(?P<slug>\S+)/$', views.PreAuthorizationCreateView.as_view(), name='payments_pre_authorization_new'),
     url(r'^search_member/$', views.searchView.as_view(), name='payments_search_member'),
     url(r'^pre_authorization/detail/(?P<slug>\S+)/$', views.pre_authorizationDetailView.as_view(), name='payments_pre_authorization_detail'),
+    url(r'^pre_authorization/print/(?P<slug>\S+)/$', views.PreAuthorizationPrintView.as_view(), name='payments_pre_authorization_print'),
     url(r'^pre_authorization/update/(?P<slug>\S+)/$', views.pre_authorizationUpdateView.as_view(), name='payments_pre_authorization_update'),
 )
 

@@ -2,6 +2,8 @@ from django import forms
 from .models import member_info, member_benefits, member_anniversary, member_acceptance, principal_applicant, pre_authorization, provider, cash
 from django.contrib.admin.widgets import AdminDateWidget
 
+from .models import WARD
+
 # from . import demo as forms
 # from material import Layout, Row, Column, Fieldset, Span2, Span3, Span5, Span6, Span10
 
@@ -248,6 +250,12 @@ class pre_authorizationForm(forms.ModelForm):
             'pre-diagnosis': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
             'date_reported': DateInput(),
             'date_admitted': DateInput(),
+            'ward': forms.Select(attrs={
+                'class': 'mdl-selectfield__select'
+            }),
+            'provider': forms.Select(attrs={
+                'class': 'mdl-selectfield__select'
+            })
         }
         # layout = Layout(
         #     Fieldset("Personal Details ",
