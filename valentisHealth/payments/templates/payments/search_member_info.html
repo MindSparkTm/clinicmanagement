@@ -54,9 +54,9 @@
                             {#$("#results").append(json.toString())#}
                             {#$("#search_table").append(json.toString());#}
                             {#                                            var action = "window.location.href='" + link + json[i].member_no + "'"#}
-                            var tr = $("<tr class='clickable-row' data-href='http://127.0.0.1:8000/payments/payments/pre_authorization/create/?member_no=" + json[i].member_no + "'>");
+                            var tr = $("<tr class='clickable-row' href='http://127.0.0.1:8000/payments/pre_authorization/new/"+ json[i].member_no +"/' data-href='http://127.0.0.1:8000/payments/payments/pre_authorization/create/?member_no=" + json[i].member_no + "'>");
                             $.each(props, function (i, prop) {
-                                $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                                $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
                             });
                             tbody.append(tr);
                         });

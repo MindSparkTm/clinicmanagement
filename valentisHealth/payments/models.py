@@ -47,8 +47,26 @@ class member_info(models.Model):
     def get_update_url(self):
         return reverse('payments_member_info_update', args=(self.slug,))
 
+    def get_anniversary_status(self):
+        member_no = self.member_no
+        anniversary = member_anniversary.objects.filter(slug=member_no).first()
+        if anniversary:
+            return anniversary.end_date > datetime.date.today()
+        else:
+            return False
+
+    def get_benefit_status(self):
+        member_no = self.member_no
+        benefits = member_benefits.objects.filter(slug=member_no)
+        benefits_status = [x.suspended for x in benefits]
+        return any(benefits_status)
+
     def get_status(self):
-        pass
+        return self.get_anniversary_status() and self.get_benefit_status()
+
+    def get_benefits(self):
+        member_no = self.member_no
+        return member_benefits.objects.filter(member_no=member_no)
 
 
 class member_benefits(models.Model):
