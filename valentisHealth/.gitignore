@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 .idea/
 virt/
 .vscode/
 db.sqlite3
 *.idea
+=======
+db.*
+.idea/
+>>>>>>> 7d2a887e4779275875b71d65ee7244c60c58d6f4
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
