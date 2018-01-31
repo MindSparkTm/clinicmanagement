@@ -9,18 +9,18 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
 
     <link rel="stylesheet" href="{% static 'css/search_box.css' %}">
 
-    <a style="float: right" href="{% url 'payments_pre_authorization_list' %}">All Pre Authorization</a>
+    <a style="float: right; padding-top: 450px" href="{% url 'payments_pre_authorization_list' %}">All Pre Authorization</a>
     <div class="mdh-expandable-search mdl-cell--hide-phone" style="padding-left: 100px; padding-top: 50px">
         <i class="material-icons">search</i>
 {#        <form method="get" action="/members/search">#}
-            <input id="search" placeholder="Search member" size="20" onchange="searchMembers(this.value)"
-                   onkeypress="searchMembers(this.value)" type="text">
+            <input class="is-focused" id="search" placeholder="Search member" size="20" onchange="searchMembers(this.value)"
+                   onkeypress="searchMembers(this.value)" type="text" >
 {#        </form>#}
     </div>
     <br>
     <br>
     <div class="mdl-grid" style="padding-left: 100px">
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="search_table">
+    <table class="mdl-data-table mdl-shadow--2dp" id="search_table">
         <tbody id="search_data">
         <tr>
         </tr>
@@ -36,44 +36,46 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
 
             //ensure to remove previous prepended results to avoid duplicity
             $('#search_data').children().remove();
+            console.log(str);
+                $.ajax({
+                    url: "http://127.0.0.1:8000/payments/ajax_pre_authorization/",
+                    type: "get",
+                    data: {
+                        q: str,
+                    },
+                    success: function (json) {
+                        console.log(json)
+                        if (json.length === 0) {
+                            onchange = "searchMembers(this.value)"
+                            $("#no_result").show()
+                            $('#searchresult').hide()
 
-            console.log(str)
-            $.ajax({
-                url: "http://127.0.0.1:8000/payments/ajax_pre_authorization/",
-                type: "get",
-                data: {
-                    q: str,
-                },
-                success: function (json) {
-                    console.log(json)
-                    if (json.length === 0) {
-                        onchange = "searchMembers(this.value)"
-                        $("#no_result").show()
-                        $('#searchresult').hide()
+                        } else {
 
-                    } else {
-
-                        $("#no_result").hide()
-                        $('#searchresult').show()
-                        var tbody = $('#search_table tbody'),
-                            props = ["member_no", "first_name", "surname", "passport_no"]
-                        $.each(json, function (i, reservation) {
-                            {#$("#results").append(json.toString())#}
-                            {#$("#search_table").append(json.toString());#}
-                            {#                                            var action = "window.location.href='" + link + json[i].member_no + "'"#}
-                            var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/payments/pre_authorization/new/"+ json[i].member_no +"/' \" '>");
-                            $.each(props, function (i, prop) {
-                                $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                            $("#no_result").hide()
+                            $('#searchresult').show()
+                            var tbody = $('#search_table tbody'),
+                                props = ["member_no", "first_name", "surname", "passport_no"]
+                            $.each(json, function (i, reservation) {
+                                {#$("#results").append(json.toString())#}
+                                {#$("#search_table").append(json.toString());#}
+                                {#                                            var action = "window.location.href='" + link + json[i].member_no + "'"#}
+                                var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
+                                $.each(props, function (i, prop) {
+                                    $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                                });
+                                tbody.append(tr);
                             });
-                            tbody.append(tr);
-                        });
+
+                        }
 
                     }
 
-                }
-
-            })
+                })
         }
 
+    </script>
+    <script>
+    document.querySelector('mdl-js-textfield).MaterialTextfield.checkDirty()
     </script>
 {% endblock %}

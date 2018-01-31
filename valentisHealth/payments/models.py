@@ -32,6 +32,11 @@ AUTHORITY_TYPE = (
     (4, 'Maternity'),
 )
 
+INTERNAL_NOTED = (
+    ('EXT', 'Ext'),
+    ('NEW', 'New')
+)
+
 
 class member_info(models.Model):
 
@@ -80,10 +85,21 @@ class member_info(models.Model):
         member_no = self.member_no
         benefits = member_benefits.objects.filter(member_no=member_no)
         benefits_status = [x.suspended for x in benefits]
-        return any(benefits_status)
+        return not any(benefits_status)
 
     def get_status(self):
         return self.get_anniversary_status() or self.get_benefit_status()
+
+    def is_active(self):
+        # test if cancelled
+        # test if benefits date expired
+        member_no = self.member_no
+        benefits = member_benefits.objects.filter(member_no=member_no)
+        if benefits:
+            benefits_status = [x.is_active() for x in benefits]
+            return any(benefits_status)
+        else:
+            return not bool(self.cancelled)
 
     def get_benefits(self):
         member_no = self.member_no
@@ -119,6 +135,7 @@ class member_benefits(models.Model):
     sharing = models.DecimalField(max_digits=1, decimal_places=0)
     anniv = models.DecimalField(max_digits=2, decimal_places=0)
     suspended = models.DecimalField(max_digits=1, decimal_places=0)
+    suspended_date = models.DateField(default=datetime.date.today,blank=True, null=True)
     expense = models.DecimalField(max_digits=10, decimal_places=2)
     idx = models.DecimalField(max_digits=10, decimal_places=0)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
@@ -136,6 +153,12 @@ class member_benefits(models.Model):
 
     def get_update_url(self):
         return reverse('payments_member_benefits_update', args=(self.slug,))
+
+    def is_active(self):
+        if self.suspended_date:
+            return self.suspended_date > datetime.date.today()
+        else:
+            return False
 
 
 class member_anniversary(models.Model):
@@ -245,13 +268,14 @@ class pre_authorization(models.Model):
     authority_type = models.IntegerField(choices=AUTHORITY_TYPE, default=0)
     ward = models.IntegerField(choices=WARD, default=0)
     available_limit = models.DecimalField(max_digits=10, decimal_places=2)
-    admit_days = models.DecimalField(max_digits=3, decimal_places=0)
+    admit_days = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
     reserve = models.DecimalField(max_digits=10, decimal_places=2)
     notes = models.CharField(max_length=200)
+    internal_notes = models.CharField(max_length=100, choices=INTERNAL_NOTED, default='NEW')
     anniv = models.DecimalField(max_digits=5, decimal_places=0, null=True)
     # auth_batch_no = models.DecimalField(populate_from='code')
-    day_bed_charge = models.DecimalField(max_digits=10, decimal_places=2)
-    date_admitted = models.DateField(default=datetime.date.today)
+    day_bed_charge = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    date_admitted = models.DateField(default=datetime.date.today, null=True, blank=True)
     code = models.AutoField(primary_key=True)
 
     class Meta:

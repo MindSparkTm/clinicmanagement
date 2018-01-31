@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = ('valentisHealth.backends.EmailAuthBackend', )
 
 # URL to redirect to if one ain't logged in
 LOGIN_URL = '/account/log-in/'
+LOGIN_REDIRECT_URL = '/registration/models/create/'
 
 # Application definition
 
@@ -129,6 +130,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

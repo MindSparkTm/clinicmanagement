@@ -14,8 +14,10 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
         }
         .demo-card-square > .mdl-card__title {
           color: #fff;
+            min-height: 250px;
+          max-height: 300px;
           background:
-            url('') bottom right 15% no-repeat #3C5D73;
+            url('/media/profile.png') bottom right 15% no-repeat #3C5D73;
         }
             {#.mdl-card__supporting-text {#}
             {#     height: 320px;#}
@@ -27,10 +29,10 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
                 <h2 class="mdl-card__title-text">{{ object.name }}</h2>
               </div>
 
-              <div class="mdl-card__supporting-text">
-                Member status - {% if member.get_status %}Active {% else %}Inactive{% endif %}<br>
-                {{ member.get_aniversary_start }} - {{ member.get_aniversary_end }}
-              </div>
+{#              <div class="mdl-card__supporting-text">#}
+{#                Member status - {% if object.is_active %}Active {% else %}Inactive{% endif %}<br>#}
+{#                {{ object.get_aniversary_start }} - {{ object.get_aniversary_end }}#}
+{#              </div>#}
               <div class="mdl-card__actions center-items mdl-card--border">
                     <table class="mdl-data-table mdl-js-data-table mdl-cell--3-col">
 {#                        <tr>#}
@@ -78,7 +80,10 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
         <td>Created</td>
         <td>{{ object.created }}</td>
     </tr>
-
+    <tr>
+        <td>Preauthorization Type</td>
+        <td>{{ object.internal_notes }}</td>
+    </tr>
     <tr>
         <td>Member no</td>
         <td>{{ object.member_no }}</td>
@@ -124,12 +129,8 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
         <td>{{ object.admit_days }}</td>
     </tr>
     <tr>
-        <td>date_admitted</td>
+        <td>Date admitted</td>
         <td>{{ object.date_admitted }}</td>
-    </tr>
-    <tr>
-        <td>Day bed charge</td>
-        <td>{{ object.day_bed_charge }}</td>
     </tr>
     <tr>
         <td>Reserve</td>
@@ -144,6 +145,14 @@ $("#pre_authorization_tab").addClass("current").siblings().removeClass("current"
 {#        <td>{{ object.anniv }}</td>#}
 {#    </tr>#}
     <!-- <tr><td>auth_batch_no</td><td>{{ object.auth_batch_no }}</td></tr> -->
+    <tr>
+        <td>Day bed charge</td>
+        <td>{{ object.day_bed_charge }}</td>
+    </tr>
+{#    <tr>#}
+{#        <td>date_admitted</td>#}
+{#        <td>{{ object.date_admitted }}</td>#}
+{#    </tr>#}
     <tr>
         <td>Reference No</td>
         <td>{{ object.code }}</td>
