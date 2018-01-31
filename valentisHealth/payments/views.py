@@ -2,8 +2,14 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView, V
 from .models import member_info, member_benefits, member_anniversary, member_acceptance, principal_applicant, pre_authorization, provider, cash
 from .forms import member_infoForm, member_benefitsForm, member_anniversaryForm, member_acceptanceForm, principal_applicantForm, pre_authorizationForm, providerForm, cashForm
 from rest_framework import generics
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from . import serializers
+
+from django.template.loader import get_template
+from django.contrib import messages
+from django.db.models import Q
+from django.http import HttpResponse
+from xhtml2pdf import pisa
 
 import json
 
@@ -113,7 +119,9 @@ class AjaxPreAuthorizationSearch(View):
     def get(self, request):
         if request.is_ajax():
             q = request.GET.get('q', '')
-            members = member_info.objects.filter(first_name__icontains=q)[:20]
+            members = member_info.objects.filter(Q(first_name__icontains=q)| Q(surname__icontains=q)
+                                                 | Q(other_name__icontains=q)| Q(member_no__icontains=q) |
+                                                 Q(passport_no__icontains=q))[:20]
             results = []
             for member in members:
                 member_json = dict()
@@ -129,7 +137,6 @@ class AjaxPreAuthorizationSearch(View):
         else:
             data = 'fail'
         mimetype = 'application/json'
-        print(data)
         return HttpResponse(data, mimetype)
 
 
@@ -141,13 +148,40 @@ class PreAuthorizationSearch(View):
 class PreAuthorizationCreateView(View):
 
     def get(self, request, slug):
-        member = get_object_or_404(member_info, slug=slug)
+        member = get_object_or_404(member_info, member_no=slug)
         form = pre_authorizationForm()
+        status = member.get_status()
+        if not status:
+            messages.error(request, 'The member is not active')
+
         d = {
             'form': form,
             'member': member
         }
         return render(request, 'payments/pre_authorization_form.1.html', d)
+
+    def post(self, request, slug):
+        form = pre_authorizationForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            member_no = instance.member_no
+            print(member_no)
+            anniversary = member_anniversary.objects.filter(member_no=member_no).first()
+            if anniversary:
+                instance.anniv = anniversary.anniv
+            instance.save()
+            return redirect(reverse('payments_pre_authorization_print', kwargs={'slug': instance.slug}))
+        else:
+            print('failed!')
+            print(form.errors)
+            member = get_object_or_404(member_info, member_no=slug)
+            # form = pre_authorizationForm()
+            print(form.errors)
+            d = {
+                'form': form,
+                'member': member
+            }
+            return render(request, 'payments/pre_authorization_form.1.html', d)
 
 
 
@@ -180,6 +214,47 @@ class pre_authorform:
 
 class pre_authorizationDetailView(DetailView):
     model = pre_authorization
+
+
+def render_to_pdf(template_src, context_dict, action='view'):
+    template = get_template(template_src)
+    context = context_dict
+    html = template.render(context)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="Authorization.pdf"'
+
+    pisaStatus = pisa.CreatePDF(
+        html, dest=response)
+
+    if pisaStatus.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    else:
+        return response
+
+
+class PreAuthorizationPrintView(View):
+    def get(self, request, slug):
+        print(slug)
+        pre_auth = get_object_or_404(pre_authorization, slug=slug)
+        d = {
+            'pagesize': 'A4',
+            'pre_auth': pre_auth,
+            'user': request.user,
+            # 'reference_no': pre_auth.slug,
+            # 'date': pre_auth.date_authorized,
+            # 'no_of_days': pre_auth.admit_days,
+            # 'ward': pre_auth.ward,
+            # 'provider': pre_auth.provider,
+            # 'days_bed_charges': pre_auth.day_bed_charge ,
+            # 'authority_type': pre_auth.authority_type,
+            # 're': pre_auth.name,
+            # 'member_no': pre_auth.member_no,
+            # 'corporate': 'none',
+            'notes': pre_auth.notes
+
+        }
+        return render_to_pdf('pre_authorization_pdf.html', d)
 
 
 class pre_authorizationUpdateView(UpdateView):
