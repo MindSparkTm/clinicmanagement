@@ -35,27 +35,68 @@
                         <legend>Personal Information</legend>
                         <input type="hidden" name="action" value="login"/>
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_first_name">First Name</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_first_name" name="first_name" value="{% if form.first_name.value != None %}{{ form.first_name.value }}{% endif %}" required/>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_middle_name">Middle Name</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_middle_name" name="middle_name"
-                                       value="{% if form.middle_name.value != None %}{{ form.middle_name.value }}{% endif %}"/>
-                            </div>
 
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_name">Last Name</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_last_name" value="{% if form.last_name.value != None %}{{ form.last_name.value }}{% endif %}" name="last_name" required/>
                             </div>
 
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_dob">Date Of Birth </label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_dob"
+                                       value="{% if form.dob.value != None %}{{ form.dob.value }}{% else %}{% endif %}"
+                                       name="dob"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_age">Age</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_age"
+                                       value="{% if form.age.value != None %}{{ form.age.value }}{% endif %}"
+                                       name="age"/>
+                            </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_occupation">Occupation</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_occupation"
+                                       value="{% if form.occupation.value != None %}{{ form.occupation.value }}{% endif %}"
+                                       name="occupation"/>
+                            </div>
+
+
+
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_marital_status">Marital Status </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_marital_status" value="
+                                        {% if form.marital_status.value != None %}{{ form.marital_status.value }}{% else %}{% endif %}"
+                                       name="marital_status"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_spouse">Name of Partner</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_spouse"
+                                       value="{% if form.spouse.value != None %}{{ form.spouse.value }}{% endif %}"
+                                       name="spouse"/>
+                            </div>
                         </div>
 
                         <div class="mdl-grid ">
@@ -121,18 +162,7 @@
                         </div>
 
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_dob">Date Of Birth </label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_dob" value="{% if form.dob.value != None %}{{ form.dob.value }}{% else %}{% endif %}" name="dob"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_age">Age</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_age" value="{% if form.age.value != None %}{{ form.age.value }}{% endif %}" name="age"/>
-                            </div>
+
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_Gender">Sex</label>
@@ -255,8 +285,8 @@
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="address"></textarea>
-                                <label class="mdl-textfield__label" for="address">Address</label>
+                                                              id="sample5"></textarea>
+                                <label class="mdl-textfield__label" for="sample5">Address</label>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col">
                                 <div class="mdl-grid ">
@@ -347,302 +377,6 @@
                         </div>
 
                     </fieldset>
-                <br><br>
-
-
-                <fieldset name="personal">
-                        <legend>HEALTH HISTORY</legend>
-                <fieldset name="personal">
-                        <legend>personal info</legend>
-
-                        <div class="mdl-grid">
-
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_occupation">Occupation</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_occupation"
-                                       value="{% if form.occupation.value != None %}{{ form.occupation.value }}{% endif %}"
-                                       name="occupation"/>
-                            </div>
-
-
-
-                        </div>
-                        <div class="mdl-grid">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_marital_status">Marital Status </label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_marital_status" value="
-                                        {% if form.marital_status.value != None %}{{ form.marital_status.value }}{% else %}{% endif %}"
-                                       name="marital_status"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_spouse">Name of Partner</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_spouse"
-                                       value="{% if form.spouse.value != None %}{{ form.spouse.value }}{% endif %}"
-                                       name="spouse"/>
-                            </div>
-                        </div>
-
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="rev_docs"></textarea>
-                                <label class="mdl-textfield__label" for="rev_docs">Names/Specialties/Locations of Other Physicians Caring for You, including previous primary care doctor:</label>
-                            </div>
-                </div>
-
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="rev_docs"></textarea>
-                                <label class="mdl-textfield__label" for="rev_docs">Names/Specialties/Locations of Other Physicians Caring for You, including previous primary care doctor:</label>
-                            </div>
-                </div>
-
-
-                <div class="mdl-grid">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_no_children">Number of Children </label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_no_children" value="{% if form.no_children.value != None %}{{ form.no_children.value }}{% else %}{% endif %}"
-                                       name="no_children"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_childrens">Children's Names/Age</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_childrens"
-                                       value="{% if form.childrens.value != None %}{{ form.childrens.value }}{% endif %}"
-                                       name="childrens"/>
-                            </div>
-                        </div>
-
-                    <script>
-                        $("#btn").click(function () {
-                            var $ctrl = $('<input/>').attr({
-                                type: 'button',
-                                name: 'btn',
-                                value: 'Button'
-                            }).addClass("btn");
-                            $("#holder").append($ctrl);
-                        });
-                    </script>
-                    <div class="mdl-grid">
-                        <table class="mdl-data-table mdl-js-data-table full-width">
-                            <input type="hidden" value="" name="medical_information">
-                            <thead>
-                            <tr>
-                                <th class="mdl-data-table__cell--non-numeric full-width">Medication</th>
-                                <th >Dosage</th>
-                                <th >Route</th>
-                                <th >Frequency</th>
-                            </tr>
-                            </thead>
-                            <tbody id="medications">
-
-                            </tbody>
-
-                        </table>
-{#                        <div class="mdl-grid"> Add more</div>#}
-                    </div>
-
-
-
-
-
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="allergies"></textarea>
-                                <label class="mdl-textfield__label" for="allergies">Any Allergies to Medication of Food (list reactions)</label>
-                            </div>
-                </div>
-
-                <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_phys_examination">Date of Last Physical Exam</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_phys_examination" value="{% if form.last_phys_examination.value != None %}{{ form.e_contact.value }}{% endif %}" name="last_phys_examination"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_blood_work">Date of Last Blood Work</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_blood_work" value="{% if form.last_blood_work.value != None %}{{ form.last_blood_work.value }}{% endif %}" name="last_blood_work"/>
-                            </div>
-                        </div>
-                <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_colonoscopy">Date of Last Colonoscopy</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_colonoscopy" value="{% if form.last_colonoscopy.value != None %}{{ form.e_contact.value }}{% endif %}" name="last_colonoscopy"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_tetanus_shot">Date of Last Tetenus Shot</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_tetanus_shot" value="{% if form.last_tetanus_shot.value != None %}{{ form.last_tetanus_shot.value }}{% endif %}" name="ast_tetanus_shot"/>
-                            </div>
-                        </div>
-                </fieldset>
-
-                <fieldset id="for_females" name="for_females">
-                        <legend>For females</legend>
-
-                    <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_menstrual">Date of Last Menstrual Period</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_menstrual" value="{% if form.last_menstrual.value != None %}{{ form.last_menstrual.value }}{% endif %}" name="last_menstrual"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_pap_smear">Date of Last Pap Smear</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_pap_smear" value="{% if form.last_pap_smear.value != None %}{{ form.last_pap_smear.value }}{% endif %}" name="last_pap_smear"/>
-                            </div>
-                        </div>
-                <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_abnormal_pap">History of Abnormal pap(list date/s)?</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_abnormal_pap" value="{% if form.abnormal_pap.value != None %}{{ form.abnormal_pap.value }}{% endif %}" name="abnormal_pap"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_mammogram">Date of Last Mammogram</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_mammogram" value="{% if form.last_mammogram.value != None %}{{ form.last_mammogram.value }}{% endif %}" name="ast_tetanus_shot"/>
-                            </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_dexa">DEXA</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_dexa" value="{% if form.dexa.value != None %}{{ form.dexa.value }}{% endif %}" name="ast_tetanus_shot"/>
-                            </div>
-                        </div>
-                    <div class="mdl-grid ">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_no_pregnancies">Number of Pregnancies</label>
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_no_pregnancies" value="{% if form.no_pregnancies.value != None %}{{ form.no_pregnancies.value }}{% endif %}"
-                                   name="no_pregnancies"/>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_miscourages">Miscourages</label>
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_miscourages" value="{% if form.miscourages.value != None %}{{ form.miscourages.value }}{% endif %}"
-                                   name="ast_tetanus_shot"/>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_last_colonoscopy">Terminations</label>
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_last_colonoscopy" value="{% if form.last_colonoscopy.value != None %}{{ form.e_contact.value }}{% endif %}"
-                                   name="last_colonoscopy"/>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_living_children">Living Children</label>
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_living_children" value="{% if form.living_children.value != None %}{{ form.living_children.value }}{% endif %}"
-                                   name="ast_tetanus_shot"/>
-                        </div>
-                    </div>
-
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="allergies"></textarea>
-                                <label class="mdl-textfield__label" for="allergies">Method/s of Contraception</label>
-                            </div>
-                </div>
-
-                    </fieldset>
-
-                    <div class="mdl-grid">
-                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="surgeries" name="surgeries"></textarea>
-                            <label class="mdl-textfield__label" for="allergies">Please list any SURGERIES you have had
-                                and include the month/year</label>
-                        </div>
-                    </div>
-
-                    <fieldset name="scans">
-                        <legend>Social information</legend>
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_smoker">
-                            <input type="checkbox" id="if_smoker" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Do you smoke</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_chew_tobacco">
-                            <input type="checkbox" id="if_chew_tobacco" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Do you chew Tobacco?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="thought_quiting">
-                            <input type="checkbox" id="thought_quiting" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Have you thought about quiting?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_quit_before">
-                            <input type="checkbox" id="if_quit_before" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Have you quit before?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_drink_alcohol">
-                            <input type="checkbox" id="if_drink_alcohol" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Do you drink alcohol?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_drug_used">
-                            <input type="checkbox" id="if_drug_used" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Any history of illegal drug use?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_exercise">
-                            <input type="checkbox" id="if_exercise" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Do you exercise?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_special_diet">
-                            <input type="checkbox" id="if_special_diet" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Are you on any special diet?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_use_caffein">
-                            <input type="checkbox" id="if_use_caffein" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Do you consume any caffeinated products?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="is_sadder">
-                            <input type="checkbox" id="is_sadder" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">have you recently noticed an increase in sadness or gloomiess?</span>
-                        </label>
-
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_lost_interest">
-                            <input type="checkbox" id="if_lost_interest" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Have you lost interest in enjoyable activities?</span>
-                        </label>
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="have_will">
-                            <input type="checkbox" id="have_will" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Do you have a living will?</span>
-                        </label>
-                    </fieldset>
-
                     <fieldset name="scans">
                         <legend>Scanned Documents</legend>
 
@@ -662,9 +396,6 @@
                         </div>
 
                     </fieldset>
-                </fieldset>
-
-
 
 
                     <div class="mdl-cell mdl-cell--12-col send-button" align="center">
