@@ -12,16 +12,17 @@ import datetime
 
 
 PROVIDER = (
-    (0, 'AAR'),
-    (1, 'ACE'),
-    (2, 'Sanlam'),
-    (3, '21st centuary'),
+    (0, 'AGA KHAN HOSPITAL NAIROBI'),
+    (1, 'NAIROBI HOSPITAL'),
+    (2, 'KENYATTA HOSPITAL'),
+    (3, 'KAREN HOSPITAL'),
 )
 
 WARD = (
     (0, 'General Ward'),
     (1, 'Maternity Ward'),
     (2, 'Children Ward'),
+    (3, 'Critical Ward'),
 )
 
 AUTHORITY_TYPE = (
@@ -77,16 +78,33 @@ class member_info(models.Model):
 
     def get_benefit_status(self):
         member_no = self.member_no
-        benefits = member_benefits.objects.filter(slug=member_no)
+        benefits = member_benefits.objects.filter(member_no=member_no)
         benefits_status = [x.suspended for x in benefits]
         return any(benefits_status)
 
     def get_status(self):
-        return self.get_anniversary_status() and self.get_benefit_status()
+        return self.get_anniversary_status() or self.get_benefit_status()
 
     def get_benefits(self):
         member_no = self.member_no
         return member_benefits.objects.filter(member_no=member_no)
+
+    def get_aniversary_start(self):
+        member_no = self.member_no
+        benefits = member_anniversary.objects.filter(member_no=member_no).first()
+        if benefits:
+            return benefits.start_date
+        else:
+            return 'No start date'
+
+    def get_aniversary_end(self):
+        member_no = self.member_no
+        benefits = member_anniversary.objects.filter(member_no=member_no).first()
+        if benefits:
+            return benefits.end_date
+        else:
+            return 'No end date'
+
 
 
 class member_benefits(models.Model):
@@ -230,7 +248,7 @@ class pre_authorization(models.Model):
     admit_days = models.DecimalField(max_digits=3, decimal_places=0)
     reserve = models.DecimalField(max_digits=10, decimal_places=2)
     notes = models.CharField(max_length=200)
-    anniv = models.DecimalField(max_digits=5, decimal_places=0)
+    anniv = models.DecimalField(max_digits=5, decimal_places=0, null=True)
     # auth_batch_no = models.DecimalField(populate_from='code')
     day_bed_charge = models.DecimalField(max_digits=10, decimal_places=2)
     date_admitted = models.DateField(default=datetime.date.today)
@@ -245,9 +263,23 @@ class pre_authorization(models.Model):
     def get_absolute_url(self):
         return reverse('payments_pre_authorization_detail', args=(self.slug,))
 
-
     def get_update_url(self):
         return reverse('payments_pre_authorization_update', args=(self.slug,))
+
+    def get_provider(self):
+        provider = list(filter(lambda x: x[0] == self.provider, PROVIDER))[0][1]
+        return provider
+
+    def get_ward(self):
+        try:
+            ward = list(filter(lambda x: x[0] == self.ward, WARD))[0][1]
+            return ward
+        except:
+            return None
+
+    def get_authority_type(self):
+        authority_type = list(filter(lambda x: x[0] == self.authority_type, AUTHORITY_TYPE))[0][1]
+        return authority_type
 
 
 class provider(models.Model):

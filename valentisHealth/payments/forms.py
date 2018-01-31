@@ -244,7 +244,9 @@ class pre_authorizationForm(forms.ModelForm):
     class Meta:
         model = pre_authorization
 
-        fields = ['name', 'member_no', 'provider','date_reported', 'reported_by', 'authorized_by', 'pre_diagnosis', 'authority_type', 'ward', 'available_limit', 'admit_days', 'reserve', 'notes', 'anniv',  'day_bed_charge', 'date_admitted', 'code']
+        fields = ['name', 'member_no', 'provider','date_reported', 'reported_by', 'authorized_by',
+                  'pre_diagnosis', 'authority_type', 'ward', 'available_limit', 'admit_days', 'reserve',
+                  'notes', 'day_bed_charge', 'date_admitted', 'code']
 
         widgets = {
             'pre-diagnosis': forms.Textarea(attrs={'cols': 80, 'rows': 20}),

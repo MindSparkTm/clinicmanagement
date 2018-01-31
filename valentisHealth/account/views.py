@@ -66,7 +66,7 @@ def render_to_pdf(template_src, context_dict, action='view'):
     html = template.render(context)
 
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'inline; filename="Authorization.pdf"'
+    response['Content-Disposition'] = 'inline; filename="Authoriza.pdf"'
 
     pisaStatus = pisa.CreatePDF(
         html, dest=response)

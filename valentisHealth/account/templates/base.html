@@ -7,47 +7,51 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-{#    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">#}
-     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-light_blue.min.css" />
+    {#    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">#}
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-light_blue.min.css"/>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-        <header class="mdl-layout__header mdl-layout__header--scroll" style="background-color: #0F2737">
-            <div class="mdl-layout__header-row">
-                <!-- Title -->
-                <span class="mdl-layout-title">Valentis Health</span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation -->
-                <nav class="mdl-navigation">
-                    {% if user.is_authenticated %}
-                    <a class="mdl-navigation__link" href="{% url 'logout' %}">logout</a>
-                    {% else %}
-                    <a class="mdl-navigation__link" href="">login</a>
-                    {% endif %}
-                </nav>
-            </div>
-        </header>
-    <div class="navigation">
-        <ul class="navigation-tabs">
-            <li id="registration_tab" class="current"><a href="/registration/models/create/">Registration</a></li>
-            <li id="triage_tab"><a href="/nurse/models/create/">Triage</a></li>
-            <li id="clinic_tab"><a href="/clinic/patientvisit">Clinic</a></li>
-            <li id="labs_tab"><a href="/labs/">Labs</a></li>
-            <li id="radiology_tab"><a href="/labs/radiology/">Radiology</a></li>
-            <li id="prescription_tab"><a href="/medication/models/create/">Prescriptions</a></li>
-            <li id="pre_authorization_tab"><a href="/payments/pre_authorization/create">Pre-authorization</a></li>
-        </ul>
+<header class="mdl-layout__header mdl-layout__header--scroll" style="background-color: #0F2737">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Valentis Health</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            {% if user.is_authenticated %}
+                <a class="mdl-navigation__link" href="{% url 'logout' %}">logout</a>
+            {% else %}
+                <a class="mdl-navigation__link" href="">login</a>
+            {% endif %}
+        </nav>
     </div>
+</header>
+<div class="navigation">
+    <ul class="navigation-tabs">
+        <li id="registration_tab" class="current"><a href="/registration/models/create/">Registration</a></li>
+        <li id="triage_tab"><a href="/nurse/models/create/">Triage</a></li>
+        <li id="clinic_tab"><a href="/clinic/patientvisit">Clinic</a></li>
+        <li id="labs_tab"><a href="/labs/">Labs</a></li>
+        <li id="radiology_tab"><a href="/labs/radiology/">Radiology</a></li>
+        <li id="prescription_tab"><a href="/medication/models/create/">Prescriptions</a></li>
+        <li id="pre_authorization_tab"><a href="{% url 'payments_pre_authorization_search' %}">Pre-authorization</a></li>
+    </ul>
+</div>
 
 {#        content goes here#}
-        {% block content %}
+{% block content %}
 
-        {% endblock %}
+{% endblock %}
 
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script>
+    $('input[type="date"]').val(new Date().toISOString().split('T')[0])
+
+</script>
 </body>
 </html>
