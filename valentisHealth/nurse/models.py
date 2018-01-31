@@ -13,7 +13,7 @@ from django_extensions.db import fields as extension_fields
 class models(models.Model):
 
     # Fields
-    slug = extension_fields.AutoSlugField(populate_from='patient_id', blank=True)
+    slug = extension_fields.AutoSlugField(populate_from='patient_id',null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     systolic = models.IntegerField()

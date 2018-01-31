@@ -13,17 +13,17 @@ from django_extensions.db import fields as extension_fields
 class patientVisit(models.Model):
 
     # Fields
-    name = models.CharField(max_length=255)
-    slug = extension_fields.AutoSlugField(populate_from='name', blank=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    slug = extension_fields.AutoSlugField(populate_from='patient_id', blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
-    patient_id = models.CharField(max_length=30)
-    visit_id = models.CharField(max_length=30)
+    patient_id = models.CharField(max_length=30, null=True, blank=True)
+    visit_id = models.CharField(max_length=30, null=True, blank=True) # models.AutoField(primary_key=True)
     radiology_no = models.CharField(max_length=30, null=True, blank=True)
     notes = models.TextField(max_length=200, null=True, blank=True)
     diagnosis = models.TextField(max_length=100, null=True, blank=True)
     prescription_id = models.CharField(max_length=30, null=True, blank=True)
-    status = models.DecimalField(max_digits=1,decimal_places=0)
+    status = models.CharField(max_length=30, null=True, blank=True)
 
 
     class Meta:

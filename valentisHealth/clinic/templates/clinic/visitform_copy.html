@@ -1,3 +1,5 @@
+
+
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
@@ -17,36 +19,7 @@
 
     </script>
 
-    <div id="waiting_list_table" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
-        <div class="mdl-card__title mdl-color--teal-500">
-            <h2 class="mdl-card__title-text mdl-color-text--white">Waiting List</h2>
-        </div>
-        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-            <table class="mdl-data-table mdl-js-data-table full-width">
-                <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric full-width">Patient Name</th>
-                    <th>Patient's Age</th>
-                    <th>Patient Id.</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for patient in doc_waiting_list %}
-                    <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_id }}/'">
-                        <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
-                        <td>{{ patient.age }}</td>
-                        <td>{{ patient.patient_Id }}</td>
-                    </tr>
-                {% endfor %}
-
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-
-    <div id="doctor" class="mdl-grid" style="display: none;">
+    <div id="doctor" class="mdl-grid">
         <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
 
             <fieldset id="triage">
@@ -56,19 +29,19 @@
                         <div class="mdl-cell mdl-cell--12-col">
                             <table class="mdl-data-table full-width">
                                 <tr>
-                                    <td style="text-align:left;">Bp: <span id="bp"></span></td>
-                                    <td style="text-align:left;">Heart Rate: <span id="heart_rate"></span></td>
+                                    <td style="text-align:left;">Bp: <span id="bp"> {{ triage.systolic }}/{{ triage.diastolic }}</span></td>
+                                    <td style="text-align:left;">Heart Rate: <span id="heart_rate"> {{ triage.heart_rate }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:left;">Temp: <span id="temp"></span></td>
-                                    <td style="text-align:left;">Oxygen Saturation: <span id="oxygen"></span></td>
+                                    <td style="text-align:left;">Temp: <span id="temp">{{ triage.temperature }}</span></td>
+                                    <td style="text-align:left;">Oxygen Saturation: <span id="oxygen">{{ triage.oxygen_saturation }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:left;" colspan="2">Urinalysis: <span id="urinalysis"></span>
+                                    <td style="text-align:left;" colspan="2">Urinalysis: <span id="urinalysis">{{ triage.urinalysis }}</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:left;" colspan="2">Other: <span id="other"></span></td>
+                                    <td style="text-align:left;" colspan="2">Other: <span id="other">{{ triage.others }}</span></td>
                                 </tr>
                             </table>
 
@@ -91,21 +64,14 @@
                         <div class="mdl-cell mdl-cell--12-col">
                             <span style="color:rgb(76, 175, 80)">Medications</span>
                             <ul class="demo-list-item mdl-list">
-                                <li class="mdl-list__item">
+
+                                {% for infor in patient.medical_information %}
+                              <li class="mdl-list__item">
                                 <span class="mdl-list__item-primary-content">
-                                  Piriton
+                                  {{ infor }}
                                 </span>
                                 </li>
-                                <li class="mdl-list__item">
-                                <span class="mdl-list__item-primary-content">
-                                  Paracetamol
-                                </span>
-                                </li>
-                                <li class="mdl-list__item">
-                                <span class="mdl-list__item-primary-content">
-                                  Asprin
-                                </span>
-                                </li>
+                        {% endfor %}
                             </ul>
 
                         </div>
@@ -116,55 +82,69 @@
                         <div class="mdl-cell mdl-cell--12-col">
                             <span style="color:rgb(76, 175, 80)">Alergies</span>
                             <table class="mdl-data-table full-width">
-                                <tr>
-                                    <td style="text-align:left;">Asprin<span id="bp"></span></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align:left;">Bee Stng <span id="temp"></span></td>
-                                </tr>
+                        <thead>
+                        <tr>
+                            <th style="text-align:left;">Alergies:</th>
+                            <th>Reaction: <span id="menstrual"></span></th>
 
-                            </table>
+                        </tr>
+                        </thead>
+                        <tbody id="alergies">
+                          {% for alergy in patient.alergies %}
+                              <tr>
+                              <td colspan="2">{{ alergy }}</td>
+                              </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
 
                         </div>
 
 
                     </div>
+                <br><br>
+
+                <span style="color:rgb(76, 175, 80)">Alergies</span>
 
                     <table class="mdl-data-table full-width">
                         <tr>
-                            <td style="text-align:left;">Last physical Examination: <span id="bp"></span></td>
+                            <td style="text-align:left;">Last physical Examination: {{ patient.last_phys_examination }}<span id="bp"></span></td>
                         </tr>
                         <tr>
-                            <td style="text-align:left;">Date of Last blood work: <span id="temp"></span></td>
+                            <td style="text-align:left;">Date of Last blood work: {{ patient.last_blood_work }}<span id="temp"></span></td>
                         </tr>
                         <tr>
-                            <td style="text-align:left;">Last calonoscopy: <span id="urinalysis"></span></td>
+                            <td style="text-align:left;">Last calonoscopy: <span id="urinalysis">  {{ patient.last_colonoscopy }}</span></td>
                         </tr>
                         <tr>
-                            <td style="text-align:left;">Last tetanus shot: <span id="other"></span></td>
+                            <td style="text-align:left;">Last tetanus shot: <span id="tetanus_shot"> {{ patient.last_tetanus_shot }}</span></td>
                         </tr>
                     </table>
                     <br>
 
-                    For Females
+                    <br>
+
+
                     <table class="mdl-data-table full-width">
+                        <div style="color:rgb(76, 175, 80)">For Females</div>
                         <tr>
-                            <td style="text-align:left;">Date of last Menstrual period: <span id="menstrual"></span>
+                            <td style="text-align:left;">Date of last Menstrual period: <span id="menstrual">  {{ patient.last_menstrual }}</span>
                             </td>
                         </tr>
                         <tr>
-                            <td style="text-align:left;">Date of Last Pap Smear: <span id="pap_smear"></span></td>
+                            <td style="text-align:left;">Date of Last Pap Smear: <span id="pap_smear"> {{ patient.last_pap_smear }}</span></td>
                         </tr>
                         <tr>
                             <td style="text-align:left;">History of Abnormal pap: <span id="abnormal pap"></span></td>
                         </tr>
 
                         <tr>
-                            <td style="text-align:left;">Date of Last Mammogram: <span id="mammogram"></span></td>
+                            <td style="text-align:left;">Date of Last Mammogram: <span id="mammogram"> {{ patient.last_mammogram }}</span></td>
                         </tr>
 
                         <tr>
-                            <td style="text-align:left;">Dexa: <span id="other"></span></td>
+                            <td style="text-align:left;">Dexa: <span id="dexa"> {{ patient.last_blood_work }}</span></td>
                         </tr>
                     </table>
                     <br>
@@ -181,25 +161,11 @@
 
                         </tr>
                         </thead>
-                        <tbody id="family_consitions"></tbody>
+                        <tbody id="family_conditions"></tbody>
 
                     </table>
 
-                    <br>
-                    <br>
 
-                    Alergies
-                    <table class="mdl-data-table full-width">
-                        <thead>
-                        <tr>
-                            <th style="text-align:left;">Alergies:</th>
-                            <th>Reaction: <span id="menstrual"></span></th>
-
-                        </tr>
-                        </thead>
-                        <tbody id="family_consitions"></tbody>
-
-                    </table>
 
                     <br>
                     <br>
@@ -213,7 +179,40 @@
 
                         </tr>
                         </thead>
-                        <tbody id="family_consitions"></tbody>
+                        <tbody id="family_consitions">
+                        <tr>
+                            <td style="text-align:left;">Do you smoke?</td>
+                            <td style="text-align:left;">{{ patient.if_smoker }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Do you chew tobacco?</td>
+                            <td style="text-align:left;">{{ patient.if_chew_tobacco }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Have you quit before?</td>
+                            <td style="text-align:left;">{{ patient.if_quit_before }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Do you drink alcohol?</td>
+                            <td style="text-align:left;">{{ patient.if_drink_alcohol }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Any history of illegal drug use?</td>
+                            <td style="text-align:left;">{{ patient.if_drug_used }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Do you exercise?</td>
+                            <td style="text-align:left;">{{ patient.if_exercise }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Do you exercise?</td>
+                            <td style="text-align:left;">{{ patient.if_use_caffein }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left;">Are you on any special diet?</td>
+                            <td style="text-align:left;">{{ patient.if_special_diet }}</td>
+                        </tr>
+                        </tbody>
 
                     </table>
 
@@ -284,7 +283,7 @@
 
                         <div class="mdl-grid full-width">
                             <div class="mdl-cell mdl-cell--4-col">
-                                <input id="patient_id_" name="patient_id"  value="" readonly>
+                                <input id="patient_id_" name="patient_id"  value="{{ patient.patient_id }}" readonly>
                                 <div id="div_id_h01" class="control-group">
                                     <div class="controls"><label for="id_h01"
                                                                  class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
@@ -1208,7 +1207,7 @@
                 {% endfor %}
             {% endif %}</span>
                 <input name="patient_id" id="patient_id" type="text"
-                       value="{% if form.patient_id.value != None %}{{ form.patient_id.value }}{% endif %}" readonly/>
+                       value="{% if patient.patient_id != None %}{{ patient.patient_id }}{% endif %}" readonly/>
                 <fieldset>
                     <legend>Confirm Patient Details</legend>
                     <div class="mdl-grid ">
@@ -1217,16 +1216,16 @@
                                    for="first_name">First Name</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="first_name" name="first_name"
-                                   value="{% if form.first_name.value != None %}{{ form.first_name.value }}{% endif %}"
-                                   required/>
+                                   value="{% if patient.first_name != None %}{{ patient.first_name }}{% endif %}"
+                                   readonly/>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_last_name">Last Name</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_last_name" name="last_name"
-                                   value="{% if form.last_name.value != None %}{{ form.last_name.value }}{% endif %}"
-                                   required/>
+                                   value="{% if patient.last_name != None %}{{ patient.last_name }}{% endif %}"
+                                   readonly/>
                         </div>
                     </div>
                 </fieldset>
@@ -1245,8 +1244,7 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="diagnosis"
-                                                              name="diagnosis">{% if form.diagnosis.value != None %}
-                                                        {{ form.diagnosis.value }}{% endif %}</textarea>
+                                                              name="diagnosis">{% if form.diagnosis.value != None %}{{ form.diagnosis.value }}{% endif %}</textarea>
                             <label class="mdl-textfield__label" for="diagnosis">Diagnosis</label>
                         </div>
                     </div>
@@ -1254,8 +1252,7 @@
 
                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="notes" name="notes">{% if form.notes.value != None %}
-                                                        {{ form.notes.value }}{% endif %}</textarea>
+                                                              id="notes" name="notes">{% if form.notes.value != None %}{{ form.notes.value }}{% endif %}</textarea>
                             <label class="mdl-textfield__label" for="notes">More notes</label>
                         </div>
                     </div>
@@ -1263,12 +1260,14 @@
 
 
                 {#                {{ form|crispy }}#}
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
+                                type="submit">Submit
+                        </button>
             </form>
         </div>
 
 
-    <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--4-col">
+        <div id="waiting_list_table" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8\4-col">
         <div class="mdl-card__title mdl-color--teal-500">
             <h2 class="mdl-card__title-text mdl-color-text--white">Waiting List</h2>
         </div>
@@ -1283,10 +1282,10 @@
                 </thead>
                 <tbody>
                 {% for patient in doc_waiting_list %}
-                    <tr onclick="populatedoctor({{ patient.patient_id }},'{{ patient.first_name }}', '{{ patient.last_name }}')">
+                    <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_id }}/'">
                         <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
-                        <td>{{ patient.age }}</td>
-                        <td>{{ patient.patient_Id }}</td>
+                        <td style="text-align:left;">{{ patient.age }}</td>
+                        <td style="text-align:left;">{{ patient.patient_Id }}</td>
                     </tr>
                 {% endfor %}
 
