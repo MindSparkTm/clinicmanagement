@@ -307,3 +307,17 @@ fieldset {
     border-radius: 8px;
     border-style: solid;
 }
+
+.mdl-textfield__error {
+	width: 100%;
+	left: 0;
+ text-align: left;
+}
+
+.left{
+  text-align:left;
+}
+
+#radiology{
+    padding-left: 24px;
+}
