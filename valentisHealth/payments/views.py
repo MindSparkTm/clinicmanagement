@@ -150,7 +150,7 @@ class PreAuthorizationCreateView(View):
     def get(self, request, slug):
         member = get_object_or_404(member_info, member_no=slug)
         form = pre_authorizationForm()
-        status = member.get_status()
+        status = member.is_active()
         if not status:
             messages.error(request, 'The member is not active')
 
@@ -183,6 +183,43 @@ class PreAuthorizationCreateView(View):
             }
             return render(request, 'payments/pre_authorization_form.1.html', d)
 
+
+class PPreAuthorizationCreateView(View):
+
+    def get(self, request, slug):
+        member = get_object_or_404(member_info, member_no=slug)
+        form = pre_authorizationForm()
+        status = member.is_active()
+        if not status:
+            messages.error(request, 'The member is not active')
+        d = {
+            'form': form,
+            'member': member
+        }
+        return render(request, 'payments/pre_authorization_form.2.html', d)
+
+    def post(self, request, slug):
+        form = pre_authorizationForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            member_no = instance.member_no
+            print(member_no)
+            anniversary = member_anniversary.objects.filter(member_no=member_no).first()
+            if anniversary:
+                instance.anniv = anniversary.anniv
+            instance.save()
+            return redirect(reverse('payments_pre_authorization_print', kwargs={'slug': instance.slug}))
+        else:
+            print('failed!')
+            print(form.errors)
+            member = get_object_or_404(member_info, member_no=slug)
+            # form = pre_authorizationForm()
+            print(form.errors)
+            d = {
+                'form': form,
+                'member': member
+            }
+            return render(request, 'payments/pre_authorization_form.2.html', d)
 
 
 class pre_authorizationCreateView(CreateView):

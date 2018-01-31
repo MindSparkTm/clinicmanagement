@@ -40,7 +40,8 @@ class LoginPage(View):
                             del params['next']
                             return redirect(request.GET.get('next') + '?' + urlencode(params))
                         else:
-                            return redirect("/")
+                            return redirect(reverse('registration_models_create'))
+                            # return redirect("/")
                     else:
                         message = "You need to activate your account first before you can sign in."
                         messages.error(request, message)

@@ -246,6 +246,7 @@ class pre_authorizationForm(forms.ModelForm):
 
         fields = ['name', 'member_no', 'provider','date_reported', 'reported_by', 'authorized_by',
                   'pre_diagnosis', 'authority_type', 'ward', 'available_limit', 'admit_days', 'reserve',
+                  'internal_notes',
                   'notes', 'day_bed_charge', 'date_admitted', 'code']
 
         widgets = {

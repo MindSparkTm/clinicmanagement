@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from account.views import Home
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,4 +29,4 @@ urlpatterns = [
     url(r'^payments/', include('payments.urls')),
     url(r'^account/', include('account.urls')),
     url(r'^$', Home.as_view(), name='home')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
