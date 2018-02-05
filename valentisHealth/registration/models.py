@@ -65,7 +65,7 @@ class models(models.Model):
     first_name = CharField(max_length=30)
     middle_name = CharField(max_length=30, null=True, blank=True)
     last_name = CharField(max_length=30)
-    Gender = CharField(max_length=30)
+    gender = CharField(max_length=30)
     street_name = CharField(max_length=30, null=True, blank=True)
     apartment_name = CharField(max_length=30, null=True, blank=True)
     postal_code = CharField(max_length=30, null=True, blank=True)

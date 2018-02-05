@@ -28,5 +28,5 @@ urlpatterns = [
     url(r'^clinic/', include('clinic.urls')),
     url(r'^payments/', include('payments.urls')),
     url(r'^account/', include('account.urls')),
-    url(r'^$', Home.as_view(), name='home')
+    url(r'^$', include('registration.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

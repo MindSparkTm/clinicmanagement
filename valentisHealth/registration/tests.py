@@ -34,7 +34,7 @@ def create_models(**kwargs):
     defaults["first_name"] = "first_name"
     defaults["middle_name"] = "middle_name"
     defaults["last_name"] = "last_name"
-    defaults["Gender"] = "Gender"
+    defaults["gender"] = "gender"
     defaults["street_name"] = "street_name"
     defaults["apartment_name"] = "apartment_name"
     defaults["postal_code"] = "postal_code"
@@ -129,7 +129,7 @@ class modelsViewTest(unittest.TestCase):
             "first_name": "first_name",
             "middle_name": "middle_name",
             "last_name": "last_name",
-            "Gender": "Gender",
+            "gender": "gender",
             "street_name": "street_name",
             "apartment_name": "apartment_name",
             "postal_code": "postal_code",
@@ -218,7 +218,7 @@ class modelsViewTest(unittest.TestCase):
             "first_name": "first_name",
             "middle_name": "middle_name",
             "last_name": "last_name",
-            "Gender": "Gender",
+            "gender": "gender",
             "street_name": "street_name",
             "apartment_name": "apartment_name",
             "postal_code": "postal_code",

@@ -15,7 +15,7 @@ class modelsSerializer(serializers.ModelSerializer):
             'first_name', 
             'middle_name', 
             'last_name', 
-            'Gender', 
+            'gender', 
             'street_name', 
             'apartment_name', 
             'postal_code', 

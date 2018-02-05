@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% load crispy_forms_tags %}
-
 {% block content %}
+    <script>
+    $("#registration_tab").addClass("current").siblings().removeClass("current")
+</script>
 
-    <div class="mdl-grid full-width">
+    <div class="mdl-grid ">
+    <div class="mdl-layout-spacer"></div>
 
-        <div class="mdl-card mdl-shadow--16dp util-center full-width">
+        <div class="mdl-card mdl-shadow--16dp util-center mdl-cell mdl-cell--6-col">
             <style>
                 .mdl-card__title-text {
                     display: flex;
@@ -37,7 +39,7 @@
                     }
                 </style>
 
-                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="demo-card-wide mdl-card">
                     <!-- Search -->
                     <style>
                         /* TODO: Hover and Focus state.
@@ -170,7 +172,7 @@
 
                             console.log(str)
                             $.ajax({
-                                url: "http://127.0.0.1:8000/",
+                                url: "http://127.0.0.1:8000/registration/api/v1/models/",
                                 type: "get",
                                 data: {
 
@@ -188,8 +190,8 @@
                                         $('#searchresult').show()
                                         var tbody = $('#search_table tbody'), props = ["patient_no", "first_name", "surname"]
                                         $.each(json, function (i, reservation) {
-                                            {#                                            var action = "window.location.href='" + link + json[i].member_no + "'"#}
-                                            var tr = $("<tr class='clickable-row' data-href='http://127.0.0.1:8000/payments/payments/pre_authorization/create/?member_no="+json[i].member_no+"'>");
+                                            {#                                            var action = "window.location.href='" + link + json[i].patient_no + "'"#}
+                                            var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/registration/existing/"+json[i].patient_no+"/'\">");
                                             $.each(props, function (i, prop) {
                                                 $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
                                             });
@@ -216,6 +218,7 @@
                         </form>
                     </div>
 
+
                     <div id="no_result" style="display: none">
                         <div class="mdl-card__title mdl-card--expand">
                             <h2 class="mdl-card__title-text">No Results</h2>
@@ -223,7 +226,7 @@
                     </div>
 
                     <div id="searchresult" style="display: none">
-                        <table id="search_table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
+                        <table id="search_table" class="mdl-data-table mdl-js-data-table ">
                             <thead>
                             <tr>
                                 <th class="mdl-data-table__cell--non-numeric full-width">Patient No</th>
@@ -242,6 +245,7 @@
 
 
         </div>
+    <div class="mdl-layout-spacer"></div>
     </div>
 
 

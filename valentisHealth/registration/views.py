@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect
 class modelsListView(ListView):
     model = models
 
+    def get_template_names(self):
+        return 'registration/search_patient.html'
 
 class modelsCreateView(CreateView):
     model = models
@@ -29,7 +31,7 @@ class SearchPatientView(CreateView):
     form_class = modelsForm
 
     def get_template_names(self):
-        return 'registration/search_patient.html'
+        return 'medication/models_search.html'
 
 
 class CreateMedication(CreateView):

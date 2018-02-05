@@ -1,315 +1,668 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<p><a class="btn btn-default" href="{% url 'registration_models_list' %}">models Listing</a></p>
-<table class="table">
-    <tr>
-        <td>patient_no</td>
-        <td>{{ object.patient_no }}</td>
-    </tr>
-    <tr>
-        <td>created</td>
-        <td>{{ object.created }}</td>
-    </tr>
-    <tr>
-        <td>last_updated</td>
-        <td>{{ object.last_updated }}</td>
-    </tr>
-    <tr>
-        <td>first_name</td>
-        <td>{{ object.first_name }}</td>
-    </tr>
-    <tr>
-        <td>middle_name</td>
-        <td>{{ object.middle_name }}</td>
-    </tr>
-    <tr>
-        <td>last_name</td>
-        <td>{{ object.last_name }}</td>
-    </tr>
-    <tr>
-        <td>Gender</td>
-        <td>{{ object.Gender }}</td>
-    </tr>
-    <tr>
-        <td>street_name</td>
-        <td>{{ object.street_name }}</td>
-    </tr>
-    <tr>
-        <td>apartment_name</td>
-        <td>{{ object.apartment_name }}</td>
-    </tr>
-    <tr>
-        <td>postal_code</td>
-        <td>{{ object.postal_code }}</td>
-    </tr>
-    <tr>
-        <td>postal_address</td>
-        <td>{{ object.postal_address }}</td>
-    </tr>
-    <tr>
-        <td>city</td>
-        <td>{{ object.city }}</td>
-    </tr>
-    <tr>
-        <td>country</td>
-        <td>{{ object.country }}</td>
-    </tr>
-    <tr>
-        <td>age</td>
-        <td>{{ object.age }}</td>
-    </tr>
-    <tr>
-        <td>next_of_kin</td>
-        <td>{{ object.next_of_kin }}</td>
-    </tr>
-    <tr>
-        <td>n_of_kin_rel</td>
-        <td>{{ object.n_of_kin_rel }}</td>
-    </tr>
-    <tr>
-        <td>email</td>
-        <td>{{ object.email }}</td>
-    </tr>
-    <tr>
-        <td>phone</td>
-        <td>{{ object.phone }}</td>
-    </tr>
-    <tr>
-        <td>primary_insurance</td>
-        <td>{{ object.primary_insurance }}</td>
-    </tr>
-    <tr>
-        <td>secondary_insurance</td>
-        <td>{{ object.secondary_insurance }}</td>
-    </tr>
-    <tr>
-        <td>pri_ins_sub</td>
-        <td>{{ object.pri_ins_sub }}</td>
-    </tr>
-    <tr>
-        <td>sec_ins_sub</td>
-        <td>{{ object.sec_ins_sub }}</td>
-    </tr>
-    <tr>
-        <td>other_ins_subscriber</td>
-        <td>{{ object.other_ins_subscriber }}</td>
-    </tr>
-    <tr>
-        <td>subscriber_relationship</td>
-        <td>{{ object.subscriber_relationship }}</td>
-    </tr>
-    <tr>
-        <td>sub_address</td>
-        <td>{{ object.sub_address }}</td>
-    </tr>
-    <tr>
-        <td>ss_number</td>
-        <td>{{ object.ss_number }}</td>
-    </tr>
-    <tr>
-        <td>sub_ss_number</td>
-        <td>{{ object.sub_ss_number }}</td>
-    </tr>
-    <tr>
-        <td>alt_phone</td>
-        <td>{{ object.alt_phone }}</td>
-    </tr>
-    <tr>
-        <td>sub_work_phone</td>
-        <td>{{ object.sub_work_phone }}</td>
-    </tr>
-    <tr>
-        <td>dob</td>
-        <td>{{ object.dob }}</td>
-    </tr>
-    <tr>
-        <td>sub_dob</td>
-        <td>{{ object.sub_dob }}</td>
-    </tr>
-    <tr>
-        <td>sub_employer</td>
-        <td>{{ object.sub_employer }}</td>
-    </tr>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+{#    <p><a class="btn btn-default" href="{% url 'registration_models_list' %}">New Patient</a></p>#}
+
+    <div class="mdl-grid">
 
 
-    <tr>
-        <td>occupation</td>
-        <td>{{ object.occupation }}</td>
-    </tr>
-    <tr>
-        <td>marital_status</td>
-        <td>{{ object.marital_status }}</td>
-    </tr>
-    <tr>
-        <td>spouse</td>
-        <td>{{ object.spouse }}</td>
-    </tr>
-    <tr>
-        <td>no_children</td>
-        <td>{{ object.no_children }}</td>
-    </tr>
-    <tr>
-        <td>childrens</td>
-        <td>{{ object.childrens }}</td>
-    </tr>
-    <tr>
-        <td>prev_docs</td>
-        <td>{{ object.prev_docs }}</td>
-    </tr>
-    <tr>
-        <td>medical_information</td>
-        <td>{{ object.medical_information }}</td>
-    </tr>
-    <tr>
-        <td>alergies</td>
-        <td>{{ object.alergies }}</td>
-    </tr>
-    <tr>
-        <td>preferred_pharmacy</td>
-        <td>{{ object.preferred_pharmacy }}</td>
-    </tr>
-    <tr>
-        <td>last_phys_examination</td>
-        <td>{{ object.last_phys_examination }}</td>
-    </tr>
-    <tr>
-        <td>last_blood_work</td>
-        <td>{{ object.last_blood_work }}</td>
-    </tr>
-    <tr>
-        <td>last_colonoscopy</td>
-        <td>{{ object.last_colonoscopy }}</td>
-    </tr>
-    <tr>
-        <td>last_tetanus_shot</td>
-        <td>{{ object.last_tetanus_shot }}</td>
-    </tr>
-    <tr>
-        <td>last_menstrual</td>
-        <td>{{ object.last_menstrual }}</td>
-    </tr>
-    <tr>
-        <td>last_pap_smear</td>
-        <td>{{ object.last_pap_smear }}</td>
-    </tr>
-    <tr>
-        <td>last_mammogram</td>
-        <td>{{ object.last_mammogram }}</td>
-    </tr>
-    <tr>
-        <td>dexa</td>
-        <td>{{ object.dexa }}</td>
-    </tr>
-    <tr>
-        <td>no_pregnancies</td>
-        <td>{{ object.no_pregnancies }}</td>
-    </tr>
-    <tr>
-        <td>miscourages</td>
-        <td>{{ object.miscourages }}</td>
-    </tr>
-    <tr>
-        <td>living_children</td>
-        <td>{{ object.living_children }}</td>
-    </tr>
-    <tr>
-        <td>methods_of_contraception</td>
-        <td>{{ object.methods_of_contraception }}</td>
-    </tr>
-    <tr>
-        <td>surgeries</td>
-        <td>{{ object.surgeries }}</td>
-    </tr>
-    <tr>
-        <td>genetic_diseases</td>
-        <td>{{ object.genetic_diseases }}</td>
-    </tr>
-    <tr>
-        <td>if_smoker</td>
-        <td>{{ object.if_smoker }}</td>
-    </tr>
-    <tr>
-        <td>cigar_per_day</td>
-        <td>{{ object.cigar_per_day }}</td>
-    </tr>
-    <tr>
-        <td>no_of_yr_smoking</td>
-        <td>{{ object.no_of_yr_smoking }}</td>
-    </tr>
-    <tr>
-        <td>if_chew_tobacco</td>
-        <td>{{ object.if_chew_tobacco }}</td>
-    </tr>
-    <tr>
-        <td>yrs_chewing_tobacco</td>
-        <td>{{ object.yrs_chewing_tobacco }}</td>
-    </tr>
-    <tr>
-        <td>if_quit_before</td>
-        <td>{{ object.if_quit_before }}</td>
-    </tr>
-    <tr>
-        <td>tobacco_quit_duration</td>
-        <td>{{ object.tobacco_quit_duration }}</td>
-    </tr>
-    <tr>
-        <td>if_drink_alcohol</td>
-        <td>{{ object.if_drink_alcohol }}</td>
-    </tr>
-    <tr>
-        <td>alocohol_type</td>
-        <td>{{ object.alocohol_type }}</td>
-    </tr>
-    <tr>
-        <td>alcohol_frequency</td>
-        <td>{{ object.alcohol_frequency }}</td>
-    </tr>
-    <tr>
-        <td>if_drug_used</td>
-        <td>{{ object.if_drug_used }}</td>
-    </tr>
-    <tr>
-        <td>drug_type</td>
-        <td>{{ object.drug_type }}</td>
-    </tr>
-    <tr>
-        <td>when_drug_used</td>
-        <td>{{ object.when_drug_used }}</td>
-    </tr>
-    <tr>
-        <td>if_exercise</td>
-        <td>{{ object.if_exercise }}</td>
-    </tr>
-    <tr>
-        <td>exercise_freq</td>
-        <td>{{ object.exercise_freq }}</td>
-    </tr>
-    <tr>
-        <td>if_special_diet</td>
-        <td>{{ object.if_special_diet }}</td>
-    </tr>
-    <tr>
-        <td>special_diet</td>
-        <td>{{ object.special_diet }}</td>
-    </tr>
-    <tr>
-        <td>if_use_caffein</td>
-        <td>{{ object.if_use_caffein }}</td>
-    </tr>
-    <tr>
-        <td>caffein_daily_amt</td>
-        <td>{{ object.caffein_daily_amt }}</td>
-    </tr>
-    <tr>
-        <td>is_sadder</td>
-        <td>{{ object.is_sadder }}</td>
-    </tr>
-    <tr>
-        <td>if_lost_interest</td>
-        <td>{{ object.if_lost_interest }}</td>
-    </tr>
-    <tr>
-        <td>have_will</td>
-        <td>{{ object.have_will }}</td>
-    </tr>
-</table>
-<a class="btn btn-primary" href="{{object.get_update_url}}">Edit models</a> {% endblock %}
+
+        <div class="mdl-shadow--16dp util-center full-width">
+            <div class="mdl-card__title mdl-color--teal-500">
+                <h2 class="mdl-card__title-text mdl-color-text--white">Registration Form</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-grid">
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+
+
+
+
+                <form method="POST" action="" class="full-width">
+                    {% csrf_token %}
+                    {#                    {% if form.authorized_by.value != None %}{{ form }}#}
+                    <fieldset name="personal">
+                        <legend>Personal Information</legend>
+                        <input type="hidden" name="action" value="login"/>
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_first_name">First Name</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_first_name" name="first_name" value="{% if form.first_name.value != None %}{{ form.first_name.value }}{% endif %}" required/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_middle_name">Middle Name</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_middle_name" name="middle_name"
+                                       value="{% if form.middle_name.value != None %}{{ form.middle_name.value }}{% endif %}"/>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_name">Last Name</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_last_name" value="{% if form.last_name.value != None %}{{ form.last_name.value }}{% endif %}" name="last_name" required/>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_phone">Phone </label>
+                                <input class="mdl-textfield__input" type='tel' pattern='^\+?\d{10}'
+                                       id="textfield_phone" value="{% if form.phone.value != None %}{{ form.phone.value }}{% endif %}" name="phone"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_email">Email Address</label>
+                                <input class="mdl-textfield__input" type="email"
+                                       id="textfield_email"
+                                       value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}" name="email"/>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_postal_address">Address </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_postal_address" value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_apartment_name">Apartment No.</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_apartment_name" value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name"/>
+                            </div>
+
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_city">City </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_city" value="{% if form.city.value != None %}{{ form.city.value }}{% endif %}" name="city"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_postal_code">Postal Code</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_postal_code" value="{% if form.postal_code.value != None %}{{ form.postal_code.value }}{% endif %}" name="postal_code"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
+                                <input type="text" value="" class="mdl-textfield__input"
+                                       id="sample3" readonly>
+                                <input type="hidden" value="{% if form.country.value != None %}{{ form.country.value }}{% endif %}" name="sample3">
+                                <label for="sample3" class="mdl-textfield__label">Country</label>
+                                <ul for="sample3"
+                                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                    <li class="mdl-menu__item" data-val="DEU">Germany</li>
+                                    <li class="mdl-menu__item" data-val="BLR">Belarus</li>
+                                    <li class="mdl-menu__item" data-val="RUS">Russia</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-grid ">
+
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_age">Age</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_age" value="{% if form.age.value != None %}{{ form.age.value }}{% endif %}" name="age"/>
+                            </div>
+
+                        <script>
+
+                        </script>
+
+                            <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--3-col">
+                                <input class="mdl-textfield__input" value="" id="sex" readonly/>
+                                <input value="" type="hidden" name="sex"/>
+                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                <label class="mdl-textfield__label" for="sex">Sex</label>
+                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                    for="sex">
+                                    <li class="mdl-menu__item" data-val="male">Male</li>
+                                    <li class="mdl-menu__item" data-val="female">Female</li>
+                                    <li class="mdl-menu__item" data-val="other">Other</li>
+
+                                </ul>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_ss_number">ID Number</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_ss_number" value="{% if form.ss_number.value != None %}{{ form.ss_number.value }}{% endif %}" name="ss_number"/>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset name="insurance" class="fieldset">
+                        <legend>Emergency contact</legend>
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_e_relationship">Emergency Contact</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_e_relationship" value="{% if form.e_relationship.value != None %}{{ form.e_contact.value }}{% endif %}" name="e_relationship"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_e_relationship">Relationship to patient</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_e_relationship" value="{% if form.e_relationship.value != None %}{{ form.e_relationship.value }}{% endif %}" name="e_relationship"/>
+                            </div>
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_e_contact_address">Address</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_e_contact_address" value="{% if form.e_contact_address.value != None %}{{ form.e_contact_address.value }}{% endif %}" name="e_contact_address"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_phone_number">Phone Number</label>
+                                <input class="mdl-textfield__input" type="number"
+                                       id="textfield_phone_number" value="{% if form.phone_name.value != None %}{{ form.phone.value }}{% endif %}" name="phone_number"/>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset name="insurance" class="fieldset">
+                        <legend>Insurance information</legend>
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_primary_insurance">Primary Insurance </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_primary_insurance" value="{% if form.primary_insurance.value != None %}{{ form.primary_insurance.value }}{% endif %}" name="primary_insurance"/>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
+                                <input class="mdl-textfield__input" value="" id="country" readonly/>
+                                <input value="" type="hidden" name="country"/>
+                                <label class="mdl-textfield__label" for="country">Are You the Policy Holder?</label>
+                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                    for="country">
+                                    <li class="mdl-menu__item" data-val="BLR">Yes</li>
+                                    <li class="mdl-menu__item" data-val="BRA">No</li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_secondary_insurance">Secondary Insurance </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_secondary_insurance"  name="secondary_insurance"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
+                                <input class="mdl-textfield__input" value="" id="sec_ins_sub"
+                                       readonly/>
+                                <input value="" type="hidden" name="sec_ins_sub"/>
+                                <label class="mdl-textfield__label" for="country">Are You the Policy Holder?</label>
+                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                    for="sec_ins_sub">
+                                    <li class="mdl-menu__item" data-val="BLR">Yes</li>
+                                    <li class="mdl-menu__item" data-val="BRA">No</li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                    <fieldset name="other_insurance" class="fieldset">
+                        <legend>Insurance information of policy holder</legend>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_other_ins_subscriber">Subscriber/Policy holder</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_other_ins_subscriber" value="{% if form.ins_subscriber.value != None %}{{ form.other_ins_subscriber.value }}{% endif %}" name="other_ins_subscriber"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_subscriber_relationship">Relationship to Patient</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_subscriber_relationship" value="{% if form.subscriber_relationship.value != None %}{{ form.subscriber_relationship.value }}{% endif %}" name="subscriber_relationship"/>
+                            </div>
+
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="address"></textarea>
+                                <label class="mdl-textfield__label" for="address">Address</label>
+                            </div>
+
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_sub_ss_number">ID Number</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_sub_ss_number" value="{% if form.sub_ss_number.value != None %}{{ form.sub_ss_number.value }}{% endif %}" name="sub_ss_number"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_sub_dob">Date of Birth</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_sub_dob" value="{% if form.sub_dob.value != None %}{{ form.sub_dob.value }}{% else %}01/01/2018{% endif %}" name="sub_dob"/>
+                            </div>
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_employer">Employer</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_employer" value="{% if form.employer.value != None %}{{ form.employer.value }}{% endif %}" name="employer"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_sub_work_phone">Work Phone Number</label>
+                                <input class="mdl-textfield__input" type="tel"
+                                       id="textfield_sub_work_phone" value="{% if form.sub_work_phone.value != None %}{{ form.sub_work_phone.value }}{% endif %}" name="sub_work_phone"/>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset name="release_information">
+                        <legend>Release of Information</legend>
+
+                        <div class="mdl-grid ">
+
+                            I hereby give permission to the persion(s) listed below to recieve
+                            information about the care of the above named patient
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_username">Name</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_release_info" value="{% if form.release_info.value != None %}{{ form.release_info.value }}{% endif %}" name="release_info"/>
+                            </div>
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_release_rel">Realtionship</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_release_rel" value="{% if form.release_rel.value != None %}{{ form.release_rel.value }}{% endif %}" name="release_rel"/>
+                            </div>
+                            {#                        <div class=" mdl-cell mdl-cell--2-col">#}
+                            {#                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">#}
+                            {#                                <i class="material-icons">add</i>#}
+                            {#                            </button>#}
+                            {#                        </div>#}
+
+                        </div>
+
+                    </fieldset>
+                <br><br>
+
+
+                <fieldset name="personal">
+                        <legend>HEALTH HISTORY</legend>
+                <fieldset name="personal">
+                        <legend>personal info</legend>
+
+                        <div class="mdl-grid">
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_occupation">Occupation</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_occupation"
+                                       value="{% if form.occupation.value != None %}{{ form.occupation.value }}{% endif %}"
+                                       name="occupation"/>
+                            </div>
+
+
+
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_marital_status">Marital Status </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_marital_status" value="
+                                        {% if form.marital_status.value != None %}{{ form.marital_status.value }}{% else %}{% endif %}"
+                                       name="marital_status"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_spouse">Name of Partner</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_spouse"
+                                       value="{% if form.spouse.value != None %}{{ form.spouse.value }}{% endif %}"
+                                       name="spouse"/>
+                            </div>
+                        </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="rev_docs"></textarea>
+                                <label class="mdl-textfield__label" for="rev_docs">Names/Specialties/Locations of Other Physicians Caring for You, including previous primary care doctor:</label>
+                            </div>
+                </div>
+
+
+                <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_no_children">Number of Children </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_no_children" value="{% if form.no_children.value != None %}{{ form.no_children.value }}{% else %}{% endif %}"
+                                       name="no_children"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_childrens">Children's Names/Age</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_childrens"
+                                       value="{% if form.childrens.value != None %}{{ form.childrens.value }}{% endif %}"
+                                       name="childrens"/>
+                            </div>
+                        </div>
+
+                    <script>
+                        $("#btn").click(function () {
+                            var $ctrl = $('<input/>').attr({
+                                type: 'button',
+                                name: 'btn',
+                                value: 'Button'
+                            }).addClass("btn");
+                            $("#holder").append($ctrl);
+                        });
+                    </script>
+                    <div class="mdl-grid">
+                        <table class="mdl-data-table mdl-js-data-table full-width">
+                            <input type="hidden" value="" name="medical_information">
+                            <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric full-width">Medication</th>
+                                <th >Dosage</th>
+                                <th >Route</th>
+                                <th >Frequency</th>
+                            </tr>
+                            </thead>
+                            <tbody id="medications">
+
+                            </tbody>
+
+                        </table>
+{#                        <div class="mdl-grid"> Add more</div>#}
+                    </div>
+
+
+
+
+
+                <div class="mdl-grid">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="allergies"></textarea>
+                                <label class="mdl-textfield__label" for="allergies">Any Allergies to Medication or Food (list reactions)</label>
+                            </div>
+                </div>
+
+                <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_phys_examination">Date of Last Physical Exam</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_phys_examination" value="{% if form.last_phys_examination.value != None %}{{ form.e_contact.value }}{% endif %}" name="last_phys_examination"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_blood_work">Date of Last Blood Work</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_blood_work" value="{% if form.last_blood_work.value != None %}{{ form.last_blood_work.value }}{% endif %}" name="last_blood_work"/>
+                            </div>
+                        </div>
+                <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_colonoscopy">Date of Last Colonoscopy</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_colonoscopy" value="{% if form.last_colonoscopy.value != None %}{{ form.e_contact.value }}{% endif %}" name="last_colonoscopy"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_tetanus_shot">Date of Last Tetenus Shot</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_tetanus_shot" value="{% if form.last_tetanus_shot.value != None %}{{ form.last_tetanus_shot.value }}{% endif %}" name="ast_tetanus_shot"/>
+                            </div>
+                        </div>
+                </fieldset>
+
+                <fieldset id="for_females" name="for_females">
+                        <legend>For females</legend>
+
+                    <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_menstrual">Date of Last Menstrual Period</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_menstrual" value="{% if form.last_menstrual.value != None %}{{ form.last_menstrual.value }}{% endif %}" name="last_menstrual"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_pap_smear">Date of Last Pap Smear</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_pap_smear" value="{% if form.last_pap_smear.value != None %}{{ form.last_pap_smear.value }}{% endif %}" name="last_pap_smear"/>
+                            </div>
+                        </div>
+                <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_abnormal_pap">History of Abnormal pap(list date/s)?</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_abnormal_pap" value="{% if form.abnormal_pap.value != None %}{{ form.abnormal_pap.value }}{% endif %}" name="abnormal_pap"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_mammogram">Date of Last Mammogram</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_last_mammogram" value="{% if form.last_mammogram.value != None %}{{ form.last_mammogram.value }}{% endif %}" name="ast_tetanus_shot"/>
+                            </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_dexa">DEXA</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_dexa" value="{% if form.dexa.value != None %}{{ form.dexa.value }}{% endif %}" name="ast_tetanus_shot"/>
+                            </div>
+                        </div>
+                    <div class="mdl-grid ">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_no_pregnancies">Number of Pregnancies</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_no_pregnancies" value="{% if form.no_pregnancies.value != None %}{{ form.no_pregnancies.value }}{% endif %}"
+                                   name="no_pregnancies"/>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_miscourages">Miscourages</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_miscourages" value="{% if form.miscourages.value != None %}{{ form.miscourages.value }}{% endif %}"
+                                   name="ast_tetanus_shot"/>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_last_colonoscopy">Terminations</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_last_colonoscopy" value="{% if form.last_colonoscopy.value != None %}{{ form.e_contact.value }}{% endif %}"
+                                   name="last_colonoscopy"/>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_living_children">Living Children</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_living_children" value="{% if form.living_children.value != None %}{{ form.living_children.value }}{% endif %}"
+                                   name="ast_tetanus_shot"/>
+                        </div>
+                    </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="allergies"></textarea>
+                                <label class="mdl-textfield__label" for="allergies">Method/s of Contraception</label>
+                            </div>
+                </div>
+
+                    </fieldset>
+
+                    <div class="mdl-grid">
+                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="surgeries" name="surgeries"></textarea>
+                            <label class="mdl-textfield__label" for="allergies">Please list any SURGERIES you have had
+                                and include the month/year</label>
+                        </div>
+                    </div>
+
+                    <fieldset name="scans">
+                        <legend>Social information</legend>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_smoker">
+                            <input type="checkbox" id="if_smoker" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Do you smoke</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_chew_tobacco">
+                            <input type="checkbox" id="if_chew_tobacco" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Do you chew Tobacco?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="thought_quiting">
+                            <input type="checkbox" id="thought_quiting" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Have you thought about quiting?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_quit_before">
+                            <input type="checkbox" id="if_quit_before" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Have you quit before?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_drink_alcohol">
+                            <input type="checkbox" id="if_drink_alcohol" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Do you drink alcohol?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_drug_used">
+                            <input type="checkbox" id="if_drug_used" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Any history of illegal drug use?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_exercise">
+                            <input type="checkbox" id="if_exercise" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Do you exercise?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_special_diet">
+                            <input type="checkbox" id="if_special_diet" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Are you on any special diet?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_use_caffein">
+                            <input type="checkbox" id="if_use_caffein" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Do you consume any caffeinated products?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="is_sadder">
+                            <input type="checkbox" id="is_sadder" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">have you recently noticed an increase in sadness or gloomiess?</span>
+                        </label>
+
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_lost_interest">
+                            <input type="checkbox" id="if_lost_interest" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Have you lost interest in enjoyable activities?</span>
+                        </label>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="have_will">
+                            <input type="checkbox" id="have_will" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Do you have a living will?</span>
+                        </label>
+                    </fieldset>
+
+                    <fieldset name="scans">
+                        <legend>Scanned Documents</legend>
+
+                        <div class="mdl-grid">
+
+
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+                                <input class="mdl-textfield__input" placeholder="File" type="text"
+                                       id="uploadFile" readonly/>
+                                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                                    <i class="material-icons">attach_file</i><input type="file"
+                                                                                    id="uploadBtn">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </fieldset>
+                </fieldset>
+
+
+
+
+                    <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+
+                        <button type="submit"
+                                class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
