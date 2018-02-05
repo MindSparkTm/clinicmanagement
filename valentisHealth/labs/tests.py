@@ -1,7 +1,7 @@
 import unittest
 from django.core.urlresolvers import reverse
 from django.test import Client
-from .models import labs, radiology
+from .models import Labs, Radiology
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
@@ -119,9 +119,9 @@ def create_labs(**kwargs):
     defaults["i01_menopausal_screen"] = "i01_menopausal_screen"
     defaults["i02_menopausal_screen"] = "i02_menopausal_screen"
     defaults["i03_menopausal_screen"] = "i03_menopausal_screen"
-    defaults["patient_id"] = "patient_id"
+    defaults["patient_no"] = "patient_no"
     defaults.update(**kwargs)
-    return labs.objects.create(**defaults)
+    return Labs.objects.create(**defaults)
 
 
 def create_radiology(**kwargs):
@@ -145,9 +145,88 @@ def create_radiology(**kwargs):
     defaults["anticoagulant_drugs"] = "anticoagulant_drugs"
     defaults["egfr_result"] = "egfr_result"
     defaults["date"] = "date"
-    defaults["patient_id"] = "patient_id"
+    defaults["patient_no"] = "patient_no"
     defaults.update(**kwargs)
-    return radiology.objects.create(**defaults)
+    return Radiology.objects.create(**defaults)
+
+
+def create_django_contrib_auth_models_user(**kwargs):
+    defaults = {}
+    defaults["username"] = "username"
+    defaults["email"] = "username@tempurl.com"
+    defaults.update(**kwargs)
+    return User.objects.create(**defaults)
+
+
+def create_django_contrib_auth_models_group(**kwargs):
+    defaults = {}
+    defaults["name"] = "group"
+    defaults.update(**kwargs)
+    return Group.objects.create(**defaults)
+
+
+def create_django_contrib_contenttypes_models_contenttype(**kwargs):
+    defaults = {}
+    defaults.update(**kwargs)
+    return ContentType.objects.create(**defaults)
+
+
+def create_radiologyresult(**kwargs):
+    defaults = {}
+    defaults["patient_no"] = "patient_no"
+    defaults["results"] = "results"
+    defaults["tests_done"] = "tests_done"
+    defaults.update(**kwargs)
+    return RadiologyResult.objects.create(**defaults)
+
+
+def create_labresults(**kwargs):
+    defaults = {}
+    defaults["patient_no"] = "patient_no"
+    defaults["tests_done"] = "tests_done"
+    defaults["test_results"] = "test_results"
+    defaults.update(**kwargs)
+    return LabResults.objects.create(**defaults)
+
+
+class RadiologyResultViewTest(unittest.TestCase):
+    '''
+    Tests for RadiologyResult
+    '''
+    def setUp(self):
+        self.client = Client()
+
+    def test_list_radiologyresult(self):
+        url = reverse('radiology_radiologyresult_list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_create_radiologyresult(self):
+        url = reverse('radiology_radiologyresult_create')
+        data = {
+            "patient_no": "patient_no",
+            "results": "results",
+            "tests_done": "tests_done",
+        }
+        response = self.client.post(url, data=data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_detail_radiologyresult(self):
+        radiologyresult = create_radiologyresult()
+        url = reverse('radiology_radiologyresult_detail', args=[radiologyresult.slug,])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_update_radiologyresult(self):
+        radiologyresult = create_radiologyresult()
+        data = {
+            "patient_no": "patient_no",
+            "results": "results",
+            "tests_done": "tests_done",
+        }
+        url = reverse('radiology_radiologyresult_update', args=[radiologyresult.slug,])
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, 302)
 
 
 class labsViewTest(unittest.TestCase):
@@ -254,7 +333,7 @@ class labsViewTest(unittest.TestCase):
             "i01_menopausal_screen": "i01_menopausal_screen",
             "i02_menopausal_screen": "i02_menopausal_screen",
             "i03_menopausal_screen": "i03_menopausal_screen",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
         }
         response = self.client.post(url, data=data)
         self.assertEqual(response.status_code, 302)
@@ -357,7 +436,7 @@ class labsViewTest(unittest.TestCase):
             "i01_menopausal_screen": "i01_menopausal_screen",
             "i02_menopausal_screen": "i02_menopausal_screen",
             "i03_menopausal_screen": "i03_menopausal_screen",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
         }
         url = reverse('labs_labs_update', args=[labs.slug,])
         response = self.client.post(url, data)
@@ -398,7 +477,7 @@ class radiologyViewTest(unittest.TestCase):
             "anticoagulant_drugs": "anticoagulant_drugs",
             "egfr_result": "egfr_result",
             "date": "date",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
         }
         response = self.client.post(url, data=data)
         self.assertEqual(response.status_code, 302)
@@ -431,9 +510,50 @@ class radiologyViewTest(unittest.TestCase):
             "anticoagulant_drugs": "anticoagulant_drugs",
             "egfr_result": "egfr_result",
             "date": "date",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
         }
         url = reverse('labs_radiology_update', args=[radiology.slug,])
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, 302)
+
+
+
+class LabResultsViewTest(unittest.TestCase):
+    '''
+    Tests for LabResults
+    '''
+    def setUp(self):
+        self.client = Client()
+
+    def test_list_labresults(self):
+        url = reverse('radiology_labresults_list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_create_labresults(self):
+        url = reverse('radiology_labresults_create')
+        data = {
+            "patient_no": "patient_no",
+            "tests_done": "tests_done",
+            "test_results": "test_results",
+        }
+        response = self.client.post(url, data=data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_detail_labresults(self):
+        labresults = create_labresults()
+        url = reverse('radiology_labresults_detail', args=[labresults.slug,])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_update_labresults(self):
+        labresults = create_labresults()
+        data = {
+            "patient_no": "patient_no",
+            "tests_done": "tests_done",
+            "test_results": "test_results",
+        }
+        url = reverse('radiology_labresults_update', args=[labresults.slug,])
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)
 

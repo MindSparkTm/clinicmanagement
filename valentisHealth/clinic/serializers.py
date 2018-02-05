@@ -12,7 +12,7 @@ class patientVisitSerializer(serializers.ModelSerializer):
             'name', 
             'created', 
             'last_updated', 
-            'patient_id', 
+            'patient_no', 
             'visit_id', 
             'radiology_no', 
             'notes', 
@@ -21,4 +21,16 @@ class patientVisitSerializer(serializers.ModelSerializer):
             'status', 
         )
 
+
+class DiagnosisSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Diagnosis
+        fields = (
+            'pk',
+            'created',
+            'last_updated',
+            'code',
+            'name',
+        )
 

@@ -30,7 +30,7 @@ def create_django_contrib_contenttypes_models_contenttype(**kwargs):
 
 def create_models(**kwargs):
     defaults = {}
-    defaults["patient_id"] = "patient_id"
+    defaults["patient_no"] = "patient_no"
     defaults["first_name"] = "first_name"
     defaults["middle_name"] = "middle_name"
     defaults["last_name"] = "last_name"
@@ -125,7 +125,7 @@ class modelsViewTest(unittest.TestCase):
     def test_create_models(self):
         url = reverse('registration_models_create')
         data = {
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
             "first_name": "first_name",
             "middle_name": "middle_name",
             "last_name": "last_name",
@@ -214,7 +214,7 @@ class modelsViewTest(unittest.TestCase):
     def test_update_models(self):
         models = create_models()
         data = {
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
             "first_name": "first_name",
             "middle_name": "middle_name",
             "last_name": "last_name",

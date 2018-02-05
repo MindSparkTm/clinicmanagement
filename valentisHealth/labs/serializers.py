@@ -3,10 +3,10 @@ from . import models
 from rest_framework import serializers
 
 
-class labsSerializer(serializers.ModelSerializer):
+class LabsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.labs
+        model = models.Labs
         fields = (
             'slug', 
             'created', 
@@ -100,14 +100,14 @@ class labsSerializer(serializers.ModelSerializer):
             'i01_menopausal_screen', 
             'i02_menopausal_screen', 
             'i03_menopausal_screen', 
-            'patient_id', 
+            'patient_no', 
         )
 
 
-class radiologySerializer(serializers.ModelSerializer):
+class RadiologySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.radiology
+        model = models.Radiology
         fields = (
             'slug', 
             'created', 
@@ -131,7 +131,37 @@ class radiologySerializer(serializers.ModelSerializer):
             'anticoagulant_drugs', 
             'egfr_result', 
             'date', 
-            'patient_id', 
+            'patient_no', 
+        )
+
+
+
+
+class RadiologyResultSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.RadiologyResult
+        fields = (
+            'slug',
+            'created',
+            'last_updated',
+            'patient_no',
+            'results',
+            'tests_done',
+        )
+
+
+class LabResultsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.LabResults
+        fields = (
+            'slug',
+            'created',
+            'last_updated',
+            'patient_no',
+            'tests_done',
+            'test_results',
         )
 
 

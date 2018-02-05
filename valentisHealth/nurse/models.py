@@ -13,7 +13,7 @@ from django_extensions.db import fields as extension_fields
 class models(models.Model):
 
     # Fields
-    slug = extension_fields.AutoSlugField(populate_from='patient_id',null=True, blank=True)
+    slug = extension_fields.AutoSlugField(populate_from='patient_no',null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     systolic = models.IntegerField()
@@ -24,14 +24,14 @@ class models(models.Model):
     heart_rate = models.CharField(max_length=100)
     others = models.TextField(max_length=200, null=True, blank=True)
     attending_nurse = models.CharField(max_length=30, null=True, blank=True)
-    patient_id = models.CharField(max_length=30)
+    patient_no = models.CharField(max_length=30)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=30)
     middle_name = models.CharField(max_length=30, null=True, blank=True)
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug

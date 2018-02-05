@@ -1,0 +1,6092 @@
+[
+ {
+   "FIELD1": "ICD 10 Codes",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 3 - Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism (D50-D89)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section D60-D64 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Aplastic and other anemias and other bone marrow failure syndromes (D60-D64)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hereditary sideroblastic anemia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Secondary sideroblastic anemia due to disease",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Secondary sideroblastic anemia due to drugs and toxins",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other sideroblastic anemias",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.81",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Anemia due to antineoplastic chemotherapy",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.89",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other specified anemias",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "D64.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Anemia, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 4 - Endocrine, nutritional and metabolic diseases (E00-E89)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section E00-E07 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Disorders of thyroid gland (E00-E07)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Congenital hypothyroidism with diffuse goiter",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Congenital hypothyroidism without goiter",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hypothyroidism due to medicaments and other exogenous substances",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Postinfectious hypothyroidism",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Atrophy of thyroid (acquired)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Myxedema coma",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other specified hypothyroidism",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E03.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hypothyroidism, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section E70-E88 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Metabolic disorders (E70-E88)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pure hypercholesterolemia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pure hyperglyceridemia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mixed hyperlipidemia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hyperchylomicronemia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other hyperlipidemia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hyperlipidemia, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E78.6",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Lipoprotein deficiency",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section E08-E13 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Diabetes mellitus (E08-E13)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "E11.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Type 2 diabetes mellitus without complications",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 5 - Mental, Behavioral and Neurodevelopmental disorders (F01-F99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section F40-F48 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Anxiety, dissociative, stress-related, somatoform and other nonpsychotic mental disorders (F40-F48)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F41.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Generalized anxiety disorder",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F41.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other specified anxiety disorders",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F41.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Anxiety disorder, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F43.20",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Adjustment disorder, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F43.21",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Adjustment disorder with depressed mood",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F43.22",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Adjustment disorder with anxiety",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F43.24",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Adjustment disorder with disturbance of conduct",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F43.25",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Adjustment disorder with mixed disturbance of emotions and conduct",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F43.29",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Adjustment disorder with other symptoms",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section F30-F39 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mood [affective] disorders (F30-F39)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, mild",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, moderate",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, severe without psychotic features",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, severe with psychotic features",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, in partial remission",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, in full remission",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other depressive episodes",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "F32.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Major depressive disorder, single episode, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 6 - Diseases of the nervous system (G00-G99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section G89-G99 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other disorders of the nervous system (G89-G99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "G89.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic pain syndrome",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "G93.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Postviral fatigue syndrome",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 8 - Diseases of the ear and mastoid process (H60-H95)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section H60-H62 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Diseases of external ear (H60-H62)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "H61.20",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Impacted cerumen, unspecified ear",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "H61.21",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Impacted cerumen, right ear",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "H61.22",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Impacted cerumen, left ear",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "H61.23",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Impacted cerumen, bilateral",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 9 - Diseases of the circulatory system (I00-I99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section I30-I52 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other forms of heart disease (I30-I52)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I48.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Paroxysmal atrial fibrillation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I48.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Persistent atrial fibrillation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I48.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic atrial fibrillation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I48.91",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified atrial fibrillation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Left ventricular failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.21",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute systolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.22",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic systolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.23",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute on chronic systolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.30",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.31",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.32",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.33",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute on chronic diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.40",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified combined systolic (congestive) and diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.41",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute combined systolic (congestive) and diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.42",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic combined systolic (congestive) and diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.43",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute on chronic combined systolic (congestive) and diastolic (congestive) heart failure",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I50.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Heart failure, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section I10-I15 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hypertensive diseases (I10-I15)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "I10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Essential (primary) hypertension",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 10 - Diseases of the respiratory system (J00-J99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section J09-J18 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Influenza and pneumonia (J09-J18)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J18.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pneumonia, unspecified organism",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section J20-J22 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other acute lower respiratory infections (J20-J22)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to Mycoplasma pneumoniae",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to Hemophilus influenzae",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to streptococcus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to coxsackievirus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to parainfluenza virus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to respiratory syncytial virus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.6",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to rhinovirus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.7",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to echovirus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis due to other specified organisms",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J20.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute bronchitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section J30-J39 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other diseases of upper respiratory tract (J30-J39)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Vasomotor rhinitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Allergic rhinitis due to pollen",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other seasonal allergic rhinitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Allergic rhinitis due to food",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.81",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Allergic rhinitis due to animal (cat) (dog) hair and dander",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.89",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other allergic rhinitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J30.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Allergic rhinitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J39.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other specified diseases of upper respiratory tract",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section J00-J06 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute upper respiratory infections (J00-J06)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.00",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute maxillary sinusitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute frontal sinusitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.20",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute ethmoidal sinusitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.30",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute sphenoidal sinusitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.40",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute pansinusitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.80",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other acute sinusitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J01.90",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute sinusitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J02.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Streptococcal pharyngitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J02.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute pharyngitis due to other specified organisms",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J02.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute pharyngitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J06.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute upper respiratory infection, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section J40-J47 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic lower respiratory diseases (J40-J47)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J40",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Bronchitis, not specified as acute or chronic",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J41.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Simple chronic bronchitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J41.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mucopurulent chronic bronchitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J41.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mixed simple and mucopurulent chronic bronchitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J42",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified chronic bronchitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J44.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic obstructive pulmonary disease with acute lower respiratory infection",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J44.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic obstructive pulmonary disease with (acute) exacerbation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J44.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chronic obstructive pulmonary disease, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.20",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mild intermittent asthma, uncomplicated",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.21",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mild intermittent asthma with (acute) exacerbation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.22",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mild intermittent asthma with status asthmaticus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.30",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mild persistent asthma, uncomplicated",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.31",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mild persistent asthma with (acute) exacerbation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.32",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Mild persistent asthma with status asthmaticus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.40",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Moderate persistent asthma, uncomplicated",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.41",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Moderate persistent asthma with (acute) exacerbation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.42",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Moderate persistent asthma with status asthmaticus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.50",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Severe persistent asthma, uncomplicated",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.51",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Severe persistent asthma with (acute) exacerbation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.52",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Severe persistent asthma with status asthmaticus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.901",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified asthma with (acute) exacerbation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.902",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified asthma with status asthmaticus",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.909",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified asthma, uncomplicated",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.990",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Exercise induced bronchospasm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.991",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cough variant asthma",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "J45.998",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other asthma",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 11 - Diseases of the digestive system (K00-K95)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section K55-K64 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other diseases of intestines (K55-K64)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "K64.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Residual hemorrhoidal skin tags",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "K64.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Perianal venous thrombosis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section K20-K31 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Diseases of esophagus, stomach and duodenum (K20-K31)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "K21.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Gastro-esophageal reflux disease with esophagitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "K21.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Gastro-esophageal reflux disease without esophagitis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 12 - Diseases of the skin and subcutaneous tissue (L00-L99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section L20-L30 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Dermatitis and eczema (L20-L30)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to cosmetics",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to drugs in contact with skin",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to dyes",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to other chemical products",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to food in contact with skin",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to plants, except food",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.8",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis due to other agents",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L25.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified contact dermatitis, unspecified cause",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L30.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Dermatitis, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section L00-L08 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Infections of the skin and subcutaneous tissue (L00-L08)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L03.115",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cellulitis of right lower limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L03.116",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cellulitis of left lower limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L03.119",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cellulitis of unspecified part of limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L03.125",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute lymphangitis of right lower limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L03.126",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute lymphangitis of left lower limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "L03.129",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute lymphangitis of unspecified part of limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 13 - Diseases of the musculoskeletal system and connective tissue (M00-M99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section M50-M54 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other dorsopathies (M50-M54)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M53.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Sacrococcygeal disorders, not elsewhere classified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M54.5",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Low back pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M54.6",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in thoracic spine",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M54.89",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other dorsalgia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M54.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Dorsalgia, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section M20-M25 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other joint disorders (M20-M25)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.511",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right shoulder",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.512",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left shoulder",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.519",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified shoulder",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.551",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right hip",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.552",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left hip",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.559",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified hip",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.561",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right knee",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.562",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left knee",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M25.569",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified knee",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section M70-M79 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other soft tissue disorders (M70-M79)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.601",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right arm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.602",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left arm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.603",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in arm, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.604",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right leg",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.605",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left leg",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.606",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in leg, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.609",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified limb",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.621",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right upper arm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.622",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left upper arm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.629",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified upper arm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.631",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right forearm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.632",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left forearm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.639",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified forearm",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.641",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right hand",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.642",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left hand",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.643",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified hand",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.644",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right finger(s)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.645",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left finger(s)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.646",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified finger(s)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.651",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right thigh",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.652",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left thigh",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.659",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified thigh",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.661",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right lower leg",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.662",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left lower leg",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.669",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified lower leg",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.671",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right foot",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.672",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left foot",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.673",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified foot",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.674",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in right toe(s)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.675",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in left toe(s)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "M79.676",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pain in unspecified toe(s)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 14 - Diseases of the genitourinary system (N00-N99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section N10-N16 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Renal tubulo-interstitial diseases (N10-N16)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N15.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Renal tubulo-interstitial disease, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section N30-N39 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other diseases of the urinary system (N30-N39)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.00",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute cystitis without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.01",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute cystitis with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Interstitial cystitis (chronic) without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.11",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Interstitial cystitis (chronic) with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.20",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other chronic cystitis without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.21",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other chronic cystitis with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.30",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Trigonitis without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.31",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Trigonitis with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.40",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Irradiation cystitis without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.41",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Irradiation cystitis with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.80",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other cystitis without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.81",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other cystitis with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.90",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cystitis, unspecified without hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N30.91",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cystitis, unspecified with hematuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N34.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Nonspecific urethritis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N34.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other urethritis",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "N39.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Urinary tract infection, site not specified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 18 - Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified (R00-R99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section R50-R69 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "General symptoms and signs (R50-R69)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R51",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Headache",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R53.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Neoplastic (malignant) related fatigue",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R53.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Weakness",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R53.81",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other malaise",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R53.83",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other fatigue",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R60.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Localized edema",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R60.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Generalized edema",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R60.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Edema, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section R40-R46 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Symptoms and signs involving cognition, perception, emotional state and behavior (R40-R46)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R42",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Dizziness and giddiness",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section R20-R23 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Symptoms and signs involving the skin and subcutaneous tissue (R20-R23)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R21",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Rash and other nonspecific skin eruption",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section R10-R19 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Symptoms and signs involving the digestive system and abdomen (R10-R19)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Acute abdomen",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Upper abdominal pain, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.11",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Right upper quadrant pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.12",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Left upper quadrant pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.13",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Epigastric pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pelvic and perineal pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.30",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Lower abdominal pain, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.31",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Right lower quadrant pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.32",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Left lower quadrant pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.33",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Periumbilical pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.84",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Generalized abdominal pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R10.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Unspecified abdominal pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R19.7",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Diarrhea, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section R00-R09 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Symptoms and signs involving the circulatory and respiratory systems (R00-R09)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R05",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Cough",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R06.00",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Dyspnea, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R06.02",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Shortness of breath",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R06.3",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Periodic breathing",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R06.4",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Hyperventilation",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R06.83",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Snoring",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R06.89",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other abnormalities of breathing",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R07.1",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chest pain on breathing",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R07.2",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Precordial pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R07.81",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Pleurodynia",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R07.89",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Other chest pain",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R07.9",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chest pain, unspecified",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section R30-R39 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Symptoms and signs involving the genitourinary system (R30-R39)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "R30.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Dysuria",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Chapter 21 - Factors influencing health status and contact with health services (Z00-Z99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section Z77-Z99 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Persons with potential health hazards related to family and personal history and certain conditions influencing health status (Z77-Z99)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z77.22",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Contact with and (suspected) exposure to environmental tobacco smoke (acute) (chronic)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z87.891",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Personal history of nicotine dependence",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section Z20-Z28 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Persons with potential health hazards related to communicable diseases (Z20-Z28)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z23",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Encounter for immunization",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section Z69-Z76 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Persons encountering health services in other circumstances (Z69-Z76)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z72.0",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Tobacco use",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section Z00-Z13 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Persons encountering health services for examinations (Z00-Z13)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z00.00",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Encounter for general adult medical examination without abnormal findings",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z00.01",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Encounter for general adult medical examination with abnormal findings",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z01.818",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Encounter for other preprocedural examination",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "- Section Z55-Z65 - ",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Persons with potential health hazards related to socioeconomic and psychosocial circumstances (Z55-Z65)",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "10",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Z57.31",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ },
+ {
+   "FIELD1": "",
+   "FIELD2": "Occupational exposure to environmental tobacco smoke",
+   "FIELD3": "",
+   "FIELD4": "",
+   "FIELD5": ""
+ }
+]

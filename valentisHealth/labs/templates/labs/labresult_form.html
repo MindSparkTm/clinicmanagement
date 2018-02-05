@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+<script>
+    $("#labs_tab").addClass("current").siblings().removeClass("current")
+</script>
+
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-shadow--4dp mdl-cell mdl-cell--10-col">
+        <form method="post">
+            {% csrf_token %}
+
+
+            <div class="mdl-grid ">
+
+                <div id="div_id_patient_no" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                    <label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
+                            Patient id</label>
+                    <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_no" maxlength="100" name="patient_no" value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" rows="10" readonly></div>
+                </div>
+            </div>
+            <div class="mdl-grid ">
+                <div id="div_id_tests_done" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                    <label for="id_tests_done" class="mdl-textfield__label mdl-color-text--grey">
+                            Tests done</label>
+                    <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_tests_done" maxlength="400" name="tests_done" rows="10" required="">{% if patient.tests_done != None %}
+                            {{ patient.tests_done }}{% endif %}</textarea></div>
+                </div>
+            </div>
+            <div class="mdl-grid ">
+                <div id="div_id_test_results" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                    <label for="id_test_results" class="mdl-textfield__label mdl-color-text--grey">
+                            Test results </label>
+                    <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_test_results" maxlength="400" name="test_results" rows="10" required="">{% if patient.test_results != None %}
+                            {{ patient.test_results }}{% endif %}</textarea></div>
+                </div>
+
+
+            </div>
+            <div class="mdl-grid">
+                <button name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">Submit
+                    </button>
+            </div>
+
+        </form>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
+
+
+
+{% endblock %}
+
+<form method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="8F9gWhBbr2coboiS59APK47XZAN9iebIqAnosREeFEkIAXWcEKgMKqgNcSHEjZwX">
+
+
+    <div id="div_id_prescription_id" class="control-group"> <label for="id_prescription_id" class="control-label requiredField">
+                Prescription id<span class="asteriskField">*</span> </label>
+        <div class="controls"> <input class="textinput textInput" id="id_prescription_id" maxlength="30" name="prescription_id" type="text" required=""> </div>
+    </div>
+    <div id="div_id_patient_no" class="control-group"> <label for="id_patient_no" class="control-label requiredField">
+                Patients id<span class="asteriskField">*</span> </label>
+        <div class="controls"> <input class="textinput textInput" id="id_patient_no" maxlength="30" name="patient_no" type="text" required=""> </div>
+    </div>
+    <div id="div_id_patient_name" class="control-group"> <label for="id_patient_name" class="control-label requiredField">
+                Patient name<span class="asteriskField">*</span> </label>
+        <div class="controls"> <textarea class="textarea" cols="40" id="id_patient_name" maxlength="100" name="patient_name" rows="10" required=""></textarea> </div>
+    </div>
+    <div id="div_id_address" class="control-group"> <label for="id_address" class="control-label requiredField">
+                Address<span class="asteriskField">*</span> </label>
+        <div class="controls"> <textarea class="textarea" cols="40" id="id_address" maxlength="100" name="address" rows="10" required=""></textarea> </div>
+    </div>
+    <div id="div_id_phone_number" class="control-group"> <label for="id_phone_number" class="control-label requiredField">
+                Phone number<span class="asteriskField">*</span> </label>
+        <div class="controls"> <input class="numberinput" id="id_phone_number" name="phone_number" type="number" required=""> </div>
+    </div>
+    <div id="div_id_prescription" class="control-group"> <label for="id_prescription" class="control-label requiredField">
+                Prescription<span class="asteriskField">*</span> </label>
+        <div class="controls"> <textarea class="textarea" cols="40" id="id_prescription" maxlength="400" name="prescription" rows="10" required=""></textarea> </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

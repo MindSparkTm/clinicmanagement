@@ -6,16 +6,33 @@ from rest_framework import viewsets, permissions
 class labsViewSet(viewsets.ModelViewSet):
     """ViewSet for the labs class"""
 
-    queryset = models.labs.objects.all()
-    serializer_class = serializers.labsSerializer
+    queryset = models.Labs.objects.all()
+    serializer_class = serializers.LabsSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class radiologyViewSet(viewsets.ModelViewSet):
     """ViewSet for the radiology class"""
 
-    queryset = models.radiology.objects.all()
-    serializer_class = serializers.radiologySerializer
+    queryset = models.Radiology.objects.all()
+    serializer_class = serializers.RadiologySerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+
+class RadiologyResultViewSet(viewsets.ModelViewSet):
+    """ViewSet for the RadiologyResult class"""
+
+    queryset = models.RadiologyResult.objects.all()
+    serializer_class = serializers.RadiologyResultSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class LabResultsViewSet(viewsets.ModelViewSet):
+    """ViewSet for the LabResults class"""
+
+    queryset = models.LabResults.objects.all()
+    serializer_class = serializers.LabResultsSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 

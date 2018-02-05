@@ -9,7 +9,7 @@ class modelsSerializer(serializers.ModelSerializer):
         model = models.models
         fields = (
             'pk', 
-            'patient_id', 
+            'patient_no', 
             'created', 
             'last_updated', 
             'first_name', 

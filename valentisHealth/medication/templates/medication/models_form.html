@@ -1,15 +1,66 @@
-{% extends "base.html" %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% block content %}
-                   <script>
-         $("#prescription_tab").addClass("current").siblings().removeClass("current")
-
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+<script>
+    $("#prescription_tab").addClass("current").siblings().removeClass("current")
 </script>
-<p><a class="btn btn-default" href="{% url 'medication_models_list' %}">models Listing</a></p>
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-shadow--4dp mdl-cell mdl-cell--10-col">
+        <form method="post">
+            {% csrf_token %}
+
+
+            <div class="mdl-grid ">
+
+                <div id="div_id_patient_no" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                    <label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
+                            Patient id</label>
+                    <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_no" maxlength="100" name="patient_no" value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" rows="10" readonly>
+                    </div>
+                </div>
+
+                <div id="div_id_patient_name" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                    <label for="id_patient_name" class="mdl-textfield__label mdl-color-text--black">
+                            Patient Name</label>
+                    <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_name" maxlength="100" name="patient_name" value="{% if patient.patient_name != None %}{{ patient.patient_name }}{% endif %}" rows="10" readonly></div>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_phone_number">Phone Number </label>
+                    <input class="mdl-textfield__input" type='tel' pattern='^\+?\d{10}' id="textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% endif %}" name="phone_number" required/>
+                </div>
+
+            </div>
+            <div class="mdl-grid ">
+                <div id="div_id_address" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                    <label for="id_address" class="mdl-textfield__label mdl-color-text--grey">
+                            Physical Address</label>
+                    <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_address" maxlength="400" name="address" rows="10" required="">{% if form.address.value != None %}{{ form.address.value }}{% endif %}</textarea></div>
+                </div>
+            </div>
+            <div class="mdl-grid ">
+                <div id="div_id_prescription" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                    <label for="id_prescription" class="mdl-textfield__label mdl-color-text--grey">
+                            Prescription </label>
+                    <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_prescription" maxlength="400" name="prescription" rows="10" required="">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
+                </div>
+
+
+            </div>
+
+
+            <div class="mdl-grid">
+                <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">Submit
+                    </button>
+            </div>
+
+        </form>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
+
+
 <form method="post">
-{% csrf_token %}
-{{form|crispy}}
-<button class="btn btn-primary" type="submit">Submit</button>
+    {% csrf_token %} {{form|crispy}}
+    <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 {% endblock %}

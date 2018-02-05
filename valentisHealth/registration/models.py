@@ -10,10 +10,56 @@ from django.db import models as models
 from django_extensions.db import fields as extension_fields
 
 
+
+class Children(models.Model):
+
+    patient_no = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             verbose_name='patient_no',
+                             related_name='children')
+    created = DateTimeField(auto_now_add=True, editable=False)
+    last_updated = DateTimeField(auto_now=True, editable=False)
+    name = models.CharField(max_length=30, null="True", blank="True")
+    age = models.CharField(max_length=30, null="True", blank="True")
+
+
+    class Meta:
+        verbose_name = 'child'
+        verbose_name_plural = 'children'
+        ordering = ('last_updated',)
+
+    def __str__(self):
+        return self.pk
+
+
+    def __unicode__(self):
+        return u'%s' % self.pk
+
+
+class Medication(models.Model):
+
+    patient_no = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             verbose_name='patient_no',
+                             related_name='medication')
+    created = DateTimeField(auto_now_add=True, editable=False)
+    last_updated = DateTimeField(auto_now=True, editable=False)
+    name = models.CharField(max_length=30, null="True", blank="True")
+    age = models.CharField(max_length=30, null="True", blank="True")
+
+
+    class Meta:
+        verbose_name = 'child'
+        verbose_name_plural = 'children'
+        ordering = ('last_updated',)
+
+
+    def __unicode__(self):
+        return u'%s' % self.pk
+
+
 class models(models.Model):
 
     # Fields
-    patient_id = models.AutoField(primary_key=True)
+    patient_no = models.AutoField(primary_key=True)
     created = DateTimeField(auto_now_add=True, editable=False)
     last_updated = DateTimeField(auto_now=True, editable=False)
     first_name = CharField(max_length=30)
@@ -95,7 +141,7 @@ class models(models.Model):
     have_will = models.CharField(max_length=30, null="True", blank="True")
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.pk
@@ -106,5 +152,6 @@ class models(models.Model):
 
     def get_update_url(self):
         return reverse('registration_models_update', args=(self.pk,))
+
 
 

@@ -59,7 +59,7 @@ class member_info(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -142,7 +142,7 @@ class member_benefits(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -175,7 +175,7 @@ class member_anniversary(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -203,7 +203,7 @@ class member_acceptance(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -237,7 +237,7 @@ class principal_applicant(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -279,7 +279,7 @@ class pre_authorization(models.Model):
     code = models.AutoField(primary_key=True)
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -318,7 +318,7 @@ class provider(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -345,7 +345,7 @@ class cash(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug

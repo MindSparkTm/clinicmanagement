@@ -36,7 +36,7 @@ class pre_auth(models.Model):
 
 
     class Meta:
-        ordering = ('-created',)
+        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug

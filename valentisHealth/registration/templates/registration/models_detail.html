@@ -1,88 +1,315 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <p><a class="btn btn-default" href="{% url 'registration_models_list' %}">models Listing</a></p>
 <table class="table">
-<tr><td>patient_id</td><td>{{ object.patient_id }}</td></tr>
-<tr><td>created</td><td>{{ object.created }}</td></tr>
-<tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
-<tr><td>first_name</td><td>{{ object.first_name }}</td></tr>
-<tr><td>middle_name</td><td>{{ object.middle_name }}</td></tr>
-<tr><td>last_name</td><td>{{ object.last_name }}</td></tr>
-<tr><td>Gender</td><td>{{ object.Gender }}</td></tr>
-<tr><td>street_name</td><td>{{ object.street_name }}</td></tr>
-<tr><td>apartment_name</td><td>{{ object.apartment_name }}</td></tr>
-<tr><td>postal_code</td><td>{{ object.postal_code }}</td></tr>
-<tr><td>postal_address</td><td>{{ object.postal_address }}</td></tr>
-<tr><td>city</td><td>{{ object.city }}</td></tr>
-<tr><td>country</td><td>{{ object.country }}</td></tr>
-<tr><td>age</td><td>{{ object.age }}</td></tr>
-<tr><td>next_of_kin</td><td>{{ object.next_of_kin }}</td></tr>
-<tr><td>n_of_kin_rel</td><td>{{ object.n_of_kin_rel }}</td></tr>
-<tr><td>email</td><td>{{ object.email }}</td></tr>
-<tr><td>phone</td><td>{{ object.phone }}</td></tr>
-<tr><td>primary_insurance</td><td>{{ object.primary_insurance }}</td></tr>
-<tr><td>secondary_insurance</td><td>{{ object.secondary_insurance }}</td></tr>
-<tr><td>pri_ins_sub</td><td>{{ object.pri_ins_sub }}</td></tr>
-<tr><td>sec_ins_sub</td><td>{{ object.sec_ins_sub }}</td></tr>
-<tr><td>other_ins_subscriber</td><td>{{ object.other_ins_subscriber }}</td></tr>
-<tr><td>subscriber_relationship</td><td>{{ object.subscriber_relationship }}</td></tr>
-<tr><td>sub_address</td><td>{{ object.sub_address }}</td></tr>
-<tr><td>ss_number</td><td>{{ object.ss_number }}</td></tr>
-<tr><td>sub_ss_number</td><td>{{ object.sub_ss_number }}</td></tr>
-<tr><td>alt_phone</td><td>{{ object.alt_phone }}</td></tr>
-<tr><td>sub_work_phone</td><td>{{ object.sub_work_phone }}</td></tr>
-<tr><td>dob</td><td>{{ object.dob }}</td></tr>
-<tr><td>sub_dob</td><td>{{ object.sub_dob }}</td></tr>
-<tr><td>sub_employer</td><td>{{ object.sub_employer }}</td></tr>
+    <tr>
+        <td>patient_no</td>
+        <td>{{ object.patient_no }}</td>
+    </tr>
+    <tr>
+        <td>created</td>
+        <td>{{ object.created }}</td>
+    </tr>
+    <tr>
+        <td>last_updated</td>
+        <td>{{ object.last_updated }}</td>
+    </tr>
+    <tr>
+        <td>first_name</td>
+        <td>{{ object.first_name }}</td>
+    </tr>
+    <tr>
+        <td>middle_name</td>
+        <td>{{ object.middle_name }}</td>
+    </tr>
+    <tr>
+        <td>last_name</td>
+        <td>{{ object.last_name }}</td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td>{{ object.Gender }}</td>
+    </tr>
+    <tr>
+        <td>street_name</td>
+        <td>{{ object.street_name }}</td>
+    </tr>
+    <tr>
+        <td>apartment_name</td>
+        <td>{{ object.apartment_name }}</td>
+    </tr>
+    <tr>
+        <td>postal_code</td>
+        <td>{{ object.postal_code }}</td>
+    </tr>
+    <tr>
+        <td>postal_address</td>
+        <td>{{ object.postal_address }}</td>
+    </tr>
+    <tr>
+        <td>city</td>
+        <td>{{ object.city }}</td>
+    </tr>
+    <tr>
+        <td>country</td>
+        <td>{{ object.country }}</td>
+    </tr>
+    <tr>
+        <td>age</td>
+        <td>{{ object.age }}</td>
+    </tr>
+    <tr>
+        <td>next_of_kin</td>
+        <td>{{ object.next_of_kin }}</td>
+    </tr>
+    <tr>
+        <td>n_of_kin_rel</td>
+        <td>{{ object.n_of_kin_rel }}</td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td>{{ object.email }}</td>
+    </tr>
+    <tr>
+        <td>phone</td>
+        <td>{{ object.phone }}</td>
+    </tr>
+    <tr>
+        <td>primary_insurance</td>
+        <td>{{ object.primary_insurance }}</td>
+    </tr>
+    <tr>
+        <td>secondary_insurance</td>
+        <td>{{ object.secondary_insurance }}</td>
+    </tr>
+    <tr>
+        <td>pri_ins_sub</td>
+        <td>{{ object.pri_ins_sub }}</td>
+    </tr>
+    <tr>
+        <td>sec_ins_sub</td>
+        <td>{{ object.sec_ins_sub }}</td>
+    </tr>
+    <tr>
+        <td>other_ins_subscriber</td>
+        <td>{{ object.other_ins_subscriber }}</td>
+    </tr>
+    <tr>
+        <td>subscriber_relationship</td>
+        <td>{{ object.subscriber_relationship }}</td>
+    </tr>
+    <tr>
+        <td>sub_address</td>
+        <td>{{ object.sub_address }}</td>
+    </tr>
+    <tr>
+        <td>ss_number</td>
+        <td>{{ object.ss_number }}</td>
+    </tr>
+    <tr>
+        <td>sub_ss_number</td>
+        <td>{{ object.sub_ss_number }}</td>
+    </tr>
+    <tr>
+        <td>alt_phone</td>
+        <td>{{ object.alt_phone }}</td>
+    </tr>
+    <tr>
+        <td>sub_work_phone</td>
+        <td>{{ object.sub_work_phone }}</td>
+    </tr>
+    <tr>
+        <td>dob</td>
+        <td>{{ object.dob }}</td>
+    </tr>
+    <tr>
+        <td>sub_dob</td>
+        <td>{{ object.sub_dob }}</td>
+    </tr>
+    <tr>
+        <td>sub_employer</td>
+        <td>{{ object.sub_employer }}</td>
+    </tr>
 
 
-<tr><td>occupation</td><td>{{ object.occupation }}</td></tr>
-<tr><td>marital_status</td><td>{{ object.marital_status }}</td></tr>
-<tr><td>spouse</td><td>{{ object.spouse }}</td></tr>
-<tr><td>no_children</td><td>{{ object.no_children }}</td></tr>
-<tr><td>childrens</td><td>{{ object.childrens }}</td></tr>
-<tr><td>prev_docs</td><td>{{ object.prev_docs }}</td></tr>
-<tr><td>medical_information</td><td>{{ object.medical_information }}</td></tr>
-<tr><td>alergies</td><td>{{ object.alergies }}</td></tr>
-<tr><td>preferred_pharmacy</td><td>{{ object.preferred_pharmacy }}</td></tr>
-<tr><td>last_phys_examination</td><td>{{ object.last_phys_examination }}</td></tr>
-<tr><td>last_blood_work</td><td>{{ object.last_blood_work }}</td></tr>
-<tr><td>last_colonoscopy</td><td>{{ object.last_colonoscopy }}</td></tr>
-<tr><td>last_tetanus_shot</td><td>{{ object.last_tetanus_shot }}</td></tr>
-<tr><td>last_menstrual</td><td>{{ object.last_menstrual }}</td></tr>
-<tr><td>last_pap_smear</td><td>{{ object.last_pap_smear }}</td></tr>
-<tr><td>last_mammogram</td><td>{{ object.last_mammogram }}</td></tr>
-<tr><td>dexa</td><td>{{ object.dexa }}</td></tr>
-<tr><td>no_pregnancies</td><td>{{ object.no_pregnancies }}</td></tr>
-<tr><td>miscourages</td><td>{{ object.miscourages }}</td></tr>
-<tr><td>living_children</td><td>{{ object.living_children }}</td></tr>
-<tr><td>methods_of_contraception</td><td>{{ object.methods_of_contraception }}</td></tr>
-<tr><td>surgeries</td><td>{{ object.surgeries }}</td></tr>
-<tr><td>genetic_diseases</td><td>{{ object.genetic_diseases }}</td></tr>
-<tr><td>if_smoker</td><td>{{ object.if_smoker }}</td></tr>
-<tr><td>cigar_per_day</td><td>{{ object.cigar_per_day }}</td></tr>
-<tr><td>no_of_yr_smoking</td><td>{{ object.no_of_yr_smoking }}</td></tr>
-<tr><td>if_chew_tobacco</td><td>{{ object.if_chew_tobacco }}</td></tr>
-<tr><td>yrs_chewing_tobacco</td><td>{{ object.yrs_chewing_tobacco }}</td></tr>
-<tr><td>if_quit_before</td><td>{{ object.if_quit_before }}</td></tr>
-<tr><td>tobacco_quit_duration</td><td>{{ object.tobacco_quit_duration }}</td></tr>
-<tr><td>if_drink_alcohol</td><td>{{ object.if_drink_alcohol }}</td></tr>
-<tr><td>alocohol_type</td><td>{{ object.alocohol_type }}</td></tr>
-<tr><td>alcohol_frequency</td><td>{{ object.alcohol_frequency }}</td></tr>
-<tr><td>if_drug_used</td><td>{{ object.if_drug_used }}</td></tr>
-<tr><td>drug_type</td><td>{{ object.drug_type }}</td></tr>
-<tr><td>when_drug_used</td><td>{{ object.when_drug_used }}</td></tr>
-<tr><td>if_exercise</td><td>{{ object.if_exercise }}</td></tr>
-<tr><td>exercise_freq</td><td>{{ object.exercise_freq }}</td></tr>
-<tr><td>if_special_diet</td><td>{{ object.if_special_diet }}</td></tr>
-<tr><td>special_diet</td><td>{{ object.special_diet }}</td></tr>
-<tr><td>if_use_caffein</td><td>{{ object.if_use_caffein }}</td></tr>
-<tr><td>caffein_daily_amt</td><td>{{ object.caffein_daily_amt }}</td></tr>
-<tr><td>is_sadder</td><td>{{ object.is_sadder }}</td></tr>
-<tr><td>if_lost_interest</td><td>{{ object.if_lost_interest }}</td></tr>
-<tr><td>have_will</td><td>{{ object.have_will }}</td></tr>
+    <tr>
+        <td>occupation</td>
+        <td>{{ object.occupation }}</td>
+    </tr>
+    <tr>
+        <td>marital_status</td>
+        <td>{{ object.marital_status }}</td>
+    </tr>
+    <tr>
+        <td>spouse</td>
+        <td>{{ object.spouse }}</td>
+    </tr>
+    <tr>
+        <td>no_children</td>
+        <td>{{ object.no_children }}</td>
+    </tr>
+    <tr>
+        <td>childrens</td>
+        <td>{{ object.childrens }}</td>
+    </tr>
+    <tr>
+        <td>prev_docs</td>
+        <td>{{ object.prev_docs }}</td>
+    </tr>
+    <tr>
+        <td>medical_information</td>
+        <td>{{ object.medical_information }}</td>
+    </tr>
+    <tr>
+        <td>alergies</td>
+        <td>{{ object.alergies }}</td>
+    </tr>
+    <tr>
+        <td>preferred_pharmacy</td>
+        <td>{{ object.preferred_pharmacy }}</td>
+    </tr>
+    <tr>
+        <td>last_phys_examination</td>
+        <td>{{ object.last_phys_examination }}</td>
+    </tr>
+    <tr>
+        <td>last_blood_work</td>
+        <td>{{ object.last_blood_work }}</td>
+    </tr>
+    <tr>
+        <td>last_colonoscopy</td>
+        <td>{{ object.last_colonoscopy }}</td>
+    </tr>
+    <tr>
+        <td>last_tetanus_shot</td>
+        <td>{{ object.last_tetanus_shot }}</td>
+    </tr>
+    <tr>
+        <td>last_menstrual</td>
+        <td>{{ object.last_menstrual }}</td>
+    </tr>
+    <tr>
+        <td>last_pap_smear</td>
+        <td>{{ object.last_pap_smear }}</td>
+    </tr>
+    <tr>
+        <td>last_mammogram</td>
+        <td>{{ object.last_mammogram }}</td>
+    </tr>
+    <tr>
+        <td>dexa</td>
+        <td>{{ object.dexa }}</td>
+    </tr>
+    <tr>
+        <td>no_pregnancies</td>
+        <td>{{ object.no_pregnancies }}</td>
+    </tr>
+    <tr>
+        <td>miscourages</td>
+        <td>{{ object.miscourages }}</td>
+    </tr>
+    <tr>
+        <td>living_children</td>
+        <td>{{ object.living_children }}</td>
+    </tr>
+    <tr>
+        <td>methods_of_contraception</td>
+        <td>{{ object.methods_of_contraception }}</td>
+    </tr>
+    <tr>
+        <td>surgeries</td>
+        <td>{{ object.surgeries }}</td>
+    </tr>
+    <tr>
+        <td>genetic_diseases</td>
+        <td>{{ object.genetic_diseases }}</td>
+    </tr>
+    <tr>
+        <td>if_smoker</td>
+        <td>{{ object.if_smoker }}</td>
+    </tr>
+    <tr>
+        <td>cigar_per_day</td>
+        <td>{{ object.cigar_per_day }}</td>
+    </tr>
+    <tr>
+        <td>no_of_yr_smoking</td>
+        <td>{{ object.no_of_yr_smoking }}</td>
+    </tr>
+    <tr>
+        <td>if_chew_tobacco</td>
+        <td>{{ object.if_chew_tobacco }}</td>
+    </tr>
+    <tr>
+        <td>yrs_chewing_tobacco</td>
+        <td>{{ object.yrs_chewing_tobacco }}</td>
+    </tr>
+    <tr>
+        <td>if_quit_before</td>
+        <td>{{ object.if_quit_before }}</td>
+    </tr>
+    <tr>
+        <td>tobacco_quit_duration</td>
+        <td>{{ object.tobacco_quit_duration }}</td>
+    </tr>
+    <tr>
+        <td>if_drink_alcohol</td>
+        <td>{{ object.if_drink_alcohol }}</td>
+    </tr>
+    <tr>
+        <td>alocohol_type</td>
+        <td>{{ object.alocohol_type }}</td>
+    </tr>
+    <tr>
+        <td>alcohol_frequency</td>
+        <td>{{ object.alcohol_frequency }}</td>
+    </tr>
+    <tr>
+        <td>if_drug_used</td>
+        <td>{{ object.if_drug_used }}</td>
+    </tr>
+    <tr>
+        <td>drug_type</td>
+        <td>{{ object.drug_type }}</td>
+    </tr>
+    <tr>
+        <td>when_drug_used</td>
+        <td>{{ object.when_drug_used }}</td>
+    </tr>
+    <tr>
+        <td>if_exercise</td>
+        <td>{{ object.if_exercise }}</td>
+    </tr>
+    <tr>
+        <td>exercise_freq</td>
+        <td>{{ object.exercise_freq }}</td>
+    </tr>
+    <tr>
+        <td>if_special_diet</td>
+        <td>{{ object.if_special_diet }}</td>
+    </tr>
+    <tr>
+        <td>special_diet</td>
+        <td>{{ object.special_diet }}</td>
+    </tr>
+    <tr>
+        <td>if_use_caffein</td>
+        <td>{{ object.if_use_caffein }}</td>
+    </tr>
+    <tr>
+        <td>caffein_daily_amt</td>
+        <td>{{ object.caffein_daily_amt }}</td>
+    </tr>
+    <tr>
+        <td>is_sadder</td>
+        <td>{{ object.is_sadder }}</td>
+    </tr>
+    <tr>
+        <td>if_lost_interest</td>
+        <td>{{ object.if_lost_interest }}</td>
+    </tr>
+    <tr>
+        <td>have_will</td>
+        <td>{{ object.have_will }}</td>
+    </tr>
 </table>
-<a class="btn btn-primary" href="{{object.get_update_url}}">Edit models</a>
-
-{% endblock %}
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit models</a> {% endblock %}

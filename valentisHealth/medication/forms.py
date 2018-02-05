@@ -5,6 +5,6 @@ from .models import models
 class modelsForm(forms.ModelForm):
     class Meta:
         model = models
-        fields = ['prescription_id', 'patients_id', 'patient_name', 'address', 'phone_number', 'prescription']
+        fields = ['prescription_id', 'patient_no', 'patient_name', 'address', 'phone_number', 'prescription']
 
 

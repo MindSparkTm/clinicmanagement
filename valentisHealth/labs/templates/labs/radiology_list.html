@@ -1,66 +1,61 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
-           <script>
-         $("#radiology_tab").addClass("current").siblings().removeClass("current")
-
+{% extends "base.html" %} {% load static %} {% block content %}
+<script>
+    $("#radiology_tab").addClass("current").siblings().removeClass("current")
 </script>
-<p><a class="btn btn-default" href="{% url 'labs_radiology_list' %}">radiology Listing</a></p>
 <table class="table">
-<tr>
-<td>ID</td><td>Link</td>
-    <td>slug</td>
-    <td>created</td>
-    <td>last_updated</td>
-    <td>lpm_date</td>
-    <td>could_b_pregrant</td>
-    <td>examination</td>
-    <td>clinical_indication</td>
-    <td>intra_orbital_fb_hist</td>
-    <td>intracranial_clip</td>
-    <td>pacemaker</td>
-    <td>cochlear_implants</td>
-    <td>prosthetic_hrt_valve</td>
-    <td>pregnancy</td>
-    <td>recent_surgery</td>
-    <td>patient_info</td>
-    <td>diabetic_metformin</td>
-    <td>allergic_contrast</td>
-    <td>other_allergies</td>
-    <td>kidney_problems</td>
-    <td>anticoagulant_drugs</td>
-    <td>egfr_result</td>
-    <td>date</td>
-    <td>patient_id</td>
-</tr>
-{% for object in object_list %}
-<tr>
-    <td>{{object.pk}}</td>
-    <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>
-    <td>{{ object.slug }}</td>
-    <td>{{ object.created }}</td>
-    <td>{{ object.last_updated }}</td>
-    <td>{{ object.lpm_date }}</td>
-    <td>{{ object.could_b_pregrant }}</td>
-    <td>{{ object.examination }}</td>
-    <td>{{ object.clinical_indication }}</td>
-    <td>{{ object.intra_orbital_fb_hist }}</td>
-    <td>{{ object.intracranial_clip }}</td>
-    <td>{{ object.pacemaker }}</td>
-    <td>{{ object.cochlear_implants }}</td>
-    <td>{{ object.prosthetic_hrt_valve }}</td>
-    <td>{{ object.pregnancy }}</td>
-    <td>{{ object.recent_surgery }}</td>
-    <td>{{ object.patient_info }}</td>
-    <td>{{ object.diabetic_metformin }}</td>
-    <td>{{ object.allergic_contrast }}</td>
-    <td>{{ object.other_allergies }}</td>
-    <td>{{ object.kidney_problems }}</td>
-    <td>{{ object.anticoagulant_drugs }}</td>
-    <td>{{ object.egfr_result }}</td>
-    <td>{{ object.date }}</td>
-    <td>{{ object.patient_id }}</td>
-</tr>
-{% endfor %}
-</table><a class="btn btn-primary" href="{% url 'labs_radiology_create' %}">Create new radiology</a>
-{% endblock %}
+{#    <tr>#} {##}
+{#        <td>ID</td>#}
+{#        <td>Link</td>#} {##}
+{#        <td>slug</td>#} {##}
+{#        <td>created</td>#} {##}
+{#        <td>last_updated</td>#} {##}
+{#        <td>lpm_date</td>#} {##}
+{#        <td>could_b_pregrant</td>#} {##}
+{#        <td>examination</td>#} {##}
+{#        <td>clinical_indication</td>#} {##}
+{#        <td>intra_orbital_fb_hist</td>#} {##}
+{#        <td>intracranial_clip</td>#} {##}
+{#        <td>pacemaker</td>#} {##}
+{#        <td>cochlear_implants</td>#} {##}
+{#        <td>prosthetic_hrt_valve</td>#} {##}
+{#        <td>pregnancy</td>#} {##}
+{#        <td>recent_surgery</td>#} {##}
+{#        <td>patient_info</td>#} {##}
+{#        <td>diabetic_metformin</td>#} {##}
+{#        <td>allergic_contrast</td>#} {##}
+{#        <td>other_allergies</td>#} {##}
+{#        <td>kidney_problems</td>#} {##}
+{#        <td>anticoagulant_drugs</td>#} {##}
+{#        <td>egfr_result</td>#} {##}
+{#        <td>date</td>#} {##}
+{#        <td>patient_no</td>#} {##}
+{#    </tr>#} {% for object in object_list %} {##}
+{#    <tr>#} {##}
+{#        <td>{{object.pk}}</td>#} {##}
+{#        <td><a href="{{object.get_absolute_url}}">{{object}}</a></td>#} {##}
+{#        <td>{{ object.slug }}</td>#} {##}
+{#        <td>{{ object.created }}</td>#} {##}
+{#        <td>{{ object.last_updated }}</td>#} {##}
+{#        <td>{{ object.lpm_date }}</td>#} {##}
+{#        <td>{{ object.could_b_pregrant }}</td>#} {##}
+{#        <td>{{ object.examination }}</td>#} {##}
+{#        <td>{{ object.clinical_indication }}</td>#} {##}
+{#        <td>{{ object.intra_orbital_fb_hist }}</td>#} {##}
+{#        <td>{{ object.intracranial_clip }}</td>#} {##}
+{#        <td>{{ object.pacemaker }}</td>#} {##}
+{#        <td>{{ object.cochlear_implants }}</td>#} {##}
+{#        <td>{{ object.prosthetic_hrt_valve }}</td>#} {##}
+{#        <td>{{ object.pregnancy }}</td>#} {##}
+{#        <td>{{ object.recent_surgery }}</td>#} {##}
+{#        <td>{{ object.patient_info }}</td>#} {##}
+{#        <td>{{ object.diabetic_metformin }}</td>#} {##}
+{#        <td>{{ object.allergic_contrast }}</td>#} {##}
+{#        <td>{{ object.other_allergies }}</td>#} {##}
+{#        <td>{{ object.kidney_problems }}</td>#} {##}
+{#        <td>{{ object.anticoagulant_drugs }}</td>#} {##}
+{#        <td>{{ object.egfr_result }}</td>#} {##}
+{#        <td>{{ object.date }}</td>#} {##}
+{#        <td>{{ object.patient_no }}</td>#} {##}
+{#    </tr>#} {% endfor %}
+</table>
+{# <a class="btn btn-primary" href="{% url 'labs_radiology_create' %}">Create new radiology</a>#} {% endblock %}

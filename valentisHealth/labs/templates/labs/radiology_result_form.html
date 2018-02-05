@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+<script>
+    $("#radiology_tab").addClass("current").siblings().removeClass("current")
+</script>
+<p><a class="btn btn-default" href="{% url 'labs_radiology_list' %}">radiology List</a></p>
+<form method="post">
+    {% csrf_token %}
+
+
+    <div class="mdl-grid ">
+
+        <div id="div_id_patient_no" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col"><label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
+                Patient id</label>
+            <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_no" maxlength="100" name="patient_no" value="
+                                                     {% if form.patient_no.value != None %}{{ form.patient_no.value }}{% endif %}" rows="10" readonly></div>
+        </div>
+    </div>
+    <div class="mdl-grid ">
+        <div id="div_id_tests_done" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col"><label for="id_tests_done" class="mdl-textfield__label mdl-color-text--grey">
+                Tests done</label>
+            <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_tests_done" maxlength="400" name="tests_done" rows="10" required="">{% if form.tests_done.value != None %}
+                    {{ form.tests_done.value }}{% endif %}</textarea></div>
+        </div>
+    </div>
+    <div class="mdl-grid ">
+        <div id="div_id_results" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col"><label for="id_results" class="mdl-textfield__label mdl-color-text--grey">
+                Test results </label>
+            <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_results" maxlength="400" name="results" rows="10" required="">{% if form.results.value != None %}
+                    {{ form.results.value }}{% endif %}</textarea></div>
+        </div>
+
+        <div class="mdl-grid"><input type="file" class="dropify" data-height="300" /></div>
+
+
+    </div>
+    <div class="mdl-grid">
+        <button name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">Submit
+            </button>
+    </div>
+
+</form>
+{% endblock %}

@@ -17,6 +17,7 @@ class modelsCreateView(CreateView):
         context = super(modelsCreateView, self).get_context_data(**kwargs)
 
         context['waiting_list'] = Patient.objects.filter(status__icontains="2")
+        # context['show_waiting_list'] = True
         return context
 
     def form_valid(self, form):
@@ -24,7 +25,7 @@ class modelsCreateView(CreateView):
         instance.attending_nurse = self.request.user.email
 
         try:
-            patient_object = Patient.objects.get(patient_id=form.cleaned_data['patient_id'])
+            patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
             patient_object.status = 3
             patient_object.save()
         except:

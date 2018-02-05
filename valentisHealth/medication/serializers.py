@@ -12,7 +12,7 @@ class modelsSerializer(serializers.ModelSerializer):
             'created', 
             'last_updated', 
             'prescription_id', 
-            'patients_id', 
+            'patient_no', 
             'patient_name', 
             'address', 
             'phone_number', 

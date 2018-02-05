@@ -260,16 +260,6 @@ class pre_authorizationForm(forms.ModelForm):
                 'class': 'mdl-selectfield__select'
             })
         }
-        # layout = Layout(
-        #     Fieldset("Personal Details ",
-        #              Row(Span2('name'), Span10('member_no')),
-        #              Row(Column('date_reported',
-        #                         'reported_by',
-        #                         'authorised_by'),
-        #                  Column('authority_type',
-        #                         Row('mobile_no', 'existing_bank_account'),
-        #                         'partner_name')))
-        # )
 
 class providerForm(forms.ModelForm):
     class Meta:

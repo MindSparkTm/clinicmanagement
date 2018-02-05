@@ -29,3 +29,18 @@ urlpatterns += (
     url(r'^radiology/update/(?P<slug>\S+)/$', views.radiologyUpdateView.as_view(), name='labs_radiology_update'),
 )
 
+urlpatterns += (
+    # urls for RadiologyResult
+    url(r'^radiology/radiologyresult/$', views.RadiologyResultListView.as_view(), name='radiologyresult_list'),
+    url(r'^radiology/(?P<patient_no>\S+)/$', views.RadiologyVisitView.as_view(), name='radiologyresult_create'),
+    url(r'^radiology/radiologyresult/detail/(?P<slug>\S+)/$', views.RadiologyResultDetailView.as_view(), name='radiologyresult_detail'),
+    url(r'^radiology/radiologyresult/update/(?P<slug>\S+)/$', views.RadiologyResultUpdateView.as_view(), name='radiologyresult_update'),
+)
+
+urlpatterns += (
+    # urls for LabResults
+    url(r'^labresults/$', views.LabResultsListView.as_view(), name='labresults_list'),
+    url(r'^labs/(?P<patient_no>\S+)/$', views.LabsVisitView.as_view(), name='labresults_create'),
+    url(r'^labresults/detail/(?P<slug>\S+)/$', views.LabResultsDetailView.as_view(), name='labresults_detail'),
+    url(r'^labresults/update/(?P<slug>\S+)/$', views.LabResultsUpdateView.as_view(), name='labresults_update'),
+)

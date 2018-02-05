@@ -31,7 +31,7 @@ def create_django_contrib_contenttypes_models_contenttype(**kwargs):
 def create_patientvisit(**kwargs):
     defaults = {}
     defaults["name"] = "name"
-    defaults["patient_id"] = "patient_id"
+    defaults["patient_no"] = "patient_no"
     defaults["visit_id"] = "visit_id"
     defaults["radiology_no"] = "radiology_no"
     defaults["notes"] = "notes"
@@ -58,7 +58,7 @@ class patientVisitViewTest(unittest.TestCase):
         url = reverse('clinic_patientvisit_create')
         data = {
             "name": "name",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
             "visit_id": "visit_id",
             "radiology_no": "radiology_no",
             "notes": "notes",
@@ -79,7 +79,7 @@ class patientVisitViewTest(unittest.TestCase):
         patientvisit = create_patientvisit()
         data = {
             "name": "name",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
             "visit_id": "visit_id",
             "radiology_no": "radiology_no",
             "notes": "notes",

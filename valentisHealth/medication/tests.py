@@ -31,7 +31,7 @@ def create_django_contrib_contenttypes_models_contenttype(**kwargs):
 def create_models(**kwargs):
     defaults = {}
     defaults["prescription_id"] = "prescription_id"
-    defaults["patients_id"] = "patients_id"
+    defaults["patient_no"] = "patient_no"
     defaults["patient_name"] = "patient_name"
     defaults["address"] = "address"
     defaults["phone_number"] = "phone_number"
@@ -57,7 +57,7 @@ class modelsViewTest(unittest.TestCase):
         url = reverse('medication_models_create')
         data = {
             "prescription_id": "prescription_id",
-            "patients_id": "patients_id",
+            "patient_no": "patient_no",
             "patient_name": "patient_name",
             "address": "address",
             "phone_number": "phone_number",
@@ -77,7 +77,7 @@ class modelsViewTest(unittest.TestCase):
         models = create_models()
         data = {
             "prescription_id": "prescription_id",
-            "patients_id": "patients_id",
+            "patient_no": "patient_no",
             "patient_name": "patient_name",
             "address": "address",
             "phone_number": "phone_number",

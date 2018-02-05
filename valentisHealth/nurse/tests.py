@@ -38,7 +38,7 @@ def create_models(**kwargs):
     defaults["heart_rate"] = "heart_rate"
     defaults["others"] = "others"
     defaults["attending_nurse"] = "attending_nurse"
-    defaults["patient_id"] = "patient_id"
+    defaults["patient_no"] = "patient_no"
     defaults["first_name"] = "first_name"
     defaults["last_name"] = "last_name"
     defaults["middle_name"] = "middle_name"
@@ -69,7 +69,7 @@ class modelsViewTest(unittest.TestCase):
             "heart_rate": "heart_rate",
             "others": "others",
             "attending_nurse": "attending_nurse",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
             "first_name": "first_name",
             "last_name": "last_name",
             "middle_name": "middle_name",
@@ -94,7 +94,7 @@ class modelsViewTest(unittest.TestCase):
             "heart_rate": "heart_rate",
             "others": "others",
             "attending_nurse": "attending_nurse",
-            "patient_id": "patient_id",
+            "patient_no": "patient_no",
             "first_name": "first_name",
             "last_name": "last_name",
             "middle_name": "middle_name",

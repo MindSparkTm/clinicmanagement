@@ -19,7 +19,7 @@ class modelsSerializer(serializers.ModelSerializer):
             'heart_rate', 
             'others', 
             'attending_nurse', 
-            'patient_id', 
+            'patient_no', 
             'first_name', 
             'last_name', 
             'middle_name', 
