@@ -71,14 +71,19 @@ class DoctorVisit(CreateView):
         return HttpResponseRedirect("/clinic/patientvisit/create/")
 
     def get_context_data(self, **kwargs):
-        print(self.kwargs['patient_no'], "is user")
 
         context = super(DoctorVisit, self).get_context_data(**kwargs)
 
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
 
+            allergy_list = patient_object.alergies.split(",,,")
+            allergies = [_.split("::") for _ in allergy_list]
+
+            patient_object.alergies = allergies
+
             context['waiting_list'] = Patient.objects.filter(status="3")
+
             #-4 out of labs, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(status="-4")
             context['from_radiology'] = Patient.objects.filter(status="-5")

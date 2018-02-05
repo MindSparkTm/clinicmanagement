@@ -40,8 +40,6 @@ class modelsCreateView(CreateView):
 class modelsDetailView(DetailView):
     model = models
 
-
-
 class modelsUpdateView(UpdateView):
     model = models
     form_class = modelsForm
