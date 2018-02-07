@@ -27,9 +27,6 @@ class DiagnosisSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Diagnosis
         fields = (
-            'pk',
-            'created',
-            'last_updated',
             'code',
             'name',
         )

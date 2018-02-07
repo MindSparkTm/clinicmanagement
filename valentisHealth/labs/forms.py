@@ -18,10 +18,12 @@ class radiologyForm(forms.ModelForm):
 class RadiologyResultForm(forms.ModelForm):
     class Meta:
         model = RadiologyResult
-        fields = ['patient_no', 'results', 'tests_done']
+        fields = ['patient_no', 'results', 'tests_done', 'uploaded_file']
+
+        uploaded_file = forms.FileField(label='Select a profile Image')
 
 
 class LabResultsForm(forms.ModelForm):
     class Meta:
         model = LabResults
-        fields = ['patient_no', 'tests_done', 'test_results']
+        fields = ['patient_no', 'tests_done', 'test_results', 'uploaded_file']

@@ -17,7 +17,7 @@ urlpatterns += (
     url(r'^$', views.modelsListView.as_view(), name='registration_models_list'),
     # url(r'^models/search/$', views.SearchPatientView.as_view(), name='search_patient'),
     url(r'^models/create/$', views.modelsCreateView.as_view(), name='registration_models_create'),
-    url(r'^existing/(?P<pk>\S+)/$', views.modelsDetailView.as_view(), name='registration_models_detail'),
-    # url(r'^models/update/(?P<pk>\S+)/$', views.modelsUpdateView.as_view(), name='registration_models_update'),
+    url(r'^existing/(?P<patient_no>\S+)/$', views.modelsDetailView.as_view(), name='registration_models_detail'),
+    url(r'^models/update/(?P<patient_no>\S+)/$', views.patientUpdateView, name='registration_update'),
 )
 

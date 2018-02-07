@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'clinic',
     'medication',
     'labs',
-    'materializecssform',
     'payments',
 
 ]

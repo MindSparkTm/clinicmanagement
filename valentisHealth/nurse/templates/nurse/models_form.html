@@ -99,12 +99,27 @@
                     </div>
                 </div>
                 <div class="mdl-grid ">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_heart_rate">Heart Rate</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_heart_rate" name="heart_rate" value="{% if form.heart_rate.value != None %}{{ form.heart_rate.value }}{% endif %}" required/>
                     </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_height">Height</label>
+                        <input class="mdl-textfield__input" type="text" id="textfield_height" name="height" value="{% if form.height.value != None %}{{ form.height.value }}{% endif %}" required/>
+                    </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_weight">Weight</label>
+                        <input class="mdl-textfield__input" type="text" id="textfield_weight" name="weight" value="{% if form.weight.value != None %}{{ form.weight.value }}{% endif %}" required/>
+                    </div>
 
 
+                </div>
+                <div class="mdl-grid">
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <input class="mdl-textfield__input" type="text" value="{% if form.random_glucose.value != None %}{{ form.random_glucose.value }}{% endif %}" id="random_glucose" name="random_glucose">
+                        <label class="mdl-textfield__label" for="random_glucose">Random Glucose</label>
+                    </div>
                 </div>
                 <div class="mdl-grid">
 
@@ -113,6 +128,7 @@
                         <label class="mdl-textfield__label" for="urinalysis">Urinalysis</label>
                     </div>
                 </div>
+
                 <div class="mdl-grid">
 
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">

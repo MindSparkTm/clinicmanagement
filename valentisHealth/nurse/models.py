@@ -21,14 +21,16 @@ class models(models.Model):
     temperature = models.FloatField()
     oxygen_saturation = models.FloatField()
     urinalysis = models.TextField(max_length=400, null=True, blank=True)
+    random_glucose = models.TextField(max_length=400, null=True, blank=True)
     heart_rate = models.CharField(max_length=100)
+    weight = models.CharField(max_length=100)
+    height = models.CharField(max_length=100)
     others = models.TextField(max_length=200, null=True, blank=True)
     attending_nurse = models.CharField(max_length=30, null=True, blank=True)
     patient_no = models.CharField(max_length=30)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=30)
     middle_name = models.CharField(max_length=30, null=True, blank=True)
-
 
     class Meta:
         ordering = ('last_updated',)

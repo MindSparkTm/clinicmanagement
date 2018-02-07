@@ -76,11 +76,16 @@ class DoctorVisit(CreateView):
 
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+            print(patient_object.alergies)
 
-            allergy_list = patient_object.alergies.split(",,,")
-            allergies = [_.split("::") for _ in allergy_list]
+            if patient_object.alergies is not None:
 
-            patient_object.alergies = allergies
+                #we will use ,,, tripple comma to seperate each alergy
+                allergy_list = patient_object.alergies.split(",,,")
+
+                #we will use :: to determine/seperate the alergy name and alergy reaction (dictionary - key value pair)
+                allergies = [_.split("::") for _ in allergy_list]
+                patient_object.alergies = allergies
 
             context['waiting_list'] = Patient.objects.filter(status="3")
 

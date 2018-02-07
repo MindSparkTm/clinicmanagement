@@ -87,6 +87,7 @@ class modelsSerializer(serializers.ModelSerializer):
             'is_sadder',
             'if_lost_interest',
             'have_will',
+            'uploaded_file',
         )
 
 

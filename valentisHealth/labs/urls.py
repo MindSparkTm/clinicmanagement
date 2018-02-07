@@ -31,10 +31,10 @@ urlpatterns += (
 
 urlpatterns += (
     # urls for RadiologyResult
-    url(r'^radiology/radiologyresult/$', views.RadiologyResultListView.as_view(), name='radiologyresult_list'),
-    url(r'^radiology/(?P<patient_no>\S+)/$', views.RadiologyVisitView.as_view(), name='radiologyresult_create'),
-    url(r'^radiology/radiologyresult/detail/(?P<slug>\S+)/$', views.RadiologyResultDetailView.as_view(), name='radiologyresult_detail'),
-    url(r'^radiology/radiologyresult/update/(?P<slug>\S+)/$', views.RadiologyResultUpdateView.as_view(), name='radiologyresult_update'),
+    url(r'^radiologyresult/$', views.RadiologyResultListView.as_view(), name='radiologyresult_list'),
+    url(r'^radiologyresult/new/(?P<patient_no>\S+)/$', views.RadiologyVisitView.as_view(), name='radiologyresult_create'),
+    url(r'^radiologyresult/detail/(?P<slug>\S+)/$', views.RadiologyResultDetailView.as_view(), name='radiologyresult_detail'),
+    url(r'^radiologyresult/update/(?P<slug>\S+)/$', views.RadiologyResultUpdateView.as_view(), name='radiologyresult_update'),
 )
 
 urlpatterns += (

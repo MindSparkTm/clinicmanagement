@@ -5,6 +5,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'patientvisit', api.patientVisitViewSet)
+router.register(r'icd10', api.DiagnosisViewSet)
 
 
 urlpatterns = (

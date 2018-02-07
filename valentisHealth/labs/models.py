@@ -192,7 +192,8 @@ class RadiologyResult(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     patient_no = models.CharField(max_length=30)
     results = models.TextField(max_length=400)
-    tests_done = models.TextField(max_length=400)
+    tests_done = models.TextField(max_length=400, null=True, blank=True)
+    uploaded_file = models.FileField(upload_to='media/radiology/', null=True, blank=True)
 
 
     class Meta:
@@ -216,8 +217,9 @@ class LabResults(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     patient_no = models.TextField(max_length=100)
-    tests_done = models.TextField(max_length=400)
+    tests_done = models.TextField(max_length=400, null=True, blank=True)
     test_results = models.TextField(max_length=400)
+    uploaded_file = models.FileField(upload_to='media/lab/', null=True, blank=True)
 
 
     class Meta:

@@ -41,7 +41,7 @@ class RadiologyResultAdminForm(forms.ModelForm):
 
 class RadiologyResultAdmin(admin.ModelAdmin):
     form = RadiologyResultAdminForm
-    list_display = ['slug', 'created', 'last_updated', 'patient_no', 'results', 'tests_done']
+    list_display = ['slug', 'created', 'last_updated', 'patient_no', 'results', 'tests_done','uploaded_file']
 
 admin.site.register(RadiologyResult, RadiologyResultAdmin)
 
@@ -55,6 +55,6 @@ class LabResultsAdminForm(forms.ModelForm):
 
 class LabResultsAdmin(admin.ModelAdmin):
     form = LabResultsAdminForm
-    list_display = ['slug', 'created', 'last_updated', 'patient_no', 'tests_done', 'test_results']
+    list_display = ['slug', 'created', 'last_updated', 'patient_no', 'tests_done', 'test_results','uploaded_file']
 
 admin.site.register(LabResults, LabResultsAdmin)

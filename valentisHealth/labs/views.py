@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from registration.models import models as Patient
 from django.http import HttpResponse, Http404
 from django.shortcuts import render #, get_object_or_404, redirect, reverse
+from django.forms.models import model_to_dict
 
 class labsListView(ListView):
     model = Labs
@@ -75,7 +76,7 @@ class radiologyListView(ListView):
             context['waiting_list'] = Patient.objects.filter(status="5")
 
             context['show_waiting_list'] = True
-            context['link'] = 'labs/radiology'
+            context['link'] = 'labs/radiologyresult/new'
         except:
             raise Http404('Requested user not found.')
 
@@ -88,8 +89,21 @@ class radiologyCreateView(CreateView):
 
     def form_valid(self, form):
         instance = form.save(commit=False)
-        # status 5 means patient's in radiology
-        instance.status = 5
+
+        instance.attending_doc = self.request.user.email
+
+        try:
+            patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
+            # status 0 means patient's session ended
+            patient_object.status = 5
+            patient_object.save()
+        except:
+            print(404)
+            raise Http404('Requested user not found.')
+
+        instance.save()
+
+        # status 4 means patient's in lab
         instance.save()
 
         return HttpResponseRedirect("/clinic/patientvisit/create/")
@@ -107,6 +121,11 @@ class radiologyUpdateView(UpdateView):
 
 class RadiologyResultListView(ListView):
     model = RadiologyResult
+
+    def get_template_names(self):
+        return 'labs/radiology_result_form.html'
+
+
 
 
 class RadiologyResultDetailView(DetailView):
@@ -159,13 +178,20 @@ class LabsVisitView(CreateView):
 
     def get_context_data(self, **kwargs):
 
-        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+
         context = super(LabsVisitView, self).get_context_data(**kwargs)
 
         try:
+            patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
-
+            lab_object = Labs.objects.get(patient_no=self.kwargs['patient_no'])
+            object = labsForm(data=model_to_dict(lab_object))
+            context['request'] = object
+            context['other'] = lab_object.other
+            context['diagnosis'] = lab_object.diagnosis
+            # print(object)
             patient_object.status = 4
+
 
         except:
             raise Http404('Requested user not found.')
@@ -173,7 +199,7 @@ class LabsVisitView(CreateView):
         return context
 
 
-class RadiologyVisitView(ListView):
+class RadiologyVisitView(CreateView):
     model = RadiologyResult
     form_class = RadiologyResultForm
 
@@ -186,6 +212,7 @@ class RadiologyVisitView(ListView):
 
         try:
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
+
 
             # status 5 means patient is in radiology
             patient_object.status = -5
@@ -201,13 +228,24 @@ class RadiologyVisitView(ListView):
 
     def get_context_data(self, **kwargs):
 
-        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+
         context = super(RadiologyVisitView, self).get_context_data(**kwargs)
 
         try:
+            patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
+            radiology_object = Radiology.objects.get(patient_no=self.kwargs['patient_no'])
+
+            object = radiologyForm(data=model_to_dict(radiology_object))
+            context['request'] = object
+            context['examination'] =radiology_object.examination
+            context['clinical_indication'] = radiology_object.clinical_indication
+            # print(object)
+
+
 
         except:
             raise Http404('Requested user not found.')
 
         return context
+
