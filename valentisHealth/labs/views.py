@@ -6,6 +6,7 @@ from registration.models import models as Patient
 from django.http import HttpResponse, Http404
 from django.shortcuts import render #, get_object_or_404, redirect, reverse
 from django.forms.models import model_to_dict
+from django.db.models import Q
 
 class labsListView(ListView):
     model = Labs
@@ -15,7 +16,7 @@ class labsListView(ListView):
 
         try:
             #get patients in labs (status 4)
-            context['waiting_list'] = Patient.objects.filter(status="4")
+            context['waiting_list'] = Patient.objects.filter(Q(status="4") | Q(status="45"))
             context['show_waiting_list'] = True
 
             #sent linkt to be appended to the href in waiting list table row accounts/templates/base
@@ -38,16 +39,19 @@ class labsCreateView(CreateView):
 
         try:
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
-            # status 0 means patient's session ended
-            patient_object.status = 4
+
+            #if patient is in radiology
+            if patient_object.status == 5:
+                # 45 means patient is in both labs and Radiology
+                patient_object.status = 45
+            else:
+                patient_object.status = 4
+
             patient_object.save()
         except:
             print(404)
             raise Http404('Requested user not found.')
 
-        instance.save()
-
-        #status 4 means patient's in lab
         instance.save()
 
         return HttpResponseRedirect("/clinic/patientvisit/create/")
@@ -73,7 +77,7 @@ class radiologyListView(ListView):
 
         try:
             #get patient's in radiology (staus 5)
-            context['waiting_list'] = Patient.objects.filter(status="5")
+            context['waiting_list'] = Patient.objects.filter(Q(status="5") | Q(status="45"))
 
             context['show_waiting_list'] = True
             context['link'] = 'labs/radiologyresult/new'
@@ -94,16 +98,19 @@ class radiologyCreateView(CreateView):
 
         try:
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
-            # status 0 means patient's session ended
-            patient_object.status = 5
+
+            # if patient is in labs
+            if patient_object.status == 4:
+                # 45 means patient is in both labs and Radiology
+                patient_object.status = 45
+            else:
+                patient_object.status = 5
+
             patient_object.save()
         except:
             print(404)
             raise Http404('Requested user not found.')
 
-        instance.save()
-
-        # status 4 means patient's in lab
         instance.save()
 
         return HttpResponseRedirect("/clinic/patientvisit/create/")
@@ -165,8 +172,13 @@ class LabsVisitView(CreateView):
         try:
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
 
-            #status 4 means patient in out of labs
-            patient_object.status = -4
+            #status -45 patient is out of labs but in radiology
+            if patient_object.status==45:
+                patient_object.status = -45
+            else:
+                #patient out of labs
+                patient_object.status=-4
+
             patient_object.save()
         except:
             print(404)
@@ -189,9 +201,6 @@ class LabsVisitView(CreateView):
             context['request'] = object
             context['other'] = lab_object.other
             context['diagnosis'] = lab_object.diagnosis
-            # print(object)
-            patient_object.status = 4
-
 
         except:
             raise Http404('Requested user not found.')
@@ -213,9 +222,13 @@ class RadiologyVisitView(CreateView):
         try:
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
 
+            # status -54 patient is out of labs but in radiology
+            if patient_object.status == 45:
+                patient_object.status = -54
+            else:
+                # patient out of labs
+                patient_object.status = -5
 
-            # status 5 means patient is in radiology
-            patient_object.status = -5
             patient_object.save()
 
         except:

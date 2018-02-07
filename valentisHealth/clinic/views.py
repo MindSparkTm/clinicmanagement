@@ -5,6 +5,7 @@ from registration.models import models as Patient
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
 from nurse.models import models as Triage
+from django.db.models import Q
 
 class patientVisitListView(ListView):
     model = patientVisit
@@ -90,8 +91,8 @@ class DoctorVisit(CreateView):
             context['waiting_list'] = Patient.objects.filter(status="3")
 
             #-4 out of labs, -5 out of radiology
-            context['from_labs'] = Patient.objects.filter(status="-4")
-            context['from_radiology'] = Patient.objects.filter(status="-5")
+            context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
+            context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
             context['patient'] = patient_object
             context['triage'] = Triage.objects.get(patient_no=self.kwargs['patient_no'])
         except:
