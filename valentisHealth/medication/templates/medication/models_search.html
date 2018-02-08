@@ -170,8 +170,8 @@
                             //ensure to remove previous prepended results to avoid duplicity
                             $('#search_table tbody').children().remove();
 
-                            console.log(str)
-                            $.ajax({
+                            if (/\S/.test(str) && str.length > 1){
+                                $.ajax({
                                 url: "http://127.0.0.1:8000/registration/api/v1/models/",
                                 type: "get",
                                 data: {
@@ -203,18 +203,18 @@
                                 }
 
                             })
+                            }
+
                         }
 
-
-
+                        
                     </script>
 
                     <div class="mdh-expandable-search mdl-cell--hide-phone">
                         <i class="material-icons">search</i>
                         <form method="get" action="/members/search">
                             <input type="text" id="search" placeholder="Search" size="1"
-                                   onchange="searchMembers(this.value)"
-                                   onkeypress="searchMembers(this.value)">
+                                   onkeyup="searchMembers(this.value)">
                         </form>
                     </div>
 
