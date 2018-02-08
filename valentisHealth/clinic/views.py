@@ -32,7 +32,10 @@ class patientVisitCreateView(CreateView):
         try:
             context['waiting_list'] = Patient.objects.filter(status="3")
             context['show_waiting_list'] = True
+            context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
+            context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
             context['link'] = 'clinic/patientvisit/doctor'
+            context['clinic'] = True
         except:
             raise Http404('Requested user not found.')
 

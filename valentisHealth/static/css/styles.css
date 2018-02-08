@@ -321,3 +321,32 @@ fieldset {
 #radiology{
     padding-left: 24px;
 }
+
+.mdl-color--teal-500{
+    background: #3c5d73 !important;
+}
+
+.mdl-textfield {
+  margin: -8px 4px;
+}
+
+.accordion{
+
+}
+
+form, fieldset, .util-center{
+    background: white;
+}
+
+body{
+    background: #7ca1bb40;
+}
+.mdl-color--teal-500{
+    background: #3c5d73b3 !important;
+}
+
+.mdl-card__title{
+
+
+
+}

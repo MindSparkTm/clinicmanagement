@@ -39,20 +39,21 @@
                     }
                 </style>
 
-                <div class="demo-card-wide mdl-card">
+                <div class="mdl-card" style="width:100%;">
                     <!-- Search -->
                     <style>
                         /* TODO: Hover and Focus state.
             *       Fix position of mobile search button.
             */
                         .mdh-expandable-search {
-                            margin: 0 50px;
+                            margin: 0 0;
                             align-items: center;
                             justify-content: center;
                         }
 
                         .mdh-expandable-search form {
                             max-width: 600px;
+                            max-height: 50px !important;
                         }
 
                         .mdh-expandable-search,
@@ -132,46 +133,15 @@
 
                     {#                    preauth scrips#}
                     <script>
-                        //       hide the two icons if the search box is below a certain size.
-                        $(document).ready(function () {
-
-
-                            $('.mdh-toggle-search').click(function () {
-                                // No search bar is currently shown
-                                if ($(this).find('i').text() == 'search') {
-                                    $(this).find('i').text('cancel');
-                                    $(this).removeClass('mdl-cell--hide-tablet mdl-cell--hide-desktop'); // Ensures the close button doesn't disappear if the screen is resized.
-
-                                    $('.mdl-layout__drawer-button, .mdl-layout-title, .mdl-badge, .mdl-layout-spacer').hide();
-                                    $('.mdl-layout__header-row').css('padding-left', '16px'); // Remove margin that used to hold the menu button
-                                    $('.mdh-expandable-search').removeClass('mdl-cell--hide-phone').css('margin', '0 16px 0 0');
-
-                                }
-                                // Search bar is currently showing
-                                else {
-                                    $(this).find('i').text('search');
-                                    $(this).addClass('mdl-cell--hide-tablet mdl-cell--hide-desktop');
-
-                                    $('.mdl-layout__drawer-button, .mdl-layout-title, .mdl-badge, .mdl-layout-spacer').show();
-                                    $('.mdl-layout__header-row').css('padding-left', '');
-                                    $('.mdh-expandable-search').addClass('mdl-cell--hide-phone').css('margin', '0 50px');
-                                }
-
-                            });
-
-
-                        });
-
-
-
                         //Do ajax call for search box
                         function searchMembers(str) {
 
                             //ensure to remove previous prepended results to avoid duplicity
                             $('#search_table tbody').children().remove();
 
-                            console.log(str)
-                            $.ajax({
+                            //string must not be empty or less than two characters
+                            if (/\S/.test(str) && str.length > 1){
+                                $.ajax({
                                 url: "http://127.0.0.1:8000/registration/api/v1/models/",
                                 type: "get",
                                 data: {
@@ -203,18 +173,15 @@
                                 }
 
                             })
+                            }
                         }
-
-
-
                     </script>
 
                     <div class="mdh-expandable-search mdl-cell--hide-phone">
                         <i class="material-icons">search</i>
                         <form method="get" action="/members/search">
-                            <input type="text" id="search" placeholder="Search" size="1"
-                                   onchange="searchMembers(this.value)"
-                                   onkeypress="searchMembers(this.value)">
+                            <input type="text" id="search" placeholder="Search existing patient" size="1"
+                                   onkeyup="searchMembers(this.value)">
                         </form>
                     </div>
 
@@ -239,6 +206,21 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <style>
+                    .mdl-card{
+                        min-height: 50px !important;
+                    }
+                </style>
+                <div class="" style="width:100%; text-align: center">
+                    <h3>OR instead</h3>
+                </div>
+                <div class=" mdl-card" style="width:100%;">
+                    <button type="submit" onclick="window.location.href='/registration/models/create/{{ patient.patient_no }}'"
+                                class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                            Create New Patient
+                        </button>
                 </div>
 
             </div>
