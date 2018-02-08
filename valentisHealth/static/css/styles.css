@@ -306,6 +306,7 @@ fieldset {
     border: 1px;
     border-radius: 8px;
     border-style: solid;
+    border-color: #d0cece;
 }
 
 .mdl-textfield__error {
@@ -345,8 +346,13 @@ body{
     background: #3c5d73b3 !important;
 }
 
-.mdl-card__title{
-
-
-
+.grey {
+    background-color: #d0cece;
 }
+
+.bordered{
+    border: solid 1px;
+    border-radius: 2px;
+    border-color: #d0cece;
+}
+

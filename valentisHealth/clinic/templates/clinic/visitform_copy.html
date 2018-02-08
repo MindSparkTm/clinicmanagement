@@ -289,6 +289,14 @@
             </fieldset>
             </div>
 
+        <div class="mdl-grid full-width">
+            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                            <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="notes"
+                                      name="notes">{% if form.notes.value != None %}{{ form.notes.value }}{% endif %}</textarea>
+                <label class="mdl-textfield__label" for="notes">More notes</label>
+            </div>
+        </div>
+
             <fieldset>
                 <legend>Lab And Radiology</legend>
 
@@ -296,16 +304,16 @@
                     <div class="mdl-cell mdl-cell--6-col">
                         <!-- Colored FAB button -->
                         Add Radiology
-                        <button type="button" class="mdl-button mdl-js-button mdl-button--fab" onclick="addRadiology()">
-                            <i class="material-icons">add</i>
+                        <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="addRadiology()">
+                            <i class="material-icons">highlight</i>
                         </button>
 
                     </div>
                     <div class="mdl-cell mdl-cell--6-col">
                         <!-- Colored FAB button -->
                         Add Labs
-                        <button type="button" class="mdl-button mdl-js-button mdl-button--fab" onclick="addLabs()">
-                            <i class="material-icons">add</i>
+                        <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="addLabs()">
+                            <i class="material-icons">local_pharmacy</i>
                         </button>
 
                     </div>
@@ -1241,17 +1249,17 @@
                         </div>
 
                         <div class="mdl-grid">
-                            <div id="div_id_other" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
+                            <div id="div_id_other" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                 <label for="id_other" class="mdl-textfield__label">
                                     Other Test </label>
-                                <div class="controls"><textarea class="mdl-textfield__input" cols="20" id="id_other"
-                                                                maxlength="100" name="other" rows="10"></textarea></div>
+                                <div class="controls"><textarea class="mdl-textfield__input bordered" cols="20" id="id_other"
+                                                                maxlength="100" name="other" rows="2"></textarea></div>
                             </div>
-                            <div id="div_id_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
+                            <div id="div_id_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                 <label for="id_diagnosis" class="mdl-textfield__label">
                                     Diagnosis Information/Diagnosis</label>
-                                <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_diagnosis"
-                                                                maxlength="100" name="diagnosis" rows="10"></textarea>
+                                <div class="controls"><textarea class="mdl-textfield__input bordered" cols="40" id="id_diagnosis"
+                                                                maxlength="100" name="diagnosis" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1272,7 +1280,7 @@
                                     <label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
                                         Patient No</label>
                                     <div class="controls"><input class="mdl-textfield__input" name="patient_no" id="patient_no" type="text"
-                       value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" readonly/></div>
+                                                    value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" readonly/></div>
                                 </div>
 
                             </div>
@@ -1300,12 +1308,16 @@
                                             class="mdl-textfield__label mdl-color-text--grey ">
                                         Examination Required
                                     </label>
-                                    <div class="controls"><textarea class="mdl-textfield__input" cols="80"
+                                    <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80"
                                                                     id="id_examination"
                                                                     maxlength="20" name="examination"
-                                                                    rows="10"></textarea></div>
+                                                                    rows="3">{% if patient.examination != None %}{{ patient.examination }}{% endif %}</textarea></div>
                                 </div>
-                        </div>
+                            </div>
+                            <div class="mdl-grid">
+                                <button onclick="toggleView('triage_')" class="mdl-button w3-block w3-left-align accordion" >View Triage Results
+            </button>
+                            </div>
 
                             <div class="mdl-grid">
                                 <div id="div_id_could_b_pregrant"
@@ -1315,10 +1327,10 @@
                                             class="mdl-textfield__label mdl-color-text--grey ">
                                         Clinical Indications
                                     </label>
-                                    <div class="controls"><textarea class="mdl-textfield__input" cols="80"
+                                    <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80"
                                                                     id="id_clinical_indication"
                                                                     maxlength="100" name="clinical_indication"
-                                                                    rows="10"></textarea></div>
+                                                                    rows="3">{% if patient.clinical_indication != None %}{{ patient.clinical_indication }}{% endif %}</textarea></div>
                                 </div>
                             </div>
                             <div id="div_id_intra_orbital_fb_hist" class="mdl-cell mdl-cell--12-col">
@@ -1464,7 +1476,7 @@
                     <div class="mdl-grid">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                            <textarea class="mdl-textfield__input" type="text" rows="8" id="diagnosis" name="diagnosis">{% if form.diagnosis.value != None %}
+                            <textarea class="mdl-textfield__input bordered" type="text" rows="3" id="diagnosis" name="diagnosis">{% if form.diagnosis.value != None %}
                                 {{ form.diagnosis.value }}{% endif %}</textarea>
                             <label class="mdl-textfield__label" for="diagnosis">Diagnosis</label>
                         </div>
@@ -1480,14 +1492,7 @@
                     </script>
                     </div>
 
-                    <div class="mdl-grid">
-                        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                            <textarea class="mdl-textfield__input" type="text" rows="8" id="notes"
-                                      name="notes">{% if form.notes.value != None %}
-                                {{ form.notes.value }}{% endif %}</textarea>
-                            <label class="mdl-textfield__label" for="notes">More notes</label>
-                        </div>
-                    </div>
+
                 </fieldset>
 
 
