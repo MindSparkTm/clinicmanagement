@@ -1283,7 +1283,7 @@
 
                 <form id="radiology" style="display:none;" method="post" name="radiology_form">
                     {% csrf_token %}
-                    <div class="mdl-grid full-width">
+                    <div class="mdl-grid full-width ">
                         <div class="mdl-grid ">
                             <div id="div_id_patient_no"
                                  class="hidden mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
@@ -1296,14 +1296,14 @@
                             </div>
 
                         </div>
-                        {% if patient.gender != "male" %}
+                        {% if patient.gender != "M" %}
                             <div class="mdl-grid">
                                 <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--12-col">
                                     <input class="mdl-textfield__input" value="" id="could_b_pregrant" readonly/>
                                     <input value="" type="hidden" name="could_b_pregrant"/>
                                     <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                                     <label class="mdl-textfield__label" for="could_b_pregrant">Could you be
-                                        pregnant</label>
+                                        pregnant? </label>
                                     <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                         for="could_b_pregrant">
                                         <li class="mdl-menu__item" data-val="yes">Yes</li>
@@ -1326,8 +1326,7 @@
                                 <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80"
                                                                 id="id_examination"
                                                                 maxlength="20" name="examination"
-                                                                rows="3">{% if patient.examination != None %}
-                                    {{ patient.examination }}{% endif %}</textarea></div>
+                                                                rows="3">{% if patient.examination != None %}{{ patient.examination }}{% endif %}</textarea></div>
                             </div>
                         </div>
 
@@ -1342,8 +1341,7 @@
                                 <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80"
                                                                 id="id_clinical_indication"
                                                                 maxlength="100" name="clinical_indication"
-                                                                rows="3">{% if patient.clinical_indication != None %}
-                                    {{ patient.clinical_indication }}{% endif %}</textarea></div>
+                                                                rows="3">{% if patient.clinical_indication != None %}{{ patient.clinical_indication }}{% endif %}</textarea></div>
                             </div>
                         </div>
 
@@ -1353,7 +1351,7 @@
                             </button>
                         </div>
 
-                        <div id="mri" style="display: none" class="mdl-grid">
+                        <div id="mri" style="visibility: hidden;: hidden" class="mdl-grid">
                             <div id="div_id_intra_orbital_fb_hist" class="mdl-cell mdl-cell--12-col">
                                 <div class="controls"><label for="id_intra_orbital_fb_hist" class="checkbox "> <input
                                         class="checkboxinput" id="id_intra_orbital_fb_hist" name="intra_orbital_fb_hist"
@@ -1538,7 +1536,20 @@
 
                 </fieldset>
 
-                <fieldset>
+
+
+                {# {{ form|crispy }}#}
+            <br><br>
+                <button name="form_btn"
+                        class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
+                        type="submit">Submit Disgnosis
+                </button>
+            </form>
+
+
+        <br><br>
+        <br><br>
+        <fieldset>
                     <legend>Prescription</legend>
                 <div class="mdl-layout-spacer"></div>
                     <form method="post">
@@ -1630,14 +1641,6 @@
                     </form>
                 <div class="mdl-layout-spacer"></div>
                 </fieldset>
-
-                {# {{ form|crispy }}#}
-            <br><br>
-                <button name="form_btn"
-                        class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
-                        type="submit">Submit Disgnosis
-                </button>
-            </form>
         </div>
 
 

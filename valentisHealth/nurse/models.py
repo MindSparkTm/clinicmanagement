@@ -33,7 +33,7 @@ class models(models.Model):
     middle_name = models.CharField(max_length=30, null=True, blank=True)
 
     class Meta:
-        ordering = ('last_updated',)
+        ordering = ('-last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
