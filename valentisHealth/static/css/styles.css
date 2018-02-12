@@ -17,6 +17,9 @@
 html,
 body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
+  background: url("../img/bgtwo.jpg");
+     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .demo-avatar {
@@ -349,4 +352,13 @@ body{
 
 
 
+}
+.headstitle{
+   background: #2d5265 !important;
+
+
+}
+.logotwo{
+
+  background: url("../img/logotwo.jpg");
 }

@@ -1,4 +1,11 @@
+body{
 
+  background: url("../static/img/bodybg.jpg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
 .container {
     position: absolute;
     left: 50%;
@@ -19,10 +26,11 @@
 #cube figure {
     backface-visibility: hidden;
     margin: 0;
-    width: 330px;
+    width: 400px;
     height: 375px;
     display: block;
     position: absolute;
+
 }
 
 #cube .front {
@@ -59,7 +67,7 @@
 
 .mdl-card {
     width: 330px;
-    height: 375px;
+    height: 500px;
 }
 
 .mdl-card__title .mdl-button--icon {
@@ -74,4 +82,83 @@
 
 a:hover {
     cursor: pointer;
+}
+.box{
+    color: #283773;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.mybtn{
+background: #2d5265 !important;
+    color: #fff !important;
+    cursor:pointer;
+    outline: none;
+    height: 40px;
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+}
+.mybtn:hover{
+background: #6793a9 !important;
+}
+.lost{
+    font-size: 12px;
+    outline: none;
+    float: left;
+    cursor: pointer;
+    color:#5D809D !important;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 14px;
+    margin-top: 40px;
+
+}
+.contain{
+
+    background-repeat: no-repeat;
+
+}
+
+.fonto{
+    margin: 0;
+    padding-top: 40px;
+    font-size: 20px;
+    color:#5D809D !important;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+
+
+}
+
+.mylabel{
+ border: none;
+    border-bottom:none !important;
+    background: transparent;
+    outline: none;
+}
+.recovery{
+    color:#5D809D;
+    font-size: 12px;
+    line-height: 12px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:300;
+    text-transform:uppercase;
+    margin: 0;
+    padding: 0;
+}
+.recover-tab{
+  background:#5D809D !important;
+
+
+}
+
+.rec-tab {
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+
+
 }
