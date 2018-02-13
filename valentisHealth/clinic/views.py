@@ -9,6 +9,8 @@ from django.db.models import Q
 from rest_framework import generics
 from labs.serializers import LabResultsSerializer, RadiologyResultSerializer
 from labs.models import Labs, Radiology, RadiologyResult, LabResults
+from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
+from django.forms.models import model_to_dict
 
 class patientVisitListView(ListView):
     model = patientVisit
@@ -87,14 +89,19 @@ class DoctorVisit(CreateView):
 
         try:
             labresult = LabResults.objects.filter(triage_id=patient_object.session_id)
-            radiologyresult = RadiologyResult.objects.filter(triage_id=patient_object.session_id)
+            labtest = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
+            context['lab_results'] = labresult
+            context['lab_tests'] = labsForm(data=model_to_dict(labtest))
 
-            context['tests'] = labresult
-            context['radiology_tests'] = radiologyresult
-
-            print(context['tests'])
         except:
+            pass
 
+        try:
+            radiologyresult = RadiologyResult.objects.filter(triage_id=patient_object.session_id)
+            radiologytest = Radiology.objects.filter(triage_id=patient_object.session_id).latest('created')
+            context['radiology_results'] = radiologyresult
+            context['radiology_test'] = radiologyForm(data=model_to_dict(radiologytest))
+        except:
             pass
 
         try:

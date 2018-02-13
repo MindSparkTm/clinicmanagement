@@ -536,69 +536,71 @@
                                 </div>
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col w3-grey">
-                                <button type="button" class="mdl-button mdl-js-button w3-block grey"
-                                        onclick="toggleView('pregnancy')"> Pregnancy
-                                </button>
+                            {% if patient.gender != "male"%}{{ patient.gender }}
+                                <div class="mdl-cell mdl-cell--12-col w3-grey">
+                                    <button type="button" class="mdl-button mdl-js-button w3-block grey"
+                                            onclick="toggleView('pregnancy')"> Pregnancy
+                                    </button>
 
-                            </div>
+                                </div>
 
-                            <div id="pregnancy" class="w3-hide full-width">
-                                <div id="div_id_p01" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_p01"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_p01"
-                                                name="p01" type="checkbox">
-                                        BHCG Qualitative
-                                    </label></div>
+                                <div id="pregnancy" class="w3-hide full-width">
+                                    <div id="div_id_p01" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_p01"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_p01"
+                                                    name="p01" type="checkbox">
+                                            BHCG Qualitative
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_p02" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_p02"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_p02"
+                                                    name="p02" type="checkbox">
+                                            <span class="mdl-checkbox__label">Blood group (A B O)</span>
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_p03" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_p03"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_p03"
+                                                    name="p03" type="checkbox">
+                                            <span class="mdl-checkbox__label">Groupting: Rh Antigen</span>
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_p04" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_p04"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_p04"
+                                                    name="p04" type="checkbox">
+                                            <span class="mdl-checkbox__label">Direct Coombs</span>
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_p05" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_p05"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_p05"
+                                                    name="p05" type="checkbox">
+                                            <span class="mdl-checkbox__label">Indirect Coombs</span>
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_p06" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_p06"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_p06"
+                                                    name="p06" type="checkbox">
+                                            <span class="mdl-checkbox__label">Syphilis Serology</span>
+                                        </label></div>
+                                    </div>
                                 </div>
-                                <div id="div_id_p02" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_p02"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_p02"
-                                                name="p02" type="checkbox">
-                                        <span class="mdl-checkbox__label">Blood group (A B O)</span>
-                                    </label></div>
-                                </div>
-                                <div id="div_id_p03" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_p03"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_p03"
-                                                name="p03" type="checkbox">
-                                        <span class="mdl-checkbox__label">Groupting: Rh Antigen</span>
-                                    </label></div>
-                                </div>
-                                <div id="div_id_p04" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_p04"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_p04"
-                                                name="p04" type="checkbox">
-                                        <span class="mdl-checkbox__label">Direct Coombs</span>
-                                    </label></div>
-                                </div>
-                                <div id="div_id_p05" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_p05"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_p05"
-                                                name="p05" type="checkbox">
-                                        <span class="mdl-checkbox__label">Indirect Coombs</span>
-                                    </label></div>
-                                </div>
-                                <div id="div_id_p06" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_p06"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_p06"
-                                                name="p06" type="checkbox">
-                                        <span class="mdl-checkbox__label">Syphilis Serology</span>
-                                    </label></div>
-                                </div>
-                            </div>
+                            {% endif %}
 
 
                             <div class="mdl-cell mdl-cell--12-col  w3-grey">
@@ -1275,45 +1277,46 @@
                                 </div>
                             </div>
 
+                            {% if patient.gender != "male"%}{{ patient.gender }}
+                                <div class="mdl-cell mdl-cell--12-col  w3-grey">
+                                    <button type="button" class="mdl-button mdl-js-button w3-block grey"
+                                            onclick="toggleView('menopausal_screen')"> Menopausal Screen
+                                    </button>
 
-                            <div class="mdl-cell mdl-cell--12-col  w3-grey">
-                                <button type="button" class="mdl-button mdl-js-button w3-block grey"
-                                        onclick="toggleView('menopausal_screen')"> Menopausal Screen
-                                </button>
+                                </div>
 
-                            </div>
-
-                            <div id="menopausal_screen" class="w3-hide full-width">
-                                <div id="div_id_fsh_menopausal_screen" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_fsh_menopausal_screen"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_fsh_menopausal_screen"
-                                                name="fsh_menopausal_screen"
-                                                type="checkbox">
-                                        <span class="mdl-checkbox__label">FSH</span>
-                                    </label></div>
+                                <div id="menopausal_screen" class="w3-hide full-width">
+                                    <div id="div_id_fsh_menopausal_screen" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_fsh_menopausal_screen"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_fsh_menopausal_screen"
+                                                    name="fsh_menopausal_screen"
+                                                    type="checkbox">
+                                            <span class="mdl-checkbox__label">FSH</span>
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_oestradiol_menopausal_screen" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_oestradiol_menopausal_screen"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_oestradiol_menopausal_screen"
+                                                    name="oestradiol_menopausal_screen"
+                                                    type="checkbox">Oestradiol</span>
+                                        </label></div>
+                                    </div>
+                                    <div id="div_id_albumin_menopausal_screen" class="mdl-cell mdl-cell--12-col">
+                                        <div class="controls"><label for="id_albumin_menopausal_screen"
+                                                                     class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                                            <input
+                                                    class="mdl-checkbox__input" id="id_albumin_menopausal_screen"
+                                                    name="albumin_menopausal_screen"
+                                                    type="checkbox">
+                                            <span class="mdl-checkbox__label">LH</span>
+                                        </label></div>
+                                    </div>
                                 </div>
-                                <div id="div_id_oestradiol_menopausal_screen" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_oestradiol_menopausal_screen"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_oestradiol_menopausal_screen"
-                                                name="oestradiol_menopausal_screen"
-                                                type="checkbox">Oestradiol</span>
-                                    </label></div>
-                                </div>
-                                <div id="div_id_albumin_menopausal_screen" class="mdl-cell mdl-cell--12-col">
-                                    <div class="controls"><label for="id_albumin_menopausal_screen"
-                                                                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input
-                                                class="mdl-checkbox__input" id="id_albumin_menopausal_screen"
-                                                name="albumin_menopausal_screen"
-                                                type="checkbox">
-                                        <span class="mdl-checkbox__label">LH</span>
-                                    </label></div>
-                                </div>
-                            </div>
+                                {% endif %}
 
                             <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
@@ -1391,14 +1394,7 @@
                                                             id="id_other"
                                                             maxlength="100" name="other" rows="2"></textarea></div>
                         </div>
-                        <div id="div_id_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                            <label for="id_diagnosis" class="mdl-textfield__label">
-                                Diagnosis Information/Diagnosis</label>
-                            <div class="controls"><textarea class="mdl-textfield__input bordered" cols="40"
-                                                            id="id_diagnosis"
-                                                            maxlength="200" name="diagnosis" rows="3"></textarea>
-                            </div>
-                        </div>
+
                     </div>
 
 
@@ -1425,7 +1421,7 @@
 
                         </div>
 
-                        {% if patient.gender != "M" or patient.gender != "male"%}
+                        {% if patient.gender != "male"%}{{ patient.gender }}
                             <div class="mdl-grid">
                                 <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--12-col">
                                     <input class="mdl-textfield__input" value="" id="could_b_pregrant" readonly/>
@@ -1515,12 +1511,14 @@
                                     Prosthetic heart valve
                                 </label></div>
                             </div>
-                            <div id="div_id_pregnancy" class="mdl-cell mdl-cell--4-col">
-                                <div class="controls"><label for="id_pregnancy" class="checkbox "> <input
-                                        class="checkboxinput" id="id_pregnancy" name="pregnancy" type="checkbox">
-                                    Pregnancy
-                                </label></div>
-                            </div>
+                            {% if patient.gender != "male"%}{{ patient.gender }}
+                                <div id="div_id_pregnancy" class="mdl-cell mdl-cell--4-col">
+                                    <div class="controls"><label for="id_pregnancy" class="checkbox "> <input
+                                            class="checkboxinput" id="id_pregnancy" name="pregnancy" type="checkbox">
+                                        Pregnancy
+                                    </label></div>
+                                </div>
+                            {% endif %}
                             <div id="div_id_recent_surgery" class="mdl-cell mdl-cell--4-col">
                                 <div class="controls"><label for="id_recent_surgery" class="checkbox "> <input
                                         class="checkboxinput" id="id_recent_surgery" name="recent_surgery"
@@ -1723,18 +1721,23 @@
                                 <label for="pres_id_patient_no" class="mdl-textfield__label mdl-color-text--black">
                                     Patient id</label>
                                 <div class="controls"><input class="mdl-textfield__input" id="pres_id_patient_no"
-                                                             maxlength="100" name="pres_patient_no"
-                                                             value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}"
-                                                             >
+                                                             maxlength="100" name="patient_no"
+                                                             value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}">
                                 </div>
                             </div>
+                        <div id="div_id_patient_name" class=" mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                    <label for="id_patient_name" class="mdl-textfield__label mdl-color-text--black">
+                            Patient Name</label>
+                    <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_name" maxlength="100" name="patient_name"
+                                                 value="{% if patient.first_name != None %}{{ patient.last_name }}{% endif %}" rows="10" readonly></div>
+                </div>
 
                             <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_pres_phone_number">Phone </label>
                                 <input class="mdl-textfield__input" type='tel'
                                        id="pres_textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% endif %}"
-                                       name="pres_phone_number" />
+                                       name="phone_number" />
                             </div>
 
 
@@ -1758,7 +1761,7 @@
                                 <input class="mdl-textfield__input" type="email"
                                        id="pres_textfield_email"
                                        value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}"
-                                       name="pres_email" />
+                                       name="email" />
                             </div>
 
 
@@ -1769,7 +1772,7 @@
                                 <label for="pres_id_address" class="mdl-textfield__label mdl-color-text--grey">
                                     Physical Address</label>
                                 <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="pres_id_address"
-                                                                maxlength="400" name="pres_address" rows="4"
+                                                                maxlength="400" name="address" rows="4"
                                                                 >{% if form.address.value != None %}
                                     {{ form.address.value }}{% endif %}</textarea></div>
                             </div>
@@ -1782,7 +1785,7 @@
                                 <div class="controls">
                                     <textarea class="mdl-textfield__input" cols="40"
                                                                 id="pres_prescription" maxlength="400"
-                                                                name="pres_prescription"
+                                                                name="prescription"
                                                                 rows="5"
                                                                 >{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
                             </div>
@@ -1793,7 +1796,7 @@
                         <div class="mdl-grid">
                             <button name="visit_form"
                                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
-                                    type="submit">Submit Diagnosis
+                                    type="submit">Submit and Close
                             </button>
                         </div>
 
@@ -1864,7 +1867,7 @@
                         </thead>
                         <tbody>
                         {% for visit in prev_visit %}
-                            <tr onclick="populatePrevVisit('{{ visit.visit_id }}')">
+                            <tr onclick="populatePrevVisit('{{ visit.visit_id }}','visit.triage_id')">
                                 <td class="mdl-data-table__cell--non-numeric">{{ visit.created }}</td>
                                 <td style="text-align:left;">{{ visit.diagnosis }}</td>
                             </tr>
@@ -1892,9 +1895,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for test in tests %}
-                            <tr onclick="showTest()">
-                                <td class="mdl-data-table__cell--non-numeric">{{ test.name }}</td>
+                        {% for test in lab_results%}
+                            <tr onclick="showTest('tests_labs')">
+                                <td class="mdl-data-table__cell--non-numeric">Labs test result</td>
+                                <td style="text-align:left;">{{ test.created }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% for test in radiology_results %}
+                            <tr onclick="showTest('tests_radiology')">
+                                <td class="mdl-data-table__cell--non-numeric">Radiology test result</td>
                                 <td style="text-align:left;">{{ test.created }}</td>
                             </tr>
                         {% endfor %}
@@ -1934,7 +1943,7 @@
             </div>
 
         </div>
-        <div id="test_results" class="w3-modal.">
+        <div id="test_results" class="w3-modal">
             <div class="w3-modal-content w3-card-4">
                 <header class="w3-container" style="background: #3c5d73b3">
         <span onclick="close_Modal('test_results')"
@@ -1943,31 +1952,55 @@
                 </header>
                 <div class="w3-container">
                     <div class="mdl-grid">
-                        <div class="mdl-card">
-                            Tests:
-                            <div id="tests_done"></div>
+                        <div class="mdl-card full-width">
+                            <strong>Tests:</strong>
+                            <div class="mdl-grid full-width" id="tests_labs">
+                                <div class="mdl-cell md-cell--5-col">
+                                    <ul>
+                                        <h2>Lab Test</h2><br>
+                                        {% for test in lab_tests %}
+                                            {% if test.data and test.name != "triage_id" and test.name != "patient_no" %}
+                                                <li>{{ test.name }}</li>{% endif %}
+                                        {% endfor %}
+                                    </ul>
+
+                                </div>
+                                <div class="mdl-cell md-cell--5-col">
+                                    <h2>labs Results:</h2><br>
+                                    {% for lab_result in lab_results %}
+                                        {{ lab_result.test_results }}
+                                    {% endfor %}<br>
+                                <h2>files</h2>
+                                    {% for lab_result in lab_results %}
+                                        <a href="/media/{{ lab_result.uploaded_file }}">{{ lab_result.created }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="mdl-grid full-width" id="tests_radiology">
+                                <div class="mdl-cell md-cell--5-col">
+                                    <ul>
+                                        <h2>Radiology Tests</h2>
+                                        {% for test in radiology_test %}
+                                            {% if test.data and test.name != "triage_id" and test.name != "patient_no" %}
+                                                <li>{{ test.name }}</li>{% endif %}
+                                        {% endfor %}<br>
+
+
+                                    </ul>
+                                </div>
+                                <div class="mdl-cell md-cell--5-col">
+                                    <h2>Radiology results</h2><br>
+                                    {% for radiology_result in radiology_results %}
+                                        {{ radiology_result.results }}
+                                    {% endfor %}<br>
+                                <h2>files</h2>
+                                    {% for lab_result in radiology_results %}
+                                        <a href="/media/{{ lab_result.uploaded_file }}">{{ lab_result.created }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
                         </div>
-                        <table class="mdl-data-table mdl-js-data-table full-width">
-                        <thead>
-                        <tr>
-                            <th class="mdl-data-table__cell--non-numeric full-width">Tests</th>
-                            <th>Results</th>
-                            <td>Files</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for report in reports %}
-                            <tr onclick="window.location.href='/clinic/patientvisit/fromlabs/{{ test.name }}/'">
-                                <td class="mdl-data-table__cell--non-numeric">{{ report.name }}</td>
-                                <td style="text-align:left;"><a href="{{ report.result }}"></a></td>
-                                <td style="text-align:left;"><a href="{{ report.link }}"></a></td>
-                            </tr>
-                        {% endfor %}
-
-
-                        </tbody>
-                    </table>
-
 
                         </ul>
 
@@ -2050,9 +2083,7 @@
 
                     </div>
 
-                    <footer class="w3-container" style="background: #3c5d73b3">
-                        <p>Modal Footer</p>
-                    </footer>
+
                 </div>
             </div>
     </div>
@@ -2060,108 +2091,6 @@
 
 
 
-    <div id="prescriptionForm" class="w3-modal">
-        <div class="w3-modal-content w3-card-4">
-            <header class="w3-container" style="background: #3c5d73b3">
-        <span onclick="closePrescriptionForm()"
-              class="w3-button w3-display-topright">&times;</span>
-                <h2>Add A prescription</h2>
-            </header>
-            <div class="w3-container">
-                <fieldset>
-                    <legend>Prescription</legend>
-                <div class="mdl-layout-spacer"></div>
-                    <form id="clinicPrescriptionForm" method="post">
-                        {% csrf_token %}
-                        <div class="mdl-grid ">
-
-                            <div id="div_id_patient_no"
-                                 class="hidden mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label for="pres_id_patient_no" class="mdl-textfield__label mdl-color-text--black">
-                                    Patient id</label>
-                                <div class="controls"><input class="mdl-textfield__input" id="pres_id_patient_no"
-                                                             maxlength="100" name="pres_patient_no"
-                                                             value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}"
-                                                             readonly>
-                                </div>
-                            </div>
-
-                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_pres_phone_number">Phone </label>
-                                <input class="mdl-textfield__input" type='tel'
-                                       id="pres_textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% endif %}"
-                                       name="pres_phone_number" required/>
-                            </div>
-
-
-                            <script>
-                                $('.phone').addClass('is-dirty')
-
-                                $('#pres_textfield_phone_number').on('keyup', function (e) {
-                                    $('.phone_number').addClass('is-dirty')
-                                    var number = $("#pres_textfield_phone_number").intlTelInput("getNumber");
-                                    $("#pres_textfield_phone_number").val(number)
-
-                                });
-
-
-                                $("#pres_textfield_phone_number").intlTelInput();
-
-                            </script>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="pres_textfield_email">Email Address</label>
-                                <input class="mdl-textfield__input" type="email"
-                                       id="pres_textfield_email"
-                                       value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}"
-                                       name="pres_email" required/>
-                            </div>
-
-
-                        </div>
-                        <div class="mdl-grid ">
-                            <div id="div_id_address"
-                                 class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
-                                <label for="pres_id_address" class="mdl-textfield__label mdl-color-text--grey">
-                                    Physical Address</label>
-                                <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="pres_id_address"
-                                                                maxlength="400" name="pres_address" rows="4"
-                                                                required="">{% if form.address.value != None %}
-                                    {{ form.address.value }}{% endif %}</textarea></div>
-                            </div>
-                        </div>
-                        <div class="mdl-grid ">
-                            <div id="div_id_prescription"
-                                 class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
-                                <label for="pres_id_prescription" class="mdl-textfield__label mdl-color-text--grey">
-                                    Prescription </label>
-                                <div class="controls">
-                                    <textarea class="mdl-textfield__input" cols="40"
-                                                                id="pres_prescription" maxlength="400"
-                                                                name="pres_prescription"
-                                                                rows="5"
-                                                                required="">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="mdl-grid">
-                            <button name="prescription_form"
-                                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
-                                    type="submit">Prescribe
-                            </button>
-                        </div>
-
-                    </form>
-                <div class="mdl-layout-spacer"></div>
-
-                </fieldset>
-            </div>
-        </div>
-
-    </div>
 
     <dialog class="mdl-dialog">
     <div class="mdl-dialog__content">
