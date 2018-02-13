@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{% static 'css/intlTelInput.css' %}">
         <link rel="stylesheet" href="{% static 'css/intlTelInput.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_box.css' %}">
 
@@ -59,13 +60,13 @@
 </header>
 <div class="navigation">
     <ul class="navigation-tabs">
-        <li id="registration_tab" class="current"><a href="/registration/">Registration</a></li>
-        <li id="triage_tab"><a href="/nurse/models/create/">Triage</a></li>
-        <li id="clinic_tab"><a href="/clinic/patientvisit/create/">Clinic</a></li>
-        <li id="labs_tab"><a href="/labs/">Labs</a></li>
-        <li id="radiology_tab"><a href="/labs/radiology/">Radiology</a></li>
-        <li id="prescription_tab"><a href="/medication/search/">Prescriptions</a></li>
-        <li id="pre_authorization_tab"><a href="{% url 'payments_pre_authorization_search' %}">Pre-authorization</a>
+        <li id="registration_tab" class="current"><a href="/registration/"><span class="fa fa-user-plus spav">Registration</span></a></li>
+        <li id="triage_tab"><a href="/nurse/models/create/"><span class="fa fa-address-book spav"> Triage </span></a></li>
+        <li id="clinic_tab"><a href="/clinic/patientvisit/create/"><span class="fa fa-clipboard spav "> Clinic </span></a></li>
+        <li id="labs_tab"><a href="/labs/"><span class="fa fa-flask spav "> Labs </span> </a></li>
+        <li id="radiology_tab"><a href="/labs/radiology/"><span class="fa fa-bolt spav">Radiology </span> </a></li>
+        <li id="prescription_tab"><a href="/medication/search/"><span class="fa fa-book  spav ">Prescriptions </span> </a></li>
+        <li id="pre_authorization_tab"><a href="{% url 'payments_pre_authorization_search' %}">    <span class="fa fa-credit-card " > Pre-authorization  </span>  </a>
         </li>
     </ul>
 </div>
