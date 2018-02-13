@@ -51,7 +51,7 @@
         <!-- Navigation -->
         <nav class="mdl-navigation">
             {% if user.is_authenticated %}
-                <a class="mdl-navigation__link" href="{% url 'logout' %}">logout</a> {% else %}
+                <a class="mdl-navigation__linkgit mybtn " href="{% url 'logout' %}">logout</a> {% else %}
                 <a class="mdl-navigation__link" href="">login</a> {% endif %}
         </nav>
     </div>
