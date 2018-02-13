@@ -194,16 +194,15 @@ class LabsVisitView(CreateView):
 
     def get_context_data(self, **kwargs):
 
-
         context = super(LabsVisitView, self).get_context_data(**kwargs)
 
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
-            lab_object = Labs.objects.get(triage_id=patient_object.session_id)
+            lab_object = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
             object = labsForm(data=model_to_dict(lab_object))
             context['request'] = object
-            context['other'] = lab_object.other
+            context['other'] = lab_object.other #text area field in the labresult form
             context['diagnosis'] = lab_object.diagnosis
         except:
             raise Http404('Requested user not found.')
@@ -250,7 +249,7 @@ class RadiologyVisitView(CreateView):
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
-            radiology_object = Radiology.objects.get(patient_no=self.kwargs['patient_no'])
+            radiology_object = Radiology.objects.filter(patient_no=self.kwargs['patient_no']).latest('created')
 
             object = radiologyForm(data=model_to_dict(radiology_object))
             context['request'] = object
