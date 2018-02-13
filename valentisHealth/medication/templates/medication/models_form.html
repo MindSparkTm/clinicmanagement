@@ -11,7 +11,7 @@
 
             <div class="mdl-grid ">
 
-                <div id="div_id_patient_no" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                <div id="div_id_patient_no" class="hidden mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                     <label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
                             Patient id</label>
                     <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_no" maxlength="100" name="patient_no" value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" rows="10" readonly>
@@ -24,10 +24,34 @@
                     <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_name" maxlength="100" name="patient_name" value="{% if patient.patient_name != None %}{{ patient.patient_name }}{% endif %}" rows="10" readonly></div>
                 </div>
 
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                    <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_phone_number">Phone Number </label>
-                    <input class="mdl-textfield__input" type='tel' pattern='^\+?\d{10}' id="textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% endif %}" name="phone_number" required/>
+                <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_phone_number">Phone </label>
+                                <input class="mdl-textfield__input" type='tel'
+                                       id="textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% endif %}" name="phone_number"/>
                 </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_email">Email Address</label>
+                                <input class="mdl-textfield__input" type="email"
+                                       id="textfield_email"
+                                       value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}" name="email" required/>
+                            </div>
+
+                <script>
+                    $('.phone').addClass('is-dirty')
+
+                    $('#textfield_phone_number').on('keyup', function (e) {
+                        $('.phone').addClass('is-dirty')
+                        var number = $("#textfield_phone_number").intlTelInput("getNumber");
+                        $("#textfield_phone_number").val(number)
+
+                    });
+
+
+                    $("#textfield_phone_number").intlTelInput();
+
+                </script>
 
             </div>
             <div class="mdl-grid ">

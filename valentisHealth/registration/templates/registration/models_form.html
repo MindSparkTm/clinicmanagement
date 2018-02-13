@@ -68,7 +68,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_phone">Phone </label>
                                 <input class="mdl-textfield__input" type='tel'
-                                       id="textfield_phone" value="{% if form.phone.value != None %}{{ form.phone.value }}{% else %}{% endif %}" name="phone"/>
+                                       id="textfield_phone" value="{% if form.phone.value != None %}{{ form.phone.value }}{% else %}{% endif %}" name="phone" required/>
                             </div>
 
                             <script>
@@ -79,8 +79,6 @@
                                     var number = $("#textfield_phone").intlTelInput("getNumber");
                                     $("#textfield_phone").val(number)
 
-
-                                    console.log(number)
                                 });
 
 
@@ -103,13 +101,15 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_postal_address">Address </label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_address" value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
+                                       id="textfield_postal_address"
+                                       value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_apartment_name">Physical Address</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_apartment_name" value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name"/>
+                                       id="textfield_apartment_name"
+                                       value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name"/>
                             </div>
 
 

@@ -77,10 +77,13 @@ class DoctorVisit(CreateView):
     def get_context_data(self, **kwargs):
 
         context = super(DoctorVisit, self).get_context_data(**kwargs)
+        context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
 
         try:
+
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             print(patient_object.alergies)
+
 
             if patient_object.alergies is not None:
 
@@ -95,9 +98,11 @@ class DoctorVisit(CreateView):
 
             #-4 out of labs, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
+            context['prev_visit'] = patientVisit.objects.filter(Q(patient_no=self.kwargs['patient_no']))
+            # context[''] = Patient.objects
             context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
             context['patient'] = patient_object
-            context['triage'] = Triage.objects.get(patient_no=self.kwargs['patient_no'])
+
         except:
             raise Http404('Requested user not found.')
 

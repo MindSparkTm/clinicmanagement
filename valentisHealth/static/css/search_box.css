@@ -2,13 +2,14 @@
             *       Fix position of mobile search button.
             */
 .mdh-expandable-search {
-    margin: 0 50px;
+    margin: 0 0;
     align-items: center;
     justify-content: center;
 }
 
 .mdh-expandable-search form {
     max-width: 600px;
+    max-height: 50px !important;
 }
 
 .mdh-expandable-search,

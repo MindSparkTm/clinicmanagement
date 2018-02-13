@@ -3,11 +3,11 @@
 
 {% block content %}
     <script>
-    $("#registration_tab").addClass("current").siblings().removeClass("current")
-</script>
+        $("#registration_tab").addClass("current").siblings().removeClass("current")
+    </script>
 
     <div class="mdl-grid ">
-    <div class="mdl-layout-spacer"></div>
+        <div class="mdl-layout-spacer"></div>
 
         <div class="mdl-card mdl-shadow--16dp util-center mdl-cell mdl-cell--6-col">
             <style>
@@ -18,7 +18,8 @@
                 }
             </style>
             <div class="mdl-card__title mdl-color--teal-500 ">
-                <h2 class="mdl-card__title-text mdl-color-text--white" style="justify-content: center">Search Patient</h2>
+                <h2 class="mdl-card__title-text mdl-color-text--white" style="justify-content: center">Search
+                    Patient</h2>
             </div>
 
             <div class="mdl-grid" id="search_members">
@@ -39,98 +40,7 @@
                     }
                 </style>
 
-                <div class="mdl-card" style="width:100%;">
-                    <!-- Search -->
-                    <style>
-                        /* TODO: Hover and Focus state.
-            *       Fix position of mobile search button.
-            */
-                        .mdh-expandable-search {
-                            margin: 0 0;
-                            align-items: center;
-                            justify-content: center;
-                        }
-
-                        .mdh-expandable-search form {
-                            max-width: 600px;
-                            max-height: 50px !important;
-                        }
-
-                        .mdh-expandable-search,
-                        .mdh-expandable-search form,
-                        .mdh-expandable-search input {
-                            /* Cross browser flex-grow */
-                            -webkit-box-flex: 1;
-                            -webkit-flex-grow: 1;
-                            -ms-flex-positive: 1;
-                            flex-grow: 1;
-                        }
-
-                        .mdh-expandable-search,
-                        .mdh-expandable-search form {
-                            /* Cross browser inline-flex */
-                            display: -webkit-inline-box;
-                            display: -webkit-inline-flex;
-                            display: -moz-inline-box;
-                            display: -ms-inline-flexbox;
-                            display: inline-flex;
-                        }
-
-                        /* Position search icon */
-                        .mdh-expandable-search .material-icons {
-                            position: relative;
-                            right: -40px;
-                            margin-left: -24px; /* Remove the blank space left behind by the icon being relatively positioned */
-                        }
-
-                        .mdh-expandable-search input {
-                            outline: none;
-                            border: none;
-                            font-size: 16px;
-                            color: #FFFFFF;
-                            background-color: #78909C;
-                            padding: 0px 35px 0px 70px;
-                            height: 40px;
-                            line-height: 40px; /* TODO: This was recommended for cross browser compatability of input height, check if its actually needed in modern browsers */
-
-                            border-radius: 5px 5px 5px 5px;
-                            -moz-border-radius: 5px 5px 5px 5px;
-                            -webkit-border-radius: 5px 5px 5px 5px;
-                        }
-
-                        .mdh-expandable-search input::-webkit-input-placeholder { /* WebKit browsers */
-                            color: #FFFFFF;
-                        }
-
-                        .mdh-expandable-search input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-                            color: #FFFFFF;
-                            opacity: 1; /* Firefox gives the placeholder a reduced opacity so we have to increase it */
-                        }
-
-                        .mdh-expandable-search input::-moz-placeholder { /* Mozilla Firefox 19+ */
-                            color: #FFFFFF;
-                            opacity: 1; /* Firefox gives the placeholder a reduced opacity so we have to increase it */
-                        }
-
-                        .mdh-expandable-search input:-ms-input-placeholder { /* Internet Explorer 10+ */
-                            color: #FFFFFF;
-                        }
-
-                        /* Bug fix: https://github.com/google/material-design-lite/issues/1078
-                         * To much padding on the left of header when the menu button is hidden */
-                        @media screen and (min-width: 851px) {
-                            .mdl-layout__header-row {
-                                padding: 0 40px 0 40px;
-                            }
-                        }
-
-                        /* Bug fix for badges being in the wrong location */
-                        .mdl-badge[data-badge]:after {
-                            right: -7px;
-                            top: -8px;
-                        }
-                    </style>
-
+                <div class="mdl-card full-width">
                     {#                    preauth scrips#}
                     <script>
                         //Do ajax call for search box
@@ -140,39 +50,39 @@
                             $('#search_table tbody').children().remove();
 
                             //string must not be empty or less than two characters
-                            if (/\S/.test(str) && str.length > 1){
+                            if (/\S/.test(str) && str.length > 1) {
                                 $.ajax({
-                                url: "http://127.0.0.1:8000/registration/api/v1/models/",
-                                type: "get",
-                                data: {
+                                    url: "http://127.0.0.1:8000/registration/api/v1/models/",
+                                    type: "get",
+                                    data: {
 
-                                    search: str,
-                                },
-                                success: function (json) {
-                                    console.log(json)
-                                    if (json.length === 0) {
-                                        $("#no_result").show()
-                                        $('#searchresult').hide()
+                                        search: str,
+                                    },
+                                    success: function (json) {
+                                        console.log(json)
+                                        if (json.length === 0) {
+                                            $("#no_result").show()
+                                            $('#searchresult').hide()
 
-                                    } else {
+                                        } else {
 
-                                        $("#no_result").hide()
-                                        $('#searchresult').show()
-                                        var tbody = $('#search_table tbody'), props = ["patient_no", "first_name", "surname"]
-                                        $.each(json, function (i, reservation) {
-                                            {#                                            var action = "window.location.href='" + link + json[i].patient_no + "'"#}
-                                            var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/registration/existing/"+json[i].patient_no+"/'\">");
-                                            $.each(props, function (i, prop) {
-                                                $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                                            $("#no_result").hide()
+                                            $('#searchresult').show()
+                                            var tbody = $('#search_table tbody'), props = ["patient_no", "first_name", "surname"]
+                                            $.each(json, function (i, reservation) {
+                                                {#                                            var action = "window.location.href='" + link + json[i].patient_no + "'"#}
+                                                var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/registration/existing/" + json[i].patient_no + "/'\">");
+                                                $.each(props, function (i, prop) {
+                                                    $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                                                });
+                                                tbody.append(tr);
                                             });
-                                            tbody.append(tr);
-                                        });
+
+                                        }
 
                                     }
 
-                                }
-
-                            })
+                                })
                             }
                         }
                     </script>
@@ -209,7 +119,7 @@
                 </div>
 
                 <style>
-                    .mdl-card{
+                    .mdl-card {
                         min-height: 50px !important;
                     }
                 </style>
@@ -217,17 +127,18 @@
                     <h3>OR instead</h3>
                 </div>
                 <div class=" mdl-card" style="width:100%;">
-                    <button type="submit" onclick="window.location.href='/registration/models/create/{{ patient.patient_no }}'"
-                                class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
-                            Create New Patient
-                        </button>
+                    <button type="submit"
+                            onclick="window.location.href='/registration/models/create/{{ patient.patient_no }}'"
+                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                        Create New Patient
+                    </button>
                 </div>
 
             </div>
 
 
         </div>
-    <div class="mdl-layout-spacer"></div>
+        <div class="mdl-layout-spacer"></div>
     </div>
 
 
