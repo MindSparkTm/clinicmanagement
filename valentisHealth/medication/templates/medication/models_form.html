@@ -5,7 +5,7 @@
 <div class="mdl-grid">
     <div class="mdl-layout-spacer"></div>
     <div class="mdl-shadow--4dp mdl-cell mdl-cell--10-col">
-        <form method="post">
+        <form method="post" id="data">
             {% csrf_token %}
 
 
@@ -65,21 +65,187 @@
                 <div id="div_id_prescription" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
                     <label for="id_prescription" class="mdl-textfield__label mdl-color-text--grey">
                             Prescription </label>
-                    <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_prescription" maxlength="400" name="prescription" rows="10" required="">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
+                    <div class="controls">
+                        <input class="mdl-textfield__input" cols="40" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the medicine you want to search'"
+ id="medicationlist" maxlength="100" name="medicationlist" rows="10" placeholder="Enter the medicine you want to search" onkeyup="getsearch(this.value)"/>
+                        <br>
+                        <textarea class="mdl-textfield__input" cols="40" id="id_prescription" maxlength="400" name="prescription" rows="10" required="">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
+                        <div id="livesearch"></div>
+
                 </div>
 
 
             </div>
 
-
+<div id="prescriptionlist">
+          </div>
             <div class="mdl-grid">
                 <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">Submit
                     </button>
+            </div>
+<div class="mdl-grid">
+
+                <input type="button" id ="sendemail" type="submit">SendEmail
+                    </input>
             </div>
 
         </form>
     </div>
     <div class="mdl-layout-spacer"></div>
 </div>
+<script type="text/javascript">
+ var brand =[];
+            var results=[];
+            var s;
+            var clicked =0;
+            var sr="";
 
+            $(window).on("load", getdata());
+            var patient_id=$("#id_patient_no").val();
+
+function getdata() {
+    $.ajax({
+        url: "http://127.0.0.1:8000/medication/api/v1/MyDawa/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            for (var i = 0; i < response.length; ++i) {
+
+                //  brand.push(response[i].brand);
+            }
+
+           console.log("loaded",patient_id);
+               getprescriptiondata(patient_id);
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
+function getprescriptiondata(patientid) {
+
+    $.ajax({
+        url: "http://127.0.0.1:8000/medication/api/v1/MyDawaPrescriptions/",
+        type: "get",
+        data:{
+            search:patientid,
+        },
+        success: function (response) {
+     $("#prescriptionlist").append("Previous Prescriptions-"+"\n");
+           for (var i = 0; i < response.length; ++i) {
+               console.log("presciption",response.length);
+
+
+               $("#prescriptionlist").append(response[i].prescription+'\n')
+
+            }
+
+           console.log("entered",response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+}
+
+    function getsearch(val) {
+        results = [];
+        document.getElementById("livesearch").innerHTML = "";
+
+        if (val.length == 0) {
+            document.getElementById("livesearch").innerHTML = "";
+            document.getElementById("livesearch").style.border = "0px";
+            return;
+        }
+        console.log(s);
+        console.log("val", val);
+        if (val.length > 2) {
+            for (var i = 0; i < s.length; i++) {
+                for (key in s[i]) {
+                    if (s[i][key].indexOf(val) != -1) {
+                        $("#livesearch").append($("<li>").text(s[i][key]));
+
+
+                        results.push(s[i]);
+                    }
+                }
+            }
+
+        }
+
+
+        console.log(results);
+
+    }
+
+ $('#livesearch').on('click', 'li', function() {
+
+     sr = sr + $(this).text() + "\n";
+     console.log("sr", sr);
+
+     $('#id_prescription').val(sr)
+
+ });
+
+ var cb = $("input#check");
+
+ if (cb.is(":checked")) {
+    console.log("checkbox is checked ");
+} else {
+    console.log("checkbox is not checked");
+}
+
+function clearprescriptionarea(){
+     $("#clrbtn").val("");
+}
+
+$("#sendemail").click(function(e){
+
+id_patient_no
+id_patient_name
+textfield_phone_number
+textfield_email
+id_address
+id_prescription
+    var patientnumber =$("#id_patient_no").val();
+     var patientname = $("#id_patient_name").val();
+     var phonenumber = $("#textfield_phone_number").val();
+     var email = $("#textfield_email").val();
+     var address = $("#id_address").val();
+     var prescriptionid= $("#id_prescription").val();
+
+     var htmldata={"patientnumber":patientnumber,"patientname":patientname,"phonenumber":phonenumber,"email":email,"address":address,
+         "prescriptionid":prescriptionid};
+
+
+        var formData={"api_user":'redpulse',"api_key":'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',"to":'smartsurajit2008@gmail.com',"from":'hello@redpulse@co.ke',"subject":'Test Email',"html":htmldata};
+        console.log(formData);
+      $.ajax({
+        url: "https://api.sendgrid.com/api/mail.send.json",
+        type: 'POST',
+        data: formData,
+        async: false,
+        success: function (data) {
+          console.log(data)
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+   return false;
+
+
+ });
+
+
+
+</script>
 {% endblock %}

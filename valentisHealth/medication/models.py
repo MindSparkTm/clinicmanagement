@@ -10,6 +10,18 @@ from django.db import models as models
 from django_extensions.db import fields as extension_fields
 
 
+class MyDawa(models.Model):
+    brand = models.CharField(max_length=255)
+    size = models.CharField(max_length=300)
+    price = models.CharField(max_length=300)
+
+    class Meta:
+        ordering = ('brand',)
+
+    def __str__(self):
+        return self.brand + " : " + self.size + ":" + self.price
+
+
 class models(models.Model):
 
     # Fields
@@ -25,6 +37,7 @@ class models(models.Model):
     prescription = models.TextField(max_length=400)
 
 
+
     class Meta:
         ordering = ('last_updated',)
 
@@ -34,8 +47,7 @@ class models(models.Model):
     def get_absolute_url(self):
         return reverse('medication_models_detail', args=(self.slug,))
 
-
     def get_update_url(self):
-        return reverse('medication_models_update', args=(self.slug,))
+       return reverse('medication_models_update', args=(self.slug,))
 
 
