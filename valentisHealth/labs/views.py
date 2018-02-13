@@ -1,12 +1,14 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
 from .models import Labs, Radiology, RadiologyResult, LabResults
 from .forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from registration.models import models as Patient
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.shortcuts import render #, get_object_or_404, redirect, reverse
 from django.forms.models import model_to_dict
 from django.db.models import Q
+from rest_framework import generics
+from .serializers import LabResultsSerializer, RadiologyResultSerializer
 
 class labsListView(ListView):
     model = Labs
@@ -255,10 +257,27 @@ class RadiologyVisitView(CreateView):
             context['clinical_indication'] = radiology_object.clinical_indication
             # print(object)
 
-
-
         except:
             raise Http404('Requested user not found.')
 
         return context
 
+
+def Tests(request, triage_id):
+    return JsonResponse()
+
+class Tests(generics.GenericAPIView):
+    def get(self, request, *args, **kwargs):
+        labresult = LabResults.objects.filter(triage_id=kwargs.get('triage_id'))
+        radiologyresult = RadiologyResult.objects.filter(triage_id=kwargs.get('triage_id'))
+
+        context = {
+            "request": request,
+        }
+
+        labs_serializer = LabResultsSerializer(labresult, many=True, context=context)
+        radiology_serializer = RadiologyResultSerializer(radiologyresult, many=True, context=context)
+
+        response = labs_serializer.data + radiology_serializer.data
+
+        return JsonResponse(response)

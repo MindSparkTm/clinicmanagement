@@ -11,13 +11,14 @@ class modelsSerializer(serializers.ModelSerializer):
             'slug', 
             'created', 
             'last_updated', 
-            'prescription_id', 
-            'patient_no', 
+            'prescription_id',
+            'patient_no',
             'patient_name', 
             'address', 
             'phone_number', 
             'signature', 
-            'prescription', 
+            'prescription',
+            'email'
         )
 
 

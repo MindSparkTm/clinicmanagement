@@ -8,32 +8,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import models as auth_models
 from django.db import models as models
 from django_extensions.db import fields as extension_fields
-
-# labChoices =  {0: "Valentis Health", 1: " 124/80", 2: " 88", 3: "38.0", 4: "90.0", 7: "Medications", 8: "Alergies",
-#      10: "Alergies",
-#      13: " None", 14: " None", 15: " None", 16: " None", 18: " None", 19: " None", 22: "Haemoglobin estimation(Hb)", 28:
-#          "Leucocyte diff count", 34: "Leucocyte Total count", 40: "Hb and diff count", 46: "Erythrocyte count",
-#      52: "Packed Cell Volume", 58: "Full blood count", 64: "ESR", 75: "Prothrombin index(PI) / INR",
-#      81: "PI / INR dosage information ", 92: "Blood group(A B O)", 98: "Groupting: Rh Antigen", 104: " Direct Coombs",
-#      110: "Indirect Coombs", 116: "Syphilis Serology", 122: "Malaria: Antigen", 128: "Parasite in blood smear",
-#      134: "Concentration techniques for parasite", 140: "TSH", 146:
-#          "Potassium", 152: "sodium", 158: "Potassium / sodium / Chloride / Creatinine ", 164: "Creatinine", 170: "Urea",
-#      176:"Urea & Electrolytes only", 182: "Uric acid", 188: "Glucose - random/fasting", 194: "HbA1C",
-#      205: "Cholestrol - Total",
-#      211: "Cholestral/HDL", 217: "Triglycerides", 223: "LDL Cholestrol", 229: "Amylase", 235: "Alkaline Phosphate", 241:
-#          "Bilirubin: Total", 247: "Bilirubin: Conjugated",
-#                253: "AST(SGOT)", 259: "ALT(SGPT)", 265: "LDH", 271: "Gamma GT", 282: "HIV viral load",
-#                288: "CD 4/8 count", 294: "IHepatitis: AIGM antibody", 300: "Hepatitis: B surface antigen",
-#                306: "C-reactive protein", 312: "Urine dipstick(per stick)", 318: "urine - microscopy",
-#                324: "urine - micro/culture", 330: "Sputum - gram", 336: "Sputum - culture", 342: "Direct prep: AFB",
-#                348: "LOcult blood", 354: "Faeces", 365: "Patient History", 371: "Total lg E",
-#                377: "Inhalant Screen (phadiatop)", 383: "Rast per allergen", 389: "Iron", 395: "Ferritin",
-#                401: "Soluble Transferrin receptor", 407: "CK-MB", 418: "Tropin T or I",
-#                429: "Haemoglobin Estimation(Hb)", 435: "Blood grouping (ABO/RH Antigen) Creatine", 441: "Direct Coombs",
-#                447: "Hepatitis B Surface antigen", 453: "Rubella lg G", 459: "Syphilis", 465: "HIV: Elisa", 471: "FSH",
-#                482: "LH", 488: "Alkaline Phosphate", 494: "ALT(SGPT)", 500: "AST(SGOT)",
-#                506: "Bilirubin: Total/Conjugated", 512: "LDH", 518: "Gamma GT"
-#                }
+import uuid
 
 
 class Labs(models.Model):
@@ -42,6 +17,8 @@ class Labs(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     lab_name = models.TextField(max_length=100, null=True, blank=True)
+    lab_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    triage_id = models.CharField(max_length=100, null=True, blank=True)
     h01 = models.BooleanField(default=False)
     h02 = models.BooleanField(default=False)
     h03 = models.BooleanField(default=False)
@@ -150,6 +127,8 @@ class Radiology(models.Model):
     slug = extension_fields.AutoSlugField(populate_from='patient_no', blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
+    radiology_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    triage_id = models.CharField(max_length=100, null=True, blank=True)
     lpm_date = models.BooleanField(default=False)
     could_b_pregrant = models.TextField(max_length=100, null=True, blank=True)
     examination = models.TextField(max_length=200, null=True, blank=True)
@@ -192,6 +171,8 @@ class RadiologyResult(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     patient_no = models.CharField(max_length=30)
     results = models.TextField(max_length=400)
+    radiologyresult_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    triage_id = models.CharField(max_length=100, null=True, blank=True)
     tests_done = models.TextField(max_length=400, null=True, blank=True)
     uploaded_file = models.FileField(upload_to='media/radiology/', null=True, blank=True)
 
@@ -216,6 +197,8 @@ class LabResults(models.Model):
     slug = extension_fields.AutoSlugField(populate_from='patient_no', blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
+    labresult_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    triage_id = models.CharField(max_length=100, null=True, blank=True)
     patient_no = models.TextField(max_length=100)
     tests_done = models.TextField(max_length=400, null=True, blank=True)
     test_results = models.TextField(max_length=400)

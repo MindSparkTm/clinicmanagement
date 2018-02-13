@@ -35,4 +35,3 @@ class LabResultsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.LabResultsSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-

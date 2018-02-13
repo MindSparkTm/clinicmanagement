@@ -18,7 +18,8 @@ class patientVisitSerializer(serializers.ModelSerializer):
             'notes', 
             'diagnosis', 
             'prescription_id', 
-            'status', 
+            'status',
+            'triage_id'
         )
 
 

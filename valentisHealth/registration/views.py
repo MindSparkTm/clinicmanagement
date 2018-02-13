@@ -19,10 +19,9 @@ class modelsCreateView(CreateView):
 
     def form_valid(self, form):
         instance = form.save(commit=False)
-
+        instance.status = 2
 
         instance.save()
-        print(instance.status)
 
         return HttpResponseRedirect("/registration/models/create/?sucess=true")
 

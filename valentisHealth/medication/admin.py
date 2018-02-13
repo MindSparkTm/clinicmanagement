@@ -11,7 +11,7 @@ class modelsAdminForm(forms.ModelForm):
 
 class modelsAdmin(admin.ModelAdmin):
     form = modelsAdminForm
-    list_display = ['slug', 'created', 'last_updated', 'prescription_id', 'patient_no', 'patient_name', 'address', 'phone_number', 'signature', 'prescription']
+    list_display = ['slug', 'created', 'last_updated', 'prescription_id', 'patient_no', 'patient_name', 'address', 'email', 'phone_number', 'signature', 'prescription']
 
 admin.site.register(models, modelsAdmin)
 

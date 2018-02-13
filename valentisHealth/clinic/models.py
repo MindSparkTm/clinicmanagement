@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import models as auth_models
 from django.db import models as models
 from django_extensions.db import fields as extension_fields
-
+import uuid
 
 class patientVisit(models.Model):
 
@@ -18,8 +18,9 @@ class patientVisit(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     patient_no = models.CharField(max_length=30, null=True, blank=True)
-    visit_id = models.CharField(max_length=30, null=True, blank=True) # models.AutoField(primary_key=True)
+    visit_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) # models.AutoField(primary_key=True)
     radiology_no = models.CharField(max_length=30, null=True, blank=True)
+    triage_id = models.CharField(max_length=30, null=True, blank=True)
     notes = models.TextField(max_length=200, null=True, blank=True)
     diagnosis = models.TextField(max_length=100, null=True, blank=True)
     prescription_id = models.CharField(max_length=30, null=True, blank=True)

@@ -100,7 +100,8 @@ class LabsSerializer(serializers.ModelSerializer):
             'i01_menopausal_screen', 
             'i02_menopausal_screen', 
             'i03_menopausal_screen', 
-            'patient_no', 
+            'patient_no',
+            'triage_id',
         )
 
 
@@ -131,7 +132,8 @@ class RadiologySerializer(serializers.ModelSerializer):
             'anticoagulant_drugs', 
             'egfr_result', 
             'date', 
-            'patient_no', 
+            'patient_no',
+            'triage_id',
         )
 
 
@@ -148,6 +150,7 @@ class RadiologyResultSerializer(serializers.ModelSerializer):
             'patient_no',
             'results',
             'tests_done',
+            'triage_id',
         )
 
 
@@ -162,6 +165,7 @@ class LabResultsSerializer(serializers.ModelSerializer):
             'patient_no',
             'tests_done',
             'test_results',
+            'triage_id',
         )
 
 

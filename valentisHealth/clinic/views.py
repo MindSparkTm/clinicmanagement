@@ -1,5 +1,5 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
-from .models import patientVisit
+from .models import patientVisit, Diagnosis
 from .forms import patientVisitForm
 from registration.models import models as Patient
 from django.http import HttpResponseRedirect
@@ -65,6 +65,7 @@ class DoctorVisit(CreateView):
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
             #status 0 means patient's session ended
             patient_object.status = 0
+            instance.triage_id = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0].triage_id
             patient_object.save()
         except:
             print(404)
@@ -77,7 +78,10 @@ class DoctorVisit(CreateView):
     def get_context_data(self, **kwargs):
 
         context = super(DoctorVisit, self).get_context_data(**kwargs)
-        context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+        try:
+            context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+        except:
+            context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])
 
         try:
 
@@ -99,7 +103,7 @@ class DoctorVisit(CreateView):
             #-4 out of labs, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
             context['prev_visit'] = patientVisit.objects.filter(Q(patient_no=self.kwargs['patient_no']))
-            # context[''] = Patient.objects
+            # print(context['prev_visit'])
             context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
             context['patient'] = patient_object
 
@@ -109,4 +113,11 @@ class DoctorVisit(CreateView):
 
         return context
 
+
+# Populate database for diagnosis ICD10
+#
+#
+# for disease in icd10:
+#     new_disease = Diagnosis.objects.create(name=disease['name'], code=disease['code'])
+#     new_disease.save
 

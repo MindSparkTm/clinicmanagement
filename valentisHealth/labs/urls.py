@@ -40,6 +40,7 @@ urlpatterns += (
 urlpatterns += (
     # urls for LabResults
     url(r'^labresults/$', views.LabResultsListView.as_view(), name='labresults_list'),
+    url(r'^tests/(?P<triage_id>\S+)/$', views.Tests.as_view(), name='labresults_list'),
     url(r'^labs/(?P<patient_no>\S+)/$', views.LabsVisitView.as_view(), name='labresults_create'),
     url(r'^labresults/detail/(?P<slug>\S+)/$', views.LabResultsDetailView.as_view(), name='labresults_detail'),
     url(r'^labresults/update/(?P<slug>\S+)/$', views.LabResultsUpdateView.as_view(), name='labresults_update'),

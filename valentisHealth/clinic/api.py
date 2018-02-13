@@ -1,7 +1,6 @@
 from . import models
 from . import serializers
-from rest_framework import viewsets, permissions
-
+from rest_framework import viewsets, permissions, filters
 
 class patientVisitViewSet(viewsets.ModelViewSet):
     """ViewSet for the patientVisit class"""
@@ -18,3 +17,6 @@ class DiagnosisViewSet(viewsets.ModelViewSet):
     queryset = models.Diagnosis.objects.all()
     serializer_class = serializers.DiagnosisSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('code', 'name')

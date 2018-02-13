@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import models as auth_models
 from django.db import models as models
 from django_extensions.db import fields as extension_fields
-
+import uuid
 
 
 class Children(models.Model):
@@ -96,6 +96,7 @@ class models(models.Model):
     sub_dob = DateField(null=True, blank=True)
     sub_employer = TextField(max_length=100,null=True, blank=True)
     status = IntegerField(null=True, blank=True)
+    session_id = models.UUIDField(default=uuid.uuid4, editable=False)
 
     uploaded_file = models.FileField(upload_to='media/users/', null=True, blank=True)
 

@@ -22,7 +22,11 @@ class modelsSerializer(serializers.ModelSerializer):
             'patient_no', 
             'first_name', 
             'last_name', 
-            'middle_name', 
+            'middle_name',
+            'triage_id',
+            'weight',
+            'height',
+            'random_glucose',
         )
 
 

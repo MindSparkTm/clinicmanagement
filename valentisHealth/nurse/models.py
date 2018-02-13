@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import models as auth_models
 from django.db import models as models
 from django_extensions.db import fields as extension_fields
-
+import uuid
 
 class models(models.Model):
 
@@ -16,6 +16,7 @@ class models(models.Model):
     slug = extension_fields.AutoSlugField(populate_from='patient_no',null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
+    triage_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     systolic = models.IntegerField()
     diastolic = models.IntegerField()
     temperature = models.FloatField()
@@ -44,5 +45,3 @@ class models(models.Model):
 
     def get_update_url(self):
         return reverse('nurse_models_update', args=(self.slug,))
-
-
