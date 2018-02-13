@@ -12,6 +12,6 @@ class modelsViewSet(viewsets.ModelViewSet):
 
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('patient_no', 'patient_name')
+    search_fields = ('patient_no', 'patient_name','triage_id')
 
 

@@ -4,7 +4,7 @@ from .forms import modelsForm
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from registration.models import models as Patient
-from clinic.models import Diagnosis
+from clinic.models import Diagnosis, patientVisit
 
 class modelsListView(ListView):
     model = models
@@ -19,7 +19,19 @@ class modelsCreateView(CreateView):
         instance = form.save(commit=False)
         # status 4 means patient's in lab
         instance.status = 0
+        try:
+            patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+            instance.triage_id = patient_object.session_id
+        except:
+            pass
         instance.save()
+
+        # try:
+        #     visit = patientVisit.objects.get(patient_no=self.kwargs['patient_no']).latest('created')
+        #     prescr = models.objects.get(triage_id=self.kwargs['patient_no']).latest('created')
+        #     visit.prescription_id = prescr.presscription_id
+        # except:
+        #     pass
 
         return HttpResponseRedirect("/medication/search")
 
