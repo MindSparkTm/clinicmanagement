@@ -77,7 +77,7 @@
     {% if show_waiting_list %}
         <div id="waiting_list_table" class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--8-col">
             <div class="mdl-card__title mdl-color--teal-500">
-                <h2 class="mdl-card__title-text mdl-color-text--white">From Triage</h2>
+                <h2 class="mdl-card__title-text mdl-color-text--white">Waiting List</h2>
             </div>
             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                 <table class="mdl-data-table mdl-js-data-table full-width">
@@ -123,16 +123,16 @@
                         <thead>
                         <tr>
                             <th class="mdl-data-table__cell--non-numeric full-width">Patient Name</th>
-                            <th>Patient's Age</th>
                             <th>Patient Id.</th>
+                             <th>Arrival Time</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for patient in from_labs %}
                             <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_no }}/'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
-                                <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>
+                                <td>{{ patient.last_updated }}</td>
                             </tr>
                         {% endfor %}
 
@@ -158,7 +158,7 @@
                         </thead>
                         <tbody>
                         {% for patient in from_radiology %}
-                            <tr onclick="window.location.href='/clinic/patientvisit/fromradiology/{{ patient.patient_no }}/'">
+                            <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_no }}/'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>
