@@ -24,7 +24,7 @@ class modelsAdmin(admin.ModelAdmin):
                     'yrs_chewing_tobacco', 'if_quit_before', 'tobacco_quit_duration', 'if_drink_alcohol',
                     'alocohol_type', 'alcohol_frequency', 'if_drug_used', 'drug_type', 'when_drug_used', 'if_exercise',
                     'exercise_freq', 'if_special_diet', 'special_diet', 'if_use_caffein', 'caffein_daily_amt',
-                    'is_sadder', 'if_lost_interest', 'have_will']
+                    'is_sadder', 'if_lost_interest', 'have_will','session_id']
 
 
 

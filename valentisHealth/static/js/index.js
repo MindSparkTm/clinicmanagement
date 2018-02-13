@@ -245,7 +245,7 @@ function postPrescription(){
     console.log($('#clinicPrescriptionForm').serialize())
 
     var url = "/medication/models/new/"+$('input[name=pres_patient_no]').val()+"/";
-    var clinic_url = "/clinic/patientvisit/doctor/20/"
+    var clinic_url = "/clinic/patientvisit/doctor/"+$('input[name=pres_patient_no]').val()+"/";
 
     var formdata = {
             'patient_no': $('input[name=pres_patient_no]').val(),
@@ -282,7 +282,7 @@ function postPrescription(){
 
                $('#prescription_form_').attr('disabled','true')
                alert("Succesful");
-               window.location.href=clinic_url
+               window.location="/clinic/patientvisit/create/"
            },
         error: function(jqXHR, textStatus, errorThrown)
            {

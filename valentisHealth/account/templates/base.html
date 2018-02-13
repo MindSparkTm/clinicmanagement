@@ -128,7 +128,7 @@
                         </thead>
                         <tbody>
                         {% for patient in from_labs %}
-                            <tr onclick="window.location.href='/clinic/patientvisit/fromlabs/{{ patient.patient_no }}/'">
+                            <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_no }}/'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>

@@ -209,6 +209,7 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
+    <input id="triage_id" type="text" class="hidden" name="triage_id" value=" {{ patient.session_id }}">
 
     <div class="mdl-grid ">
 

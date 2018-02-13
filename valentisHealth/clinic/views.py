@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
 from nurse.models import models as Triage
 from django.db.models import Q
+from rest_framework import generics
+from labs.serializers import LabResultsSerializer, RadiologyResultSerializer
+from labs.models import Labs, Radiology, RadiologyResult, LabResults
 
 class patientVisitListView(ListView):
     model = patientVisit
@@ -77,17 +80,37 @@ class DoctorVisit(CreateView):
 
     def get_context_data(self, **kwargs):
 
+
+
         context = super(DoctorVisit, self).get_context_data(**kwargs)
+        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+
+        try:
+            labresult = LabResults.objects.filter(triage_id=patient_object.session_id)
+            radiologyresult = RadiologyResult.objects.filter(triage_id=patient_object.session_id)
+
+            context['tests'] = labresult
+            context['radiology_tests'] = radiologyresult
+
+            print(context['tests'])
+        except:
+
+            pass
+
         try:
             context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+            patient_object.session_id = context['triage'].triage_id
+            patient_object.save()
+
         except:
             context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])
+            patient_object.session_id = context['triage'].triage_id
+            patient_object.save()
 
         try:
 
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             print(patient_object.alergies)
-
 
             if patient_object.alergies is not None:
 
@@ -115,9 +138,8 @@ class DoctorVisit(CreateView):
 
 
 # Populate database for diagnosis ICD10
-#
-#
+
 # for disease in icd10:
 #     new_disease = Diagnosis.objects.create(name=disease['name'], code=disease['code'])
 #     new_disease.save
-
+#

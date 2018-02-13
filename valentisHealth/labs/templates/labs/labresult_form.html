@@ -6,18 +6,26 @@
     {% for field in request %}
         {% if field.data %}
             <script>
-            $(function(){
-                $('#id_{{ field.name }}').prop('checked', true)
-            console.log("#id_{{ field.name }}")
+                $(function () {
+                    $('#id_{{ field.name }}').prop('checked', true)
 
-            })
+                    console.log('#div_id_{{ field.name }}')
+
+                })
+            </script>
+        {% else %}
+            <script>
+                $(function () {
+                    $('#div_id_{{ field.name }}').addClass('hidden')
+                    console.log('#div_id_{{ field.name }}')
+
+                })
 
 
             </script>
 
-
         {% endif %}
-{% endfor %}
+    {% endfor %}
 
     <form id="labs"  name="labs_form" method="post">
         {% csrf_token %}
@@ -807,7 +815,7 @@
                                 </div>
 
                                 <br><br> Menopausal Screan
-                                <div id="div_id_fsh_menopausal_screen" class="mdl-cell mdl-cell--4-col">
+                                <div id="div_id_fsh_menopausal_screen" class="mdl-cell mdl-cell--4-col w3-grey">
                                     <div class="controls"><label for="id_fsh_menopausal_screen"
                                                                  class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
                                         <input
@@ -922,8 +930,7 @@
     </div>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-
-
+    <input id="triage_id" type="text" class="hidden" name="triage_id" value=" {{ patient.session_id }}">
 
             <div class="mdl-grid ">
 

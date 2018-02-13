@@ -172,11 +172,13 @@ class LabsVisitView(CreateView):
         instance.attending_nurse = self.request.user.email
 
         try:
+            print(form.cleaned_data['patient_no'])
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
 
             #status -45 patient is out of labs but in radiology
             if patient_object.status==45:
                 patient_object.status = -45
+
             else:
                 #patient out of labs
                 patient_object.status=-4
@@ -198,12 +200,11 @@ class LabsVisitView(CreateView):
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
-            lab_object = Labs.objects.get(patient_no=self.kwargs['patient_no'])
+            lab_object = Labs.objects.get(triage_id=patient_object.session_id)
             object = labsForm(data=model_to_dict(lab_object))
             context['request'] = object
             context['other'] = lab_object.other
             context['diagnosis'] = lab_object.diagnosis
-
         except:
             raise Http404('Requested user not found.')
 

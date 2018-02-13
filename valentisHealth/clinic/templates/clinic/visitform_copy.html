@@ -331,7 +331,7 @@
                     <div class="mdl-cell mdl-cell--6-col">
                         <!-- Colored FAB button -->
                         Add Radiology
-                        <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="addRadiology()">
+                        <button type="button" class="mdl-button mdl-js-button w3-block w3-grey" onclick="addRadiology()">
                             <i class="material-icons">highlight</i>
                         </button>
 
@@ -340,7 +340,7 @@
                     <div class="mdl-cell mdl-cell--6-col">
                         <!-- Colored FAB button -->
                         Add Labs
-                        <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="addLabs()">
+                        <button type="button" class="mdl-button mdl-js-button w3-block w3-grey" onclick="addLabs()">
                             <i class="material-icons">local_pharmacy</i>
                         </button>
 
@@ -400,7 +400,8 @@
 
                 <form id="labs" style="display:none;" name="labs_form" method="post">
                     {% csrf_token %}
-                <input id="triage_id" type="text" class="hidden" name="triage_id" value=" {{ patient.session_id }}">
+
+                <input id="triage_id" type="text" class="hidden" name="triage_id" value=" {{ triage.triage_id }}">
 
                     <div class="mdl-grid full-width">
                         <div class="mdl-cell mdl-cell--4-col">
@@ -417,7 +418,7 @@
                                 </div>
 
                             </div>
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('sect1')"> Section
                                 </button>
@@ -507,7 +508,7 @@
                                 </div>
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('cogulation')"> Cogulation
                                 </button>
@@ -535,7 +536,7 @@
                                 </div>
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('pregnancy')"> Pregnancy
                                 </button>
@@ -600,7 +601,7 @@
                             </div>
 
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col  w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('malaria_blood_smear')"> Malaria blood smear
                                 </button>
@@ -726,7 +727,7 @@
 
                         </div>
                         <div class="mdl-cell mdl-cell--4-col">
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('glucose_metabolism')"> Glucose Metabolism
                                 </button>
@@ -763,7 +764,7 @@
                                 </div>
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('lipid_metabolism')"> Lipid Metabolism
                                 </button>
@@ -810,7 +811,7 @@
 
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col  w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('liver_pancrease_git')"> Liver, Pancreas, GIT
                                 </button>
@@ -901,7 +902,7 @@
                             </div>
 
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('hiv_tests')"> HIV Tests
                                 </button>
@@ -938,7 +939,7 @@
                                 </div>
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('immunology')"> Immunology
                                 </button>
@@ -975,7 +976,7 @@
                                 </div>
                             </div>
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('microbiology')"> Microbiology
                                 </button>
@@ -1153,7 +1154,7 @@
 
                         <div class="mdl-cell mdl-cell--4-col">
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('cardiac_markers')"> Cardiac Markers
                                 </button>
@@ -1275,7 +1276,7 @@
                             </div>
 
 
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col  w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('menopausal_screen')"> Menopausal Screen
                                 </button>
@@ -1314,8 +1315,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-cell mdl-cell--12-col w3-grey">
                                 <button type="button" class="mdl-button mdl-js-button w3-block grey"
                                         onclick="toggleView('liver_function_test')"> Liver Function Tests
                                 </button>
@@ -1410,6 +1410,7 @@
 
                 <form id="radiology" style="display:none;" method="post" name="radiology_form">
                     {% csrf_token %}
+                <input id="triage_id" type="text" class="hidden" name="triage_id" value=" {{ triage.triage_id }}">
                     <div class="mdl-grid full-width ">
                         <div class="mdl-grid ">
                             <div id="div_id_patient_no"
@@ -1473,7 +1474,7 @@
                             </div>
                         </div>
 
-                        <div class="mdl-grid full-width grey">
+                        <div class="mdl-grid full-width w3-grey">
                             <button type="button" onclick="toggleView('mri')" class="mdl-button w3-block w3-left-align accordion">
                                 <strong>MRI</strong> :Does patient have any of the following contraindictions?
                             </button>
@@ -1530,7 +1531,7 @@
 
                         </div>
 
-                        <div class="mdl-grid full-width grey">
+                        <div class="mdl-grid full-width w3-grey">
                             <button type="button" onclick="toggleView('ctscan')" class="mdl-button w3-block w3-left-align accordion">
                                 <p>Checklist for CT scan, IVU & intaventional procedures:</p>
                             </button>
@@ -1946,6 +1947,29 @@
                             Tests:
                             <div id="tests_done"></div>
                         </div>
+                        <table class="mdl-data-table mdl-js-data-table full-width">
+                        <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric full-width">Tests</th>
+                            <th>Results</th>
+                            <td>Files</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for report in reports %}
+                            <tr onclick="window.location.href='/clinic/patientvisit/fromlabs/{{ test.name }}/'">
+                                <td class="mdl-data-table__cell--non-numeric">{{ report.name }}</td>
+                                <td style="text-align:left;"><a href="{{ report.result }}"></a></td>
+                                <td style="text-align:left;"><a href="{{ report.link }}"></a></td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+
+                        </ul>
 
                     </div>
                 </div>
