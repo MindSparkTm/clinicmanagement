@@ -6,9 +6,9 @@
     background: #3C5D73;
     /* width: 70%; */
     margin: 0 auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
     line-height: 1.5;
-    font-weight: 300;
+    font-weight: 100;
     color: rgb(46, 19, 19);
     -webkit-font-smoothing: antialiased;
     border-bottom: 2px solid #fff;
@@ -47,6 +47,7 @@
   }
 
   .current a {
-    color: #000;
+    color:darkgray;
     background: #fff;
+      font-family: 'Montserrat', sans-serif !important;
   }

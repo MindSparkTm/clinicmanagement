@@ -17,6 +17,9 @@
 html,
 body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
+  background: url("../img/bgtwo.jpg");
+     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .demo-avatar {
@@ -306,7 +309,6 @@ fieldset {
     border: 1px;
     border-radius: 8px;
     border-style: solid;
-    border-color: #d0cece;
 }
 
 .mdl-textfield__error {
@@ -346,13 +348,17 @@ body{
     background: #3c5d73b3 !important;
 }
 
-.grey {
-    background-color: #d0cece;
-}
+.mdl-card__title{
 
-.bordered{
-    border: solid 1px;
-    border-radius: 2px;
-    border-color: #d0cece;
-}
 
+
+}
+.headstitle{
+   background: #2d5265 !important;
+
+
+}
+.logotwo{
+
+  background: url("../img/logotwo.jpg");
+}
