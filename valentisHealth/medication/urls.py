@@ -5,10 +5,16 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'models', api.modelsViewSet)
+router.register(r'MyDawa', api.myDawaModelSet)
+router.register(r'MyDawaPrescriptions', api.myDawaPrescriptionsModelSet)
+
+
 
 urlpatterns = (
     # urls for Django Rest Framework API
     url(r'^api/v1/', include(router.urls)),
+    #url(r'^api/v2/', include(router.urls)),
+
 )
 
 urlpatterns += (
