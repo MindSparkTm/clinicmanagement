@@ -11,6 +11,7 @@ from labs.serializers import LabResultsSerializer, RadiologyResultSerializer
 from labs.models import Labs, Radiology, RadiologyResult, LabResults
 from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
 from django.forms.models import model_to_dict
+from medication.models import models as Medication
 
 class patientVisitListView(ListView):
     model = patientVisit
@@ -144,6 +145,37 @@ class DoctorVisit(CreateView):
         return context
 
 
+class ClinicReport(ListView):
+    model = patientVisit
+
+    def get_template_names(self):
+        return 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ClinicReport, self).get_context_data(**kwargs)
+
+        try:
+            visit_obj = patientVisit.objects.get(visit_id=self.kwargs['visit_id'])
+            context['visit'] = visit_obj
+        except:
+            pass
+        try:
+            patient_object = Patient.objects.get(patient_no=visit_obj.patient_no)
+            context['patient'] = patient_object
+        except:
+            pass
+        try:
+            prescription = Medication.objects.get(triage_id=visit_obj.triage_id)
+            context['prescription'] = prescription
+        except:
+            pass
+        try:
+            triage = Triage.objects.get(triage_id=visit_obj.triage_id)
+            context['triage'] = triage
+        except:
+            pass
+
+        return context
 # Populate database for diagnosis ICD10
 
 # for disease in icd10:

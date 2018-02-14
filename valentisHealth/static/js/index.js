@@ -177,21 +177,30 @@ function closePrevVisits() {
     
 }
 
-function populatePrevVisit(uuid){
+function populatePrevVisit(uuid, triage_id){
+    $('#print_report').attr('onclick','printReport("'+uuid+'")')
     $.ajax({
+
             url: "http://127.0.0.1:8000/clinic/api/v1/patientvisit/"+uuid,
             type: "get",
 
             success: function (visit) {
+
+
+
                 if (visit.length != 0) {
                     $("#prev_diagnosis").text(visit.diagnosis)
                     $("#prev_date").text(moment(visit.created))
                     $.ajax({
-                        url: "http://127.0.0.1:8000/medication/api/v1/models/" + visit.prescription_id,
+                        url: "http://127.0.0.1:8000/medication/api/v1/models/",
                         type: "get",
+                        data: {
+                            search: visit.triage_id
+                        },
 
                         success: function (prescription) {
-                            // console.log(prescription)
+                            // console.log(prescription
+
                             if (prescription.length != 0) {
                                 $("#prev_prescription").text(prescription.prescription)
 
@@ -203,8 +212,9 @@ function populatePrevVisit(uuid){
                         }
 
                     })
+
                     $.ajax({
-                        url: "http://127.0.0.1:8000/nurse/api/v1/models/" + visit.triage_id,
+                        url: "http://127.0.0.1:8000/nurse/api/v1/models/" + triage_id,
                         type: "get",
 
                         success: function (triage) {
@@ -244,8 +254,8 @@ function populatePrevVisit(uuid){
 function postPrescription(){
     console.log($('#clinicPrescriptionForm').serialize())
 
-    var url = "/medication/models/new/"+$('input[name=pres_patient_no]').val()+"/";
-    var clinic_url = "/clinic/patientvisit/doctor/"+$('input[name=pres_patient_no]').val()+"/";
+    var prescription_url = "/medication/models/new/"+$('#pres_id_patient_no').val()+"/";
+    var clinic_url = "/clinic/patientvisit/doctor/"+$('#pres_id_patient_no').val()+"/";
 
     var formdata = {
             'patient_no': $('input[name=pres_patient_no]').val(),
@@ -267,13 +277,14 @@ function postPrescription(){
            {
                $.ajax({
                    type: "POST",
-                   url: url,
+                   url: prescription_url,
                    data: $('#clinicPrescriptionForm').serialize(),
                    datatype: 'json',
                    xhrFields: {
                        withCredentials: true
                    },
                    success: function (data) {
+                       alert("Succesful");
                    },
                    error: function (jqXHR, textStatus, errorThrown) {
                        alert(textStatus, errorThrown);
@@ -281,8 +292,8 @@ function postPrescription(){
                });
 
                $('#prescription_form_').attr('disabled','true')
-               alert("Succesful");
-               window.location="/clinic/patientvisit/create/"
+
+               // window.location="/clinic/patientvisit/create/"
            },
         error: function(jqXHR, textStatus, errorThrown)
            {
@@ -315,29 +326,22 @@ function closePopUp(){
     $('.dialog').close();
 }
 
-function showTest(triage_no){
-    $.ajax({
-        url: "http://127.0.0.1:8000/labs/api/v1/tests/" + visit.triage_id,
-        type: "get",
+function showTest(sender){
 
-        success: function (triage) {
-            // console.log(triage)
-            if (triage.length != 0) {
-                $("#prev_bp").text(triage.systolic + "/" + triage.diastolic)
-                $("#prev_random_glucose").text(triage.random_glucose)
-                $("#prev_temp").text(triage.temperature)
-                $("#prev_heart_rate").text(triage.heart_rate)
-                $("#prev_weight").text(triage.weight)
-                $("#prev_height").text(triage.height)
-                $("#prev_oxygen").text(triage.oxygen_saturation)
-                $("#prev_urinalysis").text(triage.urinalysis)
-                $("#prev_other").text(triage.others)
+    if (sender === "tests_radiology"){
+        $('#'+"tests_labs").hide()
+        $('#'+"tests_radiology").show()
+        $('#'+'test_results').show('slow')
+    } else {
+        $('#'+"tests_labs").show()
+        $('#'+"tests_radiology").hide()
+        $('#'+'test_results').show('slow')
 
-            } else {
+    }
 
-            }
+}
 
-        }
+function printReport(visit_id){
+    printWindow = window.open("http://127.0.0.1:8000/clinic/clinic_report/"+visit_id+"/");
 
-    })
 }
