@@ -16,7 +16,7 @@ class modelsCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super(modelsCreateView, self).get_context_data(**kwargs)
 
-        context['waiting_list'] = Patient.objects.filter(status__icontains="2")
+        context['waiting_list'] = Patient.objects.filter(status="2")
         # context['show_waiting_list'] = True
         return context
 

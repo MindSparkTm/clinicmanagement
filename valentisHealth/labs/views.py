@@ -18,7 +18,7 @@ class labsListView(ListView):
 
         try:
             #get patients in labs (status 4)
-            context['waiting_list'] = Patient.objects.filter(Q(status="4") | Q(status="45"))
+            context['waiting_list'] = Patient.objects.filter(Q(status="4") | Q(status="45") | Q(status='-54'))
             context['show_waiting_list'] = True
 
             #sent linkt to be appended to the href in waiting list table row accounts/templates/base
@@ -79,7 +79,7 @@ class radiologyListView(ListView):
 
         try:
             #get patient's in radiology (staus 5)
-            context['waiting_list'] = Patient.objects.filter(Q(status="5") | Q(status="45"))
+            context['waiting_list'] = Patient.objects.filter(Q(status="5") | Q(status="45") | Q(status="-45"))
 
             context['show_waiting_list'] = True
             context['link'] = 'labs/radiologyresult/new'

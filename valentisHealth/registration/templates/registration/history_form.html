@@ -73,7 +73,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_postal_address">Address </label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_address" value="{% if patient.authorized_by != None %}{{ patient.postal_address }}{% endif %}" name="postal_address"/>
+                                       id="textfield_postal_address" value="{% if patient.postal_address != None %}{{ patient.postal_address }}{% endif %}-{% if patient.postal_code != None %}{{ patient.postal_code }}{% endif %} {% if patient.street_name != None %}{{ patient.street_name }}{% endif %} {% if patient.apartment_name != None %}{{ patient.apartment_name }}{% endif %}" name="postal_address"/>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -140,9 +140,7 @@
 
                             })
 
-
                         </script>
-
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -181,7 +179,6 @@
                                     $('#females_').hide();
 
                                 }
-
 
                             });
                             })
@@ -232,19 +229,25 @@
                         </div>
                     </fieldset>
 
-
-
-
-
             </div>
-            </fieldset>
-        <div class="mdl-cell mdl-cell--12-col send-button" align="center">
 
-                        <button type="submit" onclick="window.location.href='/registration/models/update/{{ patient.patient_no }}'"
-                                class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
-                            Send to Triage
-                        </button>
-                    </div>
+            </fieldset>
+
+            <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+                {% if patient.status == 0 %}
+
+                    <button type="submit"
+                            onclick="window.location.href='/registration/models/update/{{ patient.patient_no }}'"
+                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                        Send to Triage
+                    </button>
+                {% else %}
+                    <button type="submit"
+                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--grey disabled">
+                        Patient is still under treatment
+                    </button>
+                {% endif %}
+            </div>
 
         </div>
     </div>

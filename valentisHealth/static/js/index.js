@@ -287,13 +287,13 @@ function postPrescription(){
                        alert("Succesful");
                    },
                    error: function (jqXHR, textStatus, errorThrown) {
-                       alert(textStatus, errorThrown);
+                       alert(textStatus, errorThrown, "Could not Submit Prescription");
                    },
                });
 
                $('#prescription_form_').attr('disabled','true')
 
-               // window.location="/clinic/patientvisit/create/"
+               window.location="/clinic/patientvisit/create/"
            },
         error: function(jqXHR, textStatus, errorThrown)
            {

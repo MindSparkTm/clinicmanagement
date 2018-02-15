@@ -518,6 +518,21 @@
                                 <input class="mdl-textfield__input" type="number"
                                        id="textfield_phone_number" value="{% if form.phone_name.value != None %}{{ form.phone.value }}{% endif %}" name="phone_number"/>
                             </div>
+
+                            <script>
+                                $('.phone').addClass('is-dirty')
+
+                                $('#textfield_phone_number').on('keyup', function (e) {
+                                    $('.phone').addClass('is-dirty')
+                                    var number = $("#textfield_phone_number").intlTelInput("getNumber");
+                                    $("#textfield_phone_number").val(number)
+
+                                });
+
+
+                                $("#textfield_phone_number").intlTelInput();
+
+                            </script>
                         </div>
                     </fieldset>
 
@@ -636,12 +651,27 @@
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_employer" value="{% if form.employer.value != None %}{{ form.employer.value }}{% endif %}" name="employer"/>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_sub_work_phone">Work Phone Number</label>
                                 <input class="mdl-textfield__input" type="tel"
                                        id="textfield_sub_work_phone" value="{% if form.sub_work_phone.value != None %}{{ form.sub_work_phone.value }}{% endif %}" name="sub_work_phone"/>
                             </div>
+
+                            <script>
+                                $('.phone').addClass('is-dirty')
+
+                                $('#textfield_sub_work_phone').on('keyup', function (e) {
+                                    $('.phone').addClass('is-dirty')
+                                    var number = $("#textfield_sub_work_phone").intlTelInput("getNumber");
+                                    $("#textfield_sub_work_phone").val(number)
+
+                                });
+
+
+                                $("#textfield_sub_work_phone").intlTelInput();
+
+                            </script>
 
                         </div>
                     </fieldset>
@@ -708,13 +738,23 @@
                                 <label class="mdl-textfield__label" for="marital_status">marital Status</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="marital_status">
-                                    <li class="mdl-menu__item" data-val="single">Single</li>
-                                    <li class="mdl-menu__item" data-val="married">Married</li>
-                                    <li class="mdl-menu__item" data-val="divorced">Divorced</li>
+                                    <li onclick="hidePartner()" class="mdl-menu__item" data-val="single">Single</li>
+                                    <li onclick="showPartner()" class="mdl-menu__item" data-val="married">Married</li>
+                                    <li onclick="hidePartner()" class="mdl-menu__item" data-val="divorced">Divorced</li>
 
                                 </ul>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                        <script>
+                            function hidePartner(){
+                                $('#partner__').addClass('hidden')
+                                console.log('hiding');
+                            }
+                            function showPartner(){
+                                $('#partner__').removeClass('hidden')
+                            }
+                        </script>
+
+                            <div id="partner__" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"
@@ -764,14 +804,7 @@
                         </table>
                     </div>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                        <label class="mdl-textfield__label mdl-color-text--grey"
-                               for="textfield_childrens">Children's Names/Age</label>
-                        <input class="mdl-textfield__input" type="text"
-                               id="textfield_childrens"
-                               value="{% if form.childrens.value != None %}{{ form.childrens.value }}{% endif %}"
-                               name="childrens"/>
-                    </div>
+
                 </div>
 
                     <script>
@@ -784,60 +817,60 @@
                             $("#holder").append($ctrl);
                         });
                     </script>
-                    <div  class="mdl-grid">
-                        <table class="mdl-data-table mdl-js-data-table full-width">
-                            <input type="hidden" value="" name="medical_information">
-                            <thead>
-                            <tr>
-                                <th class="mdl-data-table__cell--non-numeric full-width">Medication</th>
-                                <th >Dosage</th>
-                                <th >Route</th>
-                                <th >Frequency</th>
-                            </tr>
-                            </thead>
-                            <tbody id="medications">
-                            <td>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_drug"
-                                       value=""
-                                       name="drug"/>
-                            </div>
-                            </td>
-                            <td>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_dose"
-                                       value=""
-                                       name="dose"/>
-                            </div>
-                            </td>
-                            <td>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_route"
-                                       value=""
-                                       name="route"/>
-                            </div>
-                            </td>
-                            <td>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_freq"
-                                       value=""
-                                       name="occupation"/>
-                            </div>
-                            </td>
-
-
-                            </tbody>
-
-                        </table>
+{#                    <div  class="mdl-grid">#}
+{#                        <table class="mdl-data-table mdl-js-data-table full-width">#}
+{#                            <input type="hidden" value="" name="medical_information">#}
+{#                            <thead>#}
+{#                            <tr>#}
+{#                                <th class="mdl-data-table__cell--non-numeric full-width">Medication</th>#}
+{#                                <th >Dosage</th>#}
+{#                                <th >Route</th>#}
+{#                                <th >Frequency</th>#}
+{#                            </tr>#}
+{#                            </thead>#}
+{#                            <tbody id="medications">#}
+{#                            <td>#}
+{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
+{#                                <input class="mdl-textfield__input" type="text"#}
+{#                                       id="textfield_drug"#}
+{#                                       value=""#}
+{#                                       name="drug"/>#}
+{#                            </div>#}
+{#                            </td>#}
+{#                            <td>#}
+{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
+{##}
+{#                                <input class="mdl-textfield__input" type="text"#}
+{#                                       id="textfield_dose"#}
+{#                                       value=""#}
+{#                                       name="dose"/>#}
+{#                            </div>#}
+{#                            </td>#}
+{#                            <td>#}
+{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
+{##}
+{#                                <input class="mdl-textfield__input" type="text"#}
+{#                                       id="textfield_route"#}
+{#                                       value=""#}
+{#                                       name="route"/>#}
+{#                            </div>#}
+{#                            </td>#}
+{#                            <td>#}
+{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
+{##}
+{#                                <input class="mdl-textfield__input" type="text"#}
+{#                                       id="textfield_freq"#}
+{#                                       value=""#}
+{#                                       name="occupation"/>#}
+{#                            </div>#}
+{#                            </td>#}
+{##}
+{##}
+{#                            </tbody>#}
+{##}
+{#                        </table>#}
 {#                        <div class="mdl-grid"> Add more</div>#}
-                    </div>
+{#                    </div>#}
 
 
 

@@ -90,7 +90,7 @@
 
                 <div class="mdl-grid ">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_temperature">temperature</label>
+                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_temperature">temperature in Celcius</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_temperature" name="temperature" value="{% if form.temperature.value != None %}{{ form.temperature.value }}{% endif %}" required/>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
@@ -103,12 +103,12 @@
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_heart_rate">Heart Rate</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_heart_rate" name="heart_rate" value="{% if form.heart_rate.value != None %}{{ form.heart_rate.value }}{% endif %}" required/>
                     </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_height">Height</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_height">Height in Metres</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_height" name="height" value="{% if form.height.value != None %}{{ form.height.value }}{% endif %}" required/>
                     </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_weight">Weight</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_weight">Weight in KG</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_weight" name="weight" value="{% if form.weight.value != None %}{{ form.weight.value }}{% endif %}" required/>
                     </div>
 
