@@ -1,4 +1,9 @@
 {% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+<link href="{% static 'css/c3.css' %}" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="{% static 'js/d3.v3.min.js' %}" charset="utf-8"></script>
+<script src="{% static 'js/c3.js' %}"></script>
 <script>
     $("#triage_tab").addClass("current").siblings().removeClass("current")
 
@@ -11,6 +16,7 @@
         $("#textfield_last_name").val(last_name).parent().addClass("is-dirty")
     }
 </script>
+
 
 <div id="waiting_list_table" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
     <div class="mdl-card__title mdl-color--teal-500">
@@ -32,6 +38,7 @@
                     <td>{{ patient.age }}</td>
                     <td>{{ patient.patient_no }}</td>
                 </tr>
+
                 {% endfor %}
 
             </tbody>
@@ -40,25 +47,30 @@
     </div>
 </div>
 
+
+
 <div id="triage" style="display:none" class="mdl-grid">
     <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
         <form method="post">
             {% csrf_token %}
+
             <span>{% if form.errors %}
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                    {% for error in form.non_field_errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
                         <div class="alert alert-danger">
                             <strong>{{ error|escape }}</strong>
                         </div>
                     {% endfor %}
-                {% endif %}</span>
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}</span>
+
             <input name="patient_no" id="patient_no" type="text" value="{% if form.patient_no.value != None %}{{ form.patient_no.value }}{% endif %}" readonly/>
+
             <fieldset>
                 <legend>Confirm Patient Details</legend>
                 <div class="mdl-grid ">
@@ -66,12 +78,41 @@
                         <label class="mdl-textfield__label mdl-color-text--grey" for="first_name">First Name</label>
                         <input class="mdl-textfield__input" type="text" id="first_name" name="first_name" value="{% if form.first_name.value != None %}{{ form.first_name.value }}{% endif %}" readonly/>
                     </div>
+
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_last_name">Last Name</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_last_name" name="last_name" value="{% if form.last_name.value != None %}{{ form.last_name.value }}{% endif %}" readonly/>
                     </div>
                 </div>
             </fieldset>
+
+
+            <!-- Triage Chart -->
+
+            <script>
+                var oData = {
+                    "2008": 10,
+                    "2009": 0,
+                    "2010": 17,
+                    "2011": 30.0,
+                    "2012": 5.3,
+                    "2013": 38.4,
+                    "2014": 15.7,
+                    "2015": 9.0
+                };
+            </script>
+
+            <div class="mdl-grid full-width chart_">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div class="wrapper">
+                        <canvas id='c'></canvas>
+                        <div class="label">text</div>
+                    </div>
+
+                    <script src="{% static 'js/index.js' %}"></script>
+                </div>
+            </div>
+
 
             <fieldset>
                 <legend>Triage</legend>
@@ -85,7 +126,6 @@
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_diastolic">diastolic</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_diastolic" name="diastolic" value="{% if form.diastolic.value != None %}{{ form.diastolic.value }}{% endif %}" required/>
                     </div>
-
                 </div>
 
                 <div class="mdl-grid ">
@@ -98,31 +138,32 @@
                         <input class="mdl-textfield__input" type="text" id="textfield_oxygen_saturation" name="oxygen_saturation" value="{% if form.oxygen_saturation.value != None %}{{ form.oxygen_saturation.value }}{% endif %}" required/>
                     </div>
                 </div>
+
                 <div class="mdl-grid ">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_heart_rate">Heart Rate</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_heart_rate" name="heart_rate" value="{% if form.heart_rate.value != None %}{{ form.heart_rate.value }}{% endif %}" required/>
                     </div>
+
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_height">Height in Metres</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_height" name="height" value="{% if form.height.value != None %}{{ form.height.value }}{% endif %}" required/>
                     </div>
+
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_weight">Weight in KG</label>
                         <input class="mdl-textfield__input" type="text" id="textfield_weight" name="weight" value="{% if form.weight.value != None %}{{ form.weight.value }}{% endif %}" required/>
                     </div>
-
-
                 </div>
-                <div class="mdl-grid">
 
+                <div class="mdl-grid">
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                         <input class="mdl-textfield__input" type="text" value="{% if form.random_glucose.value != None %}{{ form.random_glucose.value }}{% endif %}" id="random_glucose" name="random_glucose">
                         <label class="mdl-textfield__label" for="random_glucose">Random Glucose</label>
                     </div>
                 </div>
-                <div class="mdl-grid">
 
+                <div class="mdl-grid">
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                         <textarea class="mdl-textfield__input" type="text" rows="8" id="urinalysis" name="urinalysis">{% if form.urinalysis.value != None %}{{ form.urinalysis.value }}{% endif %}</textarea>
                         <label class="mdl-textfield__label" for="urinalysis">Urinalysis</label>
@@ -130,7 +171,6 @@
                 </div>
 
                 <div class="mdl-grid">
-
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                         <textarea class="mdl-textfield__input" type="text" rows="8" id="others" name="others">{% if form.others.value != None %}{{ form.others.value }}{% endif %}</textarea>
                         <label class="mdl-textfield__label" for="others">Others</label>
@@ -138,8 +178,6 @@
                 </div>
             </fieldset>
 
-
-            {# {{ form|crispy }}#}
             <button name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">Submit
                         </button>
         </form>
@@ -149,6 +187,7 @@
         <div class="mdl-card__title mdl-color--teal-500">
             <h2 class="mdl-card__title-text mdl-color-text--white">Waiting List</h2>
         </div>
+
         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
             <table class="mdl-data-table mdl-js-data-table full-width">
                 <thead>
@@ -169,6 +208,22 @@
 
                 </tbody>
             </table>
+
+            <div id="chart" class="mdl-card"></div>
+
+            <script>
+                $(function() {
+                    var chart = c3.generate({
+                        bindto: '#chart',
+                        data: {
+                            columns: [
+                                ['data1', 35, 200, 100, 400, 150, 250],
+                                ['data2', 50, 20, 10, 40, 15, 25]
+                            ]
+                        }
+                    });
+                })
+            </script>
 
         </div>
     </div>

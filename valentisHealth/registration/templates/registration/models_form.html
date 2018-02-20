@@ -116,11 +116,17 @@
                         </div>
 
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_city">City </label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_city" value="{% if form.city.value != None %}{{ form.city.value }}{% endif %}" name="city" required/>
+                                       for="textfield_county">County </label>
+                                <input type="text" value="" class="mdl-textfield__input"
+                                       id="county" readonly>
+                                <input type="hidden"
+                                       value="{% if form.county.value != None %}{{ form.county.value }}{% endif %}"
+                                       name="county"/>
+                                <ul for="county" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                    <li>Mombasa</li>
+                                </ul>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -128,13 +134,12 @@
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_postal_code" value="{% if form.postal_code.value != None %}{{ form.postal_code.value }}{% endif %}" name="postal_code" required/>
                             </div>
-                            <div class=" getmdl-select__fix-height mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
                                 <input type="text" value="" class="mdl-textfield__input"
                                        id="country" readonly>
                                 <input type="hidden" value="{% if form.country.value != None %}{{ form.country.value }}{% endif %}" name="country" required>
                                 <label for="country" class="mdl-textfield__label">Country</label>
-                                <ul for="country"
-                                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                <ul for="country" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                                     <li class="mdl-menu__item" data-val="AF">Afghanistan</li>
                                     <li class="mdl-menu__item" data-val="AX">Åland Islands</li>
                                     <li class="mdl-menu__item" data-val="AL">Albania</li>
@@ -481,7 +486,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_ss_number">ID Number</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_ss_number" value="{% if form.ss_number.value != None %}{{ form.ss_number.value }}{% endif %}" name="ss_number" required/>
+                                       id="textfield_ss_number" value="{% if form.ss_number.value != None %}{{ form.ss_number.value }}{% endif %}" name="ss_number"/>
                             </div>
 
                         </div>
@@ -734,25 +739,30 @@
 
 
                                 <input class="mdl-textfield__input" value="{% if form.marital_status.value != None %}{{ form.marital_status.value }}{% else %}{% endif %}" id="marital_status" readonly/>
-                                <input value="" type="hidden" name="marital_status"/>
+                                <input id="id_marital_status" value="" type="hidden" name="marital_status"/>
                                 <label class="mdl-textfield__label" for="marital_status">marital Status</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="marital_status">
-                                    <li onclick="hidePartner()" class="mdl-menu__item" data-val="single">Single</li>
-                                    <li onclick="showPartner()" class="mdl-menu__item" data-val="married">Married</li>
-                                    <li onclick="hidePartner()" class="mdl-menu__item" data-val="divorced">Divorced</li>
+                                    <li class="mdl-menu__item" data-val="single"><div class="full-width" onclick="hidePartner()">Single</div></li>
+                                    <li class="mdl-menu__item" data-val="married"><div class="full-width" onclick="showPartner()">Married</div></li>
+                                    <li class="mdl-menu__item" data-val="divorced"><div class="full-width" onclick="hidePartner()">Divorced</div></li>
 
                                 </ul>
                             </div>
-                        <script>
-                            function hidePartner(){
-                                $('#partner__').addClass('hidden')
-                                console.log('hiding');
-                            }
-                            function showPartner(){
-                                $('#partner__').removeClass('hidden')
-                            }
-                        </script>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#id_marital_status').change(function () {
+                                        alert('test');
+                                    });
+                                });
+                                function hidePartner() {
+                                    $('#partner__').addClass('w3-hide')
+                                    console.log('hiding');
+                                }
+                                function showPartner() {
+                                    $('#partner__').removeClass('w3-hide')
+                                }
+                            </script>
 
                             <div id="partner__" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"

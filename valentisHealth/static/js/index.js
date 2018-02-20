@@ -1,37 +1,37 @@
 //customized from http://knockoutjs.com/examples/contactsEditor.html
-var initialData = [
-    {
-        number_children: "1", children: []
+var initialData = [{
+        number_children: "1",
+        children: []
     },
 
 ];
 
-var IfChildrenModel = function (if_children) {
+var IfChildrenModel = function(if_children) {
     var self = this;
-    self.if_children = ko.observableArray(ko.utils.arrayMap(if_children, function (child) {
-        return {number_children: child.number_children, children: ko.observableArray(child.children)};
+    self.if_children = ko.observableArray(ko.utils.arrayMap(if_children, function(child) {
+        return { number_children: child.number_children, children: ko.observableArray(child.children) };
     }));
 
-    self.addContact = function () {
+    self.addContact = function() {
         self.if_children.push({
             number_children: "",
             children: ko.observableArray()
         });
     };
 
-    self.removeContact = function (contact) {
+    self.removeContact = function(contact) {
         self.if_children.remove(contact);
     };
 
-    self.addChild = function (contact) {
+    self.addChild = function(contact) {
         contact.children.push({
             name: "",
             age: ""
         });
     };
 
-    self.removeChild = function (child) {
-        $.each(self.if_children(), function () {
+    self.removeChild = function(child) {
+        $.each(self.if_children(), function() {
             this.children.remove(child)
         })
     };
@@ -47,7 +47,7 @@ ko.applyBindings(new IfChildrenModel(initialData));
 
 
 function getdiagnosis(str) {
-    $('#search_table tbody').children().remove();
+
 
     if (/\S/.test(str) && str.length > 1) {
         $.ajax({
@@ -57,7 +57,7 @@ function getdiagnosis(str) {
 
                 search: str,
             },
-            success: function (json) {
+            success: function(json) {
                 // console.log(json)
                 if (json.length === 0) {
                     $("#no_result").show()
@@ -67,10 +67,12 @@ function getdiagnosis(str) {
 
                     $("#no_result").hide()
                     $('#searchresult').show()
-                    var tbody = $('#search_table tbody'), props = ["name", "code"]
-                    $.each(json, function (i, diagn) {
+                    $('#search_table tbody').children().remove();
+                    var tbody = $('#search_table tbody'),
+                        props = ["name", "code"]
+                    $.each(json, function(i, diagn) {
                         var tr = $("<tr onclick='addDiag(this)'>");
-                        $.each(props, function (i, prop) {
+                        $.each(props, function(i, prop) {
                             $('<td class="mdl-data-table__cell--non-numeric">').html(diagn[prop]).appendTo(tr);
                         });
                         tbody.append(tr);
@@ -92,14 +94,14 @@ function getdiagnosis(str) {
 function addDiag(that) {
     selectedStr = $(that).children().first().text()
     existingStr = $("#diagnosis").val()
-    if (existingStr.length>0){
-        $("#diagnosis").val(existingStr+", "+selectedStr+"~"+$(that).children().first().next().text())
+    if (existingStr.length > 0) {
+        $("#diagnosis").val(existingStr + ", " + selectedStr + "~" + $(that).children().first().next().text())
         $("#diag_search").val('')
         tagify(selectedStr)
 
 
     } else {
-        $("#diagnosis").val(selectedStr+"~"+$(that).children().first().next().text())
+        $("#diagnosis").val(selectedStr + "~" + $(that).children().first().next().text())
         $("#diag_search").val('')
         tagify(selectedStr)
 
@@ -107,33 +109,32 @@ function addDiag(that) {
 }
 
 function tagify(selectedStr) {
-            $("#diag_sect").append(
+    $("#diag_sect").append(
+        $('<span/>')
+        .attr("id", selectedStr.split(' ').join('_'))
+        .addClass("mdl-chip mdl-chip--deletable")
+        .append(
             $('<span/>')
-                .attr("id", selectedStr.split(' ').join('_'))
-                .addClass("mdl-chip mdl-chip--deletable")
-                .append(
-                    $('<span/>')
-                        .addClass("mdl-chip__text")
-                        .append("<span/>")
-                        .text(selectedStr)
-                )
-                .append(
-                    $('<button/>').addClass('mdl-chip__action')
-                        .prop('type', 'button')
-                        .append(
-                            $('<i/>')
-                                .addClass('material-icons')
-                                .text('cancel')
-
-                        )
-                    .attr('onclick', 'removeDiag(this)')
-                )
+            .addClass("mdl-chip__text")
+            .append("<span/>")
+            .text(selectedStr)
         )
-        $("#searchresult").hide()
+        .append(
+            $('<button/>').addClass('mdl-chip__action')
+            .prop('type', 'button')
+            .append(
+                $('<i/>')
+                .addClass('material-icons')
+                .text('cancel')
+            )
+            .attr('onclick', 'removeDiag(this)')
+        )
+    )
+    $("#searchresult").hide()
 
 }
 
-function removeDiag(that){
+function removeDiag(that) {
     var str = $(that).parent().children().first().text()
     $(that).parent().remove()
     $("#diagnosis").val(existingStr.replace(str, ""))
@@ -143,129 +144,134 @@ function removeDiag(that){
 function openPrevVisits() {
     $('#prevVisits').show('slow')
     $.ajax({
-            url: "http://127.0.0.1:8000/clinic/api/v1/icd10/",
-            type: "get",
+        url: "http://127.0.0.1:8000/clinic/api/v1/icd10/",
+        type: "get",
 
-            success: function (json) {
-                // console.log(json)
-                if (json.length === 0) {
-                    $("#no_result").show()
-                    $('#searchresult').hide()
+        success: function(json) {
+            // console.log(json)
+            if (json.length === 0) {
+                $("#no_result").show()
+                $('#searchresult').hide()
 
-                } else {
+            } else {
 
-                    $("#no_result").hide()
-                    $('#searchresult').show()
-                    var tbody = $('#search_table tbody'), props = ["name", "code"]
-                    $.each(json, function (i, diagn) {
-                        var tr = $("<tr onclick='addDiag(this)'>");
-                        $.each(props, function (i, prop) {
-                            $('<td class="mdl-data-table__cell--non-numeric">').html(diagn[prop]).appendTo(tr);
-                        });
-                        tbody.append(tr);
+                $("#no_result").hide()
+                $('#searchresult').show()
+                var tbody = $('#search_table tbody'),
+                    props = ["name", "code"]
+                $.each(json, function(i, diagn) {
+                    var tr = $("<tr onclick='addDiag(this)'>");
+                    $.each(props, function(i, prop) {
+                        $('<td class="mdl-data-table__cell--non-numeric">').html(diagn[prop]).appendTo(tr);
                     });
-
-                }
+                    tbody.append(tr);
+                });
 
             }
 
-        })
-    
+        }
+
+    })
+
 }
+
 function closePrevVisits() {
     $('#prevVisits').hide('slow')
-    
+
 }
 
-function populatePrevVisit(uuid, triage_id){
-    $('#print_report').attr('onclick','printReport("'+uuid+'")')
+function populatePrevVisit(uuid, triage_id) {
+    $('#print_report').attr('onclick', 'printReport("' + uuid + '")')
     $.ajax({
 
-            url: "http://127.0.0.1:8000/clinic/api/v1/patientvisit/"+uuid,
-            type: "get",
+        url: "http://127.0.0.1:8000/clinic/api/v1/patientvisit/" + uuid,
+        type: "get",
 
-            success: function (visit) {
+        success: function(visit) {
 
 
+            if (visit.length != 0) {
+                $("#prev_diagnosis").text(visit.diagnosis)
+                $("#prev_date").text(moment(visit.created))
+                $.ajax({
+                    url: "http://127.0.0.1:8000/medication/api/v1/models/",
+                    type: "get",
+                    data: {
+                        search: visit.triage_id
+                    },
 
-                if (visit.length != 0) {
-                    $("#prev_diagnosis").text(visit.diagnosis)
-                    $("#prev_date").text(moment(visit.created))
-                    $.ajax({
-                        url: "http://127.0.0.1:8000/medication/api/v1/models/",
-                        type: "get",
-                        data: {
-                            search: visit.triage_id
-                        },
+                    success: function(prescription) {
+                        // console.log(prescription
 
-                        success: function (prescription) {
-                            // console.log(prescription
+                        if (prescription.length != 0) {
+                            $("#prev_prescription").text(prescription.prescription)
 
-                            if (prescription.length != 0) {
-                                $("#prev_prescription").text(prescription.prescription)
-
-                            } else {
-                                $("#prev_prescription").text("No prescription Found")
-
-                            }
+                        } else {
+                            $("#prev_prescription").text("No prescription Found")
 
                         }
 
-                    })
+                    }
 
-                    $.ajax({
-                        url: "http://127.0.0.1:8000/nurse/api/v1/models/" + triage_id,
-                        type: "get",
+                })
 
-                        success: function (triage) {
-                            // console.log(triage)
-                            if (triage.length != 0) {
-                                $("#prev_bp").text(triage.systolic+ "/" + triage.diastolic)
-                                $("#prev_random_glucose").text(triage.random_glucose)
-                                $("#prev_temp").text(triage.temperature)
-                                $("#prev_heart_rate").text(triage.heart_rate)
-                                $("#prev_weight").text(triage.weight)
-                                $("#prev_height").text(triage.height)
-                                $("#prev_oxygen").text(triage.oxygen_saturation)
-                                $("#prev_urinalysis").text(triage.urinalysis)
-                                $("#prev_other").text(triage.others)
+                $.ajax({
+                    url: "http://127.0.0.1:8000/nurse/api/v1/models/" + triage_id,
+                    type: "get",
 
-                            } else {
+                    success: function(triage) {
+                        // console.log(triage)
+                        if (triage.length != 0) {
+                            $("#prev_bp").text(triage.systolic + "/" + triage.diastolic)
+                            $("#prev_random_glucose").text(triage.random_glucose)
+                            $("#prev_temp").text(triage.temperature)
+                            $("#prev_heart_rate").text(triage.heart_rate)
+                            $("#prev_weight").text(triage.weight)
+                            $("#prev_height").text(triage.height)
+                            $("#prev_oxygen").text(triage.oxygen_saturation)
+                            $("#prev_urinalysis").text(triage.urinalysis)
+                            $("#prev_other").text(triage.others)
 
-                            }
+                        } else {
 
                         }
 
-                    });
+                    }
 
-                    openPrevVisits()
+                });
+
+                openPrevVisits()
 
 
-                } else {
-                    
+            } else {
 
-                }
 
             }
 
-        })
+        }
+
+    })
 }
 
-function postPrescription(){
+function saveDiagnosis() {
     console.log($('#clinicPrescriptionForm').serialize())
 
-    var prescription_url = "/medication/models/new/"+$('#pres_id_patient_no').val()+"/";
-    var clinic_url = "/clinic/patientvisit/doctor/"+$('#pres_id_patient_no').val()+"/";
+    var prescription_url = "/medication/models/new/" + $('#pres_id_patient_no').val() + "/";
+    var clinic_url = "/clinic/patientvisit/doctor/" + $('#pres_id_patient_no').val() + "/";
 
     var formdata = {
-            'patient_no': $('input[name=pres_patient_no]').val(),
-            'patient_name': $("#first_name").val()+" "+$("#last_name").val(),
-            'email': $('input[name=pres_email]').val(),
-            'phone_number': $('input[name=pres_phone_number]').val(),
-            'address': $('#pres_id_address').val(),
-            'prescription': $('#pres_prescription').val(),
-        };
-    $.ajax({
+        'patient_no': $('input[name=pres_patient_no]').val(),
+        'patient_name': $("#first_name").val() + " " + $("#last_name").val(),
+        'email': $('input[name=pres_email]').val(),
+        'phone_number': $('input[name=pres_phone_number]').val(),
+        'address': $('#pres_id_address').val(),
+        'prescription': $('#pres_prescription').val(),
+    };
+
+}
+
+function savePrescription(){
+        $.ajax({
         type: "POST",
         url: clinic_url,
         data: $('#visit').serialize(),
@@ -273,75 +279,382 @@ function postPrescription(){
         xhrFields: {
             withCredentials: true
         },
-           success: function(data)
-           {
-               $.ajax({
-                   type: "POST",
-                   url: prescription_url,
-                   data: $('#clinicPrescriptionForm').serialize(),
-                   datatype: 'json',
-                   xhrFields: {
-                       withCredentials: true
-                   },
-                   success: function (data) {
-                       alert("Succesful");
-                   },
-                   error: function (jqXHR, textStatus, errorThrown) {
-                       alert(textStatus, errorThrown, "Could not Submit Prescription");
-                   },
-               });
+        success: function(data) {
+            $.ajax({
+                type: "POST",
+                url: prescription_url,
+                data: $('#clinicPrescriptionForm').serialize(),
+                datatype: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(data) {
+                    alert("Succesfully");
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus, errorThrown, "Could not Submit Prescription");
+                },
+            });
 
-               $('#prescription_form_').attr('disabled','true')
+            $('#prescription_form_').attr('disabled', 'true')
 
-               window.location="/clinic/patientvisit/create/"
-           },
-        error: function(jqXHR, textStatus, errorThrown)
-           {
-               alert(textStatus, errorThrown);
-           },
-         });
-
-
+            window.location = "/clinic/patientvisit/create/"
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert(textStatus, errorThrown);
+        },
+    });
 }
 
 
-// Submit post on submit
-$('#clinicPrescriptionForm').on('submit', function(event){
+$('#clinicPrescriptionForm').on('submit', function(event) {
     event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    postPrescription();
+    console.log("form submitted!") // sanity check
+    savePrescription();
 });
 
-function close_Modal(id_name){
-    $('#'+id_name).hide('slow')
+function close_Modal(id_name) {
+    $('#' + id_name).hide('slow')
 }
 
-function successPopUp(){
-    if (! $('.dialog').showModal) {
-      dialogPolyfill.registerDialog(dialog);
+function successPopUp() {
+    if (!$('.dialog').showModal) {
+        dialogPolyfill.registerDialog(dialog);
     }
     $('.dialog').showModal();
 }
-function closePopUp(){
+
+function closePopUp() {
     $('.dialog').close();
 }
 
-function showTest(sender){
+function showTest(sender) {
 
-    if (sender === "tests_radiology"){
-        $('#'+"tests_labs").hide()
-        $('#'+"tests_radiology").show()
-        $('#'+'test_results').show('slow')
+    if (sender === "tests_radiology") {
+        $('#' + "tests_labs").hide()
+        $('#' + "tests_radiology").show()
+        $('#' + 'test_results').show('slow')
     } else {
-        $('#'+"tests_labs").show()
-        $('#'+"tests_radiology").hide()
-        $('#'+'test_results').show('slow')
+        $('#' + "tests_labs").show()
+        $('#' + "tests_radiology").hide()
+        $('#' + 'test_results').show('slow')
 
     }
 
 }
 
-function printReport(visit_id){
-    printWindow = window.open("http://127.0.0.1:8000/clinic/clinic_report/"+visit_id+"/");
+function printReport(visit_id) {
+    printWindow = window.open("http://127.0.0.1:8000/clinic/clinic_report/" + visit_id + "/");
 
+}
+
+var countyjson = $.getJSON('http://127.0.0.1:8000/static/js/counties.json')
+
+
+$.each(countyjson, function(i, county){
+    // console.log(county)
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var label = document.querySelector(".label");
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
+var cw = c.width = 700;
+var ch = c.height = 350;
+var cx = cw / 2,
+    cy = ch / 2;
+var rad = Math.PI / 180;
+var frames = 0;
+
+ctx.lineWidth = 1;
+ctx.strokeStyle = "#999";
+ctx.fillStyle = "#ccc";
+ctx.font = "14px monospace";
+
+var grd = ctx.createLinearGradient(0, 0, 0, cy);
+grd.addColorStop(0, "hsla(167,72%,60%,1)");
+grd.addColorStop(1, "hsla(167,72%,60%,0)");
+
+
+var valuesRy = [];
+var propsRy = [];
+for (var prop in oData) {
+
+    valuesRy.push(oData[prop]);
+    propsRy.push(prop);
+}
+
+
+var vData = 4;
+var hData = valuesRy.length;
+var offset = 50.5; //offset chart axis
+var chartHeight = ch - 2 * offset;
+var chartWidth = cw - 2 * offset;
+var t = 1 / 7; // curvature : 0 = no curvature 
+var speed = 2; // for the animation
+
+var A = {
+    x: offset,
+    y: offset
+}
+var B = {
+    x: offset,
+    y: offset + chartHeight
+}
+var C = {
+    x: offset + chartWidth,
+    y: offset + chartHeight
+}
+
+/*
+      A  ^
+	    |  |  
+	    + 25
+	    |
+	    |
+	    |
+	    + 25  
+      |__|_________________________________  C
+      B
+*/
+
+// CHART AXIS -------------------------
+ctx.beginPath();
+ctx.moveTo(A.x, A.y);
+ctx.lineTo(B.x, B.y);
+ctx.lineTo(C.x, C.y);
+ctx.stroke();
+
+// vertical ( A - B )
+var aStep = (chartHeight - 50) / (vData);
+
+var Max = Math.ceil(arrayMax(valuesRy) / 10) * 10;
+var Min = Math.floor(arrayMin(valuesRy) / 10) * 10;
+var aStepValue = (Max - Min) / (vData);
+console.log("aStepValue: " + aStepValue); //8 units
+var verticalUnit = aStep / aStepValue;
+
+var a = [];
+ctx.textAlign = "right";
+ctx.textBaseline = "middle";
+for (var i = 0; i <= vData; i++) {
+
+    if (i == 0) {
+        a[i] = {
+            x: A.x,
+            y: A.y + 25,
+            val: Max
+        }
+    } else {
+        a[i] = {}
+        a[i].x = a[i - 1].x;
+        a[i].y = a[i - 1].y + aStep;
+        a[i].val = a[i - 1].val - aStepValue;
+    }
+    drawCoords(a[i], 3, 0);
+}
+
+//horizontal ( B - C )
+var b = [];
+ctx.textAlign = "center";
+ctx.textBaseline = "hanging";
+var bStep = chartWidth / (hData + 1);
+
+for (var i = 0; i < hData; i++) {
+    if (i == 0) {
+        b[i] = {
+            x: B.x + bStep,
+            y: B.y,
+            val: propsRy[0]
+        };
+    } else {
+        b[i] = {}
+        b[i].x = b[i - 1].x + bStep;
+        b[i].y = b[i - 1].y;
+        b[i].val = propsRy[i]
+    }
+    drawCoords(b[i], 0, 3)
+}
+
+function drawCoords(o, offX, offY) {
+    ctx.beginPath();
+    ctx.moveTo(o.x - offX, o.y - offY);
+    ctx.lineTo(o.x + offX, o.y + offY);
+    ctx.stroke();
+
+    ctx.fillText(o.val, o.x - 2 * offX, o.y + 2 * offY);
+}
+//----------------------------------------------------------
+
+// DATA
+var oDots = [];
+var oFlat = [];
+var i = 0;
+
+for (var prop in oData) {
+    oDots[i] = {}
+    oFlat[i] = {}
+
+    oDots[i].x = b[i].x;
+    oFlat[i].x = b[i].x;
+
+    oDots[i].y = b[i].y - oData[prop] * verticalUnit - 25;
+    oFlat[i].y = b[i].y - 25;
+
+    oDots[i].val = oData[b[i].val];
+
+    i++
+}
+
+
+
+///// Animation Chart ///////////////////////////
+//var speed = 3;
+function animateChart() {
+    requestId = window.requestAnimationFrame(animateChart);
+    frames += speed; //console.log(frames)
+    ctx.clearRect(60, 0, cw, ch - 60);
+
+    for (var i = 0; i < oFlat.length; i++) {
+        if (oFlat[i].y > oDots[i].y) {
+            oFlat[i].y -= speed;
+        }
+    }
+    drawCurve(oFlat);
+    for (var i = 0; i < oFlat.length; i++) {
+        ctx.fillText(oDots[i].val, oFlat[i].x, oFlat[i].y - 25);
+        ctx.beginPath();
+        ctx.arc(oFlat[i].x, oFlat[i].y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    if (frames >= Max * verticalUnit) {
+        window.cancelAnimationFrame(requestId);
+
+    }
+}
+requestId = window.requestAnimationFrame(animateChart);
+
+/////// EVENTS //////////////////////
+c.addEventListener("mousemove", function(e) {
+    label.innerHTML = "";
+    label.style.display = "none";
+    this.style.cursor = "default";
+
+    var m = oMousePos(this, e);
+    for (var i = 0; i < oDots.length; i++) {
+
+        output(m, i);
+    }
+
+}, false);
+
+function output(m, i) {
+    ctx.beginPath();
+    ctx.arc(oDots[i].x, oDots[i].y, 20, 0, 2 * Math.PI);
+    if (ctx.isPointInPath(m.x, m.y)) {
+        //console.log(i);
+        label.style.display = "block";
+        label.style.top = (m.y + 10) + "px";
+        label.style.left = (m.x + 10) + "px";
+        label.innerHTML = "<strong>" + propsRy[i] + "</strong>: " + valuesRy[i] + "%";
+        c.style.cursor = "pointer";
+    }
+}
+
+// CURVATURE
+function controlPoints(p) {
+    // given the points array p calculate the control points
+    var pc = [];
+    for (var i = 1; i < p.length - 1; i++) {
+        var dx = p[i - 1].x - p[i + 1].x; // difference x
+        var dy = p[i - 1].y - p[i + 1].y; // difference y
+        // the first control point
+        var x1 = p[i].x - dx * t;
+        var y1 = p[i].y - dy * t;
+        var o1 = {
+            x: x1,
+            y: y1
+        };
+
+        // the second control point
+        var x2 = p[i].x + dx * t;
+        var y2 = p[i].y + dy * t;
+        var o2 = {
+            x: x2,
+            y: y2
+        };
+
+        // building the control points array
+        pc[i] = [];
+        pc[i].push(o1);
+        pc[i].push(o2);
+    }
+    return pc;
+}
+
+function drawCurve(p) {
+
+    var pc = controlPoints(p); // the control points array
+
+    ctx.beginPath();
+    //ctx.moveTo(p[0].x, B.y- 25);
+    ctx.lineTo(p[0].x, p[0].y);
+    // the first & the last curve are quadratic Bezier
+    // because I'm using push(), pc[i][1] comes before pc[i][0]
+    ctx.quadraticCurveTo(pc[1][1].x, pc[1][1].y, p[1].x, p[1].y);
+
+    if (p.length > 2) {
+        // central curves are cubic Bezier
+        for (var i = 1; i < p.length - 2; i++) {
+            ctx.bezierCurveTo(pc[i][0].x, pc[i][0].y, pc[i + 1][1].x, pc[i + 1][1].y, p[i + 1].x, p[i + 1].y);
+        }
+        // the first & the last curve are quadratic Bezier
+        var n = p.length - 1;
+        ctx.quadraticCurveTo(pc[n - 1][0].x, pc[n - 1][0].y, p[n].x, p[n].y);
+    }
+
+    //ctx.lineTo(p[p.length-1].x, B.y- 25);
+    ctx.stroke();
+    ctx.save();
+    ctx.fillStyle = grd;
+    ctx.fill();
+    ctx.restore();
+}
+
+function arrayMax(array) {
+    return Math.max.apply(Math, array);
+};
+
+function arrayMin(array) {
+    return Math.min.apply(Math, array);
+};
+
+function oMousePos(canvas, evt) {
+    var ClientRect = canvas.getBoundingClientRect();
+    return { //objeto
+        x: Math.round(evt.clientX - ClientRect.left),
+        y: Math.round(evt.clientY - ClientRect.top)
+    }
 }

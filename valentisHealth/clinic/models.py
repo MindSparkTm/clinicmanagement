@@ -18,7 +18,7 @@ class patientVisit(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     patient_no = models.CharField(max_length=30, null=True, blank=True)
-    visit_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) # models.AutoField(primary_key=True)
+    visit_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     radiology_no = models.CharField(max_length=30, null=True, blank=True)
     triage_id = models.CharField(max_length=30, null=True, blank=True)
     notes = models.TextField(max_length=200, null=True, blank=True)

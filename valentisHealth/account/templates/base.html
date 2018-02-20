@@ -58,6 +58,7 @@
             </nav>
         </div>
     </header>
+
     <div class="navigation">
         <ul class="navigation-tabs">
             <li id="registration_tab" class="current"><a href="/registration/"><span class="fa fa-user-plus spav">Registration</span></a></li>
@@ -180,7 +181,16 @@
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js'></script>
 
     <script>
-        $('input[type="date"]').val(new Date().toISOString().split('T')[0])
+        $(function(){
+            var delayInMilliseconds = 100; //.1 second delay to delay with mdl overriding this script
+
+            setTimeout(function () {
+                $('input[type="date"]').parent().addClass('is-dirty')
+            }, delayInMilliseconds);
+
+        })
+
+{#        $('input[type="date"]').val(new Date().toISOString().split('T')[0])#}
     </script>
 </body>
 

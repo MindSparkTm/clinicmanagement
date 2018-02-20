@@ -23,7 +23,6 @@
     <script>
         function toggleView(view) {
             $('#' + view).toggleClass('w3-hide')
-
         }
     </script>
 
@@ -133,11 +132,9 @@
                                 </li>
                                 {% endfor %}
                             </ul>
-
                         </div>
-
-
                     </div>
+
                     <div class="mdl-card  mdl-grid full-width">
                         <div class="mdl-cell mdl-cell--12-col">
                             <span style="color:rgb(76, 175, 80)">Allergies</span>
@@ -1527,97 +1524,30 @@
 
             </fieldset>
 
-
-
-
-
-            {# {{ form|crispy }}#}
             <br><br>
 
-        </form>
+
 
         <fieldset id="prescription_form_">
             <legend>
                 Prescriptions
 
             </legend>
-            <div class="mdl-grid full-width">
-                <!-- Colored FAB button -->
-                <form class="full-width" id="clinicPrescriptionForm" method="post">
-                    {% csrf_token %}
-                    <div class="mdl-grid full-width">
 
-                        <div id="div_id_patient_no" class="hidden mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label for="pres_id_patient_no" class="mdl-textfield__label mdl-color-text--black">
-                                    Patient id</label>
-                            <div class="controls"><input class="mdl-textfield__input" id="pres_id_patient_no" maxlength="100" name="patient_no" value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}">
-                            </div>
-                        </div>
-                        <div id="div_id_patient_name" class=" mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label for="id_patient_name" class="mdl-textfield__label mdl-color-text--black">
-                            Patient Name</label>
-                            <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_name" maxlength="100" name="patient_name" value="{% if patient.first_name != None %}{{ patient.last_name }}{% endif %}" rows="10" readonly></div>
-                        </div>
-
-                        <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_pres_phone_number">Phone </label>
-                            <input class="mdl-textfield__input" type='tel' id="pres_textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% endif %}" name="phone_number" />
-                        </div>
-
-
-                        <script>
-                            $('.phone').addClass('is-dirty')
-
-                            $('#pres_textfield_phone_number').on('keyup', function(e) {
-                                $('.phone_number').addClass('is-dirty')
-                                var number = $("#pres_textfield_phone_number").intlTelInput("getNumber");
-                                $("#pres_textfield_phone_number").val(number)
-
-                            });
-
-
-                            $("#pres_textfield_phone_number").intlTelInput();
-                        </script>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey" for="pres_textfield_email">Email Address</label>
-                            <input class="mdl-textfield__input" type="email" id="pres_textfield_email" value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}" name="email" />
-                        </div>
-
-
-                    </div>
-                    <div class="mdl-grid ">
-                        <div id="div_id_address" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-                            <label for="pres_id_address" class="mdl-textfield__label mdl-color-text--grey">
-                                    Physical Address</label>
-                            <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="pres_id_address" maxlength="400" name="address" rows="4">{% if form.address.value != None %}
-                                    {{ form.address.value }}{% endif %}</textarea></div>
-                        </div>
-                    </div>
-                    <div class="mdl-grid ">
-                        <div id="div_id_prescription" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-                            <label for="pres_id_prescription" class="mdl-textfield__label mdl-color-text--grey">
-                                    Prescription </label>
-                            <div class="controls">
-                                <textarea class="mdl-textfield__input" cols="40" id="pres_prescription" maxlength="400" name="prescription" rows="5">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="mdl-grid">
-                        <button name="visit_form" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block" type="submit">Submit and Close
-                            </button>
-                    </div>
-
-                </form>
-                {# <button type="button" class="mdl-button mdl-js-button w3-block grey" #} {# onclick="showPrescriptionForm()">#}
-{#                        <i class="material-icons">local_pharmacy</i>#}
-{#                    </button>#}
-
-            </div>
+                <button name="visit_form"
+                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
+                    type="button">Add Prescription
+            </button>
         </fieldset>
 
+        <div class="mdl-grid full-width">
+            <button name="visit_form"
+                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
+                    type="submit">Save
+            </button>
+        </div>
 
+        </form>
 
 
 
@@ -1722,20 +1652,6 @@
             </div>
         </div>
 
-        {#
-        <div id="reports" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--12-col">#} {#
-            <div class="mdl-card__title mdl-color--teal-500">#} {#
-                <h2 class="mdl-card__title-text mdl-color-text--white">Reports</h2>#} {# </div>#} {#
-            <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">#} {#
-                <table class="mdl-data-table mdl-js-data-table full-width">#} {#
-                    <thead>#} {#
-                        <tr>#} {#
-                            <th class="mdl-data-table__cell--non-numeric full-width">File Name</th>#} {#
-                            <th>Date Created</th>#} {# </tr>#} {# </thead>#} {#
-                    <tbody>#} {# {% for report in reports %}#} {#
-                        <tr onclick="window.location.href='/clinic/patientvisit/fromlabs/{{ patient.patient_no }}/'">#} {#
-                            <td class="mdl-data-table__cell--non-numeric">{{ report.name }}</td>#} {#
-                            <td style="text-align:left;">{{ report.created }}</td>#} {# </tr>#} {# {% endfor %}#} {##} {##} {# </tbody>#} {# </table>#} {##} {# </div>#} {# </div>#}
 
     </div>
     <div id="test_results" class="w3-modal">

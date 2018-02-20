@@ -11,4 +11,4 @@ class modelsViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('patient_no', 'first_name', 'last_name')
+    search_fields = ('patient_no', 'first_name', 'last_name', 'ss_number', 'dob')

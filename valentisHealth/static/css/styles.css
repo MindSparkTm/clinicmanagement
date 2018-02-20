@@ -17,8 +17,8 @@
 html,
 body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
-  background: url("../img/bgtwo.jpg");
-     background-repeat: no-repeat;
+    background: url("../img/bgtwo.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -40,7 +40,6 @@ body {
     border: none;
 }
 
-
 /* iOS Safari specific workaround */
 
 .demo-drawer .mdl-menu__container {
@@ -50,7 +49,6 @@ body {
 .demo-drawer .demo-navigation {
     z-index: -2;
 }
-
 
 /* END iOS Safari specific workaround */
 
@@ -162,22 +160,20 @@ body {
     align-items: stretch;
 }
 
-
 /* TODO: Find a proper solution to have the graphs
  * not float around outside their container in IE10/11.
  * Using a browserhacks.com solution for now.
  */
 
 _:-ms-input-placeholder,
- :root .demo-graphs {
+:root .demo-graphs {
     min-height: 664px;
 }
 
 _:-ms-input-placeholder,
- :root .demo-graph {
+:root .demo-graph {
     max-height: 300px;
 }
-
 
 /* TODO end */
 
@@ -275,9 +271,7 @@ header {
     width: 100%;
 }
 
-
-
-.mdl-button--file input{
+.mdl-button--file input {
     cursor: pointer;
     height: 100%;
     right: 0;
@@ -293,10 +287,12 @@ header {
     width: calc(100% - 32px);
 
 }
-.mdl-textfield--file  .mdl-button--file {
+
+.mdl-textfield--file .mdl-button--file {
     right: 0;
-  }
-.spav{
+}
+
+.spav {
 
     margin-left: 15px;
 }
@@ -315,53 +311,84 @@ fieldset {
 }
 
 .mdl-textfield__error {
-	width: 100%;
-	left: 0;
- text-align: left;
+    width: 100%;
+    left: 0;
+    text-align: left;
 }
 
-.left{
-  text-align:left;
+.left {
+    text-align: left;
 }
 
-#radiology{
+#radiology {
     padding-left: 24px;
 }
 
-.mdl-color--teal-500{
+.mdl-color--teal-500 {
     background: #3c5d73 !important;
 }
 
 .mdl-textfield {
-  margin: -8px 4px;
+    margin: -8px 4px;
 }
 
-.accordion{
+.accordion {
 
 }
 
-form, fieldset, .util-center{
+form, fieldset, .util-center {
     background: white;
 }
 
-body{
+body {
     background: #7ca1bb40;
 }
-.mdl-color--teal-500{
+
+.mdl-color--teal-500 {
     background: #3c5d73b3 !important;
 }
 
-.mdl-card__title{
-
-
+.mdl-card__title {
 
 }
-.headstitle{
-   background: #2d5265 !important;
 
+.headstitle {
+    background: #2d5265 !important;
 
 }
-.logotwo{
 
-  background: url("../img/logotwo.jpg");
+.logotwo {
+
+    background: url("../img/logotwo.jpg");
+}
+
+.chart_ {
+    margin: 0;
+    overflow: hidden;
+    background: #204250;
+    font-family: Courier, monospace;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.wrapper {
+    display: block;
+    margin: 5em auto;
+    border: 1px solid #555;
+    width: 700px;
+    height: 350px;
+    position: relative;
+}
+
+p {
+    text-align: center;
+}
+
+.label {
+    height: 2em;
+    padding: .3em;
+    background: rgba(255, 255, 255, .8);
+    position: absolute;
+    display: none;
+    color: #333;
 }
