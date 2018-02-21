@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django_extensions.db.fields import AutoSlugField
 from django.db.models import *
 from django.conf import settings
@@ -11,33 +11,9 @@ from django_extensions.db import fields as extension_fields
 import uuid
 
 
-class Children(models.Model):
-
-    patient_no = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             verbose_name='patient_no',
-                             related_name='children')
-    created = DateTimeField(auto_now_add=True, editable=False)
-    last_updated = DateTimeField(auto_now=True, editable=False)
-    name = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    age = models.CharField(max_length=30, default="NO", null=True, blank=True)
-
-
-    class Meta:
-        verbose_name = 'child'
-        verbose_name_plural = 'children'
-        ordering = ('last_updated',)
-
-    def __str__(self):
-        return self.pk
-
-
-    def __unicode__(self):
-        return u'%s' % self.pk
-
-
 class Medication(models.Model):
 
-    patient_no = models.ForeignKey(settings.AUTH_USER_MODEL,
+    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
                              verbose_name='patient_no',
                              related_name='medication')
     created = DateTimeField(auto_now_add=True, editable=False)
@@ -60,7 +36,7 @@ class Uploads(models.Model):
     patient_no = models.AutoField(primary_key=True)
     file = models.FileField(upload_to='documents/')
 
-class models(models.Model):
+class Patient(models.Model):
 
     # Fields
     patient_no = models.AutoField(primary_key=True)
@@ -161,3 +137,25 @@ class models(models.Model):
         return reverse('registration_models_update', args=(self.patient_no,))
 
 
+class Children(models.Model):
+
+    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
+                             verbose_name='patient_no',
+                             related_name='children')
+    created = DateTimeField(auto_now_add=True, editable=False)
+    last_updated = DateTimeField(auto_now=True, editable=False)
+    name = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    age = models.CharField(max_length=30, default="NO", null=True, blank=True)
+
+
+    class Meta:
+        verbose_name = 'child'
+        verbose_name_plural = 'children'
+        ordering = ('last_updated',)
+
+    def __str__(self):
+        return self.pk
+
+
+    def __unicode__(self):
+        return u'%s' % self.pk

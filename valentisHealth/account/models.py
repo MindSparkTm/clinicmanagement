@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import Group, Permission
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 class CustomUserManager(BaseUserManager):
