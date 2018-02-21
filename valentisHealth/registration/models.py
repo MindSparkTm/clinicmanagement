@@ -11,25 +11,6 @@ from django_extensions.db import fields as extension_fields
 import uuid
 
 
-class Medication(models.Model):
-
-    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
-                             verbose_name='patient_no',
-                             related_name='medication')
-    created = DateTimeField(auto_now_add=True, editable=False)
-    last_updated = DateTimeField(auto_now=True, editable=False)
-    name = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    age = models.CharField(max_length=30, default="NO", null=True, blank=True)
-
-
-    class Meta:
-        verbose_name = 'child'
-        verbose_name_plural = 'children'
-        ordering = ('last_updated',)
-
-
-    def __unicode__(self):
-        return u'%s' % self.pk
 
 
 class Uploads(models.Model):
@@ -155,6 +136,25 @@ class Children(models.Model):
 
     def __str__(self):
         return self.pk
+
+
+    def __unicode__(self):
+        return u'%s' % self.pk
+class Medication(models.Model):
+
+    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
+                             verbose_name='patient_no',
+                             related_name='medication')
+    created = DateTimeField(auto_now_add=True, editable=False)
+    last_updated = DateTimeField(auto_now=True, editable=False)
+    name = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    age = models.CharField(max_length=30, default="NO", null=True, blank=True)
+
+
+    class Meta:
+        verbose_name = 'child'
+        verbose_name_plural = 'children'
+        ordering = ('last_updated',)
 
 
     def __unicode__(self):
