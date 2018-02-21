@@ -16,6 +16,12 @@ from medication.models import models as Medication
 class patientVisitListView(ListView):
     model = patientVisit
 
+    def get_template_names(self):
+        if self.request.user.groups.filter(name='Doctor').exists():
+            return 'clinic/visitform_list.html'
+        else:
+            raise Http404('Requested user not found.')
+
     def get_context_data(self, **kwargs):
         context = super(patientVisitListView, self).get_context_data(**kwargs)
 
@@ -60,8 +66,13 @@ class DoctorVisit(CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
+
     def get_template_names(self):
-        return 'clinic/visitform_copy.html'
+        if self.request.user.groups.filter(name='Doctor').exists():
+            return 'clinic/visitform_copy.html'
+        else:
+            raise Http404('Requested user not found.')
+
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -81,10 +92,8 @@ class DoctorVisit(CreateView):
 
         return HttpResponseRedirect("/clinic/patientvisit/create/")
 
+
     def get_context_data(self, **kwargs):
-
-
-
         context = super(DoctorVisit, self).get_context_data(**kwargs)
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
 

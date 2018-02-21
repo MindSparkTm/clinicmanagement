@@ -119,23 +119,19 @@
             <fieldset id="medical_info">
                 <legend>Medical Info</legend>
                 <div class="mdl-grid">
-                    <div class="mdl-card  mdl-grid full-width">
-                        <div class="mdl-cell mdl-cell--12-col">
-                            <span style="color:rgb(76, 175, 80)">Medications</span>
-                            <ul class="demo-list-item mdl-list">
-
-                                {% for infor in patient.medical_information %}
+                    <div class="full-width">
+                        <span style="color:rgb(76, 175, 80)">Medications</span>
+                        {% for infor in patient.medical_information %}
                                 <li class="mdl-list__item">
                                     <span class="mdl-list__item-primary-content">
                                   {{ infor }}
                                 </span>
                                 </li>
                                 {% endfor %}
-                            </ul>
-                        </div>
+
                     </div>
 
-                    <div class="mdl-card  mdl-grid full-width">
+                    <div class=" full-width">
                         <div class="mdl-cell mdl-cell--12-col">
                             <span style="color:rgb(76, 175, 80)">Allergies</span>
                             <table class="mdl-data-table full-width">
@@ -188,7 +184,7 @@
 
                     <br>
 
-
+                    {% if patient.gender != "male"%}{{ patient.gender }}
                     <table class="mdl-data-table full-width">
                         <span style="color:rgb(76, 175, 80)">For Females</span>
                         <tr>
@@ -212,6 +208,7 @@
                             </td>
                         </tr>
                     </table>
+                {% endif %}
                     <br>
                     <br> Family conditions history
                     <table class="mdl-data-table full-width">

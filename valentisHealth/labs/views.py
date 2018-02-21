@@ -13,6 +13,12 @@ from .serializers import LabResultsSerializer, RadiologyResultSerializer
 class labsListView(ListView):
     model = Labs
 
+    def get_template_names(self):
+        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
+            return 'lab/labs_list.html'
+        else:
+            raise Http404('Requested user not found.')
+
     def get_context_data(self, **kwargs):
         context = super(labsListView, self).get_context_data(**kwargs)
 
@@ -33,6 +39,12 @@ class labsListView(ListView):
 class labsCreateView(CreateView):
     model = Labs
     form_class = labsForm
+
+    def get_template_names(self):
+        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
+            return 'lab/labs_form.html'
+        else:
+            raise Http404('Requested user not found.')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -72,7 +84,10 @@ class radiologyListView(ListView):
     model = Radiology
 
     def get_template_names(self):
-        return 'labs/radiology_list.html'
+        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
+            return 'labs/radiology_list.html'
+        else:
+            raise Http404('Requested user not found.')
 
     def get_context_data(self, **kwargs):
         context = super(radiologyListView, self).get_context_data(**kwargs)
@@ -92,6 +107,12 @@ class radiologyListView(ListView):
 class radiologyCreateView(CreateView):
     model = Radiology
     form_class = radiologyForm
+
+    def get_template_names(self):
+        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
+            return 'labs/radiology_form.html'
+        else:
+            raise Http404('Requested user not found.')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -132,9 +153,10 @@ class RadiologyResultListView(ListView):
     model = RadiologyResult
 
     def get_template_names(self):
-        return 'labs/radiology_result_form.html'
-
-
+        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
+            return ''
+        else:
+            raise Http404('Requested user not found.')
 
 
 class RadiologyResultDetailView(DetailView):
@@ -165,7 +187,7 @@ class LabsVisitView(CreateView):
     form_class = labsForm
 
     def get_template_names(self):
-        return 'labs/labs_form.html'
+        return 'labs/labresult_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -192,18 +214,18 @@ class LabsVisitView(CreateView):
 
         return HttpResponseRedirect("/labs/")
 
-    def get_context_data(self, request, **kwargs):
+    def get_context_data(self, **kwargs):
 
         context = super(LabsVisitView, self).get_context_data(**kwargs)
 
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
-            # lab_object = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
-            # object = labsForm(data=model_to_dict(lab_object))
-            # context['request_'] = object
-            # context['other'] = lab_object.other #text area field in the labresult form
-            # context['diagnosis'] = lab_object.diagnosis
+            lab_object = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
+            object = labsForm(data=model_to_dict(lab_object))
+            context['request_'] = object
+            context['other'] = lab_object.other #text area field in the labresult form
+            context['diagnosis'] = lab_object.diagnosis
         except:
             raise Http404('Requested user not found.')
 

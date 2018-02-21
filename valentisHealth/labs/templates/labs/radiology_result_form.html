@@ -24,10 +24,16 @@
         $('#id_{{ field.name }}').prop('checked', true)
         console.log("#id_{{ field.name }}")
 
+    })
+</script>
+{% else %}
+<script>
+    $(function() {
+        $('#div_id_{{ field.name }}').addClass('hidden')
+        console.log('#div_id_{{ field.name }}')
 
     })
 </script>
-
 
 {% endif %} {% endfor %}
 
@@ -176,6 +182,7 @@
         </div>
     </div>
 </fieldset>
+<div class="mdl-cell--9-col" style="margin-top: 20px;">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -204,4 +211,5 @@
     </div>
 
 </form>
+</div>
 {% endblock %}

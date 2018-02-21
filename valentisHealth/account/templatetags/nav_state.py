@@ -1,6 +1,7 @@
 __author__ = 'Hp'
 from django.core.urlresolvers import resolve
 from django.template import Library
+from django.contrib.auth.models import Group
 
 register = Library()
 
@@ -23,3 +24,9 @@ def current_route(request):
     # nav_active() will check the web request url_name and compare it
     # to the named url group within urls.py,
     # setting the active class if they match.
+
+
+@register.filter(name='has_group')
+def has_group(user, group_name):
+    group = Group.objects.get(name=group_name)
+    return True if group in user.groups.all() else False

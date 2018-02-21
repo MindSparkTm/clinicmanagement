@@ -23,8 +23,6 @@
 
 {% endif %} {% endfor %}
 
-<form id="labs" name="labs_form" method="post">
-    {% csrf_token %}
     <fieldset disabled>
         <div class="mdl-grid full-width">
             <div class="mdl-cell mdl-cell--4-col">
@@ -828,8 +826,8 @@
         </div>
     </fieldset>
 
-</form>
-<div class="mdl-grid">
+
+<div class="full-width">
     <div class="mdl-layout-spacer"></div>
     <div class="mdl-shadow--4dp mdl-cell mdl-cell--10-col">
         <div>
