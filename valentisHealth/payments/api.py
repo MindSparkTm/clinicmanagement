@@ -71,4 +71,3 @@ class cashViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.cashSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-

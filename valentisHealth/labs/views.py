@@ -162,10 +162,10 @@ class LabResultsUpdateView(UpdateView):
 
 class LabsVisitView(CreateView):
     model = LabResults
-    form_class = LabResultsForm
+    form_class = labsForm
 
     def get_template_names(self):
-        return 'labs/labresult_form.html'
+        return 'labs/labs_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -192,18 +192,18 @@ class LabsVisitView(CreateView):
 
         return HttpResponseRedirect("/labs/")
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, request, **kwargs):
 
         context = super(LabsVisitView, self).get_context_data(**kwargs)
 
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
-            lab_object = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
-            object = labsForm(data=model_to_dict(lab_object))
-            context['request'] = object
-            context['other'] = lab_object.other #text area field in the labresult form
-            context['diagnosis'] = lab_object.diagnosis
+            # lab_object = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
+            # object = labsForm(data=model_to_dict(lab_object))
+            # context['request_'] = object
+            # context['other'] = lab_object.other #text area field in the labresult form
+            # context['diagnosis'] = lab_object.diagnosis
         except:
             raise Http404('Requested user not found.')
 
@@ -252,7 +252,7 @@ class RadiologyVisitView(CreateView):
             radiology_object = Radiology.objects.filter(patient_no=self.kwargs['patient_no']).latest('created')
 
             object = radiologyForm(data=model_to_dict(radiology_object))
-            context['request'] = object
+            context['request_'] = object
             context['examination'] =radiology_object.examination
             context['clinical_indication'] = radiology_object.clinical_indication
             # print(object)

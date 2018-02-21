@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% static  'css/style.css' %}
 {% block content %}
 
 
@@ -34,8 +35,8 @@
                 <form method="POST" action="" class="full-width" enctype="multipart/form-data">
                     {% csrf_token %}
                     {#                    {% if form.authorized_by.value != None %}{{ form }}#}
-                    <fieldset name="personal">
-                        <legend>Personal Information</legend>
+                    <fieldset class="field-setter" name="personal">
+                        <legend  style="font-weight: bold; font-size: 16px; ">Personal Information</legend>
                         <input type="hidden" name="action" value="login"/>
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -49,7 +50,7 @@
                                        for="textfield_middle_name">Middle Name</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_middle_name" name="middle_name"
-                                       value="{% if form.middle_name.value != None %}{{ form.middle_name.value }}{% endif %}" required/>
+                                       value="{% if form.middle_name.value != None %}{{ form.middle_name.value }}{% endif %}"/>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -91,7 +92,7 @@
                                        for="textfield_email">Email Address</label>
                                 <input class="mdl-textfield__input" type="email"
                                        id="textfield_email"
-                                       value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}" name="email" required/>
+                                       value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}" name="email"/>
                             </div>
 
                         </div>
@@ -99,47 +100,42 @@
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_postal_address">Address </label>
+                                       for="textfield_postal_address">Postal Address</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_postal_address"
-                                       value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address" required/>
+                                       value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_apartment_name">Physical Address</label>
+                                       for="textfield_apartment_name">Postal Code</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_apartment_name"
-                                       value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name" required/>
+                                       value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name"/>
                             </div>
 
 
                         </div>
 
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height mdl-cell mdl-cell--4-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_county">County </label>
-                                <input type="text" value="" class="mdl-textfield__input"
-                                       id="county" readonly>
-                                <input type="hidden"
-                                       value="{% if form.county.value != None %}{{ form.county.value }}{% endif %}"
-                                       name="county"/>
-                                <ul for="county" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                    <li>Mombasa</li>
-                                </ul>
+                                       for="textfield_city">City </label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_city" value="{% if form.city.value != None %}{{ form.city.value }}{% endif %}" name="city"/>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_postal_code">Postal Code</label>
+                                       for="textfield_postal_code">Physical Address</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_code" value="{% if form.postal_code.value != None %}{{ form.postal_code.value }}{% endif %}" name="postal_code" required/>
+                                       id="textfield_postal_code" value="{% if form.postal_code.value != None %}{{ form.postal_code.value }}{% endif %}" name="postal_code"/>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
+                            <div class=" getmdl-select__fix-height mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
                                 <input type="text" value="" class="mdl-textfield__input"
                                        id="country" readonly>
-                                <input type="hidden" value="{% if form.country.value != None %}{{ form.country.value }}{% endif %}" name="country" required>
+                                <input type="hidden" value="{% if form.country.value != None %}{{ form.country.value }}{% endif %}" name="country">
                                 <label for="country" class="mdl-textfield__label">Country</label>
-                                <ul for="country" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                <ul for="country"
+                                    class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
                                     <li class="mdl-menu__item" data-val="AF">Afghanistan</li>
                                     <li class="mdl-menu__item" data-val="AX">Åland Islands</li>
                                     <li class="mdl-menu__item" data-val="AL">Albania</li>
@@ -402,7 +398,7 @@
                         </div>
 
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col" required>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_dob">Date of Birth</label>
                                 <input class="mdl-textfield__input" type="date"
@@ -442,7 +438,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_age">Age</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_age" value="{% if form.age.value != None %}{{ form.age.value }}{% endif %}" name="age" readonly />
+                                       id="textfield_age" value="{% if form.age.value != None %}{{ form.age.value }}{% endif %}" name="age" readonly/>
                             </div>
 
                         <script>
@@ -494,7 +490,7 @@
 
 
                     <fieldset name="insurance" class="fieldset">
-                        <legend>Emergency contact</legend>
+                        <legend style="font-weight: bold; font-size: 16px; " >Emergency contact</legend>
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -523,27 +519,12 @@
                                 <input class="mdl-textfield__input" type="number"
                                        id="textfield_phone_number" value="{% if form.phone_name.value != None %}{{ form.phone.value }}{% endif %}" name="phone_number"/>
                             </div>
-
-                            <script>
-                                $('.phone').addClass('is-dirty')
-
-                                $('#textfield_phone_number').on('keyup', function (e) {
-                                    $('.phone').addClass('is-dirty')
-                                    var number = $("#textfield_phone_number").intlTelInput("getNumber");
-                                    $("#textfield_phone_number").val(number)
-
-                                });
-
-
-                                $("#textfield_phone_number").intlTelInput();
-
-                            </script>
                         </div>
                     </fieldset>
 
 
                     <fieldset name="insurance" class="fieldset">
-                        <legend>Insurance information</legend>
+                        <legend style="font-weight: bold; font-size: 16px; " >Insurance information</legend>
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -604,7 +585,7 @@
                         </div>
                     </fieldset>
                     <fieldset name="other_insurance" class="fieldset">
-                        <legend>Insurance information of policy holder</legend>
+                        <legend style="font-weight: bold; font-size: 16px; " >Insurance information of policy holder</legend>
 
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
@@ -656,34 +637,19 @@
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_employer" value="{% if form.employer.value != None %}{{ form.employer.value }}{% endif %}" name="employer"/>
                             </div>
-                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_sub_work_phone">Work Phone Number</label>
                                 <input class="mdl-textfield__input" type="tel"
                                        id="textfield_sub_work_phone" value="{% if form.sub_work_phone.value != None %}{{ form.sub_work_phone.value }}{% endif %}" name="sub_work_phone"/>
                             </div>
 
-                            <script>
-                                $('.phone').addClass('is-dirty')
-
-                                $('#textfield_sub_work_phone').on('keyup', function (e) {
-                                    $('.phone').addClass('is-dirty')
-                                    var number = $("#textfield_sub_work_phone").intlTelInput("getNumber");
-                                    $("#textfield_sub_work_phone").val(number)
-
-                                });
-
-
-                                $("#textfield_sub_work_phone").intlTelInput();
-
-                            </script>
-
                         </div>
                     </fieldset>
 
 
                     <fieldset name="release_information">
-                        <legend>Release of Information</legend>
+                        <legend style="font-weight: bold; font-size: 16px; " >Release of Information</legend>
 
                         <div class="mdl-grid ">
 
@@ -716,9 +682,9 @@
 
 
                 <fieldset name="personal">
-                        <legend>HEALTH HISTORY</legend>
+                        <legend style="font-weight: bold; font-size: 16px; " >Health History</legend>
                 <fieldset name="personal">
-                        <legend>personal info</legend>
+                        <legend >personal info</legend>
 
                         <div class="mdl-grid">
 
@@ -739,32 +705,17 @@
 
 
                                 <input class="mdl-textfield__input" value="{% if form.marital_status.value != None %}{{ form.marital_status.value }}{% else %}{% endif %}" id="marital_status" readonly/>
-                                <input id="id_marital_status" value="" type="hidden" name="marital_status"/>
+                                <input value="" type="hidden" name="marital_status"/>
                                 <label class="mdl-textfield__label" for="marital_status">marital Status</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="marital_status">
-                                    <li class="mdl-menu__item" data-val="single"><div class="full-width" onclick="hidePartner()">Single</div></li>
-                                    <li class="mdl-menu__item" data-val="married"><div class="full-width" onclick="showPartner()">Married</div></li>
-                                    <li class="mdl-menu__item" data-val="divorced"><div class="full-width" onclick="hidePartner()">Divorced</div></li>
+                                    <li class="mdl-menu__item" data-val="single">Single</li>
+                                    <li class="mdl-menu__item" data-val="married">Married</li>
+                                    <li class="mdl-menu__item" data-val="divorced">Divorced</li>
 
                                 </ul>
                             </div>
-                            <script>
-                                $(document).ready(function () {
-                                    $('#id_marital_status').change(function () {
-                                        alert('test');
-                                    });
-                                });
-                                function hidePartner() {
-                                    $('#partner__').addClass('w3-hide')
-                                    console.log('hiding');
-                                }
-                                function showPartner() {
-                                    $('#partner__').removeClass('w3-hide')
-                                }
-                            </script>
-
-                            <div id="partner__" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"
@@ -814,7 +765,14 @@
                         </table>
                     </div>
 
-
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey"
+                               for="textfield_childrens">Children's Names/Age</label>
+                        <input class="mdl-textfield__input" type="text"
+                               id="textfield_childrens"
+                               value="{% if form.childrens.value != None %}{{ form.childrens.value }}{% endif %}"
+                               name="childrens"/>
+                    </div>
                 </div>
 
                     <script>
@@ -827,60 +785,60 @@
                             $("#holder").append($ctrl);
                         });
                     </script>
-{#                    <div  class="mdl-grid">#}
-{#                        <table class="mdl-data-table mdl-js-data-table full-width">#}
-{#                            <input type="hidden" value="" name="medical_information">#}
-{#                            <thead>#}
-{#                            <tr>#}
-{#                                <th class="mdl-data-table__cell--non-numeric full-width">Medication</th>#}
-{#                                <th >Dosage</th>#}
-{#                                <th >Route</th>#}
-{#                                <th >Frequency</th>#}
-{#                            </tr>#}
-{#                            </thead>#}
-{#                            <tbody id="medications">#}
-{#                            <td>#}
-{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
-{#                                <input class="mdl-textfield__input" type="text"#}
-{#                                       id="textfield_drug"#}
-{#                                       value=""#}
-{#                                       name="drug"/>#}
-{#                            </div>#}
-{#                            </td>#}
-{#                            <td>#}
-{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
-{##}
-{#                                <input class="mdl-textfield__input" type="text"#}
-{#                                       id="textfield_dose"#}
-{#                                       value=""#}
-{#                                       name="dose"/>#}
-{#                            </div>#}
-{#                            </td>#}
-{#                            <td>#}
-{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
-{##}
-{#                                <input class="mdl-textfield__input" type="text"#}
-{#                                       id="textfield_route"#}
-{#                                       value=""#}
-{#                                       name="route"/>#}
-{#                            </div>#}
-{#                            </td>#}
-{#                            <td>#}
-{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">#}
-{##}
-{#                                <input class="mdl-textfield__input" type="text"#}
-{#                                       id="textfield_freq"#}
-{#                                       value=""#}
-{#                                       name="occupation"/>#}
-{#                            </div>#}
-{#                            </td>#}
-{##}
-{##}
-{#                            </tbody>#}
-{##}
-{#                        </table>#}
+                    <div  class="mdl-grid">
+                        <table class="mdl-data-table mdl-js-data-table full-width">
+                            <input type="hidden" value="" name="medical_information">
+                            <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric full-width">Medication</th>
+                                <th >Dosage</th>
+                                <th >Route</th>
+                                <th >Frequency</th>
+                            </tr>
+                            </thead>
+                            <tbody id="medications">
+                            <td>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_drug"
+                                       value=""
+                                       name="drug"/>
+                            </div>
+                            </td>
+                            <td>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_dose"
+                                       value=""
+                                       name="dose"/>
+                            </div>
+                            </td>
+                            <td>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_route"
+                                       value=""
+                                       name="route"/>
+                            </div>
+                            </td>
+                            <td>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_freq"
+                                       value=""
+                                       name="occupation"/>
+                            </div>
+                            </td>
+
+
+                            </tbody>
+
+                        </table>
 {#                        <div class="mdl-grid"> Add more</div>#}
-{#                    </div>#}
+                    </div>
 
 
 
@@ -893,6 +851,25 @@
                                 <label class="mdl-textfield__label" for="allergies">Any Allergies to Medication or Food (list reactions)</label>
                             </div>
                 </div>
+
+
+                   <div class="mdl-grid">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="allergies"></textarea>
+                                <label class="mdl-textfield__label" for="allergies">Family History (list reactions)</label>
+                            </div>
+                </div>
+
+
+                   <div class="mdl-grid">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="allergies"></textarea>
+                                <label class="mdl-textfield__label" for="allergies">Social History (list reactions)</label>
+                            </div>
+                </div>
+
 
                 <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
@@ -926,7 +903,7 @@
 
                 <div id="females_">
                     <fieldset id="for_females" name="for_females">
-                        <legend>For females</legend>
+                        <legend style="font-weight: bold; font-size: 16px; " >For females</legend>
 
                     <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
@@ -1010,13 +987,12 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="surgeries" name="surgeries"></textarea>
-                            <label class="mdl-textfield__label" for="allergies">Please list any SURGERIES you have had
-                                and include the month/year</label>
+                            <label class="mdl-textfield__label" for="allergies">Add past surgeries/Medications</label>
                         </div>
                     </div>
 
                     <fieldset name="scans">
-                        <legend>Social information</legend>
+                        <legend  style="font-weight: bold; font-size: 16px; ">Social information</legend>
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="if_smoker">
                             <input type="checkbox" id="if_smoker" class="mdl-checkbox__input">
                             <span class="mdl-checkbox__label">Do you smoke</span>

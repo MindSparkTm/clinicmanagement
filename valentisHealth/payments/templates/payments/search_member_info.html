@@ -62,13 +62,7 @@
                         var tbody = $('#search_table tbody'),
                             props = ["member_no", "first_name", "surname", "passport_no"]
                         $.each(json, function(i, reservation) {
-                            {#
-                                $("#results").append(json.toString())#
-                            } {#
-                                $("#search_table").append(json.toString());#
-                            } {#
-                                var action = "window.location.href='" + link + json[i].member_no + "'"#
-                            }
+
                             var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
                             $.each(props, function(i, prop) {
                                 $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);

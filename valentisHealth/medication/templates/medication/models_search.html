@@ -9,7 +9,7 @@
     <div class="mdl-grid ">
     <div class="mdl-layout-spacer"></div>
 
-        <div class="mdl-card mdl-shadow--16dp util-center mdl-cell mdl-cell--6-col">
+        <div class="mdl-card mdl-shadow--16dp util-center mdl-cell mdl-cell--12-col">
             <style>
                 .mdl-card__title-text {
                     display: flex;
@@ -165,20 +165,18 @@
 
 
                         //Do ajax call for search box
-                        function searchMembers(str) {
+                         function searchMembers(str) {
 
-                            //ensure to remove previous prepended results to avoid duplicity
-                            $('#search_table tbody').children().remove();
-
-                            if (/\S/.test(str) && str.length > 1){
-                                $.ajax({
-                                url: "http://127.0.0.1:8000/registration/api/v1/models/",
+                        //string must not be empty or less than two characters
+                        if (/\S/.test(str) && str.length > 1) {
+                            $.ajax({
+                                url: "/registration/api/v1/models/",
                                 type: "get",
                                 data: {
 
                                     search: str,
                                 },
-                                success: function (json) {
+                                success: function(json) {
                                     console.log(json)
                                     if (json.length === 0) {
                                         $("#no_result").show()
@@ -188,11 +186,15 @@
 
                                         $("#no_result").hide()
                                         $('#searchresult').show()
-                                        var tbody = $('#search_table tbody'), props = ["patient_no", "first_name", "surname"]
-                                        $.each(json, function (i, reservation) {
-                                            {#                                            var action = "window.location.href='" + link + json[i].patient_no + "'"#}
-                                            var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/medication/models/new/"+json[i].patient_no+"/'\">");
-                                            $.each(props, function (i, prop) {
+
+                                        //ensure to remove previous prepended results to avoid duplicity
+                                        $('#search_table tbody').children().remove();
+
+                                        var tbody = $('#search_table tbody'),
+                                            props = ["patient_no", "first_name", "last_name", "ss_number", "dob"]
+                                        $.each(json, function(i, reservation) {
+                                            var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/medication/models/new/" + json[i].patient_no + "/'\">");
+                                            $.each(props, function(i, prop) {
                                                 $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
                                             });
                                             tbody.append(tr);
@@ -203,9 +205,13 @@
                                 }
 
                             })
-                            }
+                        } else {
+
+                            $("#no_result").hide()
+                            $('#searchresult').hide()
 
                         }
+                    }
 
                         
                     </script>
@@ -232,6 +238,8 @@
                                 <th class="mdl-data-table__cell--non-numeric full-width">Patient No</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
+                                <th>ID No.</th>
+                                <th>Date of Birth</th>
                             </tr>
                             </thead>
                             <tbody>

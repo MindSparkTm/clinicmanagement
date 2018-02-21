@@ -1469,12 +1469,11 @@
             <fieldset>
                 <legend>Doctor</legend>
 
-                <label class="mdl-textfield__label" for="diagnosis">Diagnosis</label>
                 <style>
                     .search {
                         position: relative;
                     }
-                    
+
                     .results {
                         position: absolute;
                         top: -10px;
@@ -1534,7 +1533,7 @@
 
             </legend>
 
-                <button name="visit_form"
+                <button name="visit_form" onclick="window.location.href='/medication/models/new/{{ patient.patient_no }}/'"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
                     type="button">Add Prescription
             </button>
@@ -1543,7 +1542,7 @@
         <div class="mdl-grid full-width">
             <button name="visit_form"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
-                    type="submit">Save
+                    type="submit">END SESSION
             </button>
         </div>
 

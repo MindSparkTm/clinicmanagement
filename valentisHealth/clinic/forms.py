@@ -7,4 +7,3 @@ class patientVisitForm(forms.ModelForm):
         model = patientVisit
         fields = ['name', 'patient_no', 'radiology_no', 'notes', 'diagnosis', 'prescription_id', 'status', 'triage_id']
 
-

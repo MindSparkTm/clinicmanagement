@@ -20,3 +20,4 @@ class DiagnosisViewSet(viewsets.ModelViewSet):
 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('code', 'name')
+

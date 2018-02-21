@@ -15,17 +15,83 @@
  */
 
 html,
-body {
-    font-family: 'Roboto', 'Helvetica', sans-serif;
-    background: url("../img/bgtwo.jpg");
+body {font-family: 'Roboto', sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
+    font-size: 12px;
 }
 
 .demo-avatar {
     width: 48px;
     height: 48px;
     border-radius: 24px;
+}
+
+
+#sideMenu{
+   background: #2a475f;
+    display: block;
+	float: left;
+	position: relative;
+	width: 220px;
+	z-index: 16;
+}
+
+
+
+nav{
+padding-top: 20px;
+    min-height:70em;
+    background: #4b6f82;
+    position: relative;
+}
+
+nav a{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 14px;
+}
+ .active {
+    border-left: 5px solid #a7cbe4;
+    background: #00243e;
+}
+
+
+nav a:hover{
+    background: #1a3847;
+    border-left: 5px solid #64b4eb;
+}
+
+
+
+.btn-login{
+    background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+
+}
+.btn-login:hover{
+   background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #48ade5, #3498db);
+  background-image: -moz-linear-gradient(top, #2e92fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+
 }
 
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
@@ -40,6 +106,7 @@ body {
     border: none;
 }
 
+
 /* iOS Safari specific workaround */
 
 .demo-drawer .mdl-menu__container {
@@ -49,6 +116,16 @@ body {
 .demo-drawer .demo-navigation {
     z-index: -2;
 }
+
+.field-setter{
+    border-radius: 0px;
+
+
+
+}
+
+
+
 
 /* END iOS Safari specific workaround */
 
@@ -160,20 +237,22 @@ body {
     align-items: stretch;
 }
 
+
 /* TODO: Find a proper solution to have the graphs
  * not float around outside their container in IE10/11.
  * Using a browserhacks.com solution for now.
  */
 
 _:-ms-input-placeholder,
-:root .demo-graphs {
+ :root .demo-graphs {
     min-height: 664px;
 }
 
 _:-ms-input-placeholder,
-:root .demo-graph {
+ :root .demo-graph {
     max-height: 300px;
 }
+
 
 /* TODO end */
 
@@ -271,7 +350,9 @@ header {
     width: 100%;
 }
 
-.mdl-button--file input {
+
+
+.mdl-button--file input{
     cursor: pointer;
     height: 100%;
     right: 0;
@@ -287,12 +368,10 @@ header {
     width: calc(100% - 32px);
 
 }
-
-.mdl-textfield--file .mdl-button--file {
+.mdl-textfield--file  .mdl-button--file {
     right: 0;
-}
-
-.spav {
+  }
+.spav{
 
     margin-left: 15px;
 }
@@ -305,90 +384,124 @@ fieldset {
     padding-bottom: 0.625em;
     padding-left: 0.75em;
     padding-right: 0.75em;
-    border: 1px;
     border-radius: 8px;
     border-style: solid;
+    border: none !important;
 }
 
 .mdl-textfield__error {
-    width: 100%;
-    left: 0;
-    text-align: left;
+	width: 100%;
+	left: 0;
+ text-align: left;
 }
 
-.left {
-    text-align: left;
+.left{
+  text-align:left;
 }
 
-#radiology {
+#radiology{
     padding-left: 24px;
 }
 
-.mdl-color--teal-500 {
+.mdl-color--teal-500{
     background: #3c5d73 !important;
 }
 
 .mdl-textfield {
-    margin: -8px 4px;
+  margin: -8px 4px;
 }
 
-.accordion {
+.accordion{
 
 }
 
-form, fieldset, .util-center {
+form, fieldset, .util-center{
     background: white;
 }
 
-body {
+body{
     background: #7ca1bb40;
 }
-
-.mdl-color--teal-500 {
-    background: #3c5d73b3 !important;
-}
-
-.mdl-card__title {
-
-}
-
-.headstitle {
+.mdl-color--teal-500{
     background: #2d5265 !important;
-
 }
 
-.logotwo {
+.mdl-card__title{
 
-    background: url("../img/logotwo.jpg");
+
+
+}
+.headstitle{
+   background: #2d5265 !important;
+box-shadow:rgba(0, 0, 0, 0.2) 0 8px 16px 0px, rgba(0, 0, 0, 0.19) 0 6px 20px 0;
+
+
+}
+.logotwo{
+
+  background: url("../img/logotwo.jpg");
 }
 
-.chart_ {
-    margin: 0;
-    overflow: hidden;
-    background: #204250;
-    font-family: Courier, monospace;
+.btn-over{
+    background: #2d5265;
+    color: #fff;
+    display:inline-block;
     font-size: 14px;
-    color: #ccc;
-}
-
-.wrapper {
-    display: block;
-    margin: 5em auto;
-    border: 1px solid #555;
-    width: 700px;
-    height: 350px;
-    position: relative;
-}
-
-p {
+    height: 16px;
     text-align: center;
+    text-decoration: none;
+    padding: 31px 50px;
+    width: auto;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btn-over:hover{
+    background: #558fad;
+}
+.btn-over a {
+    padding: 20px;
+
 }
 
-.label {
-    height: 2em;
-    padding: .3em;
-    background: rgba(255, 255, 255, .8);
-    position: absolute;
-    display: none;
-    color: #333;
+/*-----------------------------------Added CSS--------------------------------*/
+
+.waiting_table{
+
+    width: 95%;
+}
+
+form .mdl-textfield__input{ font-size: 13px !important; color:#505152}
+form label.mdl-textfield__label{ font-size: 12px;}
+form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12) }
+legend{ width: 100%;
+    margin: 10px 0;
+    float: left;
+    color: #2d5265;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+
+
+
+
+.patient_no{ width: 90%;
+    float: left;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.mdl-cell{ width: 100%;}
+
+.patient_no input[type=text]{ padding-left: 5px;}
+
+.mdl-button--raised.mdl-button--colored{ margin-left: 25px; margin-bottom: 20px;}
+.mdl-textfield textarea.mdl-textfield__input{ resize: none; max-height: 200px;}
+
+.logout.fa{ font-size: 16px; text-decoration: none;}
+.logout span{ font-family: 'Roboto', sans-serif; padding-left: 10px; font-size: 14px;}
+.legend-style{
+    font-weight: bold;
+    font-size: 16px;
+
 }

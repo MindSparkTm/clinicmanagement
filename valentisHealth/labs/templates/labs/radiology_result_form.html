@@ -18,7 +18,7 @@
 </div>
 
 
-{% for field in request %} {% if field.data %}
+{% for field in request_ %} {% if field.data %}
 <script>
     $(function() {
         $('#id_{{ field.name }}').prop('checked', true)
