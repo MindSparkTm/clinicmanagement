@@ -34,6 +34,7 @@ body {font-family: 'Roboto', sans-serif;
 	float: left;
 	position: relative;
 	width: 220px;
+    position: fixed;
 	z-index: 16;
 }
 
@@ -105,7 +106,9 @@ nav a:hover{
 .demo-drawer {
     border: none;
 }
-
+.mdl-layout__header mdl-layout__header--scroll{
+    position: fixed;
+}
 
 /* iOS Safari specific workaround */
 
@@ -424,6 +427,7 @@ body{
 }
 .mdl-color--teal-500{
     background: #2d5265 !important;
+
 }
 
 .mdl-card__title{
@@ -434,6 +438,7 @@ body{
 .headstitle{
    background: #2d5265 !important;
 box-shadow:rgba(0, 0, 0, 0.2) 0 8px 16px 0px, rgba(0, 0, 0, 0.19) 0 6px 20px 0;
+position: fixed;
 
 
 }
@@ -445,21 +450,19 @@ box-shadow:rgba(0, 0, 0, 0.2) 0 8px 16px 0px, rgba(0, 0, 0, 0.19) 0 6px 20px 0;
 .btn-over{
     background: #2d5265;
     color: #fff;
-    display:inline-block;
     font-size: 14px;
-    height: 16px;
     text-align: center;
     text-decoration: none;
-    padding: 31px 50px;
+    padding: 14px 20px !important;
     width: auto;
-    font-weight: 500;
+    border: none;
     cursor: pointer;
 }
 .btn-over:hover{
     background: #558fad;
 }
 .btn-over a {
-    padding: 20px;
+
 
 }
 
@@ -472,7 +475,7 @@ box-shadow:rgba(0, 0, 0, 0.2) 0 8px 16px 0px, rgba(0, 0, 0, 0.19) 0 6px 20px 0;
 
 form .mdl-textfield__input{ font-size: 13px !important; color:#505152}
 form label.mdl-textfield__label{ font-size: 12px;}
-form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12) }
+form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12 }
 legend{ width: 100%;
     margin: 10px 0;
     float: left;
@@ -504,4 +507,11 @@ legend{ width: 100%;
     font-weight: bold;
     font-size: 16px;
 
+}
+.para{
+   color: #fff;
+}
+
+.mdl-cell--6-col-desktop.mdl-cell--6-col-desktop{
+    width: calc(70% - 16px);
 }

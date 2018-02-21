@@ -8,9 +8,9 @@
 
 
 
-        <div class="mdl-shadow--16dp util-center full-width">
+        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <div class="mdl-card__title mdl-color--teal-500">
-                <h2 class="mdl-card__title-text mdl-color-text--white">Registration Form</h2>
+                <h2 class="mdl-card__title-text mdl-color-text--white" >Registration Form</h2>
             </div>
             <div class="mdl-card__supporting-text mdl-grid">
                 {% if form.errors %}
@@ -84,7 +84,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_postal_address">Address </label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_address" value="{% if form.postal_address.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
+                                       id="textfield_postal_address" value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"

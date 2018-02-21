@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
     <script>
         $("#registration_tab").addClass("current").siblings().removeClass("current")
@@ -103,7 +102,7 @@
                                    onkeyup="searchMembers(this.value)">
                         </form>
 
-                        <button class="search-box-button">Search</button>
+
                     </div>
 
 
@@ -142,7 +141,7 @@
                 <div class=" mdl-card" style="width:100%;">
                     <button type="submit"
                             onclick="window.location.href='/registration/models/create/{{ patient.patient_no }}'"
-                            class="create-btn">
+                            class="btn-over">
                         Create New Patient
                     </button>
                 </div>

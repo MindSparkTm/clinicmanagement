@@ -6,11 +6,12 @@
 
     <div class="mdl-grid">
 
+<div class="mdl-cell mdl-cell--2-col mdl-grid">
+</div>
 
-
-        <div class="mdl-shadow--16dp util-center full-width">
-            <div class="mdl-card__title mdl-color--teal-500">
-                <h2 class="mdl-card__title-text mdl-color-text--white">Registration Form</h2>
+        <div class="mdl-cell mdl-cell--10-col mdl-grid">
+            <div class="mdl-card__title mdl-color--teal-500" style="margin-left: 60px; " >
+                <h2 class="mdl-card__title-text mdl-color-text--white"  >Registration Form</h2>
             </div>
             <div class="mdl-card__supporting-text mdl-grid">
                 {% if form.errors %}
@@ -119,7 +120,7 @@
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_city">City </label>
+                                       for="textfield_city">County</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_city" value="{% if form.city.value != None %}{{ form.city.value }}{% endif %}" name="city"/>
                             </div>
@@ -478,14 +479,25 @@
 
                         </script>
 
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_ss_number">ID Number</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_ss_number" value="{% if form.ss_number.value != None %}{{ form.ss_number.value }}{% endif %}" name="ss_number"/>
+    <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--3-col">
+                                <input class="mdl-textfield__input" value="" id="details" readonly/>
+                                <input value="" type="hidden" name="details"/>
+                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                <label class="mdl-textfield__label" for="gender">Identification Documents</label>
+                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                    for="details">
+                                    <li class="mdl-menu__item" data-val="id">ID</li>
+                                    <li class="mdl-menu__item" data-val="ps">Passport</li>
+                                    <li class="mdl-menu__item" data-val="otherd">Other Documents</li>
+
+                                </ul>
                             </div>
 
-                        </div>
+
+
+
+
+
                     </fieldset>
 
 
@@ -737,11 +749,15 @@
                 <div class="mdl-grid">
 
                     <div id='contactsList'>
-                        <table class='contactsEditor  mdl-data-table mdl-js-data-table full-width' style='background-color: #eeeeee'>
+                        <table class='contactsEditor  mdl-data-table mdl-js-data-table full-width' style='background-color: #31475e; '>
                             <tr>
-                                <th>No of Children</th>
-                                <th>child's Name/ age</th>
+                                <th style="color: #fff; " >No of Children</th>
+                                <th style="color: #fff; " >child's Name/ age</th>
+
+
                             </tr>
+
+
                             <tbody data-bind="foreach: if_children">
                             <tr>
 
@@ -754,11 +770,17 @@
                                         <tr>
                                             <td><input class="Input-text" data-bind='value: name'/></td>
                                             <td><input type="number" class="Input-text" data-bind='value:age'/></td>
-                                            <td><a href='#' data-bind='click: $root.removeChild'>Delete</a></td>
+
+                                            <td><a href='#' data-bind='click: $root.removeChild'  style="color: #fff; " >Delete</a></td>
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <a href='#' data-bind='click: $root.addChild'>Add A child</a>
+
+
+
+
+
+                                    <a href='#' data-bind='click: $root.addChild'   style="color: #fff; " >Add A child</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -796,6 +818,7 @@
                                 <th >Frequency</th>
                             </tr>
                             </thead>
+
                             <tbody id="medications">
                             <td>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
