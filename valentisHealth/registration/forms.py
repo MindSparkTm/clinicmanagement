@@ -6,7 +6,7 @@ from django.forms.formsets import BaseFormSet
 class modelsForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ['patient_no', 'first_name', 'middle_name', 'last_name', 'gender', 'street_name', 'apartment_name', 'postal_code', 'postal_address', 'city', 'country', 'age', 'next_of_kin', 'n_of_kin_rel', 'email', 'phone', 'primary_insurance', 'secondary_insurance', 'pri_ins_sub', 'sec_ins_sub', 'other_ins_subscriber', 'subscriber_relationship', 'sub_address', 'ss_number', 'sub_ss_number', 'alt_phone', 'sub_work_phone', 'dob', 'sub_dob', 'sub_employer', 'uploaded_file']
+        fields = ['patient_no', 'first_name', 'middle_name', 'last_name', 'gender', 'street_name', 'apartment_name', 'postal_code', 'postal_address', 'city', 'country', 'age', 'next_of_kin', 'n_of_kin_rel', 'email', 'phone', 'primary_insurance', 'secondary_insurance', 'pri_ins_sub', 'sec_ins_sub', 'other_ins_subscriber', 'subscriber_relationship', 'sub_address', 'ss_number', 'sub_ss_number', 'alt_phone', 'sub_work_phone', 'dob', 'sub_dob', 'sub_employer', 'if_smoker', 'if_chew_tobacco', 'if_drink_alcohol', 'if_drug_used', 'if_exercise', 'if_special_diet', 'if_use_caffein', 'is_sadder', 'have_will', 'if_quit_before', 'uploaded_file']
 
 class MedicationForm(forms.Form):
 

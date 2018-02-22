@@ -202,10 +202,33 @@
 {# content goes here#} {% block content %} {% endblock %}
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js'></script>
 
 <script>
-    $('input[type="date"]').val(new Date().toISOString().split('T')[0])
+    $(function () {
+        var delayInMilliseconds = 100; //.1 second delay to delay with mdl overriding this script
+
+        setTimeout(function () {
+            $('input[type="date"]').parent().addClass('is-dirty')
+        }, delayInMilliseconds);
+
+    })
+
+    //phone numbers to have country prefix and style function
+    $(function () {
+        $('.phone_input').intlTelInput()
+
+        $('.phone_input').on('keyup', function () {
+            var number = $(this).intlTelInput("getNumber");
+            $(this).val(number)
+
+        });
+    })
+
+    //asign value to the hidden input
+    function phone_number(phone_id) {
+
+
+    }
 </script>
 </body>
 
