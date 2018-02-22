@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from .models import patientVisit, Diagnosis
 from .forms import patientVisitForm
-from registration.models import models as Patient
+from registration.models import Patient
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
 from nurse.models import models as Triage
