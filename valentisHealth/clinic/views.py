@@ -12,6 +12,10 @@ from labs.models import Labs, Radiology, RadiologyResult, LabResults
 from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
 from django.forms.models import model_to_dict
 from medication.models import models as Medication
+from django.utils.decorators import method_decorator
+
+def is_doctor(self):
+    return self.request.user.groups.filter(Q(name='Doctor') | Q(name='Admin') | Q(name='Superadmin')).exists()
 
 class patientVisitListView(ListView):
     model = patientVisit
@@ -19,6 +23,8 @@ class patientVisitListView(ListView):
     def get_template_names(self):
         return 'clinic/visitform_list.html'
 
+    def test_func(self):
+        return is_doctor(self)
 
     def get_context_data(self, **kwargs):
         context = super(patientVisitListView, self).get_context_data(**kwargs)
@@ -36,11 +42,8 @@ class patientVisitCreateView(CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
-    # def validate(self, request):
-    #     if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Admin') | Q(name='Superadmin')).exists():
-    #         pass
-    #     else:
-    #         return HttpResponseRedirect('/account/log-in/')
+    def test_func(self):
+        return is_doctor(self)
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)

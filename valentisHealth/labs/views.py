@@ -9,10 +9,14 @@ from django.forms.models import model_to_dict
 from django.db.models import Q
 from rest_framework import generics
 from .serializers import LabResultsSerializer, RadiologyResultSerializer
+from valentisHealth.authenticator import *
+
 
 class labsListView(ListView):
     model = Labs
 
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
 
     def get_template_names(self):
         return 'labs/labs_list.html'
@@ -37,6 +41,9 @@ class labsListView(ListView):
 class labsCreateView(CreateView):
     model = Labs
     form_class = labsForm
+
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
 
     def get_template_names(self):
         return 'lab/labs_form.html'
@@ -70,10 +77,16 @@ class labsCreateView(CreateView):
 class labsDetailView(DetailView):
     model = Labs
 
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
+
 
 class labsUpdateView(UpdateView):
     model = Labs
     form_class = labsForm
+
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
 
 
 class radiologyListView(ListView):
@@ -82,6 +95,8 @@ class radiologyListView(ListView):
     def get_template_names(self):
         return 'labs/radiology_list.html'
 
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
 
     def get_context_data(self, **kwargs):
         context = super(radiologyListView, self).get_context_data(**kwargs)
@@ -101,6 +116,9 @@ class radiologyListView(ListView):
 class radiologyCreateView(CreateView):
     model = Radiology
     form_class = radiologyForm
+
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
 
     def get_template_names(self):
         return 'labs/radiology_form.html'
@@ -133,45 +151,68 @@ class radiologyCreateView(CreateView):
 class radiologyDetailView(DetailView):
     model = Radiology
 
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
+
 
 class radiologyUpdateView(UpdateView):
     model = Radiology
     form_class = radiologyForm
 
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
 
 
 class RadiologyResultListView(ListView):
     model = RadiologyResult
 
-    # def get_template_names(self):
-    #
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
 
 
 class RadiologyResultDetailView(DetailView):
     model = RadiologyResult
+
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
 
 
 class RadiologyResultUpdateView(UpdateView):
     model = RadiologyResult
     form_class = RadiologyResultForm
 
+    def test_func(self):
+        return is_radiology(self) or is_doctor(self)
+
 
 class LabResultsListView(ListView):
     model = LabResults
 
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
+
 
 class LabResultsDetailView(DetailView):
     model = LabResults
+
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
 
 
 class LabResultsUpdateView(UpdateView):
     model = LabResults
     form_class = LabResultsForm
 
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
+
 
 class LabsVisitView(CreateView):
     model = LabResults
     form_class = labsForm
+
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
 
     def get_template_names(self):
         return 'labs/labresult_form.html'
@@ -223,6 +264,9 @@ class RadiologyVisitView(CreateView):
     model = RadiologyResult
     form_class = RadiologyResultForm
 
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
+
     def get_template_names(self):
         return 'labs/radiology_result_form.html'
 
@@ -271,10 +315,13 @@ class RadiologyVisitView(CreateView):
         return context
 
 
-def Tests(request, triage_id):
-    return JsonResponse()
+# def Tests(request, triage_id):
+#     return JsonResponse()
 
 class Tests(generics.GenericAPIView):
+    def test_func(self):
+        return is_labs(self) or is_doctor(self)
+
     def get(self, request, *args, **kwargs):
         labresult = LabResults.objects.filter(triage_id=kwargs.get('triage_id'))
         radiologyresult = RadiologyResult.objects.filter(triage_id=kwargs.get('triage_id'))

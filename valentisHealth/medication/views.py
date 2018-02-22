@@ -1,19 +1,24 @@
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
-from .models import models
-from .forms import modelsForm
-from django.http import HttpResponseRedirect, HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404, redirect, reverse
 from registration.models import models as Patient
-from clinic.models import Diagnosis, patientVisit
+
+from valentisHealth.authenticator import *
+from .forms import modelsForm
+from .models import models
 
 class modelsListView(ListView):
     model = models
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
 
 class modelsCreateView(CreateView):
     model = models
     form_class = modelsForm
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -52,12 +57,22 @@ class modelsCreateView(CreateView):
 class modelsDetailView(DetailView):
     model = models
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
+
+
 class modelsUpdateView(UpdateView):
     model = models
     form_class = modelsForm
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
+
 class ModelSearchView(View):
     model = models
+
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
 
     # def get_template_names(self):
     #     return 'medication/models_search.html'

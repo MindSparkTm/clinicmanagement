@@ -1,6 +1,6 @@
 //customized from http://knockoutjs.com/examples/contactsEditor.html
 var initialData = [{
-        number_children: "1",
+        number_children: "0",
         children: []
     },
 
@@ -26,7 +26,8 @@ var IfChildrenModel = function(if_children) {
     self.addChild = function(contact) {
         contact.children.push({
             name: "",
-            age: ""
+            age: "",
+            dob: "",
         });
     };
 
