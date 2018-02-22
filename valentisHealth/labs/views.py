@@ -13,11 +13,9 @@ from .serializers import LabResultsSerializer, RadiologyResultSerializer
 class labsListView(ListView):
     model = Labs
 
+
     def get_template_names(self):
-        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
-            return 'lab/labs_list.html'
-        else:
-            raise Http404('Un-aouthorised.')
+        return 'labs/labs_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(labsListView, self).get_context_data(**kwargs)
@@ -41,10 +39,8 @@ class labsCreateView(CreateView):
     form_class = labsForm
 
     def get_template_names(self):
-        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
-            return 'lab/labs_form.html'
-        else:
-            return ''
+        return 'lab/labs_form.html'
+
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -84,10 +80,8 @@ class radiologyListView(ListView):
     model = Radiology
 
     def get_template_names(self):
-        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
-            return 'labs/radiology_list.html'
-        else:
-            raise Http404('Un-aouthorised.')
+        return 'labs/radiology_list.html'
+
 
     def get_context_data(self, **kwargs):
         context = super(radiologyListView, self).get_context_data(**kwargs)
@@ -109,10 +103,7 @@ class radiologyCreateView(CreateView):
     form_class = radiologyForm
 
     def get_template_names(self):
-        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
-            return 'labs/radiology_form.html'
-        else:
-            return '/login/login.html'
+        return 'labs/radiology_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -152,11 +143,8 @@ class radiologyUpdateView(UpdateView):
 class RadiologyResultListView(ListView):
     model = RadiologyResult
 
-    def get_template_names(self):
-        if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
-            return ''
-        else:
-            return '/login/login.html'
+    # def get_template_names(self):
+    #
 
 
 class RadiologyResultDetailView(DetailView):
@@ -263,7 +251,6 @@ class RadiologyVisitView(CreateView):
         return HttpResponseRedirect("/labs/radiology")
 
     def get_context_data(self, **kwargs):
-
 
         context = super(RadiologyVisitView, self).get_context_data(**kwargs)
 

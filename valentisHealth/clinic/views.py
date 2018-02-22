@@ -17,10 +17,8 @@ class patientVisitListView(ListView):
     model = patientVisit
 
     def get_template_names(self):
-        if self.request.user.groups.filter(name='Doctor').exists():
-            return 'clinic/visitform_list.html'
-        else:
-            raise 'login/login.html'
+        return 'clinic/visitform_list.html'
+
 
     def get_context_data(self, **kwargs):
         context = super(patientVisitListView, self).get_context_data(**kwargs)
@@ -29,7 +27,7 @@ class patientVisitListView(ListView):
             context['all_patients'] = Patient.objects.all()
 
         except:
-            raise 'login/login.html'
+            raise Http404('Requested user not found.')
 
         return context
 
@@ -38,18 +36,34 @@ class patientVisitCreateView(CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
+    # def validate(self, request):
+    #     if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Admin') | Q(name='Superadmin')).exists():
+    #         pass
+    #     else:
+    #         return HttpResponseRedirect('/account/log-in/')
+
     def get_context_data(self, **kwargs):
+        # self.validate(self,request)
         context = super(patientVisitCreateView, self).get_context_data(**kwargs)
 
         try:
-            context['waiting_list'] = Patient.objects.filter(status="3")
-            context['show_waiting_list'] = True
-            context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
-            context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
-            context['link'] = 'clinic/patientvisit/doctor'
-            context['clinic'] = True
+            context['waiting_list'] = Patient.objects.filter(Q(status="3"))
+
         except:
-            raise Http404('Requested user not found.')
+            pass
+        try:
+            context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
+        except:
+            pass
+        try:
+            context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
+        except:
+            pass
+
+        context['link'] = 'clinic/patientvisit/doctor'
+        context['clinic'] = True
+        context['show_waiting_list'] = True
+
 
         return context
 
@@ -66,12 +80,8 @@ class DoctorVisit(CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
-
     def get_template_names(self):
-        if self.request.user.groups.filter(name='Doctor').exists():
-            return 'clinic/visitform_copy.html'
-        else:
-            raise 'login/login.html'
+        return 'clinic/visitform_copy.html'
 
 
     def form_valid(self, form):
@@ -86,7 +96,7 @@ class DoctorVisit(CreateView):
             patient_object.save()
         except:
             print(404)
-            raise 'login/login.html'
+            raise Http404('Requested user not found.')
 
         instance.save()
 
