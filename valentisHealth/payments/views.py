@@ -12,6 +12,7 @@ from xhtml2pdf import pisa
 import json
 from django.http import HttpResponse, Http404
 from django.contrib.auth.mixins import UserPassesTestMixin
+from valentisHealth.authenticator import *
 
 class member_infoListView(UserPassesTestMixin, ListView):
     model = member_info

@@ -5,6 +5,7 @@ from registration.models import Patient
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
 from django.contrib.auth.mixins import UserPassesTestMixin
+from valentisHealth.authenticator import *
 
 class modelsListView(ListView):
     model = models

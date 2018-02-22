@@ -2,10 +2,10 @@ from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
 from registration.models import models as Patient
-
 from valentisHealth.authenticator import *
 from .forms import modelsForm
 from .models import models
+from valentisHealth.authenticator import *
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 class modelsListView(ListView):
