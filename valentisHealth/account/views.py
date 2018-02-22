@@ -19,6 +19,9 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'base.html', {})
 
+class AddUser(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'addmember.html', {})
 
 class LoginPage(View):
     def get(self, request, *args, **kwargs):
