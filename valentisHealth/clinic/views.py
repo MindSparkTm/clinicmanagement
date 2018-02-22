@@ -13,6 +13,7 @@ from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsF
 from django.forms.models import model_to_dict
 from medication.models import models as Medication
 from django.utils.decorators import method_decorator
+from valentisHealth.authenticator import *
 
 def is_doctor(self):
     return self.request.user.groups.filter(Q(name='Doctor') | Q(name='Admin') | Q(name='Superadmin')).exists()
@@ -20,11 +21,14 @@ def is_doctor(self):
 class patientVisitListView(ListView):
     model = patientVisit
 
+    def dispatch(self, request, *args, **kwargs):
+        if is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
+
     def get_template_names(self):
         return 'clinic/visitform_list.html'
-
-    def test_func(self):
-        return is_doctor(self)
 
     def get_context_data(self, **kwargs):
         context = super(patientVisitListView, self).get_context_data(**kwargs)
@@ -42,8 +46,11 @@ class patientVisitCreateView(CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
-    def test_func(self):
-        return is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)
@@ -82,6 +89,12 @@ class patientVisitUpdateView(UpdateView):
 class DoctorVisit(CreateView):
     model = patientVisit
     form_class = patientVisitForm
+
+    def dispatch(self, request, *args, **kwargs):
+        if is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'clinic/visitform_copy.html'

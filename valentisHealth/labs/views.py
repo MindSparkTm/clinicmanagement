@@ -15,8 +15,11 @@ from valentisHealth.authenticator import *
 class labsListView(ListView):
     model = Labs
 
-    def test_func(self):
-        return is_labs(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_labs(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'labs/labs_list.html'
@@ -42,8 +45,11 @@ class labsCreateView(CreateView):
     model = Labs
     form_class = labsForm
 
-    def test_func(self):
-        return is_labs(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_labs(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'lab/labs_form.html'
@@ -85,12 +91,21 @@ class labsUpdateView(UpdateView):
     model = Labs
     form_class = labsForm
 
-    def test_func(self):
-        return is_labs(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_labs(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
 
 class radiologyListView(ListView):
     model = Radiology
+
+    def dispatch(self, request, *args, **kwargs):
+        if is_radiology(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'labs/radiology_list.html'
@@ -117,8 +132,11 @@ class radiologyCreateView(CreateView):
     model = Radiology
     form_class = radiologyForm
 
-    def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_radiology(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'labs/radiology_form.html'
@@ -151,8 +169,11 @@ class radiologyCreateView(CreateView):
 class radiologyDetailView(DetailView):
     model = Radiology
 
-    def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_radiology(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
 
 class radiologyUpdateView(UpdateView):
@@ -211,8 +232,11 @@ class LabsVisitView(CreateView):
     model = LabResults
     form_class = labsForm
 
-    def test_func(self):
-        return is_labs(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_radiology(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'labs/labresult_form.html'
@@ -264,8 +288,11 @@ class RadiologyVisitView(CreateView):
     model = RadiologyResult
     form_class = RadiologyResultForm
 
-    def test_func(self):
-        return is_labs(self) or is_doctor(self)
+    def dispatch(self, request, *args, **kwargs):
+        if is_radiology(self) or is_doctor(self):
+            return super().dispatch(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'labs/radiology_result_form.html'
