@@ -12,20 +12,14 @@ from labs.models import Labs, Radiology, RadiologyResult, LabResults
 from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
 from django.forms.models import model_to_dict
 from medication.models import models as Medication
-from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import UserPassesTestMixin
 from valentisHealth.authenticator import *
 
-def is_doctor(self):
-    return self.request.user.groups.filter(Q(name='Doctor') | Q(name='Admin') | Q(name='Superadmin')).exists()
-
-class patientVisitListView(ListView):
+class patientVisitListView(UserPassesTestMixin, ListView):
     model = patientVisit
 
-    def dispatch(self, request, *args, **kwargs):
-        if is_doctor(self):
-            return super().dispatch(self, request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect('/account/log-in/')
+    def test_func(self):
+        return is_doctor(self)
 
     def get_template_names(self):
         return 'clinic/visitform_list.html'
@@ -42,15 +36,12 @@ class patientVisitListView(ListView):
         return context
 
 
-class patientVisitCreateView(CreateView):
+class patientVisitCreateView(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
-    def dispatch(self, request, *args, **kwargs):
-        if is_doctor(self):
-            return super().dispatch(self, request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect('/account/log-in/')
+    def test_func(self):
+        return is_doctor(self)
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)
@@ -86,15 +77,9 @@ class patientVisitUpdateView(UpdateView):
     model = patientVisit
     form_class = patientVisitForm
 
-class DoctorVisit(CreateView):
+class DoctorVisit(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
-
-    def dispatch(self, request, *args, **kwargs):
-        if is_doctor(self):
-            return super().dispatch(self, request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect('/account/log-in/')
 
     def get_template_names(self):
         return 'clinic/visitform_copy.html'

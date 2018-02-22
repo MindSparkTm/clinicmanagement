@@ -6,20 +6,18 @@ from registration.models import models as Patient
 from valentisHealth.authenticator import *
 from .forms import modelsForm
 from .models import models
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 class modelsListView(ListView):
     model = models
 
 
-class modelsCreateView(CreateView):
+class modelsCreateView(UserPassesTestMixin, CreateView):
     model = models
     form_class = modelsForm
 
-    def dispatch(self, request, *args, **kwargs):
-        if is_nurse(self) or is_doctor(self) or is_callcenter(self):
-            return super().dispatch(self, request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect('/account/log-in/')
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -55,19 +53,28 @@ class modelsCreateView(CreateView):
         return context
 
 
-class modelsDetailView(DetailView):
+class modelsDetailView(UserPassesTestMixin, DetailView):
     model = models
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
 
 
 
-class modelsUpdateView(UpdateView):
+
+class modelsUpdateView(UserPassesTestMixin, UpdateView):
     model = models
     form_class = modelsForm
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
 
-class ModelSearchView(View):
+
+class ModelSearchView(UserPassesTestMixin, View):
     model = models
+
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
 
     # def get_template_names(self):
     #     return 'medication/models_search.html'
