@@ -180,23 +180,24 @@ class ClinicReport(ListView):
         try:
             visit_obj = patientVisit.objects.get(visit_id=self.kwargs['visit_id'])
             context['visit'] = visit_obj
+            try:
+                patient_object = Patient.objects.get(patient_no=visit_obj.patient_no)
+                context['patient'] = patient_object
+            except:
+                pass
+            try:
+                prescription = Medication.objects.get(triage_id=visit_obj.triage_id)
+                context['prescription'] = prescription
+            except:
+                pass
+            try:
+                triage = Triage.objects.get(triage_id=visit_obj.triage_id)
+                context['triage'] = triage
+            except:
+                pass
         except:
             pass
-        try:
-            patient_object = Patient.objects.get(patient_no=visit_obj.patient_no)
-            context['patient'] = patient_object
-        except:
-            pass
-        try:
-            prescription = Medication.objects.get(triage_id=visit_obj.triage_id)
-            context['prescription'] = prescription
-        except:
-            pass
-        try:
-            triage = Triage.objects.get(triage_id=visit_obj.triage_id)
-            context['triage'] = triage
-        except:
-            pass
+
 
         return context
 # Populate database for diagnosis ICD10
