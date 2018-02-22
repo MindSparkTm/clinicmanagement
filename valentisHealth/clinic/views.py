@@ -81,6 +81,9 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
+    def test_func(self):
+        return is_doctor(self)
+
     def get_template_names(self):
         return 'clinic/visitform_copy.html'
 
