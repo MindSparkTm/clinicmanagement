@@ -172,7 +172,6 @@ class LabResultsListView(ListView):
     model = LabResults
 
 
-
 class LabResultsDetailView(DetailView):
     model = LabResults
 

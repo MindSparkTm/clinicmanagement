@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import models
+from .models import Patient as models
 
 
 class modelsAdminForm(forms.ModelForm):

@@ -2,7 +2,7 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView, V
 from .models import models, Children, Medication, Uploads
 from .forms import modelsForm, MedicationForm, ChildrenForm, MedicationFormSet
 from django.http import HttpResponseRedirect
-from registration.models import models as Patient
+from .models import Patient as model
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
 
