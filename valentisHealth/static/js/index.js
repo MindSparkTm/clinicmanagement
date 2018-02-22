@@ -26,7 +26,8 @@ var IfChildrenModel = function(if_children) {
     self.addChild = function(contact) {
         contact.children.push({
             name: "",
-            age: ""
+            age: "",
+            dob:"",
         });
     };
 

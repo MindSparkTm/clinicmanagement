@@ -52,3 +52,53 @@ class LoginRequiredMiddleware(MiddlewareMixin):
 #                 request.user.last_login < request.user.force_logout_date:
 #             logout(request)
 #             return HttpResponseRedirect(settings.LOGIN_URL)
+
+# class PermisionChecker(object):
+#     rights = {
+#         'Admin': ['clinic', 'labs', 'nurse', 'static', 'media', 'registration', 'medication', 'accounts', 'payments'],
+#         'Doctor': ['clinic', 'labs', 'nurse', 'static', 'media', 'registration', 'medication', 'accounts', 'payments'],
+#         'Nurse': ['nurse', 'static', 'media', 'registration', 'accounts'],
+#         'SuperAdmin': ['clinic', 'labs', 'nurse', 'static', 'media', 'registration', 'medication', 'accounts'],
+#         'Lab': ['labs', 'static', 'media', 'accounts'],
+#         'Radiology': [],
+#         'Receptionist': ['static', 'media', 'accounts']}
+#
+#     def process_request(self, request):
+#         assert hasattr(
+#             request, 'user')
+#
+#         groups = self.request.user.groups
+#
+#         if self.request.path.split('/')[0] in ['static','media','accounts']:
+#             pass
+#         elif self.request.user.groups.filter(Q(name='SuperAdmin')).exists():
+#             pass
+#         else:
+#             params = request.GET.copy()
+#             params['next'] = request.path
+#             return HttpResponseRedirect(settings.LOGIN_URL + '?' + urlencode(params))
+#
+#     def is_allowed(self, request, requester):
+#         if self.request.user.groups.filter(Q(name=requester)).exists() and self.request.path.split('/')[0] in \
+#                 self.rights[requester]:
+#             return True
+#         else:
+#             return False
+#
+#     def is_doctor(self,request):
+#         return self.is_allowed('Doctor')
+#
+#     def is_nurse(self,request):
+#         return self.is_allowed('Nurse')
+#
+#     def is_labs(self,request):
+#         return self.is_allowed('Labs')
+#
+#     def is_radiology(self,request):
+#         return self.is_allowed('Labs')
+#
+#     def is_receptionist(self,request):
+#         return self.is_allowed('Receptionist')
+#
+#     def is_callcenter(self,request):
+#         return self.is_allowed('Callcenter')

@@ -91,3 +91,23 @@ class modelsSerializer(serializers.ModelSerializer):
         )
 
 
+
+class allergiesserializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Allergies
+        fields = (
+           'allergy_name',
+
+
+        )
+class countyserializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.County
+        fields = (
+           'County',
+
+
+        )
+

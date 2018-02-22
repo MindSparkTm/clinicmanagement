@@ -120,7 +120,7 @@ class Patient(models.Model):
 
 class Children(models.Model):
 
-    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
+    patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
                              verbose_name='patient_no',
                              related_name='children')
     created = DateTimeField(auto_now_add=True, editable=False)
@@ -140,9 +140,17 @@ class Children(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.pk
+
+class Allergies(models.Model):
+        allergy_name = models.CharField(max_length=200)
+
+class County(models.Model):
+        County = models.CharField(max_length=300)
+
+
 class Medication(models.Model):
 
-    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
+    patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
                              verbose_name='patient_no',
                              related_name='medication')
     created = DateTimeField(auto_now_add=True, editable=False)
