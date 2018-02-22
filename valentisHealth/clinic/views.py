@@ -20,7 +20,7 @@ class patientVisitListView(ListView):
         if self.request.user.groups.filter(name='Doctor').exists():
             return 'clinic/visitform_list.html'
         else:
-            raise Http404('Requested user not found.')
+            raise 'login/login.html'
 
     def get_context_data(self, **kwargs):
         context = super(patientVisitListView, self).get_context_data(**kwargs)
@@ -29,7 +29,7 @@ class patientVisitListView(ListView):
             context['all_patients'] = Patient.objects.all()
 
         except:
-            raise Http404('Requested user not found.')
+            raise 'login/login.html'
 
         return context
 
@@ -71,7 +71,7 @@ class DoctorVisit(CreateView):
         if self.request.user.groups.filter(name='Doctor').exists():
             return 'clinic/visitform_copy.html'
         else:
-            raise Http404('Requested user not found.')
+            raise 'login/login.html'
 
 
     def form_valid(self, form):
@@ -86,7 +86,7 @@ class DoctorVisit(CreateView):
             patient_object.save()
         except:
             print(404)
-            raise Http404('Requested user not found.')
+            raise 'login/login.html'
 
         instance.save()
 

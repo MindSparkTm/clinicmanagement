@@ -2,7 +2,7 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView, V
 from .models import Labs, Radiology, RadiologyResult, LabResults
 from .forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
 from django.http import HttpResponseRedirect, JsonResponse
-from registration.models import models as Patient
+from registration.models import Patient
 from django.http import HttpResponse, Http404, JsonResponse
 from django.shortcuts import render #, get_object_or_404, redirect, reverse
 from django.forms.models import model_to_dict
@@ -17,7 +17,7 @@ class labsListView(ListView):
         if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
             return 'lab/labs_list.html'
         else:
-            raise Http404('Requested user not found.')
+            raise Http404('Un-aouthorised.')
 
     def get_context_data(self, **kwargs):
         context = super(labsListView, self).get_context_data(**kwargs)
@@ -44,7 +44,7 @@ class labsCreateView(CreateView):
         if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
             return 'lab/labs_form.html'
         else:
-            raise Http404('Requested user not found.')
+            return ''
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -87,7 +87,7 @@ class radiologyListView(ListView):
         if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
             return 'labs/radiology_list.html'
         else:
-            raise Http404('Requested user not found.')
+            raise Http404('Un-aouthorised.')
 
     def get_context_data(self, **kwargs):
         context = super(radiologyListView, self).get_context_data(**kwargs)
@@ -112,7 +112,7 @@ class radiologyCreateView(CreateView):
         if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
             return 'labs/radiology_form.html'
         else:
-            raise Http404('Requested user not found.')
+            return '/login/login.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -156,7 +156,7 @@ class RadiologyResultListView(ListView):
         if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Lab') | Q(name='Admin')).exists():
             return ''
         else:
-            raise Http404('Requested user not found.')
+            return '/login/login.html'
 
 
 class RadiologyResultDetailView(DetailView):

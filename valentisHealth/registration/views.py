@@ -2,20 +2,22 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView, V
 from .models import models, Children, Medication, Uploads
 from .forms import modelsForm, MedicationForm, ChildrenForm, MedicationFormSet
 from django.http import HttpResponseRedirect
-from .models import Patient as model
+from .models import Patient
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
 
 class modelsListView(ListView):
-    model = models
+    model = Patient
 
     def get_template_names(self):
         return 'registration/search_patient.html'
 
-
 class modelsCreateView(CreateView):
-    model = models
+    model = Patient
     form_class = modelsForm
+
+    def get_template_names(self):
+        return 'registration/models_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -27,7 +29,7 @@ class modelsCreateView(CreateView):
 
 
 class modelsDetailView(ListView):
-    model = models
+    model = Patient
 
     def get_template_names(self):
         return 'registration/history_form.html'
@@ -49,7 +51,7 @@ class modelsDetailView(ListView):
         return context
 
 class SearchPatientView(CreateView):
-    model = models
+    model = Patient
     form_class = modelsForm
 
     def get_template_names(self):

@@ -14,7 +14,7 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for models
-    url(r'^$', views.modelsListView.as_view(), name='registration_models_list'),
+    url(r'^$', views.modelsListView.as_view(), name='registration_search'),
     # url(r'^models/search/$', views.SearchPatientView.as_view(), name='search_patient'),
     url(r'^models/create/$', views.modelsCreateView.as_view(), name='registration_models_create'),
     url(r'^existing/(?P<patient_no>\S+)/$', views.modelsDetailView.as_view(), name='registration_models_detail'),

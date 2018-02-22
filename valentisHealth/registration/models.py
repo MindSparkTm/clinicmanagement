@@ -120,7 +120,7 @@ class Patient(models.Model):
 
 class Children(models.Model):
 
-    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
+    patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
                              verbose_name='patient_no',
                              related_name='children')
     created = DateTimeField(auto_now_add=True, editable=False)
@@ -142,7 +142,7 @@ class Children(models.Model):
         return u'%s' % self.pk
 class Medication(models.Model):
 
-    patient_no = models.ForeignKey(Patient, on_delete=models.CASCADE,
+    patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
                              verbose_name='patient_no',
                              related_name='medication')
     created = DateTimeField(auto_now_add=True, editable=False)

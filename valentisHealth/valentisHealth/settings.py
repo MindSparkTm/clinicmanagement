@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'CHANGEME')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Custom user model
@@ -36,7 +36,7 @@ AUTHENTICATION_BACKENDS = ('valentisHealth.backends.EmailAuthBackend', )
 
 # URL to redirect to if one ain't logged in
 LOGIN_URL = '/account/log-in/'
-LOGIN_REDIRECT_URL = '/registration/models/create/'
+LOGIN_REDIRECT_URL = '/registration/'
 
 # Application definition
 
