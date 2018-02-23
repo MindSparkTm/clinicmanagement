@@ -129,7 +129,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             pass
 
         try:
-            context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+            context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])
             patient_object.session_id = context['triage'].triage_id
             patient_object.save()
 
