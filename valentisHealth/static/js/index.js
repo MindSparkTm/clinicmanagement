@@ -315,7 +315,7 @@ function dynamic_children() {
 
         $('#children_td_table').children().remove();
 
-        for (var i = 0; i < no && i < 5; i++) {
+        for (var i = 0; i < no && i < 4; i++) {
             $('#children_td_table')
                 .append($('<tr>')
                     .append($('<td>')
