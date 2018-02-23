@@ -333,7 +333,7 @@
                 function submitLabs() {
                     var labs_data = $('form[name=labs_form]').serialize();
                     $.ajax({
-                        url: 'http://127.0.0.1:8000/labs/create/',
+                        url: '/labs/create/',
                         type: 'post',
                         datatype: 'json',
                         data: labs_data,
@@ -348,7 +348,7 @@
                 function submitRadiology() {
                     var radiology_data = $('form[name=radiology_form]').serialize();
                     $.ajax({
-                        url: 'http://127.0.0.1:8000/labs/radiology/create/',
+                        url: '/labs/radiology/create/',
                         type: 'post',
                         datatype: 'json',
                         data: radiology_data,

@@ -163,13 +163,13 @@
                     });
 
                     function searchMembers(str) {
-                        var link = "http://127.0.0.1:8000/payments/api/v1/member_info/"
+                        var link = "/payments/api/v1/member_info/"
 
                         $('#search_table tbody').children().remove();
 
                         console.log(str)
                         $.ajax({
-                            url: "http://127.0.0.1:8000/payments/api/v1/member_info/",
+                            url: "/payments/api/v1/member_info/",
                             type: "get",
                             data: {
 
@@ -211,12 +211,12 @@
                         getAnniv(strng)
 
                         $.ajax({
-                            url: "http://127.0.0.1:8000/payments/member_info/" + strng.toLowerCase(),
+                            url: "/payments/member_info/" + strng.toLowerCase(),
                             type: "get",
 
                             success: function(json) {
                                 var data = json
-                                console.log("http://127.0.0.1:8000/payments/member_info/" + strng.toLowerCase())
+                                console.log("/payments/member_info/" + strng.toLowerCase())
                                 console.log(json)
                                 var data = json
                                 if (json.length != 0) {
@@ -249,7 +249,7 @@
                         $("#preauth").show()
 
                         $.ajax({
-                            url: "http://127.0.0.1:8000/payments/member_benefits/" + strng.toLowerCase(),
+                            url: "/payments/member_benefits/" + strng.toLowerCase(),
                             type: "get",
 
                             success: function(json) {
@@ -303,12 +303,12 @@
                         $("#preauth").show()
 
                         $.ajax({
-                            url: "http://127.0.0.1:8000/payments/member_anniversary/" + strng.toLowerCase(),
+                            url: "/payments/member_anniversary/" + strng.toLowerCase(),
                             type: "get",
 
                             success: function(json) {
                                 var data = json
-                                console.log("http://127.0.0.1:8000/payments/member_anniversary/" + strng.toLowerCase())
+                                console.log("/payments/member_anniversary/" + strng.toLowerCase())
                                 console.log("kkk")
                                 var data = json
                                 var benefitslist = []

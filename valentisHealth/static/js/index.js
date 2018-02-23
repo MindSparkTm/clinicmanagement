@@ -3,7 +3,7 @@ function getdiagnosis(str) {
 
     if (/\S/.test(str) && str.length > 1) {
         $.ajax({
-            url: "http://127.0.0.1:8000/clinic/api/v1/icd10/",
+            url: "/clinic/api/v1/icd10/",
             type: "get",
             data: {
 
@@ -96,7 +96,7 @@ function removeDiag(that) {
 function openPrevVisits() {
     $('#prevVisits').show('slow')
     $.ajax({
-        url: "http://127.0.0.1:8000/clinic/api/v1/icd10/",
+        url: "/clinic/api/v1/icd10/",
         type: "get",
 
         success: function (json) {
@@ -136,7 +136,7 @@ function populatePrevVisit(uuid, triage_id) {
     $('#print_report').attr('onclick', 'printReport("' + uuid + '")')
     $.ajax({
 
-        url: "http://127.0.0.1:8000/clinic/api/v1/patientvisit/" + uuid,
+        url: "/clinic/api/v1/patientvisit/" + uuid,
         type: "get",
 
         success: function (visit) {
@@ -146,7 +146,7 @@ function populatePrevVisit(uuid, triage_id) {
                 $("#prev_diagnosis").text(visit.diagnosis)
                 $("#prev_date").text(moment(visit.created))
                 $.ajax({
-                    url: "http://127.0.0.1:8000/medication/api/v1/models/",
+                    url: "/medication/api/v1/models/",
                     type: "get",
                     data: {
                         search: visit.triage_id
@@ -168,7 +168,7 @@ function populatePrevVisit(uuid, triage_id) {
                 })
 
                 $.ajax({
-                    url: "http://127.0.0.1:8000/nurse/api/v1/models/" + triage_id,
+                    url: "/nurse/api/v1/models/" + triage_id,
                     type: "get",
 
                     success: function (triage) {
@@ -296,11 +296,11 @@ function showTest(sender) {
 }
 
 function printReport(visit_id) {
-    printWindow = window.open("http://127.0.0.1:8000/clinic/clinic_report/" + visit_id + "/");
+    printWindow = window.open("/clinic/clinic_report/" + visit_id + "/");
 
 }
 
-var countyjson = $.getJSON('http://127.0.0.1:8000/static/js/counties.json')
+var countyjson = $.getJSON('/static/js/counties.json')
 
 
 $.each(countyjson, function (i, county) {

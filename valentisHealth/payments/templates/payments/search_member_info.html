@@ -43,7 +43,7 @@
         $('#searchresult tbody').children().remove();
         if (/\S/.test(str) && str.length > 1) {
             $.ajax({
-                url: "http://127.0.0.1:8000/payments/ajax_pre_authorization/",
+                url: "/payments/ajax_pre_authorization/",
                 type: "get",
                 data: {
                     q: str,
@@ -63,7 +63,7 @@
                             props = ["member_no", "first_name", "surname", "passport_no"]
                         $.each(json, function(i, reservation) {
 
-                            var tr = $("<tr onclick=\"window.location.href='http://127.0.0.1:8000/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
+                            var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
                             $.each(props, function(i, prop) {
                                 $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
                             });

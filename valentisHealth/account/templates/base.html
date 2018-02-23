@@ -199,13 +199,13 @@
 
 </div>
 
-{# content goes here#} {% block content %} {% endblock %}
+{# content goes here#} <div style="margin-left: 50px;">{% block content %} {% endblock %}</div>
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 <script>
     $(function () {
-        var delayInMilliseconds = 100; //.1 second delay to delay with mdl overriding this script
+        var delayInMilliseconds = 400; //.1 second delay to delay with mdl overriding this script
 
         setTimeout(function () {
             $('input[type="date"]').parent().addClass('is-dirty')

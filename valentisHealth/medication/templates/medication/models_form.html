@@ -106,7 +106,7 @@
 
 function getdata() {
     $.ajax({
-        url: "http://127.0.0.1:8000/medication/api/v1/MyDawa/",
+        url: "/medication/api/v1/MyDawa/",
         type: "GET",
         success: function (response) {
             s = response;
@@ -132,7 +132,7 @@ function getdata() {
 function getprescriptiondata(patientid) {
 
     $.ajax({
-        url: "http://127.0.0.1:8000/medication/api/v1/MyDawaPrescriptions/",
+        url: "/medication/api/v1/MyDawaPrescriptions/",
         type: "get",
         data:{
             search:patientid,
