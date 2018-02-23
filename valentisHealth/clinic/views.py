@@ -129,13 +129,14 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             pass
 
         try:
-            context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
-            patient_object.session_id = context['triage'].triage_id
+            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+            patient_object.session_id = triage_obj.triage_id
             patient_object.save()
 
         except:
-
             patient_object.save()
+
+            pass
 
         try:
 
