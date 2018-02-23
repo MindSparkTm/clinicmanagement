@@ -34,7 +34,7 @@
                     {% csrf_token %}
                     {#                    {% if form.authorized_by.value != None %}{{ form }}#}
                     <fieldset class="field-setter" name="personal">
-                        <legend  style="font-weight: bold; font-size: 16px; ">Personal Information</legend>
+                        <legend  style="font-weight: bold; font-size: 16px; padding: 17px;  ">Personal Information</legend>
                         <input type="hidden" name="action" value="login"/>
 
                         <div class="mdl-grid ">
@@ -116,11 +116,12 @@
                         </div>
 
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_city">County</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_city" value="{% if form.city.value != None %}{{ form.city.value }}{% endif %}" name="city"/>
+
+							 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+
+                                 <span style="font-size: 12px; "> County  </span> <select style="width: 150px;font-size: 12px; " id="county">
+
+                                </select>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -493,7 +494,7 @@
 
 
                     <fieldset name="insurance" class="fieldset">
-                        <legend style="font-weight: bold; font-size: 16px; " >Emergency contact</legend>
+                        <legend style="font-weight: bold; font-size: 16px;padding: 17px; " >Emergency contact</legend>
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -528,7 +529,7 @@
 
 
                     <fieldset name="insurance" class="fieldset">
-                        <legend style="font-weight: bold; font-size: 16px; " >Insurance information</legend>
+                        <legend style="font-weight: bold; font-size: 16px;padding: 17px;  " >Insurance information</legend>
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -589,7 +590,7 @@
                         </div>
                     </fieldset>
                     <fieldset name="other_insurance" class="fieldset">
-                        <legend style="font-weight: bold; font-size: 16px; " >Insurance information of policy holder</legend>
+                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >Insurance information of policy holder</legend>
 
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
@@ -609,7 +610,7 @@
                         </div>
 
                         <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="address"></textarea>
                                 <label class="mdl-textfield__label" for="address">Address</label>
@@ -657,7 +658,7 @@
 
 
                 <fieldset name="personal">
-                        <legend style="font-weight: bold; font-size: 16px; " >Health History</legend>
+                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >Health History</legend>
                 <fieldset name="personal">
                         <legend >personal info</legend>
 
@@ -712,7 +713,7 @@
                 <div class="mdl-grid">
 
                     <div id='contactsList'>
-                        <table class='contactsEditor  mdl-data-table mdl-js-data-table full-width' style='background-color: #31475e; '>
+                        <table class='mdl-data-table mdl-js-data-table full-width' style='#497e99'>
 {#                            <tr>#}
 {#                                <th style="color: #fff; " >No of Children</th>#}
 {#                                <th style="color: #fff; " >child's Name/ age</th>#}
@@ -720,7 +721,7 @@
 {#                            </tr>#}
 
 
-                            <tbody data-bind="children_td">
+                            <tbody data-bind="children_td" style="color: #000;">
 
                             <tr>
                                 <label for="number_children">Number of children</label>
@@ -728,13 +729,13 @@
                                 <td>
                                     <input name="number_children" class="Input-text" onkeyup="dynamic_children()" value=0 id='number_children'/>
                                 </td>
-                                <td>z
+                                <td>
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th style="color: #fff; ">Full Names</th>
-                                            <th style="color: #fff; ">Date of Birth</th>
-                                            <th style="color: #fff; ">Age</th>
+                                            <th style="color: #2d5265; padding: 30px; ">Full Names</th>
+                                            <th style="color: #2d5265; padding: 30px; ">Date of Birth</th>
+                                            <th style="color: #2d5265; padding: 30px; ">Age</th>
                                         </tr>
                                         </thead>
 
@@ -754,7 +755,7 @@
 
 
                 <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="allergies"></textarea>
                                 <label class="mdl-textfield__label" for="allergies">Allergies to Medication or Food</label>
@@ -763,7 +764,7 @@
 
 
                    <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="fam_history"></textarea>
                                 <label class="mdl-textfield__label" for="fam_history">Family History</label>
@@ -772,7 +773,7 @@
 
 
                    <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="allergies"></textarea>
                                 <label class="mdl-textfield__label" for="social_hist">Social History</label>
@@ -812,7 +813,7 @@
 
                 <div id="females_">
                     <fieldset id="for_females" name="for_females">
-                        <legend style="font-weight: bold; font-size: 16px; " >For females</legend>
+                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >For females</legend>
 
                     <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
@@ -996,7 +997,83 @@
                     </div>
 
                 </form>
+<script type="text/javascript">
+        window.onload = loadfunctionsonpage();
 
+        function loadfunctionsonpage(){
+            getallergies();
+            getcounties();
+        }
+
+    function getallergies() {
+        var allergiess=[];
+    $.ajax({
+        url: "http://127.0.0.1:8000/registration/api/v1/allergies/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            console.log("s",response);
+            for (var i = 0; i < response.length; ++i) {
+                //  brand.push(response[i].brand);
+                allergiess.push(response[i].allergy_name);
+            }
+             console.log("Response",allergiess);
+
+
+for (var i =0;i<allergiess.length;i++){
+    var li = $('<li><input type="checkbox" name="' + i + '" id="' + i + '"/>' +
+               '<label for="' + i + '"></label></li>');
+    li.find('label').text(allergiess[i]);
+    $('#wkslist').append(li);
+}
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
+function getcounties() {
+        var counties=[];
+    $.ajax({
+        url: "http://127.0.0.1:8000/registration/api/v1/county/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            for (var i = 0; i < response.length-1; ++i) {
+                //  brand.push(response[i].brand);
+                counties.push(response[i].County);
+            }
+
+
+            console.log("Response",counties);
+
+for (var i =0;i<counties.length;i++){
+    $('#county').append($('<option>', {
+        value: i,
+        text : counties[i]
+    }));
+}
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
+    </script>
 
             </div>
         </div>

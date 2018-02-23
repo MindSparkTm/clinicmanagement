@@ -1558,7 +1558,7 @@
                     </div>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_anagement" name="plan_of_anagement">{% if form.plan_of_anagement.value != None %}{{ form.plan_of_anagement.value }}{% endif %}</textarea>
+                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_management" name="plan_of_management">{% if form.plan_of_management.value != None %}{{ form.plan_of_management.value }}{% endif %}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Plan of Management</label>
             </div>
 
@@ -1760,8 +1760,13 @@
             </header>
             <div class="w3-container">
 
+
                 <table class="mdl-data-table full-width">
                     <strong>Date of Visit: <span id="prev_date"></span></strong><br><br>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"><strong>Summary:</strong> <span id="prev_summary"> </span></td>
+                    </tr>
+
                     <strong>Triage</strong><br><br>
                     <tr>
                         <td style="text-align:left;">Bp: <span id="prev_bp"> </span></td>

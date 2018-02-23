@@ -144,6 +144,7 @@ function populatePrevVisit(uuid, triage_id) {
 
             if (visit.length != 0) {
                 $("#prev_diagnosis").text(visit.diagnosis)
+                $("#prev_summary").text(visit.plan_of_management)
                 $("#prev_date").text(moment(visit.created))
                 $.ajax({
                     url: "/medication/api/v1/models/",
