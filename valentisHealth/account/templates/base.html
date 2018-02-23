@@ -83,12 +83,6 @@
 
 <div class="mdl-grid">
 
-    <script>
-        var timestamp = moment("{{ patient.last_updated  }}");
-        var wait = timestamp.diff(moment());
-        console.log(wait)
-    </script>
-
     {% if show_waiting_list %}
 
         <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--2-col" style="
@@ -149,7 +143,7 @@
                         </thead>
                         <tbody>
                         {% for patient in from_labs %}
-                            <tr onclick="window.location.href='/clinic/patientvisit/fromlabs/{{ patient.patient_no }}/'">
+                            <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_no }}/'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>
@@ -178,7 +172,7 @@
                         </thead>
                         <tbody>
                         {% for patient in from_radiology %}
-                            <tr onclick="window.location.href='/clinic/patientvisit/fromradiology/{{ patient.patient_no }}/'">
+                            <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_no }}/'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>
@@ -198,7 +192,7 @@
 
 </div>
 
-{# content goes here#} <div style="margin-left: 240px;">{% block content %} {% endblock %}</div>
+{# content goes here#} <div style="margin-left: 220px;">{% block content %} {% endblock %}</div>
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 

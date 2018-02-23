@@ -65,7 +65,6 @@
             </button>
         <div id="triage_" class="w3-hide">
             <fieldset id="triage">
-                <legend>Triage Result</legend>
                 <div class="mdl-grid">
                     <div class="mdl-card  mdl-grid full-width">
                         <div class="mdl-cell mdl-cell--12-col">
@@ -94,9 +93,7 @@
                                     <td style="text-align:left;" colspan="2">Urinalysis: <span id="urinalysis">{{ triage.urinalysis }}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td style="text-align:left;" colspan="2">Other: <span id="other">{{ triage.others }}</span></td>
-                                </tr>
+
                             </table>
 
                         </div>
@@ -110,6 +107,44 @@
             </fieldset>
         </div>
 
+    <br><br>
+
+        <div class="">
+            <div id="presenting_illness" class="">
+            <fieldset id="">
+                <legend>
+                    Presenting Illness:
+                </legend>
+                            <table class="mdl-data-table full-width">
+
+                                <tbody id="alergies">
+                                    <tr>
+                                        <td style="text-align: left">{{ triage.others }}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+            </fieldset>
+        </div>
+        </div>
+
+        <div id="presenting_illness" class="">
+            <fieldset id="triage">
+                <legend>
+                    History of Presenting Illness
+                </legend>
+
+                <div class="mdl-grid">
+
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea onkeyup="$('#presenting_illiness').val($('#presenting_illiness_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illiness_" name="presenting_illiness_">{% if form.presenting_illiness.value != None %}{{ form.presenting_illiness.value }}{% endif %}</textarea>
+                <label class="mdl-textfield__label" for="notes_">History of Presenting Illness</label>
+            </div>
+                </div>
+
+            </fieldset>
+        </div>
+
         <button onclick="toggleView('medication_')" class="mdl-button w3-block w3-left-align accordion">View Medical
                 History
             </button>
@@ -117,11 +152,11 @@
 
         <div id="medication_" class="w3-hide">
             <fieldset id="medical_info">
-                <legend>Medical Info</legend>
                 <div class="mdl-grid">
                     <div class="full-width">
                         <span style="color:rgb(76, 175, 80)">Medications</span>
                         {% for infor in patient.medical_information %}
+
                                 <li class="mdl-list__item">
                                     <span class="mdl-list__item-primary-content">
                                   {{ infor }}
@@ -138,18 +173,13 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align:left;">Alergies:</th>
-                                        <th>Reaction: <span id="menstrual"></span></th>
 
                                     </tr>
                                 </thead>
                                 <tbody id="alergies">
                                     {% for alergy in patient.alergies %}
                                     <tr>
-                                        {% if alergy.len > 1 %} {% for val in alergy %}
-                                        <td style="text-align: left">{{ val }}</td>
-                                        {% endfor %} {% else %} {% for val in alergy %}
-                                        <td colspan="2" style="text-align: left">{{ val }}</td>
-                                        {% endfor %} {% endif %}
+                                        <td style="text-align: left">{{ alergy }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -216,12 +246,17 @@
                             <tr>
 
                                 <th style="text-align:left;">Condition:</th>
-                                <th>Affect who: <span id="menstrual"></span></th>
 
 
                             </tr>
                         </thead>
-                        <tbody id="family_conditions"></tbody>
+                        <tbody id="family_conditions">
+                        {% for alergy in patient.alergies %}
+                            <tr>
+                                <td style="text-align: left">{{ alergy }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
 
                     </table>
 
@@ -280,9 +315,14 @@
         </div>
 
         <div class="mdl-grid full-width">
-            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#notes').val($('#notes_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="notes_" name="notes_">{% if form.notes.value != None %}{{ form.notes.value }}{% endif %}</textarea>
-                <label class="mdl-textfield__label" for="notes_">More notes</label>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea onkeyup="$('#examination').val($('#examination_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="examination_" name="examination_">{% if form.examination.value != None %}{{ form.examination.value }}{% endif %}</textarea>
+                <label class="mdl-textfield__label" for="notes_">Examination</label>
+            </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">{% if form.query_diagnosis.value != None %}{{ form.query_diagnosis.value }}{% endif %}</textarea>
+                <label class="mdl-textfield__label" for="notes_">Query Diagnosis</label>
             </div>
         </div>
 
@@ -1489,7 +1529,9 @@
 
                     </div>
 
-                    <input type="text" class="hidden mdl-textfield__input" name="notes" value="{% if form.notes.value != None %}{{ form.notes.value }}{% endif %}" id="notes">
+                    <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{% if form.his_presenting_illness.value != None %}{{ form.hist_presenting_illness.value }}{% endif %}" id="his_presenting_illness">
+                    <input type="text" class="hidden mdl-textfield__input" name="examination" value="{% if form.examination.value != None %}{{ form.examination.value }}{% endif %}" id="examination">
+                    <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{% if form.query_diagnosis.value != None %}{{ form.query_diagnosis.value }}{% endif %}" id="query_diagnosis">
                     <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" name="diagnosis"></textarea>
 
                     <div id="div_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
@@ -1514,6 +1556,13 @@
                             </table>
                         </div>
                     </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_anagement" name="plan_of_anagement">{% if form.plan_of_anagement.value != None %}{{ form.plan_of_anagement.value }}{% endif %}</textarea>
+                <label class="mdl-textfield__label" for="notes_">Plan of Management</label>
+            </div>
+
+
 
                 </div>
 

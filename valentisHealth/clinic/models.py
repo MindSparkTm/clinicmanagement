@@ -25,6 +25,10 @@ class patientVisit(models.Model):
     diagnosis = models.TextField(max_length=100, null=True, blank=True)
     prescription_id = models.CharField(max_length=30, null=True, blank=True)
     status = models.CharField(max_length=30, null=True, blank=True)
+    examination = models.CharField(max_length=30, null=True, blank=True)
+    plan_of_managemnt = models.CharField(max_length=30, null=True, blank=True)
+    query_diagnosis = models.CharField(max_length=30, null=True, blank=True)
+    his_presenting_illness = models.CharField(max_length=30, null=True, blank=True)
 
 
     class Meta:

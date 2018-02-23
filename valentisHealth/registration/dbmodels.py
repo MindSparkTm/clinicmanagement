@@ -1,6 +1,7 @@
 import os, csv
 
 path = "C:\\Backup_Valentis\\valentishealth\\valentisHealth"
+path= os.path.abspath(os.path.realpath(path))
 os.chdir(path)
 from registration.models import County
 
