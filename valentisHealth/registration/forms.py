@@ -14,7 +14,7 @@ class modelsForm(forms.ModelForm):
                   'sub_address', 'ss_number', 'sub_ss_number', 'alt_phone', 'sub_work_phone',
                   'dob', 'sub_dob', 'sub_employer', 'if_smoker', 'if_chew_tobacco',
                   'if_drink_alcohol', 'if_drug_used', 'if_exercise', 'if_special_diet',
-                  'if_use_caffein', 'is_sadder', 'have_will', 'if_quit_before', 'uploaded_file'
+                  'if_use_caffein', 'is_sadder', 'have_will', 'if_quit_before', 'uploaded_file',
                   'social_hist','fam_hist'
                   ]
 
