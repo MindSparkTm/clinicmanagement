@@ -461,6 +461,34 @@ position: fixed;
 .btn-over:hover{
     background: #558fad;
 }
+
+
+
+.btn-logout{
+    background: #2d5265;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 20px !important;
+    width: auto;
+    border: none;
+    cursor: pointer;
+    height: 65px;
+}
+.btn-logout:hover{
+    background: #558fad;
+}
+
+
+
+
+
+
+
+
+
+
 .btn-over a {
 
 
