@@ -473,7 +473,7 @@ position: fixed;
     width: 95%;
 }
 
-form .mdl-textfield__input{ font-size: 13px !important; color:#505152}
+form .mdl-textfield__input{ font-size: 12px !important; font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial"; color:#505152}
 form label.mdl-textfield__label{ font-size: 12px;}
 form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12 }
 legend{ width: 100%;
@@ -482,6 +482,12 @@ legend{ width: 100%;
     color: #2d5265;
     font-size: 16px;
     padding-left: 10px;
+}
+.fields{
+
+    font-size: 9px;
+    font-family: "Roboto", sans-serif;
+
 }
 
 
