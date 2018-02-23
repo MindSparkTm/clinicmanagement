@@ -53,7 +53,7 @@ class Patient(models.Model):
     sub_dob = DateField(null=True, blank=True)
     sub_employer = TextField(max_length=100,null=True, blank=True)
     status = IntegerField(null=True, blank=True)
-    session_id = CharField(max_length=30, null=True, blank=True)
+    session_id = CharField(max_length=100, null=True, blank=True)
 
     uploaded_file = models.FileField(upload_to='media/users/', null=True, blank=True)
 
