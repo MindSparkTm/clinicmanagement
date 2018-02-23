@@ -103,6 +103,9 @@ class Patient(models.Model):
     is_sadder = models.CharField(max_length=30, default="NO", null=True, blank=True)
     if_lost_interest = models.CharField(max_length=30, default="NO", null=True, blank=True)
     have_will = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    social_hist = models.TextField(max_length=400, null=True, blank=True)
+    fam_hist = models.TextField(max_length=400, null=True, blank=True)
+
 
     class Meta:
         ordering = ('last_updated',)

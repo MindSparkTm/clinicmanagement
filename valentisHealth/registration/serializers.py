@@ -88,6 +88,7 @@ class modelsSerializer(serializers.ModelSerializer):
             'if_lost_interest',
             'have_will',
             'uploaded_file',
+            'social_hist', 'fam_hist',
         )
 
 

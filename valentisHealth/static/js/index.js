@@ -280,6 +280,15 @@ function closePopUp() {
     $('.dialog').close();
 }
 
+function show_element(id_name){
+    $('#' + id_name).show()
+}
+
+function hide_element(id_name){
+    $('#' + id_name).hide()
+}
+
+
 function showTest(sender) {
 
     if (sender === "tests_radiology") {
@@ -326,7 +335,25 @@ function dynamic_children() {
                     .append($('<td>')
                         .append($('<input>')
                             .addClass('Input-text')
-                            .attr('name', 'child_dob_' + i)))
+                            .attr('name', 'child_dob_' + i)
+                            .prop('type', 'date')
+                            .prop('class', 'child_age_' + i)
+                            .change(function () {
+                                d = new Date($(this).val());
+                                var before = moment($(d, 'YYYY-MM-DD'));
+                                var age = moment().diff(d, 'years');
+                                age_id_name = "#"+$(this).attr('class')
+                                $(age_id_name).val(age);
+                            })
+                        ))
+                    .append($('</td>'))
+                    .append($('<td>')
+                        .append($('<input>')
+                            .addClass('Input-text')
+                            .attr('id', 'child_age_' + i)
+                            .attr('name', 'child_age_' + i)
+                            .prop('type', 'text')
+                        ))
                     .append($('</td>'))
                 )
                 .append($('</tr>'))

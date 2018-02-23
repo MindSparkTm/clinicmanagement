@@ -416,21 +416,6 @@
                                 $('#textfield_age').val(age).parent().addClass("is-dirty");
                             });
 
-                            $(function(){
-                            var dtToday = new Date();
-                                var month = dtToday.getMonth() + 1;
-                                var day = dtToday.getDate();
-                                var year = dtToday.getFullYear();
-
-                                if (month < 10)
-                                    month = '0' + month.toString();
-                                if (day < 10)
-                                    day = '0' + day.toString();
-
-                                var maxDate = year + '-' + month + '-' + day;
-                                $('[type="date"]').attr('max', maxDate);
-
-                            })
 
 
                         </script>
@@ -702,13 +687,13 @@
                                 <label class="mdl-textfield__label" for="marital_status">marital Status</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="marital_status">
-                                    <li class="mdl-menu__item" data-val="single">Single</li>
-                                    <li class="mdl-menu__item" data-val="married">Married</li>
-                                    <li class="mdl-menu__item" data-val="divorced">Divorced</li>
+                                    <li class="mdl-menu__item" data-val="single"><div class="full-width" onclick="hide_element('parter_div')">Single</div></li>
+                                    <li class="mdl-menu__item" data-val="married"><div class="full-width" onclick="show_element('parter_div')">Married</div></li>
+                                    <li class="mdl-menu__item" data-val="divorced"><div class="full-width" onclick="hide_element('parter_div')">Divorced</div></li>
 
                                 </ul>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div id="parter_div" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"
@@ -752,6 +737,7 @@
                                         <tr>
                                             <th style="color: #fff; ">Full Names</th>
                                             <th style="color: #fff; ">Date of Birth</th>
+                                            <th style="color: #fff; ">Age</th>
                                         </tr>
                                         </thead>
 
@@ -790,8 +776,9 @@
 
                    <div class="mdl-grid">
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                                                    <textarea class="mdl-textfield__input" type="text" rows="8"id="allergies"></textarea>
-                                <label class="mdl-textfield__label" for="allergies">Social History</label>
+                                                    <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="allergies"></textarea>
+                                <label class="mdl-textfield__label" for="social_hist">Social History</label>
                             </div>
                 </div>
 
