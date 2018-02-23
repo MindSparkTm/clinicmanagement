@@ -71,7 +71,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_phone">Phone </label>
                                 <input class="phone_inpt mdl-textfield__input" type='tel'
-                                       id="textfield_phone" value="{% if form.phone.value != None %}{{ form.phone.value }}{% else %}{% endif %}" name="phone" required/>
+                                       id="textfield_phone_input" value="{% if form.phone.value != None %}{{ form.phone.value }}{% else %}{% endif %}" name="phone" required/>
                             </div>
 
 {#                            <script>#}
@@ -110,7 +110,7 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_apartment_name">Postal Code</label>
-                                <input class="mdl-textfield__input" type="text"
+                                <input class="mdl-textfield__input" type="Number"
                                        id="textfield_apartment_name"
                                        value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name"/>
                             </div>
