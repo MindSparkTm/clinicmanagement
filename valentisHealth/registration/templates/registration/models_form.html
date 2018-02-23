@@ -122,6 +122,12 @@
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_city" value="{% if form.city.value != None %}{{ form.city.value }}{% endif %}" name="city"/>
                             </div>
+							 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+
+                               County: <select id="county">
+
+                                </select>
+                            </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_postal_code">Physical Address</label>
@@ -996,7 +1002,83 @@
                     </div>
 
                 </form>
+<script type="text/javascript">
+        window.onload = loadfunctionsonpage();
 
+        function loadfunctionsonpage(){
+            getallergies();
+            getcounties();
+        }
+
+    function getallergies() {
+        var allergiess=[];
+    $.ajax({
+        url: "http://127.0.0.1:8000/registration/api/v1/allergies/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            console.log("s",response);
+            for (var i = 0; i < response.length; ++i) {
+                //  brand.push(response[i].brand);
+                allergiess.push(response[i].allergy_name);
+            }
+             console.log("Response",allergiess);
+
+
+for (var i =0;i<allergiess.length;i++){
+    var li = $('<li><input type="checkbox" name="' + i + '" id="' + i + '"/>' +
+               '<label for="' + i + '"></label></li>');
+    li.find('label').text(allergiess[i]);
+    $('#wkslist').append(li);
+}
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
+function getcounties() {
+        var counties=[];
+    $.ajax({
+        url: "http://127.0.0.1:8000/registration/api/v1/county/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            for (var i = 0; i < response.length-1; ++i) {
+                //  brand.push(response[i].brand);
+                counties.push(response[i].County);
+            }
+
+
+            console.log("Response",counties);
+
+for (var i =0;i<counties.length;i++){
+    $('#county').append($('<option>', {
+        value: i,
+        text : counties[i]
+    }));
+}
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
+    </script>
 
             </div>
         </div>
