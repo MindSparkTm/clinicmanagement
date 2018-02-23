@@ -167,14 +167,14 @@
 
                     //Do ajax call for search box
                     function searchMembers(str) {
-                        var link = "http://127.0.0.1:8000/payments/api/v1/member_info/"
+                        var link = "/payments/api/v1/member_info/"
 
                         //ensure to remove previous prepended results to avoid duplicity
                         $('#search_table tbody').children().remove();
 
                         console.log(str)
                         $.ajax({
-                            url: "http://127.0.0.1:8000/payments/api/v1/member_info/",
+                            url: "/payments/api/v1/member_info/",
                             type: "get",
                             data: {
 
@@ -193,7 +193,7 @@
                                     var tbody = $('#search_table tbody'),
                                         props = ["member_no", "first_name", "surname"]
                                     $.each(json, function(i, reservation) {
-                                        var tr = $("<tr class='clickable-row' data-href='http://127.0.0.1:8000/payments/payments/pre_authorization/create/?member_no=" + json[i].member_no + "'>");
+                                        var tr = $("<tr class='clickable-row' data-href='/payments/payments/pre_authorization/create/?member_no=" + json[i].member_no + "'>");
                                         $.each(props, function(i, prop) {
                                             $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
                                         });

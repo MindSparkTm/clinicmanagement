@@ -4,14 +4,19 @@ from .forms import modelsForm
 from registration.models import Patient
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
+from django.contrib.auth.mixins import UserPassesTestMixin
+from valentisHealth.authenticator import *
 
 class modelsListView(ListView):
     model = models
 
 
-class modelsCreateView(CreateView):
+class modelsCreateView(UserPassesTestMixin, CreateView):
     model = models
     form_class = modelsForm
+
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
 
     def get_context_data(self, **kwargs):
         context = super(modelsCreateView, self).get_context_data(**kwargs)
@@ -38,11 +43,17 @@ class modelsCreateView(CreateView):
 
 
 
-class modelsDetailView(DetailView):
+class modelsDetailView(UserPassesTestMixin, DetailView):
     model = models
 
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
 
-class modelsUpdateView(UpdateView):
+
+class modelsUpdateView(UserPassesTestMixin, UpdateView):
     model = models
     form_class = modelsForm
+
+    def test_func(self):
+        return is_nurse(self) or is_doctor(self)
 

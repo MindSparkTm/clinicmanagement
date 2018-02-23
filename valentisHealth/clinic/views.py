@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from .models import patientVisit, Diagnosis
 from .forms import patientVisitForm
-from registration.models import models as Patient
+from registration.models import Patient
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
 from nurse.models import models as Triage
@@ -12,13 +12,17 @@ from labs.models import Labs, Radiology, RadiologyResult, LabResults
 from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
 from django.forms.models import model_to_dict
 from medication.models import models as Medication
+from django.contrib.auth.mixins import UserPassesTestMixin
+from valentisHealth.authenticator import *
 
-class patientVisitListView(ListView):
+class patientVisitListView(UserPassesTestMixin, ListView):
     model = patientVisit
+
+    def test_func(self):
+        return is_doctor(self)
 
     def get_template_names(self):
         return 'clinic/visitform_list.html'
-
 
     def get_context_data(self, **kwargs):
         context = super(patientVisitListView, self).get_context_data(**kwargs)
@@ -32,15 +36,12 @@ class patientVisitListView(ListView):
         return context
 
 
-class patientVisitCreateView(CreateView):
+class patientVisitCreateView(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
 
-    # def validate(self, request):
-    #     if self.request.user.groups.filter(Q(name='Doctor') | Q(name='Admin') | Q(name='Superadmin')).exists():
-    #         pass
-    #     else:
-    #         return HttpResponseRedirect('/account/log-in/')
+    def test_func(self):
+        return is_doctor(self)
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)
@@ -76,9 +77,12 @@ class patientVisitUpdateView(UpdateView):
     model = patientVisit
     form_class = patientVisitForm
 
-class DoctorVisit(CreateView):
+class DoctorVisit(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
+
+    def test_func(self):
+        return is_doctor(self)
 
     def get_template_names(self):
         return 'clinic/visitform_copy.html'
@@ -176,23 +180,24 @@ class ClinicReport(ListView):
         try:
             visit_obj = patientVisit.objects.get(visit_id=self.kwargs['visit_id'])
             context['visit'] = visit_obj
+            try:
+                patient_object = Patient.objects.get(patient_no=visit_obj.patient_no)
+                context['patient'] = patient_object
+            except:
+                pass
+            try:
+                prescription = Medication.objects.get(triage_id=visit_obj.triage_id)
+                context['prescription'] = prescription
+            except:
+                pass
+            try:
+                triage = Triage.objects.get(triage_id=visit_obj.triage_id)
+                context['triage'] = triage
+            except:
+                pass
         except:
             pass
-        try:
-            patient_object = Patient.objects.get(patient_no=visit_obj.patient_no)
-            context['patient'] = patient_object
-        except:
-            pass
-        try:
-            prescription = Medication.objects.get(triage_id=visit_obj.triage_id)
-            context['prescription'] = prescription
-        except:
-            pass
-        try:
-            triage = Triage.objects.get(triage_id=visit_obj.triage_id)
-            context['triage'] = triage
-        except:
-            pass
+
 
         return context
 # Populate database for diagnosis ICD10

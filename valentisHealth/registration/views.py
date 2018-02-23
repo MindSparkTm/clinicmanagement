@@ -5,9 +5,14 @@ from django.http import HttpResponseRedirect
 from .models import Patient
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
+# from django.contrib.auth.mixins import UserPassesTestMixin
+# from valentisHealth.authenticator import *
 
 class modelsListView(ListView):
     model = Patient
+
+    # def test_func(self):
+    #     return is_callcenter(self)
 
     def get_template_names(self):
         return 'registration/search_patient.html'
