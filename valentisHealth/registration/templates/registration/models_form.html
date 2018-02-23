@@ -687,13 +687,13 @@
                                 <label class="mdl-textfield__label" for="marital_status">marital Status</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="marital_status">
-                                    <li class="mdl-menu__item" data-val="single">Single</li>
-                                    <li class="mdl-menu__item" data-val="married">Married</li>
-                                    <li class="mdl-menu__item" data-val="divorced">Divorced</li>
+                                    <li class="mdl-menu__item" data-val="single"><div class="full-width" onclick="hide_element('parter_div')">Single</div></li>
+                                    <li class="mdl-menu__item" data-val="married"><div class="full-width" onclick="show_element('parter_div')">Married</div></li>
+                                    <li class="mdl-menu__item" data-val="divorced"><div class="full-width" onclick="hide_element('parter_div')">Divorced</div></li>
 
                                 </ul>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div id="parter_div" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"

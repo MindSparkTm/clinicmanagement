@@ -280,6 +280,15 @@ function closePopUp() {
     $('.dialog').close();
 }
 
+function show_element(id_name){
+    $('#' + id_name).show()
+}
+
+function hide_element(id_name){
+    $('#' + id_name).hide()
+}
+
+
 function showTest(sender) {
 
     if (sender === "tests_radiology") {
