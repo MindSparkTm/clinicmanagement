@@ -134,8 +134,9 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             patient_object.save()
 
         except:
-            context['triage'] = Triage.objects.filter(patient_no=self.kwargs['patient_no'])
-            patient_object.session_id = context['triage'].triage_id
+            triage_object= Triage.objects.filter(patient_no=self.kwargs['patient_no'])
+            patient_object.session_id = triage_object.triage_id
+            context['triage'] = triage_object
             patient_object.save()
 
         try:
