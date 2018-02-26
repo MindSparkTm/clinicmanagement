@@ -112,3 +112,22 @@ class countyserializer(serializers.ModelSerializer):
 
         )
 
+class medicationserializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.MedicationHistory
+        fields = (
+           'Disease',
+
+
+        )
+class insuranceserializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.InsuranceCompanies
+        fields = (
+           'Name',
+
+
+        )
+

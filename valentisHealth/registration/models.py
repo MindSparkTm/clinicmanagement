@@ -171,6 +171,14 @@ class County(models.Model):
             return u'%s' % self.pk
 
 
+class MedicationHistory(models.Model):
+    Disease = models.CharField(max_length=300)
+
+
+class InsuranceCompanies(models.Model):
+    Name = models.CharField(max_length=300)
+
+
 class Medication(models.Model):
 
     patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
