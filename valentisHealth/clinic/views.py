@@ -145,12 +145,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
 
             if patient_object.alergies is not None:
 
-                #we will use ,,, tripple comma to seperate each alergy
-                allergy_list = patient_object.alergies.split(",,,")
-
-                #we will use :: to determine/seperate the alergy name and alergy reaction (dictionary - key value pair)
-                allergies = [_.split("::") for _ in allergy_list]
-                patient_object.alergies = allergies
+                allergies = patient_object.alergies
 
             context['waiting_list'] = Patient.objects.filter(status="3")
 
@@ -200,9 +195,3 @@ class ClinicReport(ListView):
 
 
         return context
-# Populate database for diagnosis ICD10
-
-# for disease in icd10:
-#     new_disease = Diagnosis.objects.create(name=disease['name'], code=disease['code'])
-#     new_disease.save
-#

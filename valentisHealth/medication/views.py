@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
-from registration.models import models as Patient
+from registration.models import Patient
 from valentisHealth.authenticator import *
 from .forms import modelsForm
 from .models import models
@@ -58,7 +58,6 @@ class modelsDetailView(UserPassesTestMixin, DetailView):
 
     def test_func(self):
         return is_nurse(self) or is_doctor(self) or is_callcenter(self)
-
 
 
 
