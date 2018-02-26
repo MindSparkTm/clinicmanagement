@@ -1,5 +1,5 @@
 import os, csv
-from .models import County
+from registration.models import County
 path = "/opt/valentisHealth/"
 
 # path= os.path.abspath(os.path.realpath(path))

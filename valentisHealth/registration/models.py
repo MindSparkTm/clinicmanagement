@@ -147,8 +147,28 @@ class Children(models.Model):
 class Allergies(models.Model):
         allergy_name = models.CharField(max_length=200)
 
+        class Meta:
+            verbose_name = 'Allergy'
+            verbose_name_plural = 'Allergies'
+
+        def __str__(self):
+            return self.pk
+
+        def __unicode__(self):
+            return u'%s' % self.pk
+
 class County(models.Model):
-        county = models.CharField(max_length=300)
+        county_name = models.CharField(max_length=300)
+
+        class Meta:
+            verbose_name = 'County'
+            verbose_name_plural = 'Counties'
+
+        def __str__(self):
+            return self.pk
+
+        def __unicode__(self):
+            return u'%s' % self.pk
 
 
 class Medication(models.Model):
