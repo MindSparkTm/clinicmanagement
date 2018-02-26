@@ -148,7 +148,7 @@ class Allergies(models.Model):
         allergy_name = models.CharField(max_length=200)
 
 class County(models.Model):
-        County = models.CharField(max_length=300)
+        county = models.CharField(max_length=300)
 
 
 class Medication(models.Model):
