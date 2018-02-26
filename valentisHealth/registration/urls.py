@@ -7,6 +7,10 @@ router = routers.DefaultRouter()
 router.register(r'models', api.modelsViewSet)
 router.register(r'allergies', api.allergiesviewset)
 router.register(r'county', api.countyviewset)
+router.register(r'medicationhistory', api.medicationhistoryviewset)
+router.register(r'insurance', api.insurancecompanyviewset)
+
+
 
 
 urlpatterns = (

@@ -33,3 +33,18 @@ class countyviewset(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('County')
 
+class medicationhistoryviewset(viewsets.ModelViewSet):
+    queryset = models.MedicationHistory.objects.all()
+    serializer_class = serializers.medicationserializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('Disease')
+class insurancecompanyviewset(viewsets.ModelViewSet):
+    queryset = models.InsuranceCompanies.objects.all()
+    serializer_class = serializers.insuranceserializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('Name')
+

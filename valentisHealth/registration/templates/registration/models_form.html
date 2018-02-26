@@ -1073,6 +1073,67 @@ for (var i =0;i<counties.length;i++){
 
 }
 
+ function getfamilyhistory() {
+      $.ajax({
+          url: "http://127.0.0.1:8000/registration/api/v1/medicationhistory/",
+          type: "GET",
+          success: function (response) {
+              s = response;
+              console.log("s", response);
+              for (var i = 0; i < response.length; ++i) {
+                  //  brand.push(response[i].brand);
+                  previousmedication.push(response[i].Disease);
+              }
+              console.log("Previousmedication", previousmedication);
+
+
+              for (var i = 0; i < previousmedication.length; i++) {
+                  var li = $('<li><input type="checkbox" name="' + i + '" id="' + i + '"/>' +
+                      '<label for="' + i + '"></label></li>');
+                  li.find('label').text(previousmedication[i]);
+                  $('#previousmedication').append(li);
+              }
+
+
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+              console.log(textStatus, errorThrown);
+          }
+
+
+      });
+
+
+  }
+
+  function getlistofinsurancecompanies() {
+    $.ajax({
+        url: "http://127.0.0.1:8000/registration/api/v1/insurance/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            console.log("s",response);
+            for (var i = 0; i < response.length; ++i) {
+                    insurancecomp.push(response[i].Name);
+
+            }
+             console.log("Insurancecompanies",insurancecomp.length);
+
+
+
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
     </script>
 
             </div>
