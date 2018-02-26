@@ -157,7 +157,8 @@ function getprescriptiondata(patientid) {
     });
 }
 
-    function getsearch(val) {
+  function getsearch(val) {
+       val = val.toUpperCase();
         results = [];
         document.getElementById("livesearch").innerHTML = "";
 
@@ -168,11 +169,14 @@ function getprescriptiondata(patientid) {
         }
         console.log(s);
         console.log("val", val);
-        if (val.length > 1) {
+        if (val.length > 2) {
             for (var i = 0; i < s.length; i++) {
                 for (key in s[i]) {
+                   // console.log('key',key);
+
                     if (s[i][key].indexOf(val) != -1) {
-                        $("#livesearch").append($("<li>").text(s[i][key]));
+                        console.log("keyee",s[i][key]+"\t"+s[i]['price'])
+                        $("#livesearch").append($("<li>").text("NAME:"+s[i][key] + "---"+ "PRICE:"+s[i]['price']));
 
 
                         results.push(s[i]);
@@ -183,7 +187,7 @@ function getprescriptiondata(patientid) {
         }
 
 
-        console.log(results);
+        console.log("results",results);
 
     }
 
