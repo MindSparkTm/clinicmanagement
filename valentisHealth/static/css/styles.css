@@ -501,13 +501,17 @@ position: fixed;
     width: 95%;
 }
 
-form .mdl-textfield__input{ font-size: 12px !important; font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial"; color:#505152}
+form .mdl-textfield__input{ font-size: 12px !important; font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial"; color:#6093f2 !important;
+
+
+
+}
 form label.mdl-textfield__label{ font-size: 12px;}
 form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12 }
 legend{ width: 100%;
     margin: 10px 0;
     float: left;
-    color: #2d5265;
+    color: #525356;
     font-size: 16px;
     padding-left: 10px;
 }
@@ -545,6 +549,9 @@ legend{ width: 100%;
 .para{
    color: #fff;
 }
+
+
+
 
 .mdl-cell--6-col-desktop.mdl-cell--6-col-desktop{
     width: calc(70% - 16px);
