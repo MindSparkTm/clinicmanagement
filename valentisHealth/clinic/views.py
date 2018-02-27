@@ -130,7 +130,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             pass
 
         try:
-            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no']).latest('update')
             patient_object.session_id = triage_obj.triage_id
             patient_object.save()
 
@@ -141,14 +141,12 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
 
         try:
 
-            patient_object = Patient.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0]
-            print(patient_object.alergies)
-
-            if patient_object.alergies is not None:
-
-                allergies = patient_object.alergies
+            patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+            print(patient_object.session_id,"++++++++++")
 
             context['waiting_list'] = Patient.objects.filter(status="3")
+            triage = Triage.objects.get(triage_id=patient_object.session_id)
+            context['triage'] = triage
 
             #-4 out of labs, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
