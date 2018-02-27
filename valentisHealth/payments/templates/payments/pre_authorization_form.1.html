@@ -273,10 +273,10 @@
 <script>
     $('#id_authority_type').change(function() {
         var selection = $('#id_authority_type').val();
-        $('.admitted').show();
+        $('.admitted').hide();
         console.log(selection);
-        if (selection == '1') {
-            $('.admitted').hide();
+        if (selection != '1') {
+            $('.admitted').show();
         }
     })
 </script>
