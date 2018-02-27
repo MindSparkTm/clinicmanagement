@@ -15,7 +15,7 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for labs
-    url(r'^$', views.labsListView.as_view(), name='labs_labs_list'),
+    url(r'^$', views.labsListView.as_view(), name='labs_list'),
     url(r'^create/$', views.labsCreateView.as_view(), name='labs_labs_create'),
     url(r'^detail/(?P<slug>\S+)/$', views.labsDetailView.as_view(), name='labs_labs_detail'),
     url(r'^update/(?P<slug>\S+)/$', views.labsUpdateView.as_view(), name='labs_labs_update'),
@@ -23,7 +23,7 @@ urlpatterns += (
 
 urlpatterns += (
     # urls for radiology
-    url(r'^radiology/$', views.radiologyListView.as_view(), name='labs_radiology_list'),
+    url(r'^radiology/$', views.radiologyListView.as_view(), name='pythonradiology_list'),
     url(r'^radiology/create/$', views.radiologyCreateView.as_view(), name='labs_radiology_create'),
     url(r'^radiology/detail/(?P<slug>\S+)/$', views.radiologyDetailView.as_view(), name='labs_radiology_detail'),
     url(r'^radiology/update/(?P<slug>\S+)/$', views.radiologyUpdateView.as_view(), name='labs_radiology_update'),
