@@ -141,7 +141,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
 
         try:
 
-            patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+            patient_object = Patient.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0]
             print(patient_object.alergies)
 
             if patient_object.alergies is not None:
