@@ -515,6 +515,11 @@ legend{ width: 100%;
     font-size: 16px;
     padding-left: 10px;
 }
+.data-tab{
+    text-align: left;
+}
+
+
 .contactsList{
 
     font-size: 9px;

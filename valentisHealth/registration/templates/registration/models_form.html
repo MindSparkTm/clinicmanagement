@@ -42,7 +42,7 @@
                                 <label class="mdl-textfield__label mdl-color-text--grey forminput"
                                        for="textfield_first_name">First Name</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_first_name" name="first_name" value="{% if form.first_name.value != None %}{{ form.first_name.value }}{% endif %}" required/>
+                                       id="textfield_first_name" name="first_name" value="{% if form.first_name.value != None %}{{ form.first_name.value }}{% endif %}" required />
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -716,7 +716,7 @@
                 <div class="mdl-grid">
 
                     <div id='contactsList'>
-                        <table class='mdl-data-table mdl-js-data-table full-width' style='#497e99'>
+                        <table class='mdl-data-table mdl-js-data-table full-width' style='width: #87ccf8; '>
 {#                            <tr>#}
 {#                                <th style="color: #fff; " >No of Children</th>#}
 {#                                <th style="color: #fff; " >child's Name/ age</th>#}
@@ -732,15 +732,15 @@
                                 <td>
                                         <label for="number_children">Number of children</label>
 
-                                    <input name="number_children" class="Input-text" onkeyup="dynamic_children()" value=0 id='number_children'/>
+                                    <input name="number_children" style="width: 30px; " class="Input-text" onkeyup="dynamic_children()" value=0 id='number_children'/>
                                 </td>
                                 <td>
                                     <table>
-                                        <thead>
+                                        <thead >
                                         <tr>
-                                            <th style="color: #2d5265; padding: 30px; ">Full Names</th>
-                                            <th style="color: #2d5265; padding: 30px; ">Date of Birth</th>
-                                            <th style="color: #2d5265; padding: 30px; ">Age</th>
+                                            <th class="data-tab" style="color: #2d5265; padding: 30px; ">Full Names</th>
+                                            <th class="data-tab"  style="color: #2d5265; padding: 30px; ">Date of Birth</th>
+                                            <th class="data-tab"  style="color: #2d5265; padding: 30px; ">Age</th>
                                         </tr>
                                         </thead>
 
