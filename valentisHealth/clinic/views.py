@@ -94,10 +94,10 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
         instance.attending_nurse = self.request.user.email
 
         try:
-            patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
+            patient_object = Patient.objects.filter(Q(patient_no=form.cleaned_data['patient_no']))[0]
             #status 0 means patient's session ended
             patient_object.status = 0
-            instance.triage_id = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0].triage_id
+            instance.triage_id = Triage.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0].triage_id
             patient_object.save()
         except:
             print(404)
@@ -113,8 +113,8 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
 
         try:
-            labresult = LabResults.objects.filter(triage_id=patient_object.session_id)
-            labtest = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
+            labresult = LabResults.objects.filter(Q(triage_id=patient_object.session_id))
+            labtest = Labs.objects.filter(Q(triage_id=patient_object.session_id)).latest('created')
             context['lab_results'] = labresult
             context['lab_tests'] = labsForm(data=model_to_dict(labtest))
 
@@ -122,8 +122,8 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             pass
 
         try:
-            radiologyresult = RadiologyResult.objects.filter(triage_id=patient_object.session_id)
-            radiologytest = Radiology.objects.filter(triage_id=patient_object.session_id).latest('created')
+            radiologyresult = RadiologyResult.objects.filter(Q(triage_id=patient_object.session_id))
+            radiologytest = Radiology.objects.filter(Q(triage_id=patient_object.session_id)).latest('created')
             context['radiology_results'] = radiologyresult
             context['radiology_test'] = radiologyForm(data=model_to_dict(radiologytest))
         except:
