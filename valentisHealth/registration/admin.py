@@ -30,6 +30,3 @@ list_display = ['patient_no', 'created', 'last_updated', 'status', 'first_name',
 
 admin.site.register(Patient, modelsAdmin)
 
-admin.site.register(Allergies)
-
-admin.site.register(County)
