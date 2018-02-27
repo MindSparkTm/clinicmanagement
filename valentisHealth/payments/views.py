@@ -137,16 +137,6 @@ class pre_authorizationListView(UserPassesTestMixin, ListView):
     def test_func(self):
         return is_callcenter(self)
 
-class searchView(UserPassesTestMixin, ListView):
-    # updatebenefit = member_benefitsUpdateView()
-    model = pre_authorization
-
-    def test_func(self):
-        return is_callcenter(self)
-
-    def get_template_names(self):
-        return 'payments/search_member.html'
-
 
 class AjaxPreAuthorizationSearch(UserPassesTestMixin, View):
     def test_func(self):

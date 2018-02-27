@@ -80,6 +80,7 @@ class patientVisitUpdateView(UpdateView):
 class DoctorVisit(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
+    form_invalid_message = 'Something went wrong. Please Try Again. If this persist, contact us'
 
     def test_func(self):
         return is_doctor(self)
@@ -100,7 +101,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             patient_object.save()
         except:
             print(404)
-            raise Http404('Requested user not found.')
+
 
         instance.save()
 

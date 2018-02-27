@@ -65,13 +65,15 @@
 <section id="sideMenu">
     <nav>
 
-  <a href="/registration/" class="{% nav_active request 'registration_models_list' %}" ><i class="fa fa-user-plus spav"> </i> Registration   </a>
-       <a href="/nurse/models/create/"  class="{% nav_active request 'nurse_models_create' %}" > <i class="fa fa-address-book spav"> </i>  Triage  </a>
-        <a href="/clinic/patientvisit/create/"  class="{% nav_active request 'clinic_patientvisit_create' %}"  > <i class="fa fa-clipboard spav"> </i> Clinic</a>
-        <a href="/labs/" class="{% nav_active request 'labs_labs_list' %}"> <i class="fa fa-flask spav"> </i>  Labs  </a>
-      <a href="/labs/radiology/" class="{% nav_active request 'labs_radiology_list' %}"> <i class="fa fa-bolt spav"> </i> Radiology </a>
-       <a href="/medication/search/" class="{% nav_active request 'medication_models_search' %}"> <i class="fa fa-book spav"> </i> Prescriptions </a>
-  <a href="{% url 'payments_pre_authorization_search' %}" class="{% nav_active request 'payments_pre_authorization_search' %}"> <i class="fa fa-book spav"> </i> Authorization </a>
+        {% has_group  request as side_links %}
+
+    {{ side_links|safe }}
+
+{#        {% for link in side_links %}#}
+{#            {{ link }}#}
+{#        {% endfor %}#}
+
+
     </nav>
 
 </section>

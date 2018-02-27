@@ -15,8 +15,11 @@ def is_callcenter(self):
 def is_nurse(self):
     return self.request.user.groups.filter(Q(name='Nurse') | Q(name='Admin') | Q(name='Superadmin')).exists()
 
-def is_admin(self):
-    return self.request.user.groups.filter(QQ(name='Admin') | Q(name='Superadmin')).exists()
+def is_admin(request):
+    return request.user.groups.filter(Q(name='Admin') | Q(name='Superadmin')).exists()
+
+# def is_admin(self):
+#     return self.request.user.groups.filter(Q(name='Admin') | Q(name='Superadmin')).exists()
 
 def is_superadmin(self):
     return self.request.user.groups.filter(Q(name='Superadmin')).exists()
