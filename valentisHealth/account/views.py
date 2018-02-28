@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, CreateView
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from urllib.parse import urlencode
+from valentisHealth.authenticator import *
+from .models import CustomUser
+from .forms import CustomUserForm
 
 from io import StringIO
 from django.template.loader import get_template
@@ -19,9 +22,16 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'base.html', {})
 
-class AddUser(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'addmember.html', {})
+class AddUser(CreateView):
+    model = CustomUser
+    form_class = CustomUser
+
+    def test_func(self):
+        return is_admin(request)
+
+    def get_template_names(self):
+        return 'addmember.html'
+
 
 class LoginPage(View):
     def get(self, request, *args, **kwargs):

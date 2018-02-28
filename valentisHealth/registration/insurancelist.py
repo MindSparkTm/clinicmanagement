@@ -1,6 +1,6 @@
 import os, csv
 
-path = "C:\\Users\\hp\\Documents\\valentishealth\\valentisHealth\\registration"
+path = "/opt/valentisHealth/"
 
 os.chdir(path)
 from registration.models import InsuranceCompanies

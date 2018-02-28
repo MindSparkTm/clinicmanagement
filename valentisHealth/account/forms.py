@@ -11,3 +11,40 @@ class LoginForm(forms.Form):
         'type': 'password',
         'id': 'password'
     }))
+
+class CustomUserForm(forms.Form):
+
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'mdl-textfield__input',
+        'type': 'text',
+        'id': 'first_name'
+    }))
+
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'mdl-textfield__input',
+        'type': 'text',
+        'id': 'phone_number'
+    }))
+
+    staff_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'mdl-textfield__input',
+        'type': 'text',
+        'id': 'staff_number'
+    }))
+
+    id_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'mdl-textfield__input',
+        'type': 'text',
+        'id': 'id_number'
+    }))
+
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'mdl-textfield__input',
+        'type': 'text',
+        'id': 'last_name'
+    }))
+
+    email_address = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'mdl-textfield__input',
+        'id': 'login'
+    }))

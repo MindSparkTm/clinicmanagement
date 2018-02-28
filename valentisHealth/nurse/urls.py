@@ -14,9 +14,9 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for models
-    url(r'^models/$', views.modelsListView.as_view(), name='nurse_models_list'),
-    url(r'^models/create/$', views.modelsCreateView.as_view(), name='nurse_models_create'),
-    url(r'^models/detail/(?P<slug>\S+)/$', views.modelsDetailView.as_view(), name='nurse_models_detail'),
-    url(r'^models/update/(?P<slug>\S+)/$', views.modelsUpdateView.as_view(), name='nurse_models_update'),
+    url(r'^models/$', views.modelsListView.as_view(), name='nurse_triage_list'),
+    url(r'^models/create/$', views.modelsCreateView.as_view(), name='nurse_triage_create'),
+    url(r'^models/detail/(?P<slug>\S+)/$', views.modelsDetailView.as_view(), name='nurse_triage_detail'),
+    url(r'^models/update/(?P<slug>\S+)/$', views.modelsUpdateView.as_view(), name='nurse_triage_update'),
 )
 

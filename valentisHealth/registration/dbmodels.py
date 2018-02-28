@@ -1,5 +1,6 @@
 import os, csv
-from registration.models import County
+from registation.models import County
+
 path = "/opt/valentisHealth/"
 
 # path= os.path.abspath(os.path.realpath(path))
@@ -9,7 +10,6 @@ path = "/opt/valentisHealth/"
 with open('/opt/valentisHealth/county.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        print(row)
-        p = County.objects.create(county=row['County'])
+        print(row['County'])
+        p = County.objects.create(county_name=row['County'])
         p.save()
-

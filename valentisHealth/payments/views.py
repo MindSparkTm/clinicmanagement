@@ -18,7 +18,7 @@ class member_infoListView(UserPassesTestMixin, ListView):
     model = member_info
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_infoCreateView(UserPassesTestMixin, CreateView):
@@ -26,14 +26,14 @@ class member_infoCreateView(UserPassesTestMixin, CreateView):
     form_class = member_infoForm
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_infoDetailView(UserPassesTestMixin, DetailView):
     model = member_info
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_infoUpdateView(UserPassesTestMixin, UpdateView):
@@ -41,14 +41,14 @@ class member_infoUpdateView(UserPassesTestMixin, UpdateView):
     form_class = member_infoForm
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_benefitsListView(UserPassesTestMixin, ListView):
     model = member_benefits
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_benefitsCreateView(UserPassesTestMixin, CreateView):
@@ -56,14 +56,14 @@ class member_benefitsCreateView(UserPassesTestMixin, CreateView):
     form_class = member_benefitsForm
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_benefitsDetailView(UserPassesTestMixin, DetailView):
     model = member_benefits
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_benefitsUpdateView(UserPassesTestMixin, UpdateView):
@@ -71,14 +71,14 @@ class member_benefitsUpdateView(UserPassesTestMixin, UpdateView):
     form_class = member_benefitsForm
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_anniversaryListView(UserPassesTestMixin, ListView):
     model = member_anniversary
 
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
 
 class member_anniversaryCreateView(CreateView):
@@ -135,22 +135,12 @@ class pre_authorizationListView(UserPassesTestMixin, ListView):
     model = pre_authorization
 
     def test_func(self):
-        return is_callcenter(self)
-
-class searchView(UserPassesTestMixin, ListView):
-    # updatebenefit = member_benefitsUpdateView()
-    model = pre_authorization
-
-    def test_func(self):
-        return is_callcenter(self)
-
-    def get_template_names(self):
-        return 'payments/search_member.html'
+        return is_callcenter(self.request)
 
 
 class AjaxPreAuthorizationSearch(UserPassesTestMixin, View):
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
     def get(self, request):
         if request.is_ajax():
@@ -178,7 +168,7 @@ class AjaxPreAuthorizationSearch(UserPassesTestMixin, View):
 
 class PreAuthorizationSearch(UserPassesTestMixin, View):
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
     def get(self, request):
         return render(request, 'payments/search_member_info.html', {})
@@ -186,7 +176,7 @@ class PreAuthorizationSearch(UserPassesTestMixin, View):
 
 class PreAuthorizationCreateView(UserPassesTestMixin, View):
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
     def get(self, request, slug):
         member = get_object_or_404(member_info, member_no=slug)
@@ -227,7 +217,7 @@ class PreAuthorizationCreateView(UserPassesTestMixin, View):
 
 class PPreAuthorizationCreateView(UserPassesTestMixin, View):
     def test_func(self):
-        return is_callcenter(self)
+        return is_callcenter(self.request)
 
     def get(self, request, slug):
         member = get_object_or_404(member_info, member_no=slug)

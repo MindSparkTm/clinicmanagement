@@ -19,7 +19,7 @@ class patientVisitListView(UserPassesTestMixin, ListView):
     model = patientVisit
 
     def test_func(self):
-        return is_doctor(self)
+        return is_doctor(self.request)
 
     def get_template_names(self):
         return 'clinic/visitform_list.html'
@@ -41,7 +41,7 @@ class patientVisitCreateView(UserPassesTestMixin, CreateView):
     form_class = patientVisitForm
 
     def test_func(self):
-        return is_doctor(self)
+        return is_doctor(self.request)
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)
@@ -80,9 +80,10 @@ class patientVisitUpdateView(UpdateView):
 class DoctorVisit(UserPassesTestMixin, CreateView):
     model = patientVisit
     form_class = patientVisitForm
+    form_invalid_message = 'Something went wrong. Please Try Again. If this persist, contact us'
 
     def test_func(self):
-        return is_doctor(self)
+        return is_doctor(self.request)
 
     def get_template_names(self):
         return 'clinic/visitform_copy.html'
@@ -93,14 +94,14 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
         instance.attending_nurse = self.request.user.email
 
         try:
-            patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
+            patient_object = Patient.objects.filter(Q(patient_no=form.cleaned_data['patient_no']))[0]
             #status 0 means patient's session ended
             patient_object.status = 0
-            instance.triage_id = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0].triage_id
+            instance.triage_id = Triage.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0].triage_id
             patient_object.save()
         except:
             print(404)
-            raise Http404('Requested user not found.')
+
 
         instance.save()
 
@@ -112,8 +113,8 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
 
         try:
-            labresult = LabResults.objects.filter(triage_id=patient_object.session_id)
-            labtest = Labs.objects.filter(triage_id=patient_object.session_id).latest('created')
+            labresult = LabResults.objects.filter(Q(triage_id=patient_object.session_id))
+            labtest = Labs.objects.filter(Q(triage_id=patient_object.session_id)).latest('created')
             context['lab_results'] = labresult
             context['lab_tests'] = labsForm(data=model_to_dict(labtest))
 
@@ -121,15 +122,15 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             pass
 
         try:
-            radiologyresult = RadiologyResult.objects.filter(triage_id=patient_object.session_id)
-            radiologytest = Radiology.objects.filter(triage_id=patient_object.session_id).latest('created')
+            radiologyresult = RadiologyResult.objects.filter(Q(triage_id=patient_object.session_id))
+            radiologytest = Radiology.objects.filter(Q(triage_id=patient_object.session_id)).latest('created')
             context['radiology_results'] = radiologyresult
             context['radiology_test'] = radiologyForm(data=model_to_dict(radiologytest))
         except:
             pass
 
         try:
-            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no'])[0]
+            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no']).latest('update')
             patient_object.session_id = triage_obj.triage_id
             patient_object.save()
 
@@ -141,13 +142,11 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
         try:
 
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
-            print(patient_object.alergies)
-
-            if patient_object.alergies is not None:
-
-                allergies = patient_object.alergies
+            print(patient_object.session_id,"++++++++++")
 
             context['waiting_list'] = Patient.objects.filter(status="3")
+            triage = Triage.objects.get(triage_id=patient_object.session_id)
+            context['triage'] = triage
 
             #-4 out of labs, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
