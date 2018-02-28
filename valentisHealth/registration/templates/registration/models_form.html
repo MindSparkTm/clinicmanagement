@@ -999,7 +999,7 @@
     function getallergies() {
         var allergiess=[];
     $.ajax({
-        url: "http://127.0.0.1:8000/registration/api/v1/allergies/",
+        url: "/registration/api/v1/allergies/",
         type: "GET",
         success: function (response) {
             s = response;
@@ -1033,7 +1033,7 @@ for (var i =0;i<allergiess.length;i++){
 function getcounties() {
         var counties=[];
     $.ajax({
-        url: "http://127.0.0.1:8000/registration/api/v1/county/",
+        url: "/registration/api/v1/county/",
         type: "GET",
         success: function (response) {
             s = response;
