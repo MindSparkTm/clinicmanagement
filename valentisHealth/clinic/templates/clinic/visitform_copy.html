@@ -1,4 +1,6 @@
 {% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <script>
     $("#clinic_tab").addClass("current").siblings().removeClass("current")
     $("#waiting_list_table").hide()
@@ -29,7 +31,7 @@
     <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
         <div>
             <fieldset>
-                <legend>Patient Details</legend>
+                <legend style="padding: 20px; ">Patient Details</legend>
                 <div class="mdl-grid ">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="first_name">First Name</label>
@@ -60,7 +62,7 @@
             </fieldset>
         </div>
 
-        <button onclick="toggleView('triage_')" class="mdl-button w3-block w3-left-align accordion">View Triage
+        <button style="background:#37647b; color:#fff; " onclick="toggleView('triage_')" class="mdl-button w3-block w3-left-align accordion">View Triage
                 Results
             </button>
         <div id="triage_" class="w3-hide">
@@ -333,7 +335,7 @@
                 <div class="mdl-cell mdl-cell--6-col">
                     <!-- Colored FAB button -->
                     Add Radiology
-                    <button type="button" class="mdl-button mdl-js-button w3-block w3-grey" onclick="addRadiology()">
+                    <button type="button" style="background:#37647b; " class="mdl-button mdl-js-button w3-block w3-grey" onclick="addRadiology()">
                             <i class="material-icons">highlight</i>
                         </button>
 
@@ -342,7 +344,7 @@
                 <div class="mdl-cell mdl-cell--6-col">
                     <!-- Colored FAB button -->
                     Add Labs
-                    <button type="button" class="mdl-button mdl-js-button w3-block w3-grey" onclick="addLabs()">
+                    <button type="button" class="mdl-button mdl-js-button w3-block w3-grey"  onclick="addLabs()">
                             <i class="material-icons">local_pharmacy</i>
                         </button>
 
