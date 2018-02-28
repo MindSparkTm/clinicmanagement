@@ -116,9 +116,7 @@
                                        id="textfield_postal_code" value="{% if form.postal_code.value != None %}{{ form.postal_code.value }}{% endif %}" name="postal_code"/>
                             </div>
                             <div class=" getmdl-select__fix-height mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
-                                <input type="text" value="" class="mdl-textfield__input"
-                                       id="country" readonly>
-                                <input type="hidden" value="{% if form.country.value != None %}{{ form.country.value }}{% endif %}" name="country">
+
                                 <label for="country" class="mdl-textfield__label">Country</label>
                                   <div style="font:14px arial">
                                   <input type="text" id="tbCountries" />
@@ -755,7 +753,7 @@
             getcounties();
             getfamilyhistory();
             getlistofinsurancecompanies();
-
+            BindControls();
 
         }
 
