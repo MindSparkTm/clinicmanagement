@@ -74,8 +74,8 @@ nav a:hover{
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
   background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  -webkit-border-radius: 28%;
-  -moz-border-radius: 28%;
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
   border-radius: 5px;
   font-family: Arial;
   color: #ffffff;
@@ -106,7 +106,7 @@ nav a:hover{
 .demo-drawer {
     border: none;
 }
-.mdl-layout__header .mdl-layout__header--scroll{
+.mdl-layout__header mdl-layout__header--scroll{
     position: fixed;
 }
 
@@ -246,15 +246,15 @@ nav a:hover{
  * Using a browserhacks.com solution for now.
  */
 
-/*_:-ms-input-placeholder,*/
- /*:root .demo-graphs {*/
-    /*min-height: 664px;*/
-/*}*/
+_:-ms-input-placeholder,
+ :root .demo-graphs {
+    min-height: 664px;
+}
 
-/*_:-ms-input-placeholder,*/
- /*:root .demo-graph {*/
-    /*max-height: 300px;*/
-/*}*/
+_:-ms-input-placeholder,
+ :root .demo-graph {
+    max-height: 300px;
+}
 
 
 /* TODO end */
@@ -536,8 +536,6 @@ legend{ width: 100%;
     padding-left: 20px;
     margin: 10px;
 }
-
-.mdl-cell{ width: 100%;}
 
 .patient_no input[type=text]{ padding-left: 5px;}
 

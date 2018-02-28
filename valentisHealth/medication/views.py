@@ -17,7 +17,7 @@ class modelsCreateView(UserPassesTestMixin, CreateView):
     form_class = modelsForm
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
+        return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -57,7 +57,7 @@ class modelsDetailView(UserPassesTestMixin, DetailView):
     model = models
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
+        return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
 
 
@@ -66,14 +66,14 @@ class modelsUpdateView(UserPassesTestMixin, UpdateView):
     form_class = modelsForm
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
+        return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
 
 class ModelSearchView(UserPassesTestMixin, View):
     model = models
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self) or is_callcenter(self)
+        return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
     # def get_template_names(self):
     #     return 'medication/models_search.html'

@@ -16,7 +16,7 @@ class modelsCreateView(UserPassesTestMixin, CreateView):
     form_class = modelsForm
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self)
+        return is_nurse(self.request) or is_doctor(self.request)
 
     def get_context_data(self, **kwargs):
         context = super(modelsCreateView, self).get_context_data(**kwargs)
@@ -47,7 +47,7 @@ class modelsDetailView(UserPassesTestMixin, DetailView):
     model = models
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self)
+        return is_nurse(self.request) or is_doctor(self.request)
 
 
 class modelsUpdateView(UserPassesTestMixin, UpdateView):
@@ -55,5 +55,5 @@ class modelsUpdateView(UserPassesTestMixin, UpdateView):
     form_class = modelsForm
 
     def test_func(self):
-        return is_nurse(self) or is_doctor(self)
+        return is_nurse(self.request) or is_doctor(self.request)
 

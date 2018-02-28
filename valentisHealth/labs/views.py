@@ -16,7 +16,7 @@ class labsListView(UserPassesTestMixin, ListView):
     model = Labs
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
     def get_template_names(self):
         return 'labs/labs_list.html'
@@ -43,7 +43,7 @@ class labsCreateView(UserPassesTestMixin,CreateView):
     form_class = labsForm
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
     def get_template_names(self):
         return 'lab/labs_form.html'
@@ -78,7 +78,7 @@ class labsDetailView(UserPassesTestMixin, DetailView):
     model = Labs
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
 
 class labsUpdateView(UserPassesTestMixin, UpdateView):
@@ -86,7 +86,7 @@ class labsUpdateView(UserPassesTestMixin, UpdateView):
     form_class = labsForm
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
 
 class radiologyListView(UserPassesTestMixin, ListView):
@@ -96,7 +96,7 @@ class radiologyListView(UserPassesTestMixin, ListView):
         return 'labs/radiology_list.html'
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
     def get_context_data(self, **kwargs):
         context = super(radiologyListView, self).get_context_data(**kwargs)
@@ -118,7 +118,7 @@ class radiologyCreateView(UserPassesTestMixin, CreateView):
     form_class = radiologyForm
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
     def get_template_names(self):
         return 'labs/radiology_form.html'
@@ -152,28 +152,28 @@ class radiologyDetailView(UserPassesTestMixin, DetailView):
     model = Radiology
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
 class radiologyUpdateView(UserPassesTestMixin, UpdateView):
     model = Radiology
     form_class = radiologyForm
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
 
 class RadiologyResultListView(UserPassesTestMixin, ListView):
     model = RadiologyResult
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
 
 class RadiologyResultDetailView(UserPassesTestMixin, DetailView):
     model = RadiologyResult
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
 
 class RadiologyResultUpdateView(UserPassesTestMixin, UpdateView):
@@ -181,21 +181,21 @@ class RadiologyResultUpdateView(UserPassesTestMixin, UpdateView):
     form_class = RadiologyResultForm
 
     def test_func(self):
-        return is_radiology(self) or is_doctor(self)
+        return is_radiology(self.request) or is_doctor(self.request)
 
 
 class LabResultsListView(UserPassesTestMixin, ListView):
     model = LabResults
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
 
 class LabResultsDetailView(UserPassesTestMixin, DetailView):
     model = LabResults
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
 
 class LabResultsUpdateView(UserPassesTestMixin, UpdateView):
@@ -203,7 +203,7 @@ class LabResultsUpdateView(UserPassesTestMixin, UpdateView):
     form_class = LabResultsForm
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
 
 class LabsVisitView(UserPassesTestMixin, CreateView):
@@ -211,7 +211,7 @@ class LabsVisitView(UserPassesTestMixin, CreateView):
     form_class = labsForm
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
     def get_template_names(self):
         return 'labs/labresult_form.html'
@@ -264,7 +264,7 @@ class RadiologyVisitView(UserPassesTestMixin, CreateView):
     form_class = RadiologyResultForm
 
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
     def get_template_names(self):
         return 'labs/radiology_result_form.html'
@@ -319,7 +319,7 @@ class RadiologyVisitView(UserPassesTestMixin, CreateView):
 
 class Tests(generics.GenericAPIView):
     def test_func(self):
-        return is_labs(self) or is_doctor(self)
+        return is_labs(self.request) or is_doctor(self.request)
 
     def get(self, request, *args, **kwargs):
         labresult = LabResults.objects.filter(triage_id=kwargs.get('triage_id'))

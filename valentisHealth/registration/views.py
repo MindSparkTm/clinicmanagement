@@ -12,7 +12,7 @@ class modelsListView(ListView):
     model = Patient
 
     # def test_func(self):
-    #     return is_callcenter(self)
+    #     return is_callcenter(self.request)
 
     def get_template_names(self):
         return 'registration/search_patient.html'

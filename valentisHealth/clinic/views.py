@@ -19,7 +19,7 @@ class patientVisitListView(UserPassesTestMixin, ListView):
     model = patientVisit
 
     def test_func(self):
-        return is_doctor(self)
+        return is_doctor(self.request)
 
     def get_template_names(self):
         return 'clinic/visitform_list.html'
@@ -41,7 +41,7 @@ class patientVisitCreateView(UserPassesTestMixin, CreateView):
     form_class = patientVisitForm
 
     def test_func(self):
-        return is_doctor(self)
+        return is_doctor(self.request)
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)
@@ -83,7 +83,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
     form_invalid_message = 'Something went wrong. Please Try Again. If this persist, contact us'
 
     def test_func(self):
-        return is_doctor(self)
+        return is_doctor(self.request)
 
     def get_template_names(self):
         return 'clinic/visitform_copy.html'

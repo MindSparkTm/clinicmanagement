@@ -27,7 +27,7 @@ class AddUser(CreateView):
     form_class = CustomUser
 
     def test_func(self):
-        return is_admin(self)
+        return is_admin(request)
 
     def get_template_names(self):
         return 'addmember.html'
