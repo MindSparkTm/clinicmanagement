@@ -204,3 +204,38 @@ background:#5D809D !important;
 
     border-color: #938e8e;
 }
+
+form.mdl-textfield__input{
+    font-size: 12px;
+}
+
+.mdl-textfield__label mdl-color-text--grey{
+    font-size: 12px;
+
+
+}
+
+.mdl-textfield__input {
+
+
+}
+
+font-input{
+
+    font-size: 12px;
+
+}
+
+#first_name{
+    font-size: 12px;
+}
+mdl-textfield__input{
+    font-size: 12px;
+
+}
+
+#presenting_illness{
+    font-size: 12px;
+    color: #fff;
+}
+
