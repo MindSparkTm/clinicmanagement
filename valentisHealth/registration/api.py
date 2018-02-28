@@ -31,7 +31,7 @@ class countyviewset(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('county_name')
+    search_fields = ('County')
 
 class medicationhistoryviewset(viewsets.ModelViewSet):
     queryset = models.MedicationHistory.objects.all()

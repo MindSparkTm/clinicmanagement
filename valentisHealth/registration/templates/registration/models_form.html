@@ -750,7 +750,9 @@
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="allergies"></textarea>
                                 <label class="mdl-textfield__label" for="allergies">Allergies to Medication or Food</label>
-                            </div>
+                    <div id="wkslist" ></div>
+
+                    </div>
                 </div>
 
 
@@ -990,14 +992,26 @@
                 </form>
 <script type="text/javascript">
         window.onload = loadfunctionsonpage();
+        var allergiess=[];
+        var counties=[];
+        var previousmedication = [];
+        var insurancecomp=[];
+
 
         function loadfunctionsonpage(){
+            allergiess=[];
+            counties=[];
+            previousmedication=[]
+            insurancecomp=[]
             getallergies();
             getcounties();
+            getfamilyhistory();
+            getlistofinsurancecompanies();
+
+
         }
 
     function getallergies() {
-        var allergiess=[];
     $.ajax({
         url: "/registration/api/v1/allergies/",
         type: "GET",
@@ -1031,7 +1045,6 @@ for (var i =0;i<allergiess.length;i++){
 }
 
 function getcounties() {
-        var counties=[];
     $.ajax({
         url: "/registration/api/v1/county/",
         type: "GET",
@@ -1040,7 +1053,7 @@ function getcounties() {
             for (var i = 0; i < response.length-1; ++i) {
                 //  brand.push(response[i].brand);
                 counties.push(response[i].County);
-            }s
+            }
 
 
             console.log("Response",counties);
@@ -1064,9 +1077,9 @@ for (var i =0;i<counties.length;i++){
 
 }
 
- function getfamilyhistory() {
+  function getfamilyhistory() {
       $.ajax({
-          url: "http://127.0.0.1:8000/registration/api/v1/medicationhistory/",
+          url: "/registration/api/v1/medicationhistory/",
           type: "GET",
           success: function (response) {
               s = response;
@@ -1099,7 +1112,7 @@ for (var i =0;i<counties.length;i++){
 
   function getlistofinsurancecompanies() {
     $.ajax({
-        url: "http://127.0.0.1:8000/registration/api/v1/insurance/",
+        url: "/registration/api/v1/insurance/",
         type: "GET",
         success: function (response) {
             s = response;
@@ -1124,8 +1137,8 @@ for (var i =0;i<counties.length;i++){
     });
 
 }
-
     </script>
+
 
             </div>
         </div>
