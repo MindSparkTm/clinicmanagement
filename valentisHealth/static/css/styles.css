@@ -376,6 +376,7 @@ header {
 .mdl-textfield--file .mdl-textfield__input {
     box-sizing: border-box;
     width: calc(100% - 32px);
+    font-size: 12px;
 
 }
 .mdl-textfield--file  .mdl-button--file {
@@ -397,6 +398,7 @@ fieldset {
     border-radius: 8px;
     border-style: solid;
     border: none !important;
+
 }
 
 .mdl-textfield__error {
@@ -514,18 +516,18 @@ form .mdl-textfield__input{ font-size: 12px !important; font-family: "Roboto", "
 
 
 }
-<<<<<<< HEAD
+
 form label.mdl-textfield__label{ font-size: 12px; color:#213747; !important; }
 form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12 }
 =======
 form label.mdl-textfield__label{ font-size: 12px;}
 form .mdl-textfield.is-invalid .mdl-textfield__input{ border-color: rgba(0,0,0,.12) }
->>>>>>> b0fbbee5e3eaec8bed4e4a0251de8904af383b49
+
 legend{ width: 100%;
     margin: 10px 0;
     float: left;
     color: #525356;
-    font-size: 16px;
+    font-size: 12px;
     padding-left: 10px;
 }
 .data-tab{
@@ -575,4 +577,8 @@ legend{ width: 100%;
 
 .mdl-cell--6-col-desktop.mdl-cell--6-col-desktop{
     width: calc(70% - 16px);
+}
+
+#move-btn{
+    margin-left: 20px;
 }

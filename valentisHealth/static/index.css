@@ -199,3 +199,8 @@ background:#5D809D !important;
 
 
 }
+
+.mdl-textfield--floating-label.is-invalid .mdl-textfield__label{
+
+    border-color: #938e8e;
+}

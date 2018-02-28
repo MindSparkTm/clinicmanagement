@@ -19,7 +19,7 @@ with open('county.csv') as csvfile:
 
 
 import os, csv
-from registration.models import InsuranceCompanies
+# from registration.models import InsuranceCompanies
 
 path = "/opt/valentisHealth/"
 
