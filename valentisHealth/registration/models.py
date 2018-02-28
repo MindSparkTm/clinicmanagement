@@ -165,10 +165,10 @@ class County(models.Model):
             verbose_name_plural = 'Counties'
 
         def __str__(self):
-            return self.pk
+            return self.county_name
 
         def __unicode__(self):
-            return u'%s' % self.pk
+            return u'%s' % self.county_name
 
 
 class MedicationHistory(models.Model):

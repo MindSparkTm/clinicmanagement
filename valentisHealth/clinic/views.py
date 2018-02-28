@@ -130,7 +130,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             pass
 
         try:
-            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no']).latest('update')
+            triage_obj = Triage.objects.filter(patient_no=self.kwargs['patient_no']).latest('last_updated')
             patient_object.session_id = triage_obj.triage_id
             patient_object.save()
 
@@ -156,7 +156,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             context['patient'] = patient_object
 
         except:
-            raise Http404('Requested user not found.')
+            print("Error ________")
 
 
         return context
