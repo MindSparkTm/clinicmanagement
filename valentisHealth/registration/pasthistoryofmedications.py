@@ -1,6 +1,8 @@
 import os, csv
 
-path = "/opt/valentisHealth/"
+# path = "/opt/valentisHealth/"
+path = "/Users/redpulse/Documents/ValentisHealth/valentishealth/valentisHealth"
+
 
 os.chdir(path)
 from registration.models import MedicationHistory

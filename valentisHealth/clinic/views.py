@@ -156,7 +156,7 @@ class DoctorVisit(UserPassesTestMixin, CreateView):
             context['patient'] = patient_object
 
         except:
-            raise Http404('Requested user not found.')
+            print("Error ________")
 
 
         return context
