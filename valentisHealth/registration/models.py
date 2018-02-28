@@ -158,21 +158,10 @@ class Allergies(models.Model):
             return u'%s' % self.pk
 
 class County(models.Model):
-        county_name = models.CharField(max_length=300)
-
-        class Meta:
-            verbose_name = 'County'
-            verbose_name_plural = 'Counties'
-
-        def __str__(self):
-            return self.county_name
-
-        def __unicode__(self):
-            return u'%s' % self.county_name
-
+        County = models.CharField(max_length=300)
 
 class MedicationHistory(models.Model):
-    Disease = models.CharField(max_length=300)
+        Disease = models.CharField(max_length=300)
 
 
 class InsuranceCompanies(models.Model):

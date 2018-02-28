@@ -1,8 +1,6 @@
 import os, csv
 
-# path = "/opt/valentisHealth/"
-path = "/Users/redpulse/Documents/ValentisHealth/valentishealth/valentisHealth"
-
+path = "/opt/valentisHealth/"
 
 os.chdir(path)
 from registration.models import MedicationHistory
@@ -13,3 +11,6 @@ with open('familyhistory.csv') as csvfile:
         print(row)
         p = MedicationHistory.objects.create(Disease=row['Disease'])
         p.save()
+
+
+path = "/Users/redpulse/Documents/ValentisHealth/valentishealth/valentisHealth"
