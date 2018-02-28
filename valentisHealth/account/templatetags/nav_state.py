@@ -33,7 +33,7 @@ def has_group(request):
         }
 
     if is_admin(request):
-        return [all_links[link] for link in all_links.keys()]
+        return "".join([all_links[link] for link in all_links.keys()])
 
     if is_doctor(request):
         return "".join([all_links[link] for link in all_links.keys() if link not in ['payments']])
