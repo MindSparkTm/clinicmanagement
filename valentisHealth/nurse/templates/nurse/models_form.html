@@ -60,9 +60,9 @@
 
 
 
-<div id="waiting_list_table" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--10-col" style="width:70%; ">
+<div id="waiting_list_table" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--10-col" style="width:70%; margin-left:20px;  ">
     <div class="mdl-card__title mdl-color--teal-500">
-        <h2 class="mdl-card__title-text mdl-color-text--white" >Waitings List</h2>
+        <h2 class="mdl-card__title-text mdl-color-text--white" >Waiting List</h2>
     </div>
     <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
         <table class="mdl-data-table mdl-js-data-table full-width">
@@ -109,7 +109,7 @@
                 {% endif %}</span>
            <div class="patient_no" style="border: 1px solid #ccc; margin-left: 19px; "> <input name="patient_no" id="patient_no"  type="text" value="{% if form.patient_no.value != None %}{{ form.patient_no.value }}{% endif %}" readonly/></div>
             <fieldset>
-                <legend style="font-size:15px; font-weight:900; margin-left: 2px; color: #2d5265; " > Confirm Patients Details</legend>
+                <legend style="font-weight: bold; font-size: 16px; padding: 17px;color:#879399; " > Confirm Patients Details</legend>
                 <div class="mdl-grid ">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="first_name">First Name</label>
@@ -123,7 +123,7 @@
             </fieldset>
 
             <fieldset>
-                <legend style="font-size:15px; font-weight:900; margin-left: 2px; color: #2d5265; " >Triage</legend>
+                <legend style="font-weight: bold; font-size: 16px; padding: 17px;color:#879399; " >Triage</legend>
 
                 <div class="mdl-grid ">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
@@ -189,7 +189,7 @@
 
 
             {# {{ form|crispy }}#}
-            <button name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">Submit
+            <button name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit" style="margin:0 0 20px 20px; ">Submit
                         </button>
         </form>
     </div>
