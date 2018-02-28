@@ -35,26 +35,26 @@ def has_group(request):
     if is_admin(request):
         return [all_links[link] for link in all_links.keys()]
 
-    if is_doctor(register):
+    if is_doctor(request):
         return "".join([all_links[link] for link in all_links.keys() if link not in ['payments']])
 
-    if is_nurse(register):
+    if is_nurse(request):
         return "".join([all_links[link] for link in all_links.keys() if
                         link not in ['payments', 'clinic', 'radiology', 'labs', 'prescriptions']])
 
-    if is_labs(register):
+    if is_labs(request):
         return "".join([all_links[link] for link in all_links.keys() if
                         link not in ['payments', 'clinic', 'radiology', 'triage', 'prescriptions']])
 
-    if is_radiology(register):
+    if is_radiology(request):
         return "".join([all_links[link] for link in all_links.keys() if
                         link not in ['payments', 'clinic', 'triage', 'labs', 'prescriptions']])
 
-    if is_callcenter(register):
+    if is_callcenter(request):
         return "".join([all_links[link] for link in all_links.keys() if
                         link not in ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescriptions']])
 
-    if is_superadmin(register):
+    if is_superadmin(request):
         return "".join([all_links[link] for link in all_links.keys()])
 
         # return is_admin(request)
