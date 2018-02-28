@@ -40,6 +40,7 @@ class medicationhistoryviewset(viewsets.ModelViewSet):
 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('Disease')
+
 class insurancecompanyviewset(viewsets.ModelViewSet):
     queryset = models.InsuranceCompanies.objects.all()
     serializer_class = serializers.insuranceserializer
