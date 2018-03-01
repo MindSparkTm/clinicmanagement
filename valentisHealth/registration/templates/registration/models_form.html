@@ -501,8 +501,9 @@
                    <div class="mdl-grid">
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="fam_history"></textarea>
+                                                              id="fam_history" name="fam_history"></textarea>
                                 <label class="mdl-textfield__label" for="fam_history">Family History</label>
+                        <div id="familyhistory"></div>
                             </div>
                 </div>
 
@@ -737,14 +738,14 @@
         window.onload = loadfunctionsonpage();
         var allergiess=[];
         var counties=[];
-        var previousmedication = [];
+        var familyhistory = [];
         var insurancecomp=[];
 
 
         function loadfunctionsonpage(){
             allergiess=[];
             counties=[];
-            previousmedication=[]
+            familyhistory=[]
             insurancecomp=[]
             getallergies();
             getcounties();
@@ -829,16 +830,16 @@ for (var i =0;i<counties.length;i++){
               console.log("s", response);
               for (var i = 0; i < response.length; ++i) {
                   //  brand.push(response[i].brand);
-                  previousmedication.push(response[i].Disease);
+                  familyhistory.push(response[i].Disease);
               }
-              console.log("Previousmedication", previousmedication);
+              console.log("familyhistory", familyhistory);
 
 
-              for (var i = 0; i < previousmedication.length; i++) {
+              for (var i = 0; i < familyhistory.length; i++) {
                   var li = $('<li><input type="checkbox" name="' + i + '" id="' + i + '"/>' +
                       '<label for="' + i + '"></label></li>');
-                  li.find('label').text(previousmedication[i]);
-                  $('#previousmedication').append(li);
+                  li.find('label').text(familyhistory[i]);
+                  $('#familyhistory').append(li);
               }
 
 
