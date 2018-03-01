@@ -20,6 +20,6 @@ urlpatterns += (
     url(r'^patientvisit/doctor/(?P<patient_no>\S+)/$', views.DoctorVisit.as_view(), name='doctor_visit'),
     url(r'^patientvisit/create/$', views.patientVisitCreateView.as_view(), name='clinic_patientvisit_create'),
     url(r'^patientvisit/detail/(?P<slug>\S+)/$', views.patientVisitDetailView.as_view(), name='clinic_patientvisit_detail'),
-    url(r'^patientvisit/update/(?P<slug>\S+)/$', views.patientVisitUpdateView.as_view(), name='clinic_patientvisit_update'),
+    url(r'^patientvisit/update/(?P<patient_no>\S+)/$', views.patientVisitUpdateView.as_view(), name='clinic_patientvisit_update'),
 )
 
