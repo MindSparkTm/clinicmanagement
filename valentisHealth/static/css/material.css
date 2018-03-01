@@ -10157,7 +10157,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .mdl-textfield.is-focused .mdl-textfield__input {
     outline: none; }
   .mdl-textfield.is-invalid .mdl-textfield__input {
-    border-color: rgb(213,0,0);
+    border-color:#3f51b5;
     box-shadow: none; }
   fieldset[disabled] .mdl-textfield .mdl-textfield__input,
   .mdl-textfield.is-disabled .mdl-textfield__input {
@@ -10205,7 +10205,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .mdl-textfield--floating-label.has-placeholder .mdl-textfield__expandable-holder .mdl-textfield__label {
     top: -16px; }
   .mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
-    color: rgb(213,0,0);
+    color:#3f51b5;
     font-size: 12px; }
   .mdl-textfield__label:after {
     background-color: rgb(63,81,181);
