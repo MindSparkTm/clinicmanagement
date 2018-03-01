@@ -58,9 +58,9 @@ class Patient(models.Model):
     uploaded_file = models.FileField(upload_to='media/users/', null=True, blank=True)
 
     #history
-    occupation = models.CharField(max_length=30, default="None", null=True, blank=True)
-    marital_status = models.CharField(max_length=30, default="Single", null=True, blank=True)
-    spouse = models.CharField(max_length=30, null=True, blank=True)
+    occupation = models.CharField(max_length=255, default="None", null=True, blank=True)
+    marital_status = models.CharField(max_length=255, default="Single", null=True, blank=True)
+    spouse = models.CharField(max_length=255, null=True, blank=True)
     no_children = models.IntegerField(null=True, blank=True)
     childrens = models.CharField(max_length=100, null=True, blank=True)
     prev_docs = models.CharField(max_length=200, null=True, blank=True)
@@ -77,32 +77,32 @@ class Patient(models.Model):
     dexa = models.TextField(max_length=100, null=True, blank=True)
     no_pregnancies = models.IntegerField(null=True, blank=True)
     miscourages = models.TextField(max_length=100, null=True, blank=True)
-    living_children = models.CharField(max_length=30, null=True, blank=True)
+    living_children = models.CharField(max_length=255, null=True, blank=True)
     methods_of_contraception = models.TextField(max_length=100, null=True, blank=True)
     surgeries = models.TextField(max_length=1000, null=True, blank=True)
     genetic_diseases = models.TextField(max_length=1000, null=True, blank=True)
-    if_smoker = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    cigar_per_day = models.CharField(max_length=30, null=True, blank=True)
-    no_of_yr_smoking = models.CharField(max_length=30, null=True, blank=True)
-    if_chew_tobacco = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    yrs_chewing_tobacco = models.CharField(max_length=30, null=True, blank=True)
-    if_quit_before = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    tobacco_quit_duration = models.CharField(max_length=30, null=True, blank=True)
-    if_drink_alcohol = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    alocohol_type = models.CharField(max_length=30, null=True, blank=True)
-    alcohol_frequency = models.CharField(max_length=30, null=True, blank=True)
-    if_drug_used = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    if_smoker = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    cigar_per_day = models.CharField(max_length=255, null=True, blank=True)
+    no_of_yr_smoking = models.CharField(max_length=255, null=True, blank=True)
+    if_chew_tobacco = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    yrs_chewing_tobacco = models.CharField(max_length=255, null=True, blank=True)
+    if_quit_before = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    tobacco_quit_duration = models.CharField(max_length=255, null=True, blank=True)
+    if_drink_alcohol = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    alocohol_type = models.CharField(max_length=255, null=True, blank=True)
+    alcohol_frequency = models.CharField(max_length=255, null=True, blank=True)
+    if_drug_used = models.CharField(max_length=255, default="NO", null=True, blank=True)
     drug_type = models.TextField(max_length=100, null=True, blank=True)
-    when_drug_used = models.CharField(max_length=30, null=True, blank=True)
-    if_exercise = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    exercise_freq = models.CharField(max_length=30, null=True, blank=True)
-    if_special_diet = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    when_drug_used = models.CharField(max_length=255, null=True, blank=True)
+    if_exercise = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    exercise_freq = models.CharField(max_length=255, null=True, blank=True)
+    if_special_diet = models.CharField(max_length=255, default="NO", null=True, blank=True)
     special_diet = models.TextField(max_length=100, null=True, blank=True)
-    if_use_caffein = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    caffein_daily_amt = models.CharField(max_length=30, null=True, blank=True)
-    is_sadder = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    if_lost_interest = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    have_will = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    if_use_caffein = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    caffein_daily_amt = models.CharField(max_length=255, null=True, blank=True)
+    is_sadder = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    if_lost_interest = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    have_will = models.CharField(max_length=255, default="NO", null=True, blank=True)
     social_hist = models.TextField(max_length=400, null=True, blank=True)
     fam_hist = models.TextField(max_length=400, null=True, blank=True)
 
@@ -128,8 +128,8 @@ class Children(models.Model):
                              related_name='children')
     created = DateTimeField(auto_now_add=True, editable=False)
     last_updated = DateTimeField(auto_now=True, editable=False)
-    name = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    age = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    name = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    age = models.CharField(max_length=255, default="NO", null=True, blank=True)
 
 
     class Meta:
@@ -158,14 +158,14 @@ class Allergies(models.Model):
             return u'%s' % self.pk
 
 class County(models.Model):
-        County = models.CharField(max_length=300)
+        County = models.CharField(max_length=2550)
 
 class MedicationHistory(models.Model):
-        Disease = models.CharField(max_length=300)
+        Disease = models.CharField(max_length=2550)
 
 
 class InsuranceCompanies(models.Model):
-    Name = models.CharField(max_length=300)
+    Name = models.CharField(max_length=2550)
 
 
 class Medication(models.Model):
@@ -175,8 +175,8 @@ class Medication(models.Model):
                              related_name='medication')
     created = DateTimeField(auto_now_add=True, editable=False)
     last_updated = DateTimeField(auto_now=True, editable=False)
-    name = models.CharField(max_length=30, default="NO", null=True, blank=True)
-    age = models.CharField(max_length=30, default="NO", null=True, blank=True)
+    name = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    age = models.CharField(max_length=255, default="NO", null=True, blank=True)
 
 
     class Meta:

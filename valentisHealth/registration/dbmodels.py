@@ -13,12 +13,10 @@ with open('county.csv') as csvfile:
         p = County.objects.create(county_name=cnty)
         p.save()
 
-
- path = "/Users/redpulse/Documents/ValentisHealth/valentishealth/valentisHealth"
-
-
+path = "/Users/redpulse/Documents/ValentisHealth/valentishealth/valentisHealth"
 
 import os, csv
+
 # from registration.models import InsuranceCompanies
 
 path = "/opt/valentisHealth/"
@@ -31,4 +29,3 @@ with open('medicalinsurance.csv') as csvfile:
         print(row['Name'])
         p = InsuranceCompanies.objects.create(Name=row['Name'])
         p.save()
-

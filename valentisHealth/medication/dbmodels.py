@@ -1,7 +1,6 @@
 import os, csv
 
-path = "/Users/redpulse/Documents/ValentisHealth/valentisHealth/valentisHealth/medication/mydawa.csv"
-path= os.path.dirname(os.path.realpath(path))
+path = "/opt/valentisHealth/medication/"
 os.chdir(path)
 from medication.models import MyDawa
 

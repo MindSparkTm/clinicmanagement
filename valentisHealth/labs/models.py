@@ -146,7 +146,7 @@ class Radiology(models.Model):
     other_allergies = models.BooleanField(max_length=100, default=False)
     kidney_problems = models.BooleanField(default=False)
     anticoagulant_drugs = models.BooleanField(default=False)
-    egfr_result = models.CharField(max_length=30, null=True, blank=True)
+    egfr_result = models.CharField(max_length=255, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     patient_no = models.CharField(max_length=30, null=True, blank=True)
 
@@ -172,7 +172,7 @@ class RadiologyResult(models.Model):
     patient_no = models.CharField(max_length=30)
     results = models.TextField(max_length=400)
     radiologyresult_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    triage_id = models.CharField(max_length=100, null=True, blank=True)
+    triage_id = models.CharField(max_length=255, null=True, blank=True)
     tests_done = models.TextField(max_length=400, null=True, blank=True)
     uploaded_file = models.FileField(upload_to='media/radiology/', null=True, blank=True)
 
