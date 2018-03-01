@@ -861,10 +861,20 @@ for (var i =0;i<counties.length;i++){
             s = response;
             console.log("s",response);
             for (var i = 0; i < response.length; ++i) {
+                if (response[i].Name) {
                     insurancecomp.push(response[i].Name);
+                }
+
 
             }
-             console.log("Insurancecompanies",insurancecomp.length);
+            $('#textfield_primary_insurance').autocomplete({
+                source: insurancecomp,
+                minLength: 0,
+                max: 10,
+                scroll: true
+            }).focus(function () {
+                $(this).autocomplete("search", "");
+            });
 
 
 
