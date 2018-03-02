@@ -102,7 +102,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
     def get_object(self, queryset=None, **kwargs):
         triage_id = Triage.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0].triage_id
         try:
-            visit_object = patientVisit.objects.get(triage_id=triage_id)
+            visit_object = patientVisit.objects.filter(Q(triage_id=triage_id))[0]
             visit_object.triage_id = triage_id
             visit_object.save()
             print("exists -----------------------", triage_id)
@@ -155,7 +155,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
             print(patient_object.session_id,"++++++++++")
 
             context['waiting_list'] = Patient.objects.filter(status="3")
-            triage = Triage.objects.get(triage_id=patient_object.session_id)
+            triage = Triage.objects.filter(Q(triage_id=patient_object.session_id))[0]
             context['triage'] = triage
 
             #-4 out of labs, -5 out of radiology
