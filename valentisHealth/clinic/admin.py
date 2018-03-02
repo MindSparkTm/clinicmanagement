@@ -11,7 +11,7 @@ class patientVisitAdminForm(forms.ModelForm):
 
 class patientVisitAdmin(admin.ModelAdmin):
     form = patientVisitAdminForm
-    list_display = ['name', 'slug', 'created', 'last_updated', 'patient_no', 'radiology_no', 'notes', 'diagnosis', 'prescription_id', 'status', 'triage_id']
+    list_display = ['name', 'slug', 'created', 'last_updated', 'patient_no', 'radiology_no', 'notes', 'diagnosis', 'prescription_id', 'status', 'triage_id', 'examination', 'plan_of_managemnt', 'query_diagnosis', 'his_presenting_illness', 'attending_doctor','visit_id']
 
 admin.site.register(patientVisit, patientVisitAdmin)
 

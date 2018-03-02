@@ -29,6 +29,7 @@ class patientVisit(models.Model):
     plan_of_managemnt = models.CharField(max_length=255, null=True, blank=True)
     query_diagnosis = models.CharField(max_length=255, null=True, blank=True)
     his_presenting_illness = models.CharField(max_length=255, null=True, blank=True)
+    attending_doctor = models.CharField(max_length=255, null=True, blank=True)
 
 
     class Meta:

@@ -6,7 +6,6 @@ function getdiagnosis(str) {
             url: "/clinic/api/v1/icd10/",
             type: "get",
             data: {
-
                 search: str,
             },
             success: function (json) {
@@ -281,11 +280,11 @@ function closePopUp() {
     $('.dialog').close();
 }
 
-function show_element(id_name){
+function show_element(id_name) {
     $('#' + id_name).show()
 }
 
-function hide_element(id_name){
+function hide_element(id_name) {
     $('#' + id_name).hide()
 }
 
@@ -343,7 +342,7 @@ function dynamic_children() {
                                 d = new Date($(this).val());
                                 var before = moment($(d, 'YYYY-MM-DD'));
                                 var age = moment().diff(d, 'years');
-                                age_id_name = "#"+$(this).attr('class')
+                                age_id_name = "#" + $(this).attr('class')
                                 $(age_id_name).val(age);
                             })
                         ))
@@ -369,4 +368,48 @@ function dynamic_children() {
     })
 }
 
+
+function closepatientscase(patient_id) {
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    csrftoken = $('input[name="csrfmiddlewaretoken"]').attr('value')
+
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    console.log($('#visit').serialize())
+    
+    $.ajax({
+        url: "/clinic/patientvisit/doctor/"+patient_id+"/",
+        type: "POST",
+        datatype: 'json',
+        data: $('#visit').serialize(),
+        xhrFields: {
+                    withCredentials: true
+                },
+        success: function (json) {
+            $.ajax({
+                url: "/clinic/patientvisit/close/"+patient_id+"/",
+                type: "get",
+                success: function (json) {
+                    window.location.href = "/clinic/patientvisit/create/"
+                },
+                failure: function (json) {
+                    alert("Something Went wrong. Try again.")
+                }
+            
+            });
+        }
+
+
+    });
+}
 

@@ -1558,7 +1558,7 @@
                     </div>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_management" name="plan_of_management">{% if form.plan_of_management.value != None %}{{ form.plan_of_management.value }}{% endif %}</textarea>
+                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_managemnt" name="plan_of_managemnt">{% if form.plan_of_management.value != None %}{{ form.plan_of_management.value }}{% endif %}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Plan of Management</label>
             </div>
 
@@ -1588,7 +1588,13 @@
         <div class="mdl-grid full-width">
             <button name="visit_form"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
-                    type="submit">END SESSION
+                    type="submit">Save
+            </button>
+        </div>
+        <div class="mdl-grid full-width">
+            <button onclick="closepatientscase('{{ patient.patient_no }}')" name="visit_form"
+                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
+                    type="button">Close Patient's Case
             </button>
         </div>
 
