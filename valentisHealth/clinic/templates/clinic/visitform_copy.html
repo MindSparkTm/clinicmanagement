@@ -114,7 +114,7 @@
         <div class="">
             <div id="presenting_illness" class="">
             <fieldset id="">
-                <legend>
+                <legend style="font-size:12px; ">
                     Presenting Illness:
                 </legend>
                             <table class="mdl-data-table full-width">
@@ -132,13 +132,13 @@
 
         <div id="presenting_illness" class="">
             <fieldset id="triage">
-                <legend>
+                <legend style="font-size:12px;">
                     History of Presenting Illness
                 </legend>
 
                 <div class="mdl-grid">
 
-                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                 <textarea onkeyup="$('#presenting_illiness').val($('#presenting_illiness_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illiness_" name="presenting_illiness_">{% if form.presenting_illiness.value != None %}{{ form.presenting_illiness.value }}{% endif %}</textarea>
                 <label class="mdl-textfield__label" for="notes_">History of Presenting Illness</label>
             </div>
@@ -147,7 +147,7 @@
             </fieldset>
         </div>
 
-        <button onclick="toggleView('medication_')" class="mdl-button w3-block w3-left-align accordion">View Medical
+        <button style="background:#609ab8; color:#609ab8;  " onclick="toggleView('medication_')" class="mdl-button w3-block w3-left-align accordion">View Medical
                 History
             </button>
         <br>
@@ -329,22 +329,22 @@
         </div>
 
         <fieldset>
-            <legend>Lab And Radiology</legend>
+            <legend class="colide">Lab And Radiology</legend>
 
             <div class="mdl-grid " style="text-align: center">
-                <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-cell mdl-cell--6-col btn-overide" >
                     <!-- Colored FAB button -->
                     Add Radiology
-                    <button type="button" style="background:#37647b; " class="mdl-button mdl-js-button w3-block w3-grey" onclick="addRadiology()">
+                    <button type="button" style="background:#2d5265; " class="mdl-button mdl-js-button w3-block btn-overide" onclick="addRadiology()">
                             <i class="material-icons">highlight</i>
                         </button>
 
                 </div>
 
-                <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-cell mdl-cell--6-col btn-overide">
                     <!-- Colored FAB button -->
                     Add Labs
-                    <button type="button" class="mdl-button mdl-js-button w3-block w3-grey"  onclick="addLabs()">
+                    <button type="button" class="mdl-button mdl-js-button w3-block btn-overide"  onclick="addLabs()">
                             <i class="material-icons">local_pharmacy</i>
                         </button>
 
@@ -1506,7 +1506,7 @@
 
 
             <fieldset>
-                <legend>Doctor</legend>
+                <legend class="colide">Doctor</legend>
 
                 <style>
                     .search {
