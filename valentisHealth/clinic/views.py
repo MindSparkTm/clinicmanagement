@@ -85,6 +85,8 @@ class Close(View):
     def get(self, request, *args, **kwargs):
         # fetch your values from request.GET.get('key')
         # and play around with it
+        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+        patient_object.status = 0
         return JsonResponse({'success':'true', 'status':'true'}, status=200)
 
 
