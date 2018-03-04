@@ -190,23 +190,23 @@
                     <div class="mdl-grid">
 
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="" id="details" readonly/>
-                                <input value="" type="hidden" name="details"/>
+                                <input class="mdl-textfield__input" value="" id="id_type" readonly/>
+                                <input value="" type="hidden" name="id_type"/>
                                 <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="gender">Identification Documents</label>
+                                <label class="mdl-textfield__label" for="id_type">Identification Documents</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="details">
+                                    for="id_type">
                                     <li class="mdl-menu__item" data-val="id">ID</li>
                                     <li class="mdl-menu__item" data-val="ps">Passport</li>
                                     <li class="mdl-menu__item" data-val="otherd">Other Documents</li>
 
                                 </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.dob.errors|striptags }}</span>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_ss_number">Identification No</label>
-                                <input class="mdl-textfield__input" type="Number"
+                                <input class="mdl-textfield__input" type="text"
                                        id="textfield_ss_number"
                                        value="{% if form.ss_number.value != None %}{{ form.ss_number.value }}{% endif %}" name="ss_number"/>
                                 <span style="visibility: visible;" class="mdl-textfield__error">{{ form.ss_number.errors|striptags }}</span>
@@ -347,8 +347,43 @@
                         </div>
 
                         <div class="mdl-grid ">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_sub_dob">Date of Birth</label>
+                                <input class="mdl-textfield__input" type="date"
+                                       id="textfield_sub_dob" value="{% if form.sub_dob.value != None %}{{ form.sub_dob.value }}{% else %}01/01/2018{% endif %}" name="sub_dob"/>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.sub_dob|striptags }}</span>
+                            </div>
 
-<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                                <input class="mdl-textfield__input" value="" id="sub_id_type" readonly/>
+                                <input value="" type="hidden" name="sub_id_type"/>
+                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                <label class="mdl-textfield__label" for="sub_id_type">Identification Documents</label>
+                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                    for="sub_id_type">
+                                    <li class="mdl-menu__item" data-val="id">ID</li>
+                                    <li class="mdl-menu__item" data-val="ps">Passport</li>
+                                    <li class="mdl-menu__item" data-val="otherd">Other Documents</li>
+
+                                </ul>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_sub_ss_number">Identification No</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_sub_ss_number" value="{% if form.sub_ss_number.value != None %}{{ form.sub_ss_number.value }}{% endif %}" name="sub_ss_number"/>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.sub_ss_number.errors|striptags }}</span>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="mdl-grid ">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_postal_code">Address</label>
                                 <input class="mdl-textfield__input" type="text"
@@ -358,35 +393,14 @@
 
 
 
-                        </div>
-
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_sub_ss_number">Identification documents</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_sub_ss_number" value="{% if form.sub_ss_number.value != None %}{{ form.sub_ss_number.value }}{% endif %}" name="sub_ss_number"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.sub_ss_number.errors|striptags }}</span>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_sub_dob">Date of Birth</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_sub_dob" value="{% if form.sub_dob.value != None %}{{ form.sub_dob.value }}{% else %}01/01/2018{% endif %}" name="sub_dob"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.sub_dob|striptags }}</span>
-                            </div>
-
-                        </div>
-
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_employer">Employer</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_employer" value="{% if form.employer.value != None %}{{ form.employer.value }}{% endif %}" name="employer"/>
                                 <span style="visibility: visible;" class="mdl-textfield__error">{{ form.employer.errors|striptags }}</span>
                             </div>
-                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_sub_work_phone">Work Phone Number</label>
                                 <input class="phone_input mdl-textfield__input" type="tel"

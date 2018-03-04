@@ -85,40 +85,42 @@ class Close(View):
     def get(self, request, *args, **kwargs):
         # fetch your values from request.GET.get('key')
         # and play around with it
+        print("Suceeded")
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
         patient_object.status = 0
+        patient_object.save()
         return JsonResponse({'success':'true', 'status':'true'}, status=200)
 
 
 class DoctorVisit(UserPassesTestMixin, UpdateView):
     model = patientVisit
     form_class = patientVisitForm
-    form_invalid_message = 'Something went wrong. Please Try Again. If this persist, contact us'
-    saved = False
 
     def test_func(self):
         return is_doctor(self.request)
 
     def get_object(self, queryset=None, **kwargs):
-        triage_id = Triage.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0].triage_id
+        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+        session_id = patient_object.session_id
+
         try:
-            visit_object = patientVisit.objects.filter(Q(triage_id=triage_id))[0]
-            visit_object.triage_id = triage_id
+
+            visit_object = patientVisit.objects.get(triage_id=session_id)
+            visit_object.triage_id = session_id
             visit_object.save()
-            print("exists -----------------------", triage_id)
+            print("exists -----------------------", session_id)
             return visit_object
-        except ObjectDoesNotExist:
-            print("Did not exist +++++++++++++++++++++++++++", triage_id)
-            visit_object = patientVisit.objects.create(triage_id=triage_id)
-            visit_object.triage_id = triage_id
+
+        except:
+            print("Did not exist +++++++++++++++++++++++++++", session_id)
+            visit_object = patientVisit.objects.create(triage_id=session_id)
+            visit_object.triage_id = session_id
             visit_object.attending_doctor = self.request.user.email
             visit_object.save()
             return visit_object
 
     def get_template_names(self):
-
         return 'clinic/visitform_copy.html'
-
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -126,10 +128,10 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
 
         return HttpResponseRedirect("/clinic/patientvisit/create/")
 
-
     def get_context_data(self, **kwargs):
         context = super(DoctorVisit, self).get_context_data(**kwargs)
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+        triage = Triage.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0]
 
         try:
             labresult = LabResults.objects.filter(Q(triage_id=patient_object.session_id))
@@ -151,11 +153,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
 
         try:
 
-            patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
-            print(patient_object.session_id,"++++++++++")
-
             context['waiting_list'] = Patient.objects.filter(status="3")
-            triage = Triage.objects.filter(Q(triage_id=patient_object.session_id))[0]
             context['triage'] = triage
 
             #-4 out of labs, -5 out of radiology

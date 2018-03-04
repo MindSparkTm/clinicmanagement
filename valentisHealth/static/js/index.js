@@ -86,9 +86,20 @@ function tagify(selectedStr) {
 }
 
 function removeDiag(that) {
-    var str = $(that).parent().children().first().text()
+    //get the string in the tag and remove trailing whitespaces
+    var str = $(that).parent().children().first().text().trim()
+
+    //remove tag
     $(that).parent().remove()
+
+    //get the current diagnosis string
+    var existingStr = $("#diagnosis").val()
+
+    //remove the deleted text from the hidden diagnosis text area box
     $("#diagnosis").val(existingStr.replace(str, ""))
+
+    //remove trailing commas after spliting diagnosis
+    $("#diagnosis").val($("#diagnosis").val().replace(/(^,)|(,$)/g, ""))
 
 }
 

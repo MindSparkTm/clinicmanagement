@@ -1,9 +1,7 @@
-__author__ = 'Hp'
+__author__ = 'Stephen'
 from django.core.urlresolvers import resolve
 from django.template import Library
-from django.contrib.auth.models import Group
 from valentisHealth.authenticator import *
-from django.utils.safestring import SafeText, mark_safe
 
 register = Library()
 

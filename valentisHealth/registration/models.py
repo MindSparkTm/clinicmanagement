@@ -51,6 +51,8 @@ class Patient(models.Model):
     sub_work_phone = TextField(max_length=100, null=True, blank=True)
     dob = DateField(null=True, blank=True)
     sub_dob = DateField(null=True, blank=True)
+    id_type = TextField(max_length=100, null=True, blank=True)
+    sub_id_type=TextField(max_length=100, null=True, blank=True)
     sub_employer = TextField(max_length=100,null=True, blank=True)
     status = IntegerField(null=True, blank=True)
     session_id = TextField(max_length=400, null=True, blank=True)
