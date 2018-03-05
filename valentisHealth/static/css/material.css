@@ -3928,8 +3928,28 @@ input.mdl-button[type="submit"] {
     height: 40px;
     min-width: 40px;
     width: 40px; }
+
+
+  .btn-overide{
+        background: #2d5265;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 20px !important;
+    width: auto;
+    border: none;
+    cursor: pointer;
+
+  }
+
+  .btn-overide:hover{
+
+    background: #609ab8;
+  }
   .mdl-button--fab .mdl-button__ripple-container {
     border-radius: 50%;
+      background: #609ab8;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
   .mdl-button--fab:active {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -3948,6 +3968,9 @@ input.mdl-button[type="submit"] {
       background-color: rgb(255,64,129); }
     .mdl-button--fab.mdl-button--colored .mdl-ripple {
       background: rgb(255,255,255); }
+
+
+
 
 .mdl-button--icon {
   border-radius: 50%;
@@ -10157,7 +10180,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .mdl-textfield.is-focused .mdl-textfield__input {
     outline: none; }
   .mdl-textfield.is-invalid .mdl-textfield__input {
-    border-color: rgb(213,0,0);
+    border-color:#3f51b5;
     box-shadow: none; }
   fieldset[disabled] .mdl-textfield .mdl-textfield__input,
   .mdl-textfield.is-disabled .mdl-textfield__input {
@@ -10168,13 +10191,20 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 .mdl-textfield textarea.mdl-textfield__input {
   display: block; }
 
+.colide{
+
+    font-size: 12px;
+    padding: 20px
+color:#fff;
+}
+
 .mdl-textfield__label {
   bottom: 0;
   color: rgba(0,0,0, 0.26);
-  font-size: 16px;
   left: 0;
   right: 0;
   pointer-events: none;
+    font-size: 12px;
   position: absolute;
   display: block;
   top: 24px;
@@ -10205,7 +10235,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .mdl-textfield--floating-label.has-placeholder .mdl-textfield__expandable-holder .mdl-textfield__label {
     top: -16px; }
   .mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
-    color: rgb(213,0,0);
+    color:#3f51b5;
     font-size: 12px; }
   .mdl-textfield__label:after {
     background-color: rgb(63,81,181);
