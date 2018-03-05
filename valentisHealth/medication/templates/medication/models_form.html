@@ -63,12 +63,41 @@
 
             </div>
             <div class="mdl-grid ">
-                <div id="div_id_address" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                <div id="div_id_address" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
                     <label for="id_address" class="mdl-textfield__label mdl-color-text--grey">
                             Physical Address</label>
                     <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_address" maxlength="400" name="address" rows="10" required="">{% if form.address.value != None %}{{ form.address.value }}{% else %}{% if patient.address != None %}{{ patient.address }}{% endif %}{% endif %}</textarea></div>
                 </div>
+
+
+
+
+
+
+
+
             </div>
+
+
+    <div id="div_id_prescription" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                    <label for="id_prescription" class="mdl-textfield__label mdl-color-text--grey">
+                            Delivery Address </label>
+                    <div class="controls">
+                        <input class="mdl-textfield__input" cols="40" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the medicine you want to search'"
+ id="medicationlist" maxlength="100" name="medicationlist" rows="10" placeholder="Enter Your Delivery Address" onkeyup="getsearch(this.value)"/>
+                        <br>
+                        <textarea class="mdl-textfield__input" cols="40" id="id_prescription" maxlength="400" name="prescription" rows="10" required="">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
+                        <div id="livesearch"></div>
+
+                </div>
+
+
+
+
+
+
+
+
             <div class="mdl-grid ">
                 <div id="div_id_prescription" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
                     <label for="id_prescription" class="mdl-textfield__label mdl-color-text--grey">
