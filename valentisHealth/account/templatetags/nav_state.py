@@ -50,10 +50,12 @@ def has_group(request):
                         link not in ['payments', 'clinic', 'triage', 'labs', 'prescriptions']])
 
     if is_callcenter(request):
-        return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescriptions']])
+        return "".join([all_links[link] for link in all_links.keys() ])
 
     if is_superadmin(request):
         return "".join([all_links[link] for link in all_links.keys()])
+
+    if is_receptionist(request):
+        return "".join([all_links[link] for link in all_links.keys() ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescriptions']])
 
         # return is_admin(request)
