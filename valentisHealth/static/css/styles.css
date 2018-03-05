@@ -31,11 +31,11 @@ body {font-family: 'Roboto', sans-serif;
 #sideMenu{
    background: #2a475f;
     display: block;
-	float: left;
-	position: relative;
-	width: 220px;
+   float: left;
+   position: relative;
+   width: 220px;
     position: fixed;
-	z-index: 16;
+   z-index: 16;
 }
 
 
@@ -45,6 +45,31 @@ padding-top: 20px;
     min-height:70em;
     background: #37647b;
     position: relative;
+}
+
+.toggle{
+
+    width: 100%;
+    padding: 10px 20px;
+    background: #609ab8;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 30px;
+
+}
+
+@media(max-width:768px){
+    .toggle{
+
+        display: block;
+    }
+
+    nav a {
+        display: inline;
+
+    }
+
+
 }
 
 
@@ -75,33 +100,17 @@ nav a:hover{
 
 
 
-.btn-login{
-    background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 5px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
 
-}
-.btn-login:hover{
-   background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #48ade5, #3498db);
-  background-image: -moz-linear-gradient(top, #2e92fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
 
+
+
+.sidebar-toggle-box{
+
+cursor: pointer;
+    display: inline-block;
+    font-size: 20px
 }
+
 
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
     color: rgba(0, 0, 0, 0.54);
@@ -402,8 +411,8 @@ fieldset {
 }
 
 .mdl-textfield__error {
-	width: 100%;
-	left: 0;
+   width: 100%;
+   left: 0;
  text-align: left;
 }
 
@@ -420,7 +429,7 @@ fieldset {
 }
 
 .mdl-textfield {
-  margin: 3F0px 4px;
+  margin: 30px 4px;
 }
 
 .accordion{
@@ -471,7 +480,10 @@ position: fixed;
 .btn-over:hover{
     background: #558fad;
 }
+.flow-page{
+    background: #000;
 
+}
 
 
 .btn-logout{
@@ -583,3 +595,18 @@ legend{ width: 100%;
     margin-left: 20px;
 }
 
+na-menu-left {
+   left: -240px;
+}
+
+.na-menu-right {
+   right: -240px;
+}
+
+.na-menu-left.na-menu-open {
+   left: 0px;
+}
+
+.na-menu-right.na-menu-open {
+   right: 0px;
+}

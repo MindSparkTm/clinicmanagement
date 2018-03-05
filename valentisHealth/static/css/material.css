@@ -11362,6 +11362,15 @@ color:#fff;
     -webkit-order: 11;
         -ms-flex-order: 11;
             order: 11; }
+
+  .prescard{
+
+      width: 40%;
+      height:60%;
+      background: #fff;
+
+  }
+
   .mdl-cell--order-12-desktop.mdl-cell--order-12-desktop {
     -webkit-order: 12;
         -ms-flex-order: 12;
