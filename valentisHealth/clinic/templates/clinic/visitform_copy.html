@@ -28,7 +28,10 @@
         }
     </script>
 
-    <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
+<div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--2-col">
+</div>
+
+    <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--6-col">
         <div>
             <fieldset>
                 <legend style="padding: 20px; ">Patient Details</legend>
@@ -523,7 +526,7 @@
                             </div>
                         </div>
 
-                        {% if patient.gender != "male"%}{{ patient.gender }}
+                        {% if patient.gender != "male"%}
                         <div class="mdl-cell mdl-cell--12-col w3-grey">
                             <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="toggleView('pregnancy')"> Pregnancy
                                     </button>
@@ -1190,7 +1193,7 @@
                             </div>
                         </div>
 
-                        {% if patient.gender != "male"%}{{ patient.gender }}
+                        {% if patient.gender != "male"%}
                         <div class="mdl-cell mdl-cell--12-col  w3-grey">
                             <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="toggleView('menopausal_screen')"> Menopausal Screen
                                     </button>

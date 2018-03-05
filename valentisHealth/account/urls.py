@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^pdf', print_pdf, name='print'),
     url(r'^logout', Logout.as_view(), name='logout'),
     url(r'^adduser', AddUser.as_view(), name='adduser'),
+    url(r'^workflow', Workflow.as_view(), name='workflow'),
 
 ]

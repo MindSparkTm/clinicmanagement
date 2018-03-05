@@ -22,6 +22,10 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'base.html', {})
 
+class Workflow(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'workflow.html', {})
+
 class AddUser(CreateView):
     model = CustomUser
     form_class = CustomUser
