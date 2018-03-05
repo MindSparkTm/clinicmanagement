@@ -1,6 +1,6 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% load custom_tags %}
+{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
 
-{% block content %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <script>
     $("#clinic_tab").addClass("current").siblings().removeClass("current")
     $("#waiting_list_table").hide()
@@ -31,7 +31,7 @@
     <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
         <div>
             <fieldset>
-                <legend>Patient Details</legend>
+                <legend style="padding: 20px; ">Patient Details</legend>
                 <div class="mdl-grid ">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                         <label class="mdl-textfield__label mdl-color-text--grey" for="first_name">First Name</label>
@@ -62,7 +62,7 @@
             </fieldset>
         </div>
 
-        <button onclick="toggleView('triage_')" class="mdl-button w3-block w3-left-align accordion">View Triage
+        <button style="background:#37647b; color:#fff; " onclick="toggleView('triage_')" class="mdl-button w3-block w3-left-align accordion">View Triage
                 Results
             </button>
         <div id="triage_" class="w3-hide">
@@ -114,7 +114,7 @@
         <div class="">
             <div id="presenting_illness" class="">
             <fieldset id="">
-                <legend>
+                <legend style="font-size:12px; ">
                     Presenting Illness:
                 </legend>
                             <table class="mdl-data-table full-width">
@@ -132,7 +132,7 @@
 
         <div id="presenting_illness" class="">
             <fieldset id="triage">
-                <legend>
+                <legend style="font-size:12px;">
                     History of Presenting Illness
                 </legend>
 
@@ -147,7 +147,7 @@
             </fieldset>
         </div>
 
-        <button onclick="toggleView('medication_')" class="mdl-button w3-block w3-left-align accordion">View Medical
+        <button style="background:#609ab8; color:#609ab8;  " onclick="toggleView('medication_')" class="mdl-button w3-block w3-left-align accordion">View Medical
                 History
             </button>
         <br>
@@ -329,22 +329,22 @@
         </div>
 
         <fieldset>
-            <legend>Lab And Radiology</legend>
+            <legend class="colide">Lab And Radiology</legend>
 
             <div class="mdl-grid " style="text-align: center">
-                <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-cell mdl-cell--6-col btn-overide" >
                     <!-- Colored FAB button -->
                     Add Radiology
-                    <button type="button" class="mdl-button mdl-js-button w3-block w3-grey" onclick="addRadiology()">
+                    <button type="button" style="background:#2d5265; " class="mdl-button mdl-js-button w3-block btn-overide" onclick="addRadiology()">
                             <i class="material-icons">highlight</i>
                         </button>
 
                 </div>
 
-                <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-cell mdl-cell--6-col btn-overide">
                     <!-- Colored FAB button -->
                     Add Labs
-                    <button type="button" class="mdl-button mdl-js-button w3-block w3-grey" onclick="addLabs()">
+                    <button type="button" class="mdl-button mdl-js-button w3-block btn-overide"  onclick="addLabs()">
                             <i class="material-icons">local_pharmacy</i>
                         </button>
 
@@ -1506,7 +1506,7 @@
 
 
             <fieldset>
-                <legend>Doctor</legend>
+                <legend class="colide">Doctor</legend>
 
                 <style>
                     .search {
