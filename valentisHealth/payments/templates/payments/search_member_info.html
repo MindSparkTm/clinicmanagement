@@ -55,6 +55,27 @@
                     },
                     success: function (json) {
                         console.log(json)
+                          if (json.length === 0) {
+                        onchange = "searchMembers(this.value)"
+                        $("#no_result").show()
+                        $('#searchresult').hide()
+
+                    } else {
+
+                              $("#no_result").hide()
+                              $('#searchresult').show()
+                              var tbody = $('#search_table tbody'),
+                                  props = ["FAMILY_NO", "FIRST_NAME", "SURNAME", "USER_ID"]
+                              $.each(json, function (i, reservation) {
+
+                                  var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
+                                  $.each(props, function (i, prop) {
+                                      $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                                  });
+                                  tbody.append(tr);
+                              });
+
+                          }
 
 
                     }
