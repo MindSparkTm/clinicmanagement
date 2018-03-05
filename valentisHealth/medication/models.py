@@ -34,6 +34,7 @@ class models(models.Model):
     patient_no = models.CharField(max_length=30)
     patient_name = models.TextField(max_length=100)
     address = models.TextField(max_length=100)
+    physical_address = models.TextField(max_length=100, blank=True)
     phone_number = models.CharField(max_length=30)
     signature = models.BinaryField(null=True, blank=True)
     prescription = models.TextField(max_length=400)

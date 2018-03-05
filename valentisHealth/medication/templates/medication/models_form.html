@@ -82,6 +82,16 @@
                                                         required="">{% if form.address.value != None %}{{ form.address.value }}{% else %}{{ patient.postal_address|default_if_none:"" }}{% endif %}</textarea>
                     </div>
                 </div>
+            <div class="mdl-grid">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                    <label for="id_delivery_address" class="mdl-textfield__label mdl-color-text--grey">
+                            Delivery Address</label>
+                    <input class="mdl-textfield__input" cols="40" onfocus="this.placeholder = ''"
+                           onblur="this.placeholder = 'Enter the medicine you want to search'"
+                           id="delivery_address" maxlength="100" name="delivery_address" rows="10"
+                           placeholder="Enter Your Delivery Address" onkeyup="getsearch(this.value)"/>
+                </div>
+            </div>
                 <div class="mdl-grid ">
                     <div id="div_id_prescription"
                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
@@ -259,12 +269,13 @@ buttons: {
         label: "ok",
         className: 'btn-info',
         callback: function(){
-            sr = sr + $(that).text() +' tablets:' + tablets +' freq:'+ freq +'days' + days+"\n";
+
             console.log("sr", sr);
             tablets = '--'
             days = '--'
             freq = '--'
             genericTagify($(that).text(), 'prescription_tags','id_prescription')
+            sr = sr + $(that).text() +' tablets:' + tablets +' freq:'+ freq +'days' + days+"\n";
 
             $('#id_prescription').val(sr)
 
@@ -302,7 +313,7 @@ buttons: {
             var patientname = $("#id_patient_name").val();
             var phonenumber = $("#textfield_phone_number").val();
             var email = $("#textfield_email").val();
-            var address = $("#id_address").val();
+            var address = $("#id_physical_address").val();
             var prescriptionid = $("#id_prescription").val();
 
             var prescriptiondata = "patientname" + "  " + patientname + " " + "patientnumber" + " " + patientnumber + "  " +
