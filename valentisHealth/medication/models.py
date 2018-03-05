@@ -29,7 +29,7 @@ class models(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     prescription_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    triage_id = models.CharField(max_length=50, blank=True)
+    triage_id = models.CharField(max_length=255, blank=True)
     email = models.CharField(max_length=50, blank=True)
     patient_no = models.CharField(max_length=30)
     patient_name = models.TextField(max_length=100)

@@ -156,7 +156,8 @@ class member_benefits(models.Model):
 
     def is_active(self):
         if self.suspended_date:
-            return self.suspended_date > datetime.date.today()
+            return not self.suspended
+            # return self.suspended_date > datetime.date.today()
         else:
             return False
 
