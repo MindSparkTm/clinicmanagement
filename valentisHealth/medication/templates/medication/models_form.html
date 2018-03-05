@@ -26,8 +26,7 @@
                         <label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
                             Patient id</label>
                         <div class="controls"><input class="mdl-textfield__input" cols="40" id="id_patient_no"
-                                                     maxlength="100" name="patient_no" value="
-                                {% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" rows="10"
+                                                     maxlength="100" name="patient_no" value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" rows="10"
                                                      readonly>
                         </div>
                     </div>
@@ -37,8 +36,7 @@
                         <label for="id_patient_name" class="mdl-textfield__label mdl-color-text--black">
                             Patient Name</label>
                         <div class="controls"><input class="mdl-textfield__input" cols="30" id="id_patient_name"
-                                                     maxlength="100" name="patient_name" value="
-                                {% if patient.patient_name != None %}{{ patient.patient_name }}{% endif %}" rows="10"
+                                                     maxlength="100" name="patient_name" value="{% if patient.patient_name != None %}{{ patient.patient_name }}{% endif %}" rows="10"
                                                      readonly></div>
                     </div>
 
@@ -46,8 +44,7 @@
                         <label class="mdl-textfield__label mdl-color-text--grey"
                                for="textfield_phone_number">Phone </label>
                         <input class="mdl-textfield__input" type='tel'
-                               id="textfield_phone_number" value="
-                                {% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% if patient.phone != None %}{{ patient.phone }}{% endif %}{% endif %}"
+                               id="textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% if patient.phone != None %}{{ patient.phone }}{% endif %}{% endif %}"
                                name="phone_number"/>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -55,8 +52,7 @@
                                for="textfield_email">Email Address</label>
                         <input class="mdl-textfield__input" type="email"
                                id="textfield_email"
-                               value="
-                                       {% if form.email.value != None %}{{ form.email.value }}{% else %}{% if patient.email != None %}{{ patient.email }}{% endif %}{% endif %}"
+                               value="{% if form.email.value != None %}{{ form.email.value }}{% else %}{% if patient.email != None %}{{ patient.email }}{% endif %}{% endif %}"
                                name="email" required/>
                     </div>
 
@@ -81,11 +77,9 @@
                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
                         <label for="id_address" class="mdl-textfield__label mdl-color-text--grey">
                             Physical Address</label>
-                        <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_address"
-                                                        maxlength="400" name="address" rows="10"
-                                                        required="">{% if form.address.value != None %}
-                            {{ form.address.value }}{% else %}{% if patient.address != None %}{{ patient.address }}
-                            {% endif %}{% endif %}</textarea></div>
+                            <textarea class="mdl-textfield__input" cols="40" id="id_address"
+                                                        maxlength="400" name="address" rows="4"
+                                                        required="">{% if form.address.value != None %}{{ form.address.value }}{% else %}{{ patient.postal_address|default_if_none:"" }}{% endif %}</textarea>
                     </div>
                 </div>
                 <div class="mdl-grid ">
