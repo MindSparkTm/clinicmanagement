@@ -4,81 +4,55 @@ from .forms import member_infoForm, member_benefitsForm, member_anniversaryForm,
 from rest_framework import generics
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from . import serializers
+
 from django.template.loader import get_template
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponse
-from xhtml2pdf import pisa
+#from xhtml2pdf import pisa
+
 import json
+
 from django.http import HttpResponse, Http404
-from django.contrib.auth.mixins import UserPassesTestMixin
-from valentisHealth.authenticator import *
 
-class member_infoListView(UserPassesTestMixin, ListView):
+class member_infoListView(ListView):
     model = member_info
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_infoCreateView(UserPassesTestMixin, CreateView):
+class member_infoCreateView(CreateView):
     model = member_info
     form_class = member_infoForm
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_infoDetailView(UserPassesTestMixin, DetailView):
+class member_infoDetailView(DetailView):
     model = member_info
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_infoUpdateView(UserPassesTestMixin, UpdateView):
+class member_infoUpdateView(UpdateView):
     model = member_info
     form_class = member_infoForm
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_benefitsListView(UserPassesTestMixin, ListView):
+class member_benefitsListView(ListView):
     model = member_benefits
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_benefitsCreateView(UserPassesTestMixin, CreateView):
+class member_benefitsCreateView(CreateView):
     model = member_benefits
     form_class = member_benefitsForm
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_benefitsDetailView(UserPassesTestMixin, DetailView):
+class member_benefitsDetailView(DetailView):
     model = member_benefits
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_benefitsUpdateView(UserPassesTestMixin, UpdateView):
+class member_benefitsUpdateView(UpdateView):
     model = member_benefits
     form_class = member_benefitsForm
 
-    def test_func(self):
-        return is_callcenter(self.request)
 
-
-class member_anniversaryListView(UserPassesTestMixin, ListView):
+class member_anniversaryListView(ListView):
     model = member_anniversary
-
-    def test_func(self):
-        return is_callcenter(self.request)
 
 
 class member_anniversaryCreateView(CreateView):
@@ -131,17 +105,17 @@ class principal_applicantUpdateView(UpdateView):
     form_class = principal_applicantForm
 
 
-class pre_authorizationListView(UserPassesTestMixin, ListView):
+class pre_authorizationListView(ListView):
     model = pre_authorization
 
-    def test_func(self):
-        return is_callcenter(self.request)
+class searchView(ListView):
+    # updatebenefit = member_benefitsUpdateView()
+    model = pre_authorization
+    def get_template_names(self):
+        return 'payments/search_member.html'
 
 
-class AjaxPreAuthorizationSearch(UserPassesTestMixin, View):
-    def test_func(self):
-        return is_callcenter(self.request)
-
+class AjaxPreAuthorizationSearch(View):
     def get(self, request):
         if request.is_ajax():
             q = request.GET.get('q', '')
@@ -166,17 +140,12 @@ class AjaxPreAuthorizationSearch(UserPassesTestMixin, View):
         return HttpResponse(data, mimetype)
 
 
-class PreAuthorizationSearch(UserPassesTestMixin, View):
-    def test_func(self):
-        return is_callcenter(self.request)
-
+class PreAuthorizationSearch(View):
     def get(self, request):
         return render(request, 'payments/search_member_info.html', {})
 
 
-class PreAuthorizationCreateView(UserPassesTestMixin, View):
-    def test_func(self):
-        return is_callcenter(self.request)
+class PreAuthorizationCreateView(View):
 
     def get(self, request, slug):
         member = get_object_or_404(member_info, member_no=slug)
@@ -215,9 +184,7 @@ class PreAuthorizationCreateView(UserPassesTestMixin, View):
             return render(request, 'payments/pre_authorization_form.1.html', d)
 
 
-class PPreAuthorizationCreateView(UserPassesTestMixin, View):
-    def test_func(self):
-        return is_callcenter(self.request)
+class PPreAuthorizationCreateView(View):
 
     def get(self, request, slug):
         member = get_object_or_404(member_info, member_no=slug)
@@ -255,7 +222,7 @@ class PPreAuthorizationCreateView(UserPassesTestMixin, View):
             return render(request, 'payments/pre_authorization_form.2.html', d)
 
 
-class pre_authorizationCreateView(UserPassesTestMixin, CreateView):
+class pre_authorizationCreateView(CreateView):
     model = pre_authorization
     form_class = pre_authorizationForm
 
@@ -282,7 +249,7 @@ class pre_authorform:
 
 
 
-class pre_authorizationDetailView(UserPassesTestMixin, DetailView):
+class pre_authorizationDetailView(DetailView):
     model = pre_authorization
 
 
@@ -303,7 +270,7 @@ def render_to_pdf(template_src, context_dict, action='view'):
         return response
 
 
-class PreAuthorizationPrintView(UserPassesTestMixin, View):
+class PreAuthorizationPrintView(View):
     def get(self, request, slug):
         print(slug)
         pre_auth = get_object_or_404(pre_authorization, slug=slug)
