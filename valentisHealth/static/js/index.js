@@ -422,5 +422,53 @@ function closepatientscase(patient_id) {
 
 
     });
+
+
+
 }
 
+    function genericTagify(selectedStr, divid, div_to_remove) {
+    $("#"+divid).append(
+        $('<span/>')
+            .attr("id", selectedStr.split(' ').join('_'))
+            .addClass("mdl-chip mdl-chip--deletable")
+            .append(
+                $('<span/>')
+                    .addClass("mdl-chip__text")
+                    .append("<span/>")
+                    .text(selectedStr)
+            )
+            .append(
+                $('<button/>').addClass('mdl-chip__action')
+                    .prop('type', 'button')
+                    .append(
+                        $('<i/>')
+                            .addClass('material-icons')
+                            .text('cancel')
+                    )
+                    .attr('onclick', 'genericRemoveDiag(this,'+ div_to_remove +')')
+            )
+    )
+    // $("#searchresult").hide()
+
+}
+
+function genericRemoveDiag(that, div_to_remove) {
+    //get the string in the tag and remove trailing whitespaces
+    var str = $(that).parent().children().first().text().trim()
+
+
+    //remove tag
+    $(that).parent().remove()
+     console.log('')
+
+    //get the current diagnosis string
+    var existingStr = $("#id_prescription").val()
+
+    //remove the deleted text from the hidden diagnosis text area box
+    $("#id_prescription").val(existingStr.replace(str, ""))
+
+    //remove trailing commas after spliting diagnosis
+    $("#id_prescription").val($("#id_prescription").val().replace(/(^,)|(,$)/g, ""))
+
+}

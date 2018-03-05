@@ -3,6 +3,10 @@
         $("#prescription_tab").addClass("current").siblings().removeClass("current")
     </script>
 
+    <script src="{% static 'js/bootbox.min.js' %}"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+
     <style>
         .divText {
             padding: 2px 0;
@@ -89,15 +93,14 @@
                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
                         <label for="id_prescription" class="mdl-textfield__label mdl-color-text--grey">
                             Prescription </label>
+                    <div id="prescription_tags"></div>
                         <div class="controls">
                             <input class="mdl-textfield__input" cols="40" onfocus="this.placeholder = ''"
                                    onblur="this.placeholder = 'Enter the medicine you want to search'"
                                    id="medicationlist" maxlength="100" name="medicationlist" rows="10"
                                    placeholder="Enter the medicine you want to search" onkeyup="getsearch(this.value)"/>
-                            <br>
-                            <textarea class="mdl-textfield__input" cols="40" id="id_prescription" maxlength="400"
-                                      name="prescription" rows="10" required="">{% if form.prescription.value != None %}
-                                {{ form.prescription.value }}{% endif %}</textarea></div>
+                            <textarea class="hidden mdl-textfield__input" cols="40" id="id_prescription" maxlength="400"
+                                      name="prescription" rows="10" required="">{% if form.prescription.value != None %}{{ form.prescription.value }}{% endif %}</textarea></div>
                         <div id="livesearch"></div>
 
                     </div>
@@ -223,7 +226,7 @@
 
                         if (s[i][key].indexOf(val) != -1) {
                             console.log("keyee", s[i][key] + "\t" + s[i]['price'])
-                            $("#livesearch").append($("<li>").text("NAME:" + s[i][key] + "---" + "PRICE:" + s[i]['price']));
+                            $("#livesearch").append($("<li>").text(s[i][key] + "---" + s[i]['price']));
 {#                            $("#livesearch").append($("<li>").text("NAME:" + s[i][key] + "---" + "PRICE:" + s[i]['price']));#}
 
 
@@ -239,12 +242,45 @@
 
         }
 
-        $('#livesearch').on('click', 'li', function () {
+        var tablets = '--'
+        var days = '--'
+        var freq = '--'
 
-            sr = sr + $(this).text() + "\n";
+        $('#livesearch').on('click', 'li', function () {
+            that = this
+
+            var dialog = bootbox.dialog({
+title: 'Dosage for '+$(this).text(),
+message: "<input onkeyup='tablets=$(this).val()' class='form-control' id='tablets' placeholder='No of Tablets/ML'><br><input  onkeyup='freq=$(this).val()' class='form-control' id='freq' placeholder='No of time per day'><br><input onkeyup='days=$(this).val()' class='form-control' id='days' placeholder='No of Days'>",
+buttons: {
+    cancel: {
+        label: "cancel",
+        className: 'btn-danger',
+        callback: function(){
+
+        }
+    },
+
+    ok: {
+        label: "ok",
+        className: 'btn-info',
+        callback: function(){
+            sr = sr + $(that).text() +' tablets:' + tablets +' freq:'+ freq +'days' + days+"\n";
             console.log("sr", sr);
+            tablets = '--'
+            days = '--'
+            freq = '--'
+            genericTagify($(that).text(), 'prescription_tags','id_prescription')
 
             $('#id_prescription').val(sr)
+
+
+        }
+    }
+}
+});
+
+
 
         });
 
