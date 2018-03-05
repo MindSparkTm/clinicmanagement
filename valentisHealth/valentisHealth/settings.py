@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'medication',
     'labs',
     'payments',
-    'notifications',
     'postman',
 
 ]

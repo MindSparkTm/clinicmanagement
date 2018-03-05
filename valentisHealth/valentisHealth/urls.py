@@ -18,7 +18,6 @@ from django.contrib import admin
 from account.views import Home
 from django.conf import settings
 from django.conf.urls.static import static
-import notifications.urls
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
@@ -31,5 +30,4 @@ urlpatterns = [
                   url(r'^account/', include('account.urls')),
                   url(r'^workflow/', include('postman.urls')),
                   url(r'^$', include('registration.urls')),
-                  url('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
