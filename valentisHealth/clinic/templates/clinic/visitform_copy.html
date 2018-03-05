@@ -414,8 +414,7 @@
                             <div id="div_id_patient_no" class="hidden mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
                                 <label for="id_patient_no" class="mdl-textfield__label mdl-color-text--black">
                                         Patient No</label>
-                                <div class="controls"><input class="mdl-textfield__input" name="patient_no" id="patient_no" type="text" value="
-                                                                         {% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" readonly/></div>
+                                <div class="controls"><input class="mdl-textfield__input" name="patient_no" id="patient_no" type="text" value="{% if patient.patient_no != None %}{{ patient.patient_no }}{% endif %}" readonly/></div>
                             </div>
 
                         </div>
@@ -1541,7 +1540,7 @@
 
                     </div>
 
-                    <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{% if form.his_presenting_illness.value != None %}{{ form.hist_presenting_illness.value }}{% endif %}" id="his_presenting_illness">
+                    <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{{ form.hist_presenting_illness.value|default_if_none:"" }}" id="his_presenting_illness">
                     <input type="text" class="hidden mdl-textfield__input" name="examination" value="{% if form.examination.value != None %}{{ form.examination.value }}{% endif %}" id="examination">
                     <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{% if form.query_diagnosis.value != None %}{{ form.query_diagnosis.value }}{% endif %}" id="query_diagnosis">
                     <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" name="diagnosis">{% if form.diagnosis.value != None %}{{ form.diagnosis.value }}{% endif %}</textarea>
