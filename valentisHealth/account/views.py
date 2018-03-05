@@ -10,11 +10,11 @@ from .forms import CustomUserForm
 
 from io import StringIO
 from django.template.loader import get_template
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from xhtml2pdf import pisa
 from django.utils.html import escape
 from django.conf import settings
-
+from django.contrib.auth.models import Group
 from .forms import LoginForm
 
 
@@ -22,15 +22,33 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'base.html', {})
 
+
 class AddUser(CreateView):
     model = CustomUser
-    form_class = CustomUser
+    form_class = CustomUserForm
 
     def test_func(self):
         return is_admin(request)
 
     def get_template_names(self):
         return 'addmember.html'
+
+    def form_valid(self, form):
+        print("+++++++++++++++++++++++++++form_valid adduser+++++++++++++")
+        instance = form.save(commit=False)
+        instance.save()
+
+        print(instance)
+
+        user_group = Group.objects.get(name=form.cleaned_data['role'])
+        user_group.user_set.add(instance)
+        # user_group.save()
+
+        return HttpResponseRedirect("/admin")
+
+    def form_invalid(self, form):
+        print("form is invalid")
+        return HttpResponse("form is invalid.. this is just an HttpResponse object")
 
 
 class LoginPage(View):

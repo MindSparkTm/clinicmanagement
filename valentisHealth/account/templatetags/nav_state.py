@@ -1,9 +1,7 @@
-__author__ = 'Hp'
+__author__ = 'Stephen'
 from django.core.urlresolvers import resolve
 from django.template import Library
-from django.contrib.auth.models import Group
 from valentisHealth.authenticator import *
-from django.utils.safestring import SafeText, mark_safe
 
 register = Library()
 
@@ -30,31 +28,35 @@ def has_group(request):
         "radiology": """<a href="/labs/radiology/" class=\""""+nav_active(request,'radiology_list')+""""> <i class="fa fa-bolt spav"> </i> Radiology </a>""",
         "prescription": """<a href="/medication/search/" class=\""""+nav_active(request,'medication_models_search')+"""\"> <i class="fa fa-book spav"> </i> Prescriptions </a>""",
         "payments": """<a href="/payments/search_member/" class=\""""+nav_active(request,'radiology_list')+""""> <i class="fa fa-book spav"> </i> Authorization </a>""",
+        "admin": """<a href="/account/admin/adduser" class=\""""+nav_active(request,'adduser')+""""> <i class="fa fa-book spav"> </i> Admin </a>""",
         }
 
     if is_admin(request):
         return "".join([all_links[link] for link in all_links.keys()])
 
     if is_doctor(request):
-        return "".join([all_links[link] for link in all_links.keys() if link not in ['payments']])
+        return "".join([all_links[link] for link in all_links.keys() if link not in ['payments', 'admin']])
 
     if is_nurse(request):
         return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'clinic', 'radiology', 'labs', 'prescriptions']])
+                        link not in ['payments', 'clinic', 'radiology', 'labs', 'prescription', 'admin']])
 
     if is_labs(request):
         return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'clinic', 'radiology', 'triage', 'prescriptions']])
+                        link not in ['payments', 'clinic', 'radiology', 'triage', 'prescription', 'admin']])
 
     if is_radiology(request):
         return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'clinic', 'triage', 'labs', 'prescriptions']])
+                        link not in ['payments', 'clinic', 'triage', 'labs', 'prescription', 'admin']])
 
     if is_callcenter(request):
-        return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescriptions']])
+        return "".join([all_links[link] for link in all_links.keys() ])
 
     if is_superadmin(request):
         return "".join([all_links[link] for link in all_links.keys()])
+
+    if is_receptionist(request):
+        return "".join([all_links[link] for link in all_links.keys() if
+                        link not in ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescription', 'admin']])
 
         # return is_admin(request)

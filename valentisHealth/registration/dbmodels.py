@@ -40,4 +40,3 @@ with open('Allergies.csv') as csvfile:
         print(row)
         p = County.objects.create(allergy_name=row['allergy_name'])
         p.save()
-
