@@ -39,36 +39,36 @@
     function searchMembers(str) {
 
 
-        //ensure to remove previous prepended results to avoid duplicity
-        $('#searchresult tbody').children().remove();
-        if (/\S/.test(str) && str.length > 1) {
-            $.ajax({
-                url: "/payments/ajax_pre_authorization/",
-                type: "get",
-                data: {
-                    q: str,
-                },
-                success: function(json) {
-                    console.log(json)
-                    if (json.length === 0) {
+            //ensure to remove previous prepended results to avoid duplicity
+            $('#searchresult tbody').children().remove();
+            if (/\S/.test(str) && str.length > 5) {
+                $.ajax({
+                    url: "/payments/api/v1/memberinfosanlam/",
+                    type: "get",
+                    data: {
+                        search:str,
+                    },
+                    success: function (json) {
+                        console.log(json)
+                          if (json.length === 0) {
                         onchange = "searchMembers(this.value)"
                         $("#no_result").show()
                         $('#searchresult').hide()
 
                     } else {
 
-                        $("#no_result").hide()
-                        $('#searchresult').show()
-                        var tbody = $('#search_table tbody'),
-                            props = ["member_no", "first_name", "surname", "passport_no"]
-                        $.each(json, function(i, reservation) {
+                              $("#no_result").hide()
+                              $('#searchresult').show()
+                              var tbody = $('#search_table tbody'),
+                                  props = ["FAMILY_NO", "FIRST_NAME", "SURNAME", "USER_ID"]
+                              $.each(json, function (i, reservation) {
 
-                            var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
-                            $.each(props, function(i, prop) {
-                                $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
-                            });
-                            tbody.append(tr);
-                        });
+                                  var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
+                                  $.each(props, function (i, prop) {
+                                      $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                                  });
+                                  tbody.append(tr);
+                              });
 
                     }
 

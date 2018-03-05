@@ -2,9 +2,15 @@
 <script>
     $("#prescription_tab").addClass("current").siblings().removeClass("current")
 </script>
+
+    <style>
+        .divText {
+            padding:2px 0;
+        }
+    </style>
 <div class="mdl-grid">
-    <div class="mdl-layout-spacer"></div>
-    <div class="mdl-shadow--4dp mdl-cell mdl-cell--10-col">
+
+    <div class="mdl-shadow--4dp mdl-cell mdl-cell--8-col">
         <form method="post" id="data">
             {% csrf_token %}
 
@@ -55,7 +61,7 @@
 
             </div>
             <div class="mdl-grid ">
-                <div id="div_id_address" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                <div id="div_id_address" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
                     <label for="id_address" class="mdl-textfield__label mdl-color-text--grey">
                             Physical Address</label>
                     <div class="controls"><textarea class="mdl-textfield__input" cols="40" id="id_address" maxlength="400" name="address" rows="10" required="">{% if form.address.value != None %}{{ form.address.value }}{% else %}{% if patient.address != None %}{{ patient.address }}{% endif %}{% endif %}</textarea></div>
@@ -92,10 +98,20 @@
 
         </form>
     </div>
+
+
+<div  class="prescard mdl-cell mdl-cell--4-col">
+    <h2 class="mdl-card__title-text" style="font-size:16px; padding:20px; border-bottom:1px solid #ccc; ">Previous Prescriptions</h2>
+    <div class="mdl-card__title" id= "myprescription"  style="font-size:12px; color: #6b6666; padding:20px; ">
+  </div>
+
+</div>
+
     <div class="mdl-layout-spacer"></div>
 </div>
 <script type="text/javascript">
  var brand =[];
+ var data=[];
             var results=[];
             var s;
             var clicked =0;
@@ -141,9 +157,14 @@ function getprescriptiondata(patientid) {
      $("#prescriptionlist").append("Previous Prescriptions-"+"\n");
            for (var i = 0; i < response.length; ++i) {
                console.log("presciption",response.length);
+                var $elements = [];
+                for (var i = 0; i < response.length; i++) {
+                    var d = response[i].created.substring(0, response[i].created.indexOf("T"));
 
 
-               $("#prescriptionlist").append(response[i].prescription+'\n')
+                    $('#myprescription').append($('<div>', {text: d+"         "+ response[i].prescription})).css('display','block');
+                }
+
 
             }
 
