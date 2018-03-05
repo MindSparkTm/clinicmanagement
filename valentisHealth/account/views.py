@@ -46,11 +46,6 @@ class AddUser(CreateView):
 
         return HttpResponseRedirect("/admin")
 
-    def form_invalid(self, form):
-        print("form is invalid")
-        return HttpResponse("form is invalid.. this is just an HttpResponse object")
-
-
 class LoginPage(View):
     def get(self, request, *args, **kwargs):
         form = LoginForm()

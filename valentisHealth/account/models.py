@@ -50,7 +50,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(
         _('last name'), max_length=30, null=True)
     phone_regex = RegexValidator(
-        regex=r'^[0-9]{9,15}$', message="Enter a valid phone number (9 - 15 digits).")
+        regex=r'^[a-zA-Z0-9]{9,15}$', message="Enter a valid phone number (9 - 15 digits).")
     phone_number = models.CharField(
         _('phone number'), max_length=30, null=True, validators=[phone_regex])
     is_staff = models.BooleanField(_('staff status'), default=False,

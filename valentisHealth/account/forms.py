@@ -15,41 +15,41 @@ class LoginForm(forms.Form):
 
 class CustomUserForm(forms.ModelForm):
 
-    first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'mdl-textfield__input',
-        'type': 'text',
-        'id': 'first_name'
-    }))
-
-    phone_number = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'mdl-textfield__input',
-        'type': 'text',
-        'id': 'phone_number'
-    }))
-
-    staff_number = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'mdl-textfield__input',
-        'type': 'text',
-        'id': 'staff_number'
-    }))
-
-    id_number = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'mdl-textfield__input',
-        'type': 'text',
-        'id': 'id_number'
-    }))
-
-    last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'mdl-textfield__input',
-        'type': 'text',
-        'id': 'last_name'
-    }))
-
-    email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'class': 'mdl-textfield__input',
-        'id': 'email'
-    }))
-
+    # first_name = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'mdl-textfield__input',
+    #     'type': 'text',
+    #     'id': 'first_name'
+    # }))
+    #
+    # phone_number = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'mdl-textfield__input',
+    #     'type': 'text',
+    #     'id': 'phone_number'
+    # }))
+    #
+    # staff_number = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'mdl-textfield__input',
+    #     'type': 'text',
+    #     'id': 'staff_number'
+    # }))
+    #
+    # id_number = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'mdl-textfield__input',
+    #     'type': 'text',
+    #     'id': 'id_number'
+    # }))
+    #
+    # last_name = forms.CharField(widget=forms.TextInput(attrs={
+    #     'class': 'mdl-textfield__input',
+    #     'type': 'text',
+    #     'id': 'last_name'
+    # }))
+    #
+    # email = forms.EmailField(widget=forms.EmailInput(attrs={
+    #     'class': 'mdl-textfield__input',
+    #     'id': 'email'
+    # }))
+    #
     role = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'mdl-textfield__input',
         'type': 'text',
@@ -58,5 +58,5 @@ class CustomUserForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'phone_number', 'staff_number', 'id_number', 'email','role']
+        fields = ['first_name', 'last_name', 'phone_number', 'staff_number', 'id_number', 'email']
 

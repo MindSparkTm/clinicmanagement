@@ -77,7 +77,7 @@
                     <li class="divider"></li>
                     <li>
                         <a class="text-center" href="#">
-                            <strong>See new Messages</strong>
+                            <i>See new Messages</i>
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>
@@ -148,55 +148,85 @@
                             <div class="col-lg-6">
                                 <form method="post">
                                     {% csrf_token %}
+{#                                    {% if form.errors %}#}
+{#                                        {% for field in form %}#}
+{#                                            {% for error in field.errors %}#}
+{#                                                <div class="alert alert-danger">#}
+{#                                                    <i>{{ error|escape }}</i>#}
+{#                                                </div>#}
+{#                                            {% endfor %}#}
+{#                                        {% endfor %}#}
+{#                                        {% for error in form.non_field_errors %}#}
+{#                                            <div class="alert alert-danger">#}
+{#                                                <i>{{ error|escape }}</i>#}
+{#                                            </div>#}
+{#                                        {% endfor %}#}
+{#                                    {% endif %}#}
 
-                                    {% if form.non_field_errors %}
-  <div class="non-field-errors">
-    {% for err in form.non_field_errors %}
-      <p class="form-error">{{ err }}</p>
-    {% endfor %}
-  </div>
-{% endif %}
-                                {% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <p> {{ errors }} </p>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
 
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input class="form-control" name="first_name" value="{{ form.first_name.value|default_if_none:""}}">
+                                            <i>{{ form.errors.first_name }}</i>
+                                        <input class="form-control" name="first_name"
+                                               value="{{ form.first_name.value|default_if_none:""}}">
                                         <p class="help-block">Example tosh. </p>
+
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input class="form-control" name="last_name"  value="{{ form.last_name.value|default_if_none:""}}">
+                                            <i>{{ form.errors.last_name }}</i>
+                                        <input class="form-control" name="last_name"
+                                               value="{{ form.last_name.value|default_if_none:""}}">
+
                                     </div>
 
                                     <div class="form-group">
                                         <label>Enter Valid Phone Number</label>
-                                        <input class="form-control" name="phone_number" value="{{ form.phone_number.value|default_if_none:""}}">
+                                            <i>{{ form.errors.phone_number }}</i>
+                                        <input class="form-control" name="phone_number"
+                                               value="{{ form.phone_number.value|default_if_none:""}}">
+
                                     </div>
 
                                     <div class="form-group">
                                         <label>Enter email</label>
-                                        <input class="form-control" name="email" value="{{ form.email.value|default_if_none:""}}">
+                                            <i>{{ form.errors.email }}</i>
+                                        <input class="form-control" name="email"
+                                               value="{{ form.email.value|default_if_none:""}}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Staff number</label>
-                                        <input class="form-control" name="staff_number" value="{{ form.staff_number.value|default_if_none:""}}">
+                                            <i>{{ form.errors.staff_number }}</i>
+                                        <input class="form-control" name="staff_number"
+                                               value="{{ form.staff_number.value|default_if_none:""}}">
+
                                     </div>
 
                                     <div class="form-group">
                                         <label>ID Number</label>
-                                        <input class="form-control" name="id_number" value="{{ form.id_number.value|default_if_none:""}}">
+                                            <i>{{ form.errors.id_number }}</i>
+                                        <input class="form-control" name="id_number"
+                                               value="{{ form.id_number.value|default_if_none:""}}">
+
                                     </div>
+
 
                                     <div class="form-group">
                                         <label>User role</label>
-                                        <input class="form-control" name="role" value="{{ form.role.value|default_if_none:""}}">
+                                            <i>{{ form.errors.role }}</i>
+                                        <select class="selectpicker" data-style="btn-info" name="role">
+                                            <option value="Admin">Admin</option>
+                                            <option value="Receptionist">Receptionist</option>
+                                            <option value="Callcenter">Callcenter</option>
+                                            <option value="Doctor">Doctor</option>
+                                            <option value="Labs">Labs</option>
+                                            <option value="Nurse">Nurse</option>
+                                            <option value="Radiology">Radiology</option>
+                                            <option value="Superadmin">Superadmin</option>
+                                        </select>
+
+
                                     </div>
 
 
@@ -222,12 +252,11 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 
-
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../js/metisMenu.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../js/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src = "../js/startmin.js" ></script>
+    <script src="../js/startmin.js"></script>
 </div>
 </body>
 </html>
