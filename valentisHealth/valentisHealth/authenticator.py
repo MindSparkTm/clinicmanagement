@@ -15,10 +15,10 @@ def is_callcenter(request):
 def is_nurse(request):
     return request.user.groups.filter(Q(name='Nurse') | Q(name='Admin') | Q(name='Superadmin')).exists()
 
-def is_admin(request):
+def is_receptionist(request):
     return request.user.groups.filter(Q(name='Receptionist') | Q(name='Admin') | Q(name='Superadmin')).exists()
 
-def is_receptionist(request):
+def is_admin(request):
     return request.user.groups.filter(Q(name='Admin') | Q(name='Superadmin')).exists()
 
 # def is_admin(request):

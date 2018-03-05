@@ -35,19 +35,19 @@ def has_group(request):
         return "".join([all_links[link] for link in all_links.keys()])
 
     if is_doctor(request):
-        return "".join([all_links[link] for link in all_links.keys() if link not in ['payments']])
+        return "".join([all_links[link] for link in all_links.keys() if link not in ['payments', 'admin']])
 
     if is_nurse(request):
         return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'clinic', 'radiology', 'labs', 'prescriptions']])
+                        link not in ['payments', 'clinic', 'radiology', 'labs', 'prescription', 'admin']])
 
     if is_labs(request):
         return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'clinic', 'radiology', 'triage', 'prescriptions']])
+                        link not in ['payments', 'clinic', 'radiology', 'triage', 'prescription', 'admin']])
 
     if is_radiology(request):
         return "".join([all_links[link] for link in all_links.keys() if
-                        link not in ['payments', 'clinic', 'triage', 'labs', 'prescriptions']])
+                        link not in ['payments', 'clinic', 'triage', 'labs', 'prescription', 'admin']])
 
     if is_callcenter(request):
         return "".join([all_links[link] for link in all_links.keys() ])
@@ -56,6 +56,7 @@ def has_group(request):
         return "".join([all_links[link] for link in all_links.keys()])
 
     if is_receptionist(request):
-        return "".join([all_links[link] for link in all_links.keys() ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescriptions']])
+        return "".join([all_links[link] for link in all_links.keys() if
+                        link not in ['payments', 'triage', 'clinic', 'radiology', 'labs', 'prescription', 'admin']])
 
         # return is_admin(request)
