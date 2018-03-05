@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load custom_tags %} {% load crispy_forms_tags %}
+{% block content %}
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <script>
@@ -138,8 +139,8 @@
 
                 <div class="mdl-grid">
 
-                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
-                <textarea onkeyup="$('#presenting_illiness').val($('#presenting_illiness_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illiness_" name="presenting_illiness_">{% if form.presenting_illiness.value != None %}{{ form.presenting_illiness.value }}{% endif %}</textarea>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea onkeyup="$('#his_presenting_illness').val($('#presenting_illness_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illness_" name="presenting_illness_">{% if form.his_presenting_illness.value != None %}{{ form.his_presenting_illness.value }}{% endif %}</textarea>
                 <label class="mdl-textfield__label" for="notes_">History of Presenting Illness</label>
             </div>
                 </div>
@@ -1190,7 +1191,7 @@
                             </div>
                         </div>
 
-                        {% if patient.gender != "male"%}{{ patient.gender }}
+                        {% if patient.gender != "male"%}
                         <div class="mdl-cell mdl-cell--12-col  w3-grey">
                             <button type="button" class="mdl-button mdl-js-button w3-block grey" onclick="toggleView('menopausal_screen')"> Menopausal Screen
                                     </button>
@@ -1528,13 +1529,22 @@
                 </style>
                 <div class="mdl-grid ">
                     <div id="diag_sect">
+                        {%  for diagn in form.diagnosis.value|split:"," %}
+                            <span class="mdl-chip mdl-chip--deletable">
+                                <span class="mdl-chip__text">{{ diagn }}
+                                </span>
+                                <button class="mdl-chip__action" type="button" onclick="removeDiag(this)">
+                                    <i class="material-icons">cancel</i>
+                                </button>
+                            </span>
+                        {% endfor %}
 
                     </div>
 
                     <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{% if form.his_presenting_illness.value != None %}{{ form.hist_presenting_illness.value }}{% endif %}" id="his_presenting_illness">
                     <input type="text" class="hidden mdl-textfield__input" name="examination" value="{% if form.examination.value != None %}{{ form.examination.value }}{% endif %}" id="examination">
                     <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{% if form.query_diagnosis.value != None %}{{ form.query_diagnosis.value }}{% endif %}" id="query_diagnosis">
-                    <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" name="diagnosis"></textarea>
+                    <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" name="diagnosis">{% if form.diagnosis.value != None %}{{ form.diagnosis.value }}{% endif %}</textarea>
 
                     <div id="div_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
 
@@ -1560,7 +1570,7 @@
                     </div>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_management" name="plan_of_management">{% if form.plan_of_management.value != None %}{{ form.plan_of_management.value }}{% endif %}</textarea>
+                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_managemnt" name="plan_of_managemnt">{% if form.plan_of_managemnt.value != None %}{{ form.plan_of_managemnt.value }}{% endif %}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Plan of Management</label>
             </div>
 
@@ -1590,7 +1600,13 @@
         <div class="mdl-grid full-width">
             <button name="visit_form"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
-                    type="submit">END SESSION
+                    type="submit">Save
+            </button>
+        </div>
+        <div class="mdl-grid full-width">
+            <button onclick="closepatientscase('{{ patient.patient_no }}')" name="visit_form"
+                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
+                    type="button">Close Patient's Case
             </button>
         </div>
 
