@@ -28,6 +28,7 @@ def has_group(request):
         "radiology": """<a href="/labs/radiology/" class=\""""+nav_active(request,'radiology_list')+""""> <i class="fa fa-bolt spav"> </i> Radiology </a>""",
         "prescription": """<a href="/medication/search/" class=\""""+nav_active(request,'medication_models_search')+"""\"> <i class="fa fa-book spav"> </i> Prescriptions </a>""",
         "payments": """<a href="/payments/search_member/" class=\""""+nav_active(request,'radiology_list')+""""> <i class="fa fa-book spav"> </i> Authorization </a>""",
+        "admin": """<a href="/account/admin/adduser" class=\""""+nav_active(request,'adduser')+""""> <i class="fa fa-book spav"> </i> Admin </a>""",
         }
 
     if is_admin(request):

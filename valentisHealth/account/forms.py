@@ -1,4 +1,5 @@
 from django import forms
+from .models import CustomUser
 
 
 class LoginForm(forms.Form):
@@ -12,7 +13,7 @@ class LoginForm(forms.Form):
         'id': 'password'
     }))
 
-class CustomUserForm(forms.Form):
+class CustomUserForm(forms.ModelForm):
 
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'mdl-textfield__input',
@@ -44,7 +45,18 @@ class CustomUserForm(forms.Form):
         'id': 'last_name'
     }))
 
-    email_address = forms.EmailField(widget=forms.EmailInput(attrs={
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'mdl-textfield__input',
-        'id': 'login'
+        'id': 'email'
     }))
+
+    role = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'mdl-textfield__input',
+        'type': 'text',
+        'id': 'role'
+    }))
+
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'phone_number', 'staff_number', 'id_number', 'email','role']
+

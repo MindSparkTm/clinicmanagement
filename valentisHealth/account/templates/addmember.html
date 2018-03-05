@@ -146,37 +146,57 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form role="form" method="post">
+                                <form method="post">
                                     {% csrf_token %}
+
+                                    {% if form.non_field_errors %}
+  <div class="non-field-errors">
+    {% for err in form.non_field_errors %}
+      <p class="form-error">{{ err }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+                                {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <p> {{ errors }} </p>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
 
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input class="form-control">
-                                        <p class="help-block">Example tosh .</p>
+                                        <input class="form-control" name="first_name" value="{{ form.first_name.value }}">
+                                        <p class="help-block">Example tosh. </p>
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input class="form-control" placeholder="Enter text">
+                                        <input class="form-control" name="last_name"  value="{{ form.last_name.value }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Enter Valid Phone Number</label>
-                                        <input class="form-control" placeholder="Enter text">
+                                        <input class="form-control" name="phone_number" value="{{ form.phone_number.value }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Enter email</label>
-                                        <input class="form-control" placeholder="rael@example.com">
+                                        <input class="form-control" name="email" value="{{ form.email.value }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Staff number</label>
-                                        <input class="form-control" placeholder="e.g 235678">
+                                        <input class="form-control" name="staff_number" value="{{ form.staff_number.value }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label>ID Number</label>
-                                        <input class="form-control" placeholder="e.g 25698734">
+                                        <input class="form-control" name="id_number" value="{{ form.id_number.value }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>User role</label>
+                                        <input class="form-control" name="role" value="{{ form.role.value }}">
                                     </div>
 
 
