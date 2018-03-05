@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'css/material.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
+ <link rel="stylesheet" href="{% static 'js/pushy.js' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/getmdl-select.min.css' %}">
     <link href='https://fonts.googleapis./ccomss?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en'
@@ -51,7 +51,13 @@
 <header class="mdl-layout__header mdl-layout__header--scroll" style="background-color: #0F2737">
     <div class="mdl-layout__header-row headstitle">
         <!-- Title -->
-        <span class="mdl-layout-title logotwo"> <img src="{% static '/img/logothree.jpg' %}">  </span>
+
+<div class="sidebar-toggle-box" id="showLeft">
+    <i class="fa fa-bars"></i>
+
+    <span class="mdl-layout-title logotwo" style="margin-bottom:20px; "> <img src="{% static '/img/logothree.jpg' %}">  </span>
+</div>
+
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
@@ -64,8 +70,10 @@
 </header>
 
 
-<section id="sideMenu">
+<section id="sideMenu" class="na-menu na-menu-vertical na-menu-left">
     <nav>
+
+
 
         {% has_group request as side_links %}
 
@@ -186,7 +194,7 @@
 </div>
 
 {# content goes here#}
-<div style="margin-left: 220px;">{% block content %} {% endblock %}</div>
+<div >{% block content %} {% endblock %}</div>
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
@@ -217,6 +225,12 @@
 
     }
 </script>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="js/pushy.js"></script>
+		<script src="js/waypoints.js"></script>
+
 </body>
 
 </html>
