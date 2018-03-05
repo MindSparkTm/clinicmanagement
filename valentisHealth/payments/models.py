@@ -156,7 +156,8 @@ class member_benefits(models.Model):
 
     def is_active(self):
         if self.suspended_date:
-            return self.suspended_date > datetime.date.today()
+            return not self.suspended
+            # return self.suspended_date > datetime.date.today()
         else:
             return False
 
@@ -356,5 +357,15 @@ class cash(models.Model):
 
     def get_update_url(self):
         return reverse('payments_cash_update', args=(self.slug,))
+
+class memberinfosanlamdatabase(models.Model):
+    FAMILY_NO = models.CharField(max_length=255, blank=True)
+    MEMBER_NO = models.CharField(max_length=255, blank=True)
+    FIRST_NAME = models.CharField(max_length=255, blank=True)
+    SURNAME= models.CharField(max_length=255, blank=True)
+    OTHER_NAMES = models.CharField(max_length=255, blank=True)
+    DOB = models.CharField(max_length=255, blank=True)
+    USER_ID = models.CharField(max_length=255, blank=True)
+    CANCELLED = models.CharField(max_length=255, blank=True)
 
 

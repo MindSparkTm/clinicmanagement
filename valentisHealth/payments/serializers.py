@@ -169,3 +169,20 @@ class cashSerializer(serializers.ModelSerializer):
         )
 
 
+class memberinfosanlamserializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.memberinfosanlamdatabase
+        fields = (
+            'FAMILY_NO',
+            'MEMBER_NO',
+            'FIRST_NAME',
+            'SURNAME',
+            'OTHER_NAMES',
+            'DOB',
+            'USER_ID',
+            'CANCELLED',
+
+
+        )
+
+

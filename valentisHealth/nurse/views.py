@@ -28,16 +28,18 @@ class modelsCreateView(UserPassesTestMixin, CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.attending_nurse = self.request.user.email
+        instance.save()
 
         try:
             patient_object = Patient.objects.get(patient_no=form.cleaned_data['patient_no'])
             patient_object.status = 3
+            patient_object.session_id = instance.triage_id
             patient_object.save()
         except:
             print(404)
             raise Http404('Requested user not found.')
 
-        instance.save()
+
 
         return HttpResponseRedirect("/nurse/models/create/?sucess=true")
 
