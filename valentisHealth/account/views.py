@@ -16,7 +16,12 @@ from django.utils.html import escape
 from django.conf import settings
 from django.contrib.auth.models import Group
 from .forms import LoginForm
-
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from .tokens import account_activation_token
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 
 class Home(View):
     def get(self, request, *args, **kwargs):
@@ -38,13 +43,50 @@ class AddUser(CreateView):
         instance = form.save(commit=False)
         instance.save()
 
-        print(instance)
-
         user_group = Group.objects.get(name=form.cleaned_data['role'])
         user_group.user_set.add(instance)
-        # user_group.save()
+
+        current_site = get_current_site(self.request)
+        mail_subject = 'Activate your ValentisHealth clinic account.'
+        message = render_to_string('activate_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'email': user.email,
+            'token': account_activation_token.make_token(user),
+        })
+        to_email = form.cleaned_data.get('email')
+        email = EmailMessage(
+            mail_subject, message, to=[to_email]
+        )
+        email.send()
 
         return HttpResponseRedirect("/admin")
+
+
+# class AccountAcctivation(View):
+def activate(request, email, token):
+    try:
+        # email = force_text(urlsafe_base64_decode(email))
+        user = CustomUser.objects.get(email=email)
+    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        # return redirect('home')
+        password =  user.random_password()
+        user.set_password(password)
+        message = "Your password is: \n" + password + "\nYour username is: " + user.email
+        user.email_user("Your Valentis Health Clinic System Password", message, from_email=None)
+        print(password)
+        # user.is_active = True
+        user.save()
+
+        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
 
 class LoginPage(View):
     def get(self, request, *args, **kwargs):

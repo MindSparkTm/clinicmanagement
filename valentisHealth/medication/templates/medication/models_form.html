@@ -271,13 +271,18 @@ buttons: {
         callback: function(){
 
             console.log("sr", sr);
+
+
+            var dosage = '(tablets:' + tablets +' '+' times per day:'+ freq+' ' +'days:' + days +')'
+
+            sr = sr + $(that).text() +' ' + dosage +"\n";
+            genericTagify($(that).text() +' ' + dosage , 'prescription_tags','id_prescription')
+
+            $('#id_prescription').val(sr)
+
             tablets = '--'
             days = '--'
             freq = '--'
-            genericTagify($(that).text(), 'prescription_tags','id_prescription')
-            sr = sr + $(that).text() +' tablets:' + tablets +' freq:'+ freq +'days' + days+"\n";
-
-            $('#id_prescription').val(sr)
 
 
         }
@@ -324,7 +329,7 @@ buttons: {
                     {
                         "to": [
                             {
-                                "email": "prescription@mydawa.coms"
+                                "email": "prescription@mydawa.com"
                             }
                         ],
                         "subject": prescriptiondata,

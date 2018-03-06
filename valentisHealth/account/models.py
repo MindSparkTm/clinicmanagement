@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
@@ -7,7 +8,15 @@ from django.core.mail import send_mail
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import Group, Permission
 from django.urls import reverse
+from django.utils.crypto import get_random_string, salted_hmac
 
+
+import unicodedata
+
+from django.contrib.auth import password_validation
+from django.contrib.auth.hashers import (
+    check_password, is_password_usable, make_password,
+)
 
 class CustomUserManager(BaseUserManager):
     def _create_user(self, email, password,
@@ -37,7 +46,6 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-
     """
     A fully featured User model with admin-compliant permissions that uses
     a full-length email field as the username.
@@ -119,3 +127,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             except ObjectDoesNotExist:
                 pass
         return None
+
+    def random_password(self, length=10,
+                             allowed_chars='abcdefghjkmnpqrstuvwxyz'
+                                           'ABCDEFGHJKLMNPQRSTUVWXYZ'
+                                           '23456789'):
+
+
+        """
+        Generate a random password with the given length and given
+        allowed_chars. The default value of allowed_chars does not have "I" or
+        "O" or letters and digits that look similar -- just to avoid confusion.
+        """
+        return get_random_string(length, allowed_chars)

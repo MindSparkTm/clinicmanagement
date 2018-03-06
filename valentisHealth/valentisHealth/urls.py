@@ -19,8 +19,11 @@ from account.views import Home
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = 'ValentisHealth Administration'
+admin.site.site_title = 'ValentisHealth Administration'
+
 urlpatterns = [
-                  url(r'^admin/', admin.site.urls),
+                  url(r'^maintenance-tunnel/', admin.site.urls),
                   url(r'^registration/', include('registration.urls')),
                   url(r'^nurse/', include('nurse.urls')),
                   url(r'^medication/', include('medication.urls')),
