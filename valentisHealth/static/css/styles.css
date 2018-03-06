@@ -31,11 +31,11 @@ body {font-family: 'Roboto', sans-serif;
 #sideMenu{
    background: #2a475f;
     display: block;
-   float: left;
-   position: relative;
-   width: 220px;
+	float: left;
+	position: relative;
+	width: 220px;
     position: fixed;
-   z-index: 16;
+	z-index: 16;
 }
 
 
@@ -411,8 +411,8 @@ fieldset {
 }
 
 .mdl-textfield__error {
-   width: 100%;
-   left: 0;
+	width: 100%;
+	left: 0;
  text-align: left;
 }
 
@@ -596,17 +596,17 @@ legend{ width: 100%;
 }
 
 na-menu-left {
-   left: -240px;
+	left: -240px;
 }
 
 .na-menu-right {
-   right: -240px;
+	right: -240px;
 }
 
 .na-menu-left.na-menu-open {
-   left: 0px;
+	left: 0px;
 }
 
 .na-menu-right.na-menu-open {
-   right: 0px;
+	right: 0px;
 }
