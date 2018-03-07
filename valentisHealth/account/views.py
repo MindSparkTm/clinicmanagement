@@ -62,7 +62,7 @@ class AddUser(CreateView):
         )
         email.send()
 
-        return HttpResponseRedirect("/admin")
+        return HttpResponseRedirect("")
 
 
 # class AccountAcctivation(View):
@@ -85,7 +85,7 @@ def activate(request, email, token):
         # user.is_active = True
         user.save()
 
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return HttpResponse('Thank you for your email confirmation. We have sent you your login details in your email. Now you can login in your account. <a></a>')
     else:
         return HttpResponse('Activation link is invalid!')
 

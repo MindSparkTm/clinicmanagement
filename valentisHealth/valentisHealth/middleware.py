@@ -39,19 +39,19 @@ class LoginRequiredMiddleware(MiddlewareMixin):
                 return HttpResponseRedirect(settings.LOGIN_URL + '?' + urlencode(params))
 
 
-class ForceLogoutMiddleware(object):
-
-    """
-    Middleware that forces a user to be logged out if they are deactivated, or
-    their user role is changed.
-    """
-
-    def process_request(self, request):
-        if request.user.is_authenticated() \
-                and request.user.force_logout_date and \
-                request.user.last_login < request.user.force_logout_date:
-            logout(request)
-            return HttpResponseRedirect(settings.LOGIN_URL)
+# class ForceLogoutMiddleware(object):
+#
+#     """
+#     Middleware that forces a user to be logged out if they are deactivated, or
+#     their user role is changed.
+#     """
+#
+#     def process_request(self, request):
+#         if request.user.is_authenticated() \
+#                 and request.user.force_logout_date and \
+#                 request.user.last_login < request.user.force_logout_date:
+#             logout(request)
+#             return HttpResponseRedirect(settings.LOGIN_URL)
 
 
 
