@@ -7,7 +7,6 @@ from urllib.parse import urlencode
 from valentisHealth.authenticator import *
 from .models import CustomUser
 from .forms import CustomUserForm
-
 from io import StringIO
 from django.template.loader import get_template
 from django.http import HttpResponse, HttpResponseRedirect
@@ -52,10 +51,10 @@ class AddUser(CreateView):
         current_site = get_current_site(self.request)
         mail_subject = 'Activate your ValentisHealth clinic account.'
         message = render_to_string('activate_email.html', {
-            'user': user,
+            'user': instance,
             'domain': current_site.domain,
-            'email': user.email,
-            'token': account_activation_token.make_token(user),
+            'email': instance.email,
+            'token': account_activation_token.make_token(instance),
         })
         to_email = form.cleaned_data.get('email')
         email = EmailMessage(
