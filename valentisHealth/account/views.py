@@ -62,7 +62,7 @@ class AddUser(CreateView):
         )
         email.send()
 
-        return HttpResponseRedirect("", {'success':"Successful"})
+        return render(self.request, 'addmember.html', {'success':"Successful"})
 
 
 # class AccountAcctivation(View):
