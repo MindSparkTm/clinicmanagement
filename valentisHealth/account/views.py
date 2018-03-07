@@ -62,7 +62,7 @@ class AddUser(CreateView):
         )
         email.send()
 
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("", {'success':"Successful"})
 
 
 # class AccountAcctivation(View):
@@ -85,7 +85,7 @@ def activate(request, email, token):
         # user.is_active = True
         user.save()
 
-        return HttpResponse('Thank you for your email confirmation. We have sent you your login details in your email. Now you can login in your account. <a></a>')
+        return render(request, 'success.html', {'user':user})
     else:
         return HttpResponse('Activation link is invalid!')
 
@@ -157,3 +157,6 @@ def print_pdf(request):
         'site_name': 'name'
     }
     return render_to_pdf('pdf.html', d)
+
+
+
