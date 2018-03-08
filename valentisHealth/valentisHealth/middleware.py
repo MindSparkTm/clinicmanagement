@@ -32,6 +32,7 @@ class LoginRequiredMiddleware(MiddlewareMixin):
         assert hasattr(
             request, 'user'), "The Login Required middleware requires authentication middleware to be installed. Edit your MIDDLEWARE_CLASSES setting to insert 'django.contrib.auth.middlware.AuthenticationMiddleware'. If that doesn't work, ensure your TEMPLATE_CONTEXT_PROCESSORS setting includes 'django.core.context_processors.auth'."
         if not request.user.is_authenticated() and not request.path.startswith('/account/activate/'):
+            print(request.path.startswith('/account/activate/'), "path ok")
             path = request.path_info.lstrip('/')
             if not any(m.match(path) for m in EXEMPT_URLS):
                 params = request.GET.copy()
@@ -61,7 +62,8 @@ class SessionIdleTimeout:
             if ('last_login' in request.session):
                 last = (current_datetime - request.session['last_login']).seconds
                 if last > settings.SESSION_IDLE_TIMEOUT:
-                    logout(request, login.html)
+                    logout(request)
+                return HttpResponseRedirect(settings.LOGIN_URL)
             else:
                 request.session['last_login'] = current_datetime
         return None
