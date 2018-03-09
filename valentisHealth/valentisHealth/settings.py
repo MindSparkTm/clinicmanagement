@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'medication',
     'labs',
     'payments',
-    'postman',
+    'workflow',
 
 ]
 
@@ -171,6 +171,6 @@ EMAIL_DEBUG = True
 # CSRF_COOKIE_SECURE = True
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-TIME = 5 * 60 #
+TIME = 30 * 60 #
 SESSION_COOKIE_AGE = TIME    #change expired session
 SESSION_IDLE_TIMEOUT = TIME  #logout

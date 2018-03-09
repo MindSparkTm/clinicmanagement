@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from .models import Patient
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
+from django.shortcuts import render
+
 # from django.contrib.auth.mixins import UserPassesTestMixin
 # from valentisHealth.authenticator import *
 
@@ -17,6 +19,7 @@ class modelsListView(ListView):
     def get_template_names(self):
         return 'registration/search_patient.html'
 
+
 class modelsCreateView(CreateView):
     model = Patient
     form_class = modelsForm
@@ -24,13 +27,17 @@ class modelsCreateView(CreateView):
     def get_template_names(self):
         return 'registration/models_form.html'
 
+
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.status = 2
-
+        errors_check = instance.create_patient_account()
+        if errors_check:
+            return render(self.request, 'registration/models_form.html', {'errors': errors_check, 'form':form})
         instance.save()
 
-        return HttpResponseRedirect("/registration/models/create/?sucess=true")
+        return render(self.request, 'registration/models_form.html')
+        # return HttpResponseRedirect("/registration/models/create/?sucess=true")
 
 
 class modelsDetailView(ListView):
@@ -43,9 +50,7 @@ class modelsDetailView(ListView):
     #     return get_object_or_404(models, pk=request.session['user_id'])
 
     def get_context_data(self, **kwargs):
-
         context = super(modelsDetailView, self).get_context_data(**kwargs)
-
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
@@ -55,6 +60,7 @@ class modelsDetailView(ListView):
 
         return context
 
+
 class SearchPatientView(CreateView):
     model = Patient
     form_class = modelsForm
@@ -63,14 +69,11 @@ class SearchPatientView(CreateView):
         return 'medication/models_search.html'
 
 
-
-
 class CreateMedication(CreateView):
     medications = Medication
     form_class = MedicationForm
 
     medication_formset = MedicationFormSet
-
 
 
 def patientUpdateView(request, patient_no):
@@ -82,21 +85,3 @@ def patientUpdateView(request, patient_no):
     except:
         raise Http404('Requested user not found.')
     return HttpResponseRedirect("/registration/", {})
-
-# class patientUpdateView_(ListView):
-#     model = models
-#     form_class = modelsForm
-#
-#     def get_context_data(self, **kwargs):
-#
-#         context = super(patientUpdateView, self).get_context_data(**kwargs)
-#
-#         try:
-#             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
-#             patient_object.status = 2
-#             patient_object.save()
-#
-#         except:
-#             raise Http404('Requested user not found.')
-#
-#         return HttpResponseRedirect("/registration/models/create/?sucess=true")

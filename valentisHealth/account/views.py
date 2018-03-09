@@ -18,9 +18,7 @@ from .forms import LoginForm
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from django.core.mail import EmailMessage
+
 
 class Home(View):
     def get(self, request, *args, **kwargs):
@@ -48,19 +46,7 @@ class AddUser(CreateView):
         user_group = Group.objects.get(name=form.cleaned_data['role'])
         user_group.user_set.add(instance)
 
-        current_site = get_current_site(self.request)
-        mail_subject = 'Activate your ValentisHealth clinic account.'
-        message = render_to_string('activate_email.html', {
-            'user': instance,
-            'domain': current_site.domain,
-            'email': instance.email,
-            'token': account_activation_token.make_token(instance),
-        })
-        to_email = form.cleaned_data.get('email')
-        email = EmailMessage(
-            mail_subject, message, to=[to_email]
-        )
-        email.send()
+        instance.send_confirmation()
 
         return render(self.request, 'addmember.html', {'success':"Successful"})
 
@@ -73,17 +59,7 @@ def activate(request, email, token):
     except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        # return redirect('home')
-        password =  user.random_password()
-        user.set_password(password)
-        message = "Your password is: \n" + password + "\nYour username is: " + user.email
-        user.email_user("Your Valentis Health Clinic System Password", message, from_email=None)
-        print(password)
-        # user.is_active = True
-        user.save()
+        user.activate()
 
         return render(request, 'success.html', {'user':user})
     else:
@@ -103,7 +79,7 @@ class LoginPage(View):
                                     password=request.POST['password'])
 
                 if user is not None:
-                    if user.is_active:
+                    if user.is_active and not user.is_patient:
                         login(request, user)
                         if 'next' in request.GET:
                             params = request.GET.copy()
@@ -116,6 +92,7 @@ class LoginPage(View):
                         message = "You need to activate your account first before you can sign in."
                         messages.error(request, message)
                         return render(request, "login.html", {'form': form})
+
                 else:
                     message = "Invalid email address or password"
                     messages.error(request, message)

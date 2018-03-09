@@ -1,15 +1,8 @@
 from django.urls import reverse
-from django_extensions.db.fields import AutoSlugField
 from django.db.models import *
 from django.conf import settings
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth import get_user_model
-from django.contrib.auth import models as auth_models
 from django.db import models as models
-from django_extensions.db import fields as extension_fields
-import uuid
-
+from account.models import CustomUser
 
 
 
@@ -118,9 +111,31 @@ class Patient(models.Model):
     def get_absolute_url(self):
         return reverse('registration_models_detail', args=(self.patient_no,))
 
-
     def get_update_url(self):
         return reverse('registration_models_update', args=(self.patient_no,))
+
+    def create_patient_account(self):
+        errors = {}
+
+        try:
+            CustomUser.object.get(email=self.email)
+        except:
+            errors['email'] = 'email exists'
+        try:
+            CustomUser.object.get(id_number=self.id_number)
+        except:
+            errors['id_number'] = 'The id number is not unique. A patient is registered with the same ip'
+        if errors:
+            return errors
+        try:
+            user = CustomUser.objects.create(email=self.email, is_patient=True, id_number=self.id_number, phone_number=self.phone,
+                                             first_name=self.first_sname, last_name=self.last_name)
+            user.save()
+        except:
+            errors['others'] = 'Something went wrong while creating an account patient. Contact the admin.'
+
+        return errors
+
 
 
 class Children(models.Model):
@@ -146,6 +161,7 @@ class Children(models.Model):
     def __unicode__(self):
         return u'%s' % self.pk
 
+
 class Allergies(models.Model):
         allergy_name = models.CharField(max_length=200)
 
@@ -159,8 +175,10 @@ class Allergies(models.Model):
         def __unicode__(self):
             return u'%s' % self.pk
 
+
 class County(models.Model):
         County = models.CharField(max_length=2550)
+
 
 class MedicationHistory(models.Model):
         Disease = models.CharField(max_length=2550)
@@ -180,12 +198,10 @@ class Medication(models.Model):
     name = models.CharField(max_length=255, default="NO", null=True, blank=True)
     age = models.CharField(max_length=255, default="NO", null=True, blank=True)
 
-
     class Meta:
         verbose_name = 'child'
         verbose_name_plural = 'children'
         ordering = ('last_updated',)
-
 
     def __unicode__(self):
         return u'%s' % self.pk

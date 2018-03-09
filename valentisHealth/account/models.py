@@ -9,8 +9,11 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.models import Group, Permission
 from django.urls import reverse
 from django.utils.crypto import get_random_string, salted_hmac
-
-
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from .tokens import account_activation_token
+from django.contrib.auth import authenticate, login, logout
 import unicodedata
 
 from django.contrib.auth import password_validation
@@ -79,6 +82,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     last_seen = models.DateTimeField(_('last seen'), blank=True, null=True)
     force_logout_date = models.DateTimeField(null=True)
+    is_patient = models.BooleanField(default=False,
+                                     help_text=_('Designates whether the user can log into the website.'))
 
     objects = CustomUserManager()
 
@@ -140,3 +145,32 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         "O" or letters and digits that look similar -- just to avoid confusion.
         """
         return get_random_string(length, allowed_chars)
+
+    def send_confirmation(self, reciever_email):
+        current_site = get_current_site(self.request)
+        mail_subject = 'Activate your ValentisHealth clinic account.'
+        message = render_to_string('activate_email.html', {
+            'user': self,
+            'domain': current_site.domain,
+            'email': self.email,
+            'token': account_activation_token.make_token(self),
+        })
+        to_email = self.email
+
+        email = EmailMessage(
+            mail_subject, message, to=[to_email]
+        )
+        email.send()
+
+    def activate(self, request):
+        self.is_active = True
+        self.save()
+        login(request, self)
+        # return redirect('home')
+        password = self.random_password()
+        self.set_password(password)
+        message = "Your password is: \n" + password + "\nYour username is: " + self.email
+        self.email_user("Your Valentis Health Clinic System Password", message, from_email=None)
+        print(password)
+        # user.is_active = True
+        self.save()

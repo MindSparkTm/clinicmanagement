@@ -85,7 +85,7 @@ class Close(View):
     def get(self, request, *args, **kwargs):
         # fetch your values from request.GET.get('key')
         # and play around with it
-        print("Suceeded")
+        print("Succeeded")
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
         patient_object.status = 0
         patient_object.save()
