@@ -1,5 +1,5 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
-from .models import member_info, member_benefits, member_anniversary, member_acceptance, principal_applicant, pre_authorization, provider, cash
+from .models import member_info, memberinfosanlamdatabase,member_benefits, member_anniversary, member_acceptance, principal_applicant, pre_authorization, provider, cash
 from .forms import member_infoForm, member_benefitsForm, member_anniversaryForm, member_acceptanceForm, principal_applicantForm, pre_authorizationForm, providerForm, cashForm
 from rest_framework import generics
 from django.shortcuts import render, get_object_or_404, redirect, reverse

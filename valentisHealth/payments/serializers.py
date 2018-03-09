@@ -10,9 +10,7 @@ class member_infoSerializer(serializers.ModelSerializer):
         fields = (
             'slug',
             'family_no',
-            'created', 
-            'last_updated', 
-            'member_no', 
+            'member_no',
             'surname', 
             'first_name', 
             'other_name', 
