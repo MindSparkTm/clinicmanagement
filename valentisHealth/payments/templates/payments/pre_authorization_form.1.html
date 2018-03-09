@@ -377,6 +377,10 @@
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary disabled">
                 Submit
             </button>
+             <button id="printbtn" type="submit"
+                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary disabled">
+                Print
+            </button>
         </div>
 
 
@@ -386,6 +390,9 @@
 </div>
 
     <script>
+    $('#printbtn').on('click',function () {
+        print();
+    })
         $('#id_authority_type').change(function() {
             var selection = $('#id_authority_type').val();
             $('.admitted').show();

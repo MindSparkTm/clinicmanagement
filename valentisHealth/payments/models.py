@@ -42,24 +42,20 @@ class member_info(models.Model):
 
     # Fields
     slug = extension_fields.AutoSlugField(populate_from='member_no', blank=True)
-    family_no = models.CharField(max_length=20)
-    created = models.DateTimeField(auto_now_add=True, editable=False)
-    last_updated = models.DateTimeField(auto_now=True, editable=False)
-    member_no = models.CharField(max_length=20)
-    surname = models.CharField(max_length=40)
-    first_name = models.CharField(max_length=40)
-    other_name = models.CharField(max_length=40)
-    dob = models.DateField(default=datetime.date.today)
-    user_id = models.CharField(max_length=10)
-    date_entered = models.DateField(default=datetime.date.today)
-    cancelled = models.DecimalField(max_digits=1,decimal_places=0)
+    family_no = models.CharField(max_length=20,blank=True)
+    member_no = models.CharField(max_length=20,blank=True)
+    surname = models.CharField(max_length=40,blank=True)
+    first_name = models.CharField(max_length=40,blank=True)
+    other_name = models.CharField(max_length=40,blank=True)
+    dob = models.CharField(max_length=100,blank=True)
+    user_id = models.CharField(max_length=10,blank=True)
+    date_entered = models.CharField(max_length=100,blank=True)
+    cancelled = models.CharField(max_length=10,blank=True)
     employment_no = models.CharField(max_length=20)
-    gender = models.DecimalField(max_digits=1,decimal_places=0)
-    passport_no = models.CharField(max_length=15)
+    gender = models.CharField(max_length=20,blank=True)
+    passport_no = models.CharField(max_length=15,blank=True)
 
 
-    class Meta:
-        ordering = ('last_updated',)
 
     def __unicode__(self):
         return u'%s' % self.slug
@@ -156,8 +152,7 @@ class member_benefits(models.Model):
 
     def is_active(self):
         if self.suspended_date:
-            return not self.suspended
-            # return self.suspended_date > datetime.date.today()
+            return self.suspended_date > datetime.date.today()
         else:
             return False
 
