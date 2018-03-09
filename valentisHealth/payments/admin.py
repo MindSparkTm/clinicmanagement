@@ -11,7 +11,7 @@ class member_infoAdminForm(forms.ModelForm):
 
 class member_infoAdmin(admin.ModelAdmin):
     form = member_infoAdminForm
-    list_display = ['family_no', 'created', 'last_updated', 'member_no', 'surname', 'first_name', 'other_name', 'dob', 'user_id', 'date_entered', 'cancelled', 'employment_no', 'gender', 'passport_no']
+    list_display = ['family_no','member_no', 'surname', 'first_name', 'other_name', 'dob', 'user_id', 'date_entered', 'cancelled', 'employment_no', 'gender', 'passport_no']
     # readonly_fields = ['family_no', 'created', 'last_updated', 'member_no', 'surname', 'first_name', 'other_name', 'dob', 'user_id', 'date_entered', 'cancelled', 'employment_no', 'gender', 'passport_no']
 
 admin.site.register(member_info, member_infoAdmin)
