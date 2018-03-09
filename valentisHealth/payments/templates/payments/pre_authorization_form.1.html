@@ -65,8 +65,9 @@
                 <h2 class="mdl-card__title-text">{{ member.get_full_name }}</h2>
               </div>
 
-              <div class="mdl-card__supporting-text">
-                Member status - {% if member.is_active %}Active {% else %}Inactive{% endif %}<br>
+             <div class="mdl-card__supporting-text">
+                  <input type="hidden" value={% if member.isUserActive%}Active {% else %}Inactive{% endif %} id="status"/>
+                Member status - {% if member.isUserActive %}Active {% else %}Inactive{% endif %}<br>
                 {{ member.get_aniversary_start }} - {{ member.get_aniversary_end }}
               </div>
               <div class="mdl-card__actions center-items mdl-card--border" >
@@ -121,7 +122,6 @@
         {% csrf_token %}
         {{ form.non_field_errors }}
         <input type="hidden" name="action" value="login"/>
-
         <div class="mdl-grid ">
         <input type="text" name="name" value="{{ member.get_full_name }}">
         <input type="text" name="member_no" value="{{ member.member_no }}">
@@ -390,6 +390,18 @@
 </div>
 
     <script>
+     window.onload = onload();
+    function onload() {
+    var bla = $('#status').val();
+    if(bla==='Inactive'){
+        console.log('Entered');
+        $("#preauth :input").prop("disabled", true);
+
+    }
+    console.log("bla",bla);
+
+    }
+
     $('#printbtn').on('click',function () {
         print();
     })
