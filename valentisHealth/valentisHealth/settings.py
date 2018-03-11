@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'account.CustomUser'
 
 # Custom authentication backend using email and password
-AUTHENTICATION_BACKENDS = ('valentisHealth.backends.EmailAuthBackend', )
+AUTHENTICATION_BACKENDS = ('valentisHealth.backends.EmailAuthBackend',)
 
 # URL to redirect to if one ain't logged in
 LOGIN_URL = '/account/log-in/'
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     'rest_framework',
+    'rest_framework.authtoken',
     'registration',
     'nurse',
     'clinic',
@@ -104,7 +105,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-    #
+
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #     'NAME': 'valentis_health',
@@ -174,3 +175,12 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 TIME = 30 * 60 #
 SESSION_COOKIE_AGE = TIME    #change expired session
 SESSION_IDLE_TIMEOUT = TIME  #logout
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}

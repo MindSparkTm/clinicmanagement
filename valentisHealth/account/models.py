@@ -146,8 +146,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         """
         return get_random_string(length, allowed_chars)
 
-    def send_confirmation(self, reciever_email):
-        current_site = get_current_site(self.request)
+    def send_confirmation(self, request):
+        current_site = get_current_site(request)
         mail_subject = 'Activate your ValentisHealth clinic account.'
         message = render_to_string('activate_email.html', {
             'user': self,

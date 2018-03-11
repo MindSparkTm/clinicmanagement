@@ -3,7 +3,7 @@ from django.db.models import *
 from django.conf import settings
 from django.db import models as models
 from account.models import CustomUser
-
+from rest_framework.authtoken.models import Token
 
 
 class Uploads(models.Model):
@@ -24,6 +24,7 @@ class Patient(models.Model):
     apartment_name = CharField(max_length=30, null=True, blank=True)
     postal_code = CharField(max_length=30, null=True, blank=True)
     postal_address = TextField(max_length=100,null=True, blank=True)
+    physical_address = TextField(max_length=100,null=True, blank=True)
     city = CharField(max_length=30,null=True, blank=True)
     country = CharField(max_length=30,null=True, blank=True)
     age = IntegerField(null=True, blank=True)
@@ -39,6 +40,7 @@ class Patient(models.Model):
     subscriber_relationship = TextField(max_length=100, null=True, blank=True)
     sub_address = TextField(max_length=100, null=True, blank=True)
     ss_number = TextField(max_length=100, null=True, blank=True)
+    id_type = TextField(max_length=100, null=True, blank=True)
     sub_ss_number = TextField(max_length=100,null=True, blank=True)
     alt_phone = CharField(max_length=30, null=True, blank=True)
     sub_work_phone = TextField(max_length=100, null=True, blank=True)
@@ -114,25 +116,37 @@ class Patient(models.Model):
     def get_update_url(self):
         return reverse('registration_models_update', args=(self.patient_no,))
 
-    def create_patient_account(self):
+    def create_patient_account(self, request):
+
         errors = {}
+        email_exist = False
+        id_exist = False
 
         try:
-            CustomUser.object.get(email=self.email)
+            email_exist = CustomUser.objects.get(email=self.email)
         except:
-            errors['email'] = 'email exists'
+            pass
         try:
-            CustomUser.object.get(id_number=self.id_number)
+            id_exist = CustomUser.objects.get(id_number=self.ss_number)
         except:
-            errors['id_number'] = 'The id number is not unique. A patient is registered with the same ip'
-        if errors:
+            pass
+        if email_exist:
+            errors['email'] = 'A patient user with email already exists'
+        if id_exist:
+            errors['id_number'] = 'The id number is not unique. A patient is registered with the same id'
+        if email_exist or id_exist:
             return errors
         try:
-            user = CustomUser.objects.create(email=self.email, is_patient=True, id_number=self.id_number, phone_number=self.phone,
-                                             first_name=self.first_sname, last_name=self.last_name)
-            user.save()
+            user = CustomUser.objects.create(email=self.email, is_patient=True, id_number=self.ss_number, phone_number=self.phone,
+                                             first_name=self.first_name, last_name=self.last_name)
+            user = CustomUser.objects.get(email=self.email)
+            print(user,"++++ user", request)
+            user.send_confirmation(request)
+            token = Token.objects.create(user=user)
+            token.save()
+            print(token)
         except:
-            errors['others'] = 'Something went wrong while creating an account patient. Contact the admin.'
+            errors['others'] = 'Something went wrong while creating an account for this patient. Try again. If this persist contact the admin.'
 
         return errors
 

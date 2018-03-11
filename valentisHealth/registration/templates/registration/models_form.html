@@ -3,6 +3,12 @@
 {% static  'css/style.css' %}
 {% block content %}
 
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 
 
         <div class="mdl-cell mdl-cell--12-col mdl-grid" style="">
@@ -13,10 +19,18 @@
 
                 <form method="POST" action="" class="full-width" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {#                    {% if form.authorized_by.value != None %}{{ form }}#}
+                    {% if success %}
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> {{ success }}
+                        </div>
+                    {% endif %}
+                    {% if errors %}
+                        <div class="alert alert-danger">
+                            <i>{{ errors.others }}</i>
+                        </div>
+                    {% endif %}
                     <fieldset class="field-setter" name="personal">
                         <legend  style="font-weight: bold; font-size: 16px; padding: 17px;  ">Personal Information</legend>
-                        <input type="hidden" name="action" value="login"/>
 
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -64,7 +78,7 @@
                                 <input class="mdl-textfield__input" type="email"
                                        id="textfield_email"
                                        value="{% if form.email.value != None %}{{ form.email.value }}{% endif %}" name="email"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.email.errors|striptags }}</span>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.email.errors|striptags }}{{ errors.email }}</span>
                             </div>
 
                         </div>
@@ -75,7 +89,7 @@
                                        for="textfield_postal_address">Postal Address</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_postal_address"
-                                       value="{% if form.authorized_by.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
+                                       value="{% if form.postal_address.value != None %}{{ form.postal_address.value }}{% endif %}" name="postal_address"/>
                                 <span style="visibility: visible;" class="mdl-textfield__error">{{ form.postal_address.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -83,8 +97,8 @@
                                        for="textfield_apartment_name">Postal Code</label>
                                 <input class="mdl-textfield__input" type="Number"
                                        id="textfield_apartment_name"
-                                       value="{% if form.apartment_name.value != None %}{{ form.apartment_name.value }}{% endif %}" name="apartment_name"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.apartment_name.errors|striptags }}</span>
+                                       value="{{ form.postal_code.value|default_if_none:"" }}" name="postal_code"/>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.postal_code.errors|striptags }}</span>
                             </div>
 
 
@@ -100,10 +114,10 @@
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_postal_code">Physical Address</label>
+                                       for="textfield_physical_address">Physical Address</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_code" value="{% if form.postal_code.value != None %}{{ form.postal_code.value }}{% endif %}" name="postal_code"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.postal_code.errors|striptags }}</span>
+                                       id="textfield_physical_address" value="{% if form.physical_address.value != None %}{{ form.physical_address.value }}{% endif %}" name="physical_address"/>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.physical_address.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <input class="mdl-textfield__input" id="tbCountries" name="country" type="text"
@@ -148,8 +162,8 @@
 
 
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="" id="gender" readonly/>
-                                <input value="" type="hidden" name="gender"/>
+                                <input class="mdl-textfield__input" value="{{ form.gender.value|default_if_none:""}}" id="gender" readonly/>
+                                <input value="{{ form.gender.value|default_if_none:""}}" type="hidden" name="gender"/>
                                 <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                                 <label class="mdl-textfield__label" for="gender">Sex</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
@@ -185,8 +199,8 @@
                     <div class="mdl-grid">
 
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="" id="id_type" readonly/>
-                                <input value="" type="hidden" name="id_type"/>
+                                <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:""}}" id="id_type" readonly/>
+                                <input value="{{ form.id_type.value|default_if_none:""}}" type="hidden" name="id_type"/>
                                 <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                                 <label class="mdl-textfield__label" for="id_type">Identification Documents</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
@@ -204,7 +218,7 @@
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_ss_number"
                                        value="{% if form.ss_number.value != None %}{{ form.ss_number.value }}{% endif %}" name="ss_number"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.ss_number.errors|striptags }}</span>
+                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.ss_number.errors|striptags }}{{ errors.id_number }}</span>
                             </div>
                         </div>
 
@@ -411,10 +425,9 @@
                 <br><br>
 
 
+
                 <fieldset name="personal">
-                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >Health History</legend>
-                <fieldset name="personal">
-                        <legend >personal info</legend>
+                        <legend >Other Personal info</legend>
 
                         <div class="mdl-grid">
 
@@ -472,11 +485,6 @@
 
                     <div id='contactsList'>
                         <table class='mdl-data-table mdl-js-data-table full-width' style='width: #87ccf8; '>
-{#                            <tr>#}
-{#                                <th style="color: #fff; " >No of Children</th>#}
-{#                                <th style="color: #fff; " >child's Name/ age</th>#}
-{##}
-{#                            </tr>#}
 
 
                             <tbody data-bind="children_td" style="color: #000;">
@@ -512,8 +520,10 @@
                     </div>
 
                 </div>
+                </fieldset>
 
-
+                <fieldset name="health_hist">
+                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >Health History</legend>
                 <div class="mdl-grid">
                     <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input hidden" type="text" rows="8"
@@ -751,16 +761,6 @@
 
                         <div class="mdl-grid">
                             <input for="uploaded_file" type="file" name="uploaded_file" id="uploadBtn" multiple>
-
-
-{#                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">#}
-{#                                <input class="mdl-textfield__input" placeholder="File" type="text"#}
-{#                                       id="upload_file" readonly/>#}
-{#                                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">#}
-{#                                    <i class="material-icons">attach_file</i><input for="upload_file" type="file"#}
-{#                                                                                    id="uploadBtn">#}
-{#                                </div>#}
-{#                            </div>#}
 
 
                         </div>

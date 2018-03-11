@@ -46,7 +46,7 @@ class AddUser(CreateView):
         user_group = Group.objects.get(name=form.cleaned_data['role'])
         user_group.user_set.add(instance)
 
-        instance.send_confirmation()
+        instance.send_confirmation(self.request)
 
         return render(self.request, 'addmember.html', {'success':"Successful"})
 
@@ -59,7 +59,7 @@ def activate(request, email, token):
     except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
-        user.activate()
+        user.activate(request)
 
         return render(request, 'success.html', {'user':user})
     else:

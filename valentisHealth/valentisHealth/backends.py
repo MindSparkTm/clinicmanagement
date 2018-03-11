@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth.models import User
+from rest_framework import authentication
+from rest_framework import exceptions
 
 User = get_user_model()
 
 
 class EmailAuthBackend(ModelBackend):
-
     """
     Email Authentication Backend
 
@@ -28,4 +30,3 @@ class EmailAuthBackend(ModelBackend):
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
-

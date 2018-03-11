@@ -15,7 +15,7 @@ class modelsForm(forms.ModelForm):
                   'dob', 'sub_dob', 'sub_employer', 'if_smoker', 'if_chew_tobacco',
                   'if_drink_alcohol', 'if_drug_used', 'if_exercise', 'if_special_diet',
                   'if_use_caffein', 'is_sadder', 'have_will', 'if_quit_before', 'uploaded_file',
-                  'social_hist','fam_hist', 'sub_id_type', 'id_type'
+                  'social_hist','fam_hist', 'sub_id_type', 'id_type', 'physical_address',
                   ]
 
 class MedicationForm(forms.Form):

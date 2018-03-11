@@ -31,12 +31,16 @@ class modelsCreateView(CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.status = 2
-        errors_check = instance.create_patient_account()
+        errors_check = instance.create_patient_account(self.request)
+        print('error detected are', errors_check)
         if errors_check:
+            print('error occurred', errors_check)
             return render(self.request, 'registration/models_form.html', {'errors': errors_check, 'form':form})
         instance.save()
 
-        return render(self.request, 'registration/models_form.html')
+        message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
+
+        return render(self.request, 'registration/models_form.html', {'success': message})
         # return HttpResponseRedirect("/registration/models/create/?sucess=true")
 
 
