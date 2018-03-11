@@ -1,5 +1,5 @@
 import os, csv
-path =  "C:/Backup_Valentis/valentishealth/valentisHealth"
+path =  "/opt/valentisHealth"
 os.chdir(path)
 from payments.models import member_info
 with open('memberdata.csv') as csvfile:
