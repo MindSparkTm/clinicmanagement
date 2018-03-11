@@ -25,9 +25,9 @@ class Message(models.Model):
     recipient_deleted_at = DateTimeField(_("deleted by recipient at"), null=True, blank=True)
 
     # Relationship Fields
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sent_messages',
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sent_messages+',
                                null=True, blank=True, verbose_name=_("sender"))
-    recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='received_messages',
+    recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='received_messages+',
                                   null=True, blank=True, verbose_name=_("recipient"))
 
     class Meta:
