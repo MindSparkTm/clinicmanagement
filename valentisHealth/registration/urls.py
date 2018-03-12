@@ -20,10 +20,10 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for models
-    url(r'^$', views.modelsListView.as_view(), name='registration_search'),
+    url(r'^$', views.PatientListView.as_view(), name='registration_search'),
     # url(r'^models/search/$', views.SearchPatientView.as_view(), name='search_patient'),
-    url(r'^models/create/$', views.modelsCreateView.as_view(), name='registration_models_create'),
-    url(r'^existing/(?P<patient_no>\S+)/$', views.modelsDetailView.as_view(), name='registration_models_detail'),
-    url(r'^models/update/(?P<patient_no>\S+)/$', views.patientUpdateView, name='registration_update'),
+    url(r'^models/create/$', views.PatientCreateView.as_view(), name='registration_models_create'),
+    url(r'^existing/(?P<patient_no>\S+)/$', views.PatientDetailView.as_view(), name='registration_models_detail'),
+    url(r'^models/update/(?P<patient_no>\S+)/$', views.PatientUpdateView, name='registration_update'),
 )
 

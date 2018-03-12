@@ -28,10 +28,25 @@ class LoginRequiredMiddleware(MiddlewareMixin):
     loaded. You'll get an error if they aren't.
     """
 
+    def api_requests(self, request):
+        path = request.path.split('/')
+        for each in path:
+            if each == 'api':
+                return None
+        pass
+
     def process_request(self, request):
         assert hasattr(
             request, 'user'), "The Login Required middleware requires authentication middleware to be installed. Edit your MIDDLEWARE_CLASSES setting to insert 'django.contrib.auth.middlware.AuthenticationMiddleware'. If that doesn't work, ensure your TEMPLATE_CONTEXT_PROCESSORS setting includes 'django.core.context_processors.auth'."
-        if not request.user.is_authenticated() and not request.path.startswith('/account/activate/'):
+        #avoid using the mail authentication for api request : this will be handled using tokens
+        path = request.path.split('/')
+        for each in path:
+            if each == 'api':
+                return None
+
+        if not request.user.is_authenticated() \
+                and not request.path.startswith('/account/activate/')\
+                and not request.path.startswith('/account/api-token-auth/'):
             path = request.path_info.lstrip('/')
             if not any(m.match(path) for m in EXEMPT_URLS):
                 params = request.GET.copy()

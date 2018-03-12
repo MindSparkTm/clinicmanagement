@@ -30,6 +30,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Id No</th>
+                    <th>MEMBER_NO</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,52 +42,52 @@
     </div>
     <script>
         //Do ajax call for search box
-        function searchMembers(str) {
-            {#var link = "http://127.0.0.1:8000/payments/ajax_pre_authorization/"#}
 
-            //ensure to remove previous prepended results to avoid duplicity
-            $('#searchresult tbody').children().remove();
-            if (/\S/.test(str) && str.length > 5) {
-                $.ajax({
-                    url: "http://127.0.0.1:8000/payments/api/v1/memberinfosanlam/",
-                    type: "get",
-                    data: {
-                        search:str,
-                    },
-                    success: function (json) {
-                        console.log(json)
-                          if (json.length === 0) {
+    function searchMembers(str) {
+
+
+        //ensure to remove previous prepended results to avoid duplicity
+        $('#searchresult tbody').children().remove();
+        if (/\S/.test(str) && str.length > 5) {
+            $.ajax({
+                url: "http://127.0.0.1:8000/payments/api/v1/member_info/",
+                type: "get",
+                data: {
+                    search: str,
+                },
+                success: function(json) {
+                    console.log("Json",json)
+                    if (json.length === 0) {
                         onchange = "searchMembers(this.value)"
                         $("#no_result").show()
                         $('#searchresult').hide()
 
                     } else {
 
-                              $("#no_result").hide()
-                              $('#searchresult').show()
-                              var tbody = $('#search_table tbody'),
-                                  props = ["FAMILY_NO", "FIRST_NAME", "SURNAME", "USER_ID"]
-                              $.each(json, function (i, reservation) {
+                        $("#no_result").hide()
+                        $('#searchresult').show()
+                        var tbody = $('#search_table tbody'),
+                            props = ["member_no", "first_name", "surname", "passport_no"]
+                        $.each(json, function(i, reservation) {
 
-                                  var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
-                                  $.each(props, function (i, prop) {
-                                      $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
-                                  });
-                                  tbody.append(tr);
-                              });
-
-                          }
-
+                            var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
+                            $.each(props, function(i, prop) {
+                                $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                            });
+                            tbody.append(tr);
+                        });
 
                     }
 
-                })
-            } else {
-                $("#no_result").hide()
-                $('#searchresult').hide()
-            }
+                }
 
+            })
+        } else {
+            $("#no_result").hide()
+            $('#searchresult').hide()
         }
+
+    }
 
     </script>
 

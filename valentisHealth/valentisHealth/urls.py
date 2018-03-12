@@ -23,7 +23,7 @@ admin.site.site_header = 'ValentisHealth Administration'
 admin.site.site_title = 'ValentisHealth Administration'
 
 urlpatterns = [
-                  url(r'^maintenance-tunnel/', admin.site.urls),
+                  url(r'^tunnel/', admin.site.urls),
                   url(r'^registration/', include('registration.urls')),
                   url(r'^nurse/', include('nurse.urls')),
                   url(r'^medication/', include('medication.urls')),
@@ -31,6 +31,6 @@ urlpatterns = [
                   url(r'^clinic/', include('clinic.urls')),
                   url(r'^payments/', include('payments.urls')),
                   url(r'^account/', include('account.urls')),
-                  url(r'^workflow/', include('postman.urls')),
+                  url(r'^workflow/', include('workflow.urls')),
                   url(r'^$', include('registration.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
