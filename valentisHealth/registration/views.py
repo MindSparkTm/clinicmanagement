@@ -1,13 +1,13 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
 from .models import Patient, Child, Medication, Uploads
-from .forms import PatientForm, MedicationForm, ChildForm, MedicationFormSet, ChildFormSet
+from .forms import PatientForm, MedicationForm, ChildForm, MedicationFormSet
 from django.http import HttpResponseRedirect
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.shortcuts import render
 from django.forms.formsets import formset_factory
 from django.db import transaction
-
+from django.forms import inlineformset_factory
 # from django.contrib.auth.mixins import UserPassesTestMixin
 # from valentisHealth.authenticator import *
 
@@ -26,8 +26,12 @@ class ChildCreate(CreateView):
     fields = ['child_name', 'child_age']
     success_url = ""
 
+
+
     def get_context_data(self, **kwargs):
         data = super(ChildCreate, self).get_context_data(**kwargs)
+        ChildFormSet = inlineformset_factory(Patient, Child, exclude=())
+
         if self.request.POST:
             data['children'] = ChildFormSet(self.request.POST)
         else:
@@ -50,11 +54,27 @@ class PatientCreateView(CreateView):
     model = Patient
     form_class = PatientForm
 
+    def get_context_data(self, **kwargs):
+        context = super(PatientCreateView, self).get_context_data(**kwargs)
+        ChildFormSet = inlineformset_factory(Patient, Child, exclude=())
+
+        if self.request.POST:
+            context['child_formset'] = ChildFormSet(self.request.POST)
+        # else:
+            context['child_formset'] = ChildFormSet()
+        return context
+
     def get_template_names(self):
+        print("+++____+++___+++", self.request.POST.dict())
         return 'registration/patient_form.html'
 
-
     def form_valid(self, form):
+        context = self.get_context_data()
+        child_form = context['child_formset']
+        if child_form.is_valid():
+            self.object = form.save()
+            child_form.instance = self.object
+            child_form.save()
 
         instance = form.save(commit=False)
         instance.status = 2

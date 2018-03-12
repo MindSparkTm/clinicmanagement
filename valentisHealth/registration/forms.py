@@ -2,7 +2,7 @@ from django import forms
 from .models import Patient, Child
 from django.forms import Textarea
 from django.forms.formsets import BaseFormSet
-from django.forms import inlineformset_factory
+
 
 class PatientForm(forms.ModelForm):
     class Meta:
@@ -19,8 +19,8 @@ class PatientForm(forms.ModelForm):
                   'social_hist','fam_hist', 'sub_id_type', 'id_type', 'physical_address',
                   ]
 
-class MedicationForm(forms.Form):
 
+class MedicationForm(forms.Form):
     medication = forms.CharField(
                     max_length=100,
                     widget=forms.TextInput(attrs={
@@ -52,14 +52,10 @@ class MedicationForm(forms.Form):
         }))
 
 
-
-
 class ChildForm(forms.Form):
     class Meta:
         model = Patient
-        exclude = ()
-
-ChildFormSet = inlineformset_factory(Patient, Child, form=ChildForm, extra=1)
+        fields = ['child_name', 'child_age']
 
 
 class MedicationFormSet(BaseFormSet):
