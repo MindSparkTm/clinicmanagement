@@ -17,7 +17,7 @@
                             <strong>Success!</strong> {{ success }}
                         </div>
                     {% endif %}
-                    {% if errors %}
+                    {% if errors.others %}
                         <div class="alert alert-danger">
                             <i>{{ errors.others }}</i>
                         </div>
@@ -87,10 +87,10 @@
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_apartment_name">Postal Code</label>
+                                       for="textfield_postal_code">Postal Code</label>
                                 <input class="mdl-textfield__input" type="Number"
-                                       id="textfield_apartment_name"
-                                       value="{{ form.postal_code.value|default_if_none:"" }}" name="postal_code"/>
+                                       id="textfield_postal_code"
+                                       value="{{ form.postal_code.value|default_if_none:"" }}" name="postal_code" required/>
                                 <span style="visibility: visible;" class="mdl-textfield__error">{{ form.postal_code.errors|striptags }}</span>
                             </div>
 
