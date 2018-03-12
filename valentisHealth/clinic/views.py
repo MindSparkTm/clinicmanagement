@@ -62,7 +62,7 @@ class PatientVisitCreateView(UserPassesTestMixin, CreateView):
         except:
             pass
 
-        context['link'] = 'clinic/PatientVisit/doctor'
+        context['link'] = 'clinic/patientvisit/doctor'
         context['clinic'] = True
         context['show_waiting_list'] = True
 
@@ -126,7 +126,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
         instance = form.save(commit=False)
         instance.save()
 
-        return HttpResponseRedirect("/clinic/PatientVisit/create/")
+        return HttpResponseRedirect("/clinic/patientvisit/create/")
 
     def get_context_data(self, **kwargs):
         context = super(DoctorVisit, self).get_context_data(**kwargs)
