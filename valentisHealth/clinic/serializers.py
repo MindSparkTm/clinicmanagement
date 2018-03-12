@@ -6,21 +6,8 @@ from rest_framework import serializers
 class patientVisitSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.patientVisit
-        fields = (
-            'slug', 
-            'name', 
-            'created', 
-            'last_updated', 
-            'patient_no', 
-            'visit_id', 
-            'radiology_no', 
-            'notes', 
-            'diagnosis', 
-            'prescription_id', 
-            'status',
-            'triage_id'
-        )
+        model = models.PatientVisit
+        fields = '__all__'
 
 
 class DiagnosisSerializer(serializers.ModelSerializer):

@@ -10,7 +10,7 @@ from django.db import models as models
 from django_extensions.db import fields as extension_fields
 import uuid
 
-class patientVisit(models.Model):
+class PatientVisit(models.Model):
 
     # Fields
     name = models.CharField(max_length=255, null=True, blank=True)

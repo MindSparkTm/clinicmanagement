@@ -1,19 +1,19 @@
 from django.contrib import admin
 from django import forms
-from .models import patientVisit, Diagnosis
+from .models import PatientVisit, Diagnosis
 
-class patientVisitAdminForm(forms.ModelForm):
+class PatientVisitAdminForm(forms.ModelForm):
 
     class Meta:
-        model = patientVisit
+        model = PatientVisit
         fields = '__all__'
 
 
-class patientVisitAdmin(admin.ModelAdmin):
-    form = patientVisitAdminForm
+class PatientVisitAdmin(admin.ModelAdmin):
+    form = PatientVisitAdminForm
     list_display = ['name', 'slug', 'created', 'last_updated', 'patient_no', 'radiology_no', 'notes', 'diagnosis', 'prescription_id', 'status', 'triage_id', 'examination', 'plan_of_managemnt', 'query_diagnosis', 'his_presenting_illness', 'attending_doctor','visit_id']
 
-admin.site.register(patientVisit, patientVisitAdmin)
+admin.site.register(PatientVisit, PatientVisitAdmin)
 
 
 class DiagnosisAdminForm(forms.ModelForm):

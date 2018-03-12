@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
-from .models import patientVisit, Diagnosis
-from .forms import patientVisitForm
+from .models import PatientVisit, Diagnosis
+from .forms import PatientVisitForm
 from registration.models import Patient
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse, Http404
@@ -17,8 +17,8 @@ from valentisHealth.authenticator import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 
-class patientVisitListView(UserPassesTestMixin, ListView):
-    model = patientVisit
+class PatientVisitListView(UserPassesTestMixin, ListView):
+    model = PatientVisit
 
     def test_func(self):
         return is_doctor(self.request)
@@ -27,7 +27,7 @@ class patientVisitListView(UserPassesTestMixin, ListView):
         return 'clinic/visitform_list.html'
 
     def get_context_data(self, **kwargs):
-        context = super(patientVisitListView, self).get_context_data(**kwargs)
+        context = super(PatientVisitListView, self).get_context_data(**kwargs)
 
         try:
             context['all_patients'] = Patient.objects.all()
@@ -38,16 +38,16 @@ class patientVisitListView(UserPassesTestMixin, ListView):
         return context
 
 
-class patientVisitCreateView(UserPassesTestMixin, CreateView):
-    model = patientVisit
-    form_class = patientVisitForm
+class PatientVisitCreateView(UserPassesTestMixin, CreateView):
+    model = PatientVisit
+    form_class = PatientVisitForm
 
     def test_func(self):
         return is_doctor(self.request)
 
     def get_context_data(self, **kwargs):
         # self.validate(self,request)
-        context = super(patientVisitCreateView, self).get_context_data(**kwargs)
+        context = super(PatientVisitCreateView, self).get_context_data(**kwargs)
 
         try:
             context['waiting_list'] = Patient.objects.filter(Q(status="3"))
@@ -62,30 +62,30 @@ class patientVisitCreateView(UserPassesTestMixin, CreateView):
         except:
             pass
 
-        context['link'] = 'clinic/patientvisit/doctor'
+        context['link'] = 'clinic/PatientVisit/doctor'
         context['clinic'] = True
         context['show_waiting_list'] = True
 
         return context
 
 
-class patientVisitDetailView(DetailView):
-    model = patientVisit
+class PatientVisitDetailView(DetailView):
+    model = PatientVisit
 
 
-class patientVisitUpdateView(UpdateView):
-    model = patientVisit
-    form_class = patientVisitForm
+class PatientVisitUpdateView(UpdateView):
+    model = PatientVisit
+    form_class = PatientVisitForm
 
 
 class Close(View):
-    model = patientVisit
-    form_class = patientVisitForm
+    model = PatientVisit
+    form_class = PatientVisitForm
 
     def get(self, request, *args, **kwargs):
         # fetch your values from request.GET.get('key')
         # and play around with it
-        print("Suceeded")
+        print("Succeeded")
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
         patient_object.status = 0
         patient_object.save()
@@ -93,8 +93,8 @@ class Close(View):
 
 
 class DoctorVisit(UserPassesTestMixin, UpdateView):
-    model = patientVisit
-    form_class = patientVisitForm
+    model = PatientVisit
+    form_class = PatientVisitForm
 
     def test_func(self):
         return is_doctor(self.request)
@@ -105,7 +105,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
 
         try:
 
-            visit_object = patientVisit.objects.get(triage_id=session_id)
+            visit_object = PatientVisit.objects.get(triage_id=session_id)
             visit_object.triage_id = session_id
             visit_object.save()
             print("exists -----------------------", session_id)
@@ -113,7 +113,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
 
         except:
             print("Did not exist +++++++++++++++++++++++++++", session_id)
-            visit_object = patientVisit.objects.create(triage_id=session_id)
+            visit_object = PatientVisit.objects.create(triage_id=session_id)
             visit_object.triage_id = session_id
             visit_object.attending_doctor = self.request.user.email
             visit_object.save()
@@ -126,7 +126,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
         instance = form.save(commit=False)
         instance.save()
 
-        return HttpResponseRedirect("/clinic/patientvisit/create/")
+        return HttpResponseRedirect("/clinic/PatientVisit/create/")
 
     def get_context_data(self, **kwargs):
         context = super(DoctorVisit, self).get_context_data(**kwargs)
@@ -158,7 +158,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
 
             #-4 out of labs, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
-            context['prev_visit'] = patientVisit.objects.filter(Q(patient_no=self.kwargs['patient_no']))
+            context['prev_visit'] = PatientVisit.objects.filter(Q(patient_no=self.kwargs['patient_no']))
             # print(context['prev_visit'])
             context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
             context['patient'] = patient_object
@@ -170,7 +170,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
 
 
 class ClinicReport(ListView):
-    model = patientVisit
+    model = PatientVisit
 
     def get_template_names(self):
         return 'index.html'
@@ -179,7 +179,7 @@ class ClinicReport(ListView):
         context = super(ClinicReport, self).get_context_data(**kwargs)
 
         try:
-            visit_obj = patientVisit.objects.get(visit_id=self.kwargs['visit_id'])
+            visit_obj = PatientVisit.objects.get(visit_id=self.kwargs['visit_id'])
             context['visit'] = visit_obj
             try:
                 patient_object = Patient.objects.get(patient_no=visit_obj.patient_no)

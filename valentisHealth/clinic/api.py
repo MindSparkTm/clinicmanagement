@@ -2,10 +2,10 @@ from . import models
 from . import serializers
 from rest_framework import viewsets, permissions, filters
 
-class patientVisitViewSet(viewsets.ModelViewSet):
+class PatientVisitViewSet(viewsets.ModelViewSet):
     """ViewSet for the patientVisit class"""
 
-    queryset = models.patientVisit.objects.all()
+    queryset = models.PatientVisit.objects.all()
     serializer_class = serializers.patientVisitSerializer
     permission_classes = [permissions.IsAuthenticated]
 

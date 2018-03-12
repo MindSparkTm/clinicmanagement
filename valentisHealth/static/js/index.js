@@ -142,7 +142,11 @@ function closePrevVisits() {
 
 }
 
+//uuid is the visit id used to get the previous visit via url
+//the triage id is the patient's session id during a treatment session
 function populatePrevVisit(uuid, triage_id) {
+    console.log("the visit_id id is: "+ uuid)
+    console.log("the triage_id id is: "+ triage_id)
     $('#print_report').attr('onclick', 'printReport("' + uuid + '")')
     $.ajax({
 
@@ -150,12 +154,15 @@ function populatePrevVisit(uuid, triage_id) {
         type: "get",
 
         success: function (visit) {
-
-
+            console.log(visit)
             if (visit.length != 0) {
                 $("#prev_diagnosis").text(visit.diagnosis)
-                $("#prev_summary").text(visit.plan_of_management)
+                $("#prev_summary").text(visit.plan_of_managemnt)
                 $("#prev_date").text(moment(visit.created))
+                $("#prev_doc_notes").text(visit.notes)
+                $("#prev_his_illness").text(visit.his_presenting_illness)
+                $("#prev_examination").text(visit.examination)
+                $("#prev_query_diag").text(visit.query_diagnosis)
                 $.ajax({
                     url: "/medication/api/v1/models/",
                     type: "get",
@@ -194,6 +201,7 @@ function populatePrevVisit(uuid, triage_id) {
                             $("#prev_oxygen").text(triage.oxygen_saturation)
                             $("#prev_urinalysis").text(triage.urinalysis)
                             $("#prev_other").text(triage.others)
+
 
                         } else {
 
@@ -336,12 +344,14 @@ function dynamic_children() {
         $('#children_td_table').children().remove();
 
         for (var i = 0; i < no && i < 4; i++) {
+            no_ = i+1
             $('#children_td_table')
                 .append($('<tr>')
+                    .append('<td>'+no_+'</td>')
                     .append($('<td>')
                         .append($('<input>')
                             .addClass('Input-text')
-                            .attr('name', 'child_name_' + i)))
+                            .attr('name', 'child_name')))
                     .append($('</td>'))
                     .append($('<td>')
                         .append($('<input>')
@@ -362,7 +372,7 @@ function dynamic_children() {
                         .append($('<input>')
                             .addClass('Input-text')
                             .attr('id', 'child_age_' + i)
-                            .attr('name', 'child_age_' + i)
+                            .attr('name', 'child')
                             .prop('type', 'text')
                         ))
                     .append($('</td>'))
@@ -420,10 +430,7 @@ function closepatientscase(patient_id) {
             });
         }
 
-
     });
-
-
 
 }
 

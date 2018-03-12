@@ -1,14 +1,17 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
-from .models import models, Children, Medication, Uploads
-from .forms import modelsForm, MedicationForm, ChildrenForm, MedicationFormSet
+from .models import Patient, Child, Medication, Uploads
+from .forms import PatientForm, MedicationForm, ChildForm, MedicationFormSet
 from django.http import HttpResponseRedirect
-from .models import Patient
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
+from django.shortcuts import render
+from django.forms.formsets import formset_factory
+from django.db import transaction
+from django.forms import inlineformset_factory
 # from django.contrib.auth.mixins import UserPassesTestMixin
 # from valentisHealth.authenticator import *
 
-class modelsListView(ListView):
+class PatientListView(ListView):
     model = Patient
 
     # def test_func(self):
@@ -17,23 +20,78 @@ class modelsListView(ListView):
     def get_template_names(self):
         return 'registration/search_patient.html'
 
-class modelsCreateView(CreateView):
-    model = Patient
-    form_class = modelsForm
 
-    def get_template_names(self):
-        return 'registration/models_form.html'
+class ChildCreate(CreateView):
+    model = Child
+    fields = ['child_name', 'child_age']
+    success_url = ""
+
+
+
+    def get_context_data(self, **kwargs):
+        data = super(ChildCreate, self).get_context_data(**kwargs)
+        ChildFormSet = inlineformset_factory(Patient, Child, exclude=())
+
+        if self.request.POST:
+            data['children'] = ChildFormSet(self.request.POST)
+        else:
+            data['children'] = ChildFormSet()
+        return data
 
     def form_valid(self, form):
+        context = self.get_context_data()
+        children = context['children ']
+        with transaction.atomic():
+            self.object = form.save()
+
+            if children .is_valid():
+                children.instance = self.object
+                children.save()
+        return super(ChildCreate, self).form_valid(form)
+
+
+class PatientCreateView(CreateView):
+    model = Patient
+    form_class = PatientForm
+
+    def get_context_data(self, **kwargs):
+        context = super(PatientCreateView, self).get_context_data(**kwargs)
+        ChildFormSet = inlineformset_factory(Patient, Child, exclude=())
+
+        if self.request.POST:
+            context['child_formset'] = ChildFormSet(self.request.POST)
+        # else:
+            context['child_formset'] = ChildFormSet()
+        return context
+
+    def get_template_names(self):
+        print("+++____+++___+++", self.request.POST.dict())
+        return 'registration/patient_form.html'
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        child_form = context['child_formset']
+        if child_form.is_valid():
+            self.object = form.save()
+            child_form.instance = self.object
+            child_form.save()
+
         instance = form.save(commit=False)
         instance.status = 2
-
+        errors_check = instance.create_patient_account(self.request)
+        print('error detected are', errors_check)
+        if errors_check:
+            print('error occurred', errors_check)
+            return render(self.request, 'registration/patient_form.html', {'errors': errors_check, 'form':form})
         instance.save()
 
-        return HttpResponseRedirect("/registration/models/create/?sucess=true")
+        message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
+
+        return render(self.request, 'registration/patient_form.html', {'success': message})
+        # return HttpResponseRedirect("/registration/models/create/?sucess=true")
 
 
-class modelsDetailView(ListView):
+class PatientDetailView(ListView):
     model = Patient
 
     def get_template_names(self):
@@ -43,9 +101,7 @@ class modelsDetailView(ListView):
     #     return get_object_or_404(models, pk=request.session['user_id'])
 
     def get_context_data(self, **kwargs):
-
-        context = super(modelsDetailView, self).get_context_data(**kwargs)
-
+        context = super(PatientDetailView, self).get_context_data(**kwargs)
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
             context['patient'] = patient_object
@@ -55,14 +111,13 @@ class modelsDetailView(ListView):
 
         return context
 
+
 class SearchPatientView(CreateView):
     model = Patient
-    form_class = modelsForm
+    form_class = PatientForm
 
     def get_template_names(self):
         return 'medication/models_search.html'
-
-
 
 
 class CreateMedication(CreateView):
@@ -72,8 +127,7 @@ class CreateMedication(CreateView):
     medication_formset = MedicationFormSet
 
 
-
-def patientUpdateView(request, patient_no):
+def PatientUpdateView(request, patient_no):
     try:
         patient_object = Patient.objects.get(patient_no=patient_no)
         patient_object.status = 2
@@ -82,21 +136,3 @@ def patientUpdateView(request, patient_no):
     except:
         raise Http404('Requested user not found.')
     return HttpResponseRedirect("/registration/", {})
-
-# class patientUpdateView_(ListView):
-#     model = models
-#     form_class = modelsForm
-#
-#     def get_context_data(self, **kwargs):
-#
-#         context = super(patientUpdateView, self).get_context_data(**kwargs)
-#
-#         try:
-#             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
-#             patient_object.status = 2
-#             patient_object.save()
-#
-#         except:
-#             raise Http404('Requested user not found.')
-#
-#         return HttpResponseRedirect("/registration/models/create/?sucess=true")

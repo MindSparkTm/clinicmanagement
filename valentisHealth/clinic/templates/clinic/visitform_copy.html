@@ -141,7 +141,10 @@
                 <div class="mdl-grid">
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#his_presenting_illness').val($('#presenting_illness_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illness_" name="presenting_illness_">{% if form.his_presenting_illness.value != None %}{{ form.his_presenting_illness.value }}{% endif %}</textarea>
+                <textarea onkeyup="$('#his_presenting_illness').val($('#presenting_illness_').val())"
+                          class="mdl-textfield__input bordered"
+                          type="text" rows="8" id="presenting_illness_"
+                          name="presenting_illness_">{{ form.his_presenting_illness.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">History of Presenting Illness</label>
             </div>
                 </div>
@@ -321,11 +324,11 @@
         <div class="mdl-grid full-width">
 
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#examination').val($('#examination_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="examination_" name="examination_">{% if form.examination.value != None %}{{ form.examination.value }}{% endif %}</textarea>
+                <textarea onkeyup="$('#examination').val($('#examination_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="examination_" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Examination</label>
             </div>
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">{% if form.query_diagnosis.value != None %}{{ form.query_diagnosis.value }}{% endif %}</textarea>
+                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">}{{ form.query_diagnosis.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Query Diagnosis</label>
             </div>
         </div>
@@ -382,7 +385,7 @@
                         datatype: 'json',
                         data: labs_data,
                         success: function(json) {
-                            alert('Successfully submitted radiology request');
+                            alert('Successfully submitted Lab request');
                             $("#labs").hide()
                         }
                     });
@@ -1339,7 +1342,7 @@
                             <label for="id_examination" class="mdl-textfield__label mdl-color-text--grey ">
                                     Examination Required
                                 </label>
-                            <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80" id="id_examination" maxlength="20" name="examination" rows="3">{% if patient.examination != None %}{{ patient.examination }}{% endif %}</textarea></div>
+                            <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80" id="id_examination" maxlength="20" name="examination" rows="3">{{ patient.examination|default_if_none:"" }}</textarea></div>
                         </div>
                     </div>
 
@@ -1348,7 +1351,7 @@
                             <label for="id_clinical_indication" class="mdl-textfield__label mdl-color-text--grey ">
                                     Clinical Indications
                                 </label>
-                            <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80" id="id_clinical_indication" maxlength="100" name="clinical_indication" rows="3">{% if patient.clinical_indication != None %}{{ patient.clinical_indication }}{% endif %}</textarea></div>
+                            <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80" id="id_clinical_indication" maxlength="100" name="clinical_indication" rows="3">{{ patient.clinical_indication|default_if_none:"" }}</textarea></div>
                         </div>
                     </div>
 
@@ -1542,9 +1545,9 @@
                     </div>
 
                     <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{{ form.hist_presenting_illness.value|default_if_none:"" }}" id="his_presenting_illness">
-                    <input type="text" class="hidden mdl-textfield__input" name="examination" value="{% if form.examination.value != None %}{{ form.examination.value }}{% endif %}" id="examination">
-                    <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{% if form.query_diagnosis.value != None %}{{ form.query_diagnosis.value }}{% endif %}" id="query_diagnosis">
-                    <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" name="diagnosis">{% if form.diagnosis.value != None %}{{ form.diagnosis.value }}{% endif %}</textarea>
+                    <input type="text" class="hidden mdl-textfield__input" name="examination" value="{{ form.examination.value|default_if_none:"" }}" id="examination">
+                    <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{{ form.query_diagnosis.value|default_if_none:"" }}" id="query_diagnosis">
+                    <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" name="diagnosis">{{ form.diagnosis.value|default_if_none:"" }}</textarea>
 
                     <div id="div_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
 
@@ -1782,7 +1785,21 @@
                 <table class="mdl-data-table full-width">
                     <strong>Date of Visit: <span id="prev_date"></span></strong><br><br>
                     <tr>
-                        <td colspan="2" style="text-align:left;"><strong>Summary:</strong> <span id="prev_summary"> </span></td>
+                        <td colspan="2" style="text-align:left;"><strong>Plan of Management:</strong> <span id="prev_summary"> </span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" style="text-align:left;"><strong>Notes:</strong> <span id="prev_doc_notes"> </span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" style="text-align:left;"><strong>History of Presenting Illness:</strong> <span id="prev_his_illness"> </span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"><strong>Examination:</strong> <span id="prev_examination"> </span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:left;"><strong>Query Diagnosis:</strong> <span id="prev_query_diag"> </span></td>
                     </tr>
 
                     <strong>Triage</strong><br><br>
