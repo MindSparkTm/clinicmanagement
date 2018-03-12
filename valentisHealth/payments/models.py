@@ -89,13 +89,27 @@ class member_info(models.Model):
     def is_active(self):
         # test if cancelled
         # test if benefits date expired
+
         member_no = self.member_no
-        benefits = member_benefits.objects.filter(member_no=member_no)
-        if benefits:
-            benefits_status = [x.is_active() for x in benefits]
-            return any(benefits_status)
+
+        status = member_info.objects.filter(member_no=member_no).values('cancelled')
+
+        return status
+
+    def isUserActive(self):
+        member_no = self.member_no
+
+        status = member_info.objects.filter(member_no=member_no).values('cancelled')
+        for record in status:
+            stats = record["cancelled"]
+            print(record['cancelled'])
+
+        if stats == "1":
+            return False
         else:
-            return not bool(self.cancelled)
+            return True
+
+
 
     def get_benefits(self):
         member_no = self.member_no

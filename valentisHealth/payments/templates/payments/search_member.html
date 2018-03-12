@@ -16,7 +16,7 @@
                 }
             </style>
             <div class="mdl-card__title mdl-color--teal-500 ">
-                <h2 class="mdl-card__title-text mdl-color-text--white" style="justify-content: center">Preauthorisation
+                <h2 class="mdl-card__title-text mdl-color-text--white" style="justify-content: center">Preauthorisations
                     form</h2>
             </div>
 
@@ -162,47 +162,51 @@
 
 
 
-                        //Do ajax call for search box
-                        function searchMembers(str) {
-                            var link = "http://127.0.0.1:8000/payments/api/v1/member_info/"
+                         function searchMembers(str) {
+       console.log('Entered');
 
-                            //ensure to remove previous prepended results to avoid duplicity
-                            $('#search_table tbody').children().remove();
+        //ensure to remove previous prepended results to avoid duplicity
+        $('#searchresult tbody').children().remove();
+        if (/\S/.test(str) && str.length > 5) {
+            $.ajax({
+                url: "/payments/api/v1/member_info/",
+                type: "get",
+                data: {
+                    search: str,
+                },
+                success: function(json) {
+                    console.log("Json",json)
+                    if (json.length === 0) {
+                        onchange = "searchMembers(this.value)"
+                        $("#no_result").show()
+                        $('#searchresult').hide()
 
-                            console.log(str)
-                            $.ajax({
-                                url: "http://127.0.0.1:8000/payments/api/v1/member_info/",
-                                type: "get",
-                                data: {
+                    } else {
 
-                                    search: str,
-                                },
-                                success: function (json) {
-                                    console.log(json)
-                                    if (json.length === 0) {
-                                        $("#no_result").show()
-                                        $('#searchresult').hide()
+                        $("#no_result").hide()
+                        $('#searchresult').show()
+                        var tbody = $('#search_table tbody'),
+                            props = ["member_no", "first_name", "surname", "passport_no"]
+                        $.each(json, function(i, reservation) {
 
-                                    } else {
+                            var tr = $("<tr onclick=\"window.location.href='/payments/pre_authorization/new/" + json[i].member_no + "/' \" '>");
+                            $.each(props, function(i, prop) {
+                                $('<td  class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
+                            });
+                            tbody.append(tr);
+                        });
 
-                                        $("#no_result").hide()
-                                        $('#searchresult').show()
-                                        var tbody = $('#search_table tbody'), props = ["member_no", "first_name", "surname"]
-                                        $.each(json, function (i, reservation) {
-                                            {#                                            var action = "window.location.href='" + link + json[i].member_no + "'"#}
-                                            var tr = $("<tr class='clickable-row' data-href='http://127.0.0.1:8000/payments/payments/pre_authorization/create/?member_no="+json[i].member_no+"'>");
-                                            $.each(props, function (i, prop) {
-                                                $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
-                                            });
-                                            tbody.append(tr);
-                                        });
+                    }
 
-                                    }
+                }
 
-                                }
+            })
+        } else {
+            $("#no_result").hide()
+            $('#searchresult').hide()
+        }
 
-                            })
-                        }
+    }
 
                     </script>
 

@@ -9,7 +9,7 @@ from django.template.loader import get_template
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponse
-#from xhtml2pdf import pisa
+from xhtml2pdf import pisa
 
 import json
 
@@ -150,8 +150,14 @@ class PreAuthorizationCreateView(View):
     def get(self, request, slug):
         member = get_object_or_404(member_info, member_no=slug)
         form = pre_authorizationForm()
-        status = member.is_active()
-        if not status:
+        status = member.is_active();
+        print (status)
+        for record in status:
+            stats = record ["cancelled"]
+            print (record ['cancelled'])
+
+        if stats == "1":
+            print (stats)
             messages.error(request, 'The member is not active')
 
         d = {
