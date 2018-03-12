@@ -1,9 +1,10 @@
 from django import forms
-from .models import Patient
+from .models import Patient, Child
 from django.forms import Textarea
 from django.forms.formsets import BaseFormSet
+from django.forms import inlineformset_factory
 
-class modelsForm(forms.ModelForm):
+class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = ['patient_no', 'first_name', 'middle_name', 'last_name', 'gender',
@@ -53,31 +54,12 @@ class MedicationForm(forms.Form):
 
 
 
-class ChildrenForm(forms.Form):
+class ChildForm(forms.Form):
+    class Meta:
+        model = Patient
+        exclude = ()
 
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super(ChildrenForm, self).__init__(*args, **kwargs)
-
-        self.fields['patient_no'] = forms.CharField(
-            max_length=30,
-            initial=self.user.first_name,
-            widget=forms.TextInput(attrs={
-                'placeholder': 'Patient ID',
-            }))
-
-        self.fields['name'] = forms.CharField(
-                                        max_length=30,
-                                        initial = self.user.first_name,
-                                        widget=forms.TextInput(attrs={
-                                            'placeholder': 'Name',
-                                        }))
-        self.fields['Age'] = forms.CharField(
-                                        max_length=30,
-                                        initial = self.user.last_name,
-                                        widget=forms.TextInput(attrs={
-                                            'placeholder': 'Age',
-                                        }))
+ChildFormSet = inlineformset_factory(Patient, Child, form=ChildForm, extra=1)
 
 
 class MedicationFormSet(BaseFormSet):
@@ -100,4 +82,16 @@ class MedicationFormSet(BaseFormSet):
                         code='missing_medication'
                     )
 
+
+# class ChildFormSet(BaseFormSet):
+#     def clean(self):
+#
+#         if any(self.errors):
+#             return
+#
+#         for form in self.forms:
+#             if form.cleaned_data:
+#                 child_name = form.cleaned_data['child_name']
+#                 child_age = form.cleaned_data['age']
+#
 

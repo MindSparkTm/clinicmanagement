@@ -336,12 +336,14 @@ function dynamic_children() {
         $('#children_td_table').children().remove();
 
         for (var i = 0; i < no && i < 4; i++) {
+            no_ = i+1
             $('#children_td_table')
                 .append($('<tr>')
+                    .append('<td>'+no_+'</td>')
                     .append($('<td>')
                         .append($('<input>')
                             .addClass('Input-text')
-                            .attr('name', 'child_name_' + i)))
+                            .attr('name', 'child_name')))
                     .append($('</td>'))
                     .append($('<td>')
                         .append($('<input>')
@@ -362,7 +364,7 @@ function dynamic_children() {
                         .append($('<input>')
                             .addClass('Input-text')
                             .attr('id', 'child_age_' + i)
-                            .attr('name', 'child_age_' + i)
+                            .attr('name', 'child')
                             .prop('type', 'text')
                         ))
                     .append($('</td>'))

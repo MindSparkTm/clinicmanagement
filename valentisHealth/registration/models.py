@@ -152,15 +152,15 @@ class Patient(models.Model):
 
 
 
-class Children(models.Model):
+class Child(models.Model):
 
     patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
                              verbose_name='patient_no',
                              related_name='children')
     created = DateTimeField(auto_now_add=True, editable=False)
     last_updated = DateTimeField(auto_now=True, editable=False)
-    name = models.CharField(max_length=255, default="NO", null=True, blank=True)
-    age = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    child_name = models.CharField(max_length=255, default="NO", null=True, blank=True)
+    child_age = models.CharField(max_length=255, default="NO", null=True, blank=True)
 
 
     class Meta:

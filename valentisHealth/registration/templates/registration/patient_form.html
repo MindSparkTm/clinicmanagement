@@ -474,46 +474,56 @@
                 </div>
 
 
-                <div class="mdl-grid">
-
-                    <div id='contactsList'>
-                        <table class='mdl-data-table mdl-js-data-table full-width' style='width: #87ccf8; '>
-                            <!-- Children will be saved in one field but seperated with semicolon-->
-                            <input name="children" type="hidden">
-
-                            <tbody data-bind="children_td" style="color: #000;">
-
-                            <tr>
-
-
-                                <td>
+                    <div class="mdl-grid">
+                        <div id='contactsList'>
+                            <table class='mdl-data-table mdl-js-data-table full-width' style='background: rgb(238, 238, 238); '>
+                                <!-- Children will be saved in one field but seperated with semicolon-->
+                                <input name="children" type="hidden">
+                                <tbody data-bind="children_td" style="color: #000;">
+                                <tr>
+                                    <td>
                                         <label for="number_children">Number of children</label>
 
-                                    <input name="number_children" style="width: 30px; " class="Input-text" onkeyup="dynamic_children()" value=0 id='number_children'/>
+                                        <input name="number_children" style="width: 30px; " class="Input-text"
+                                               onkeyup="dynamic_children()" value=0 id='number_children'/>
+                                    </td>
+                                    <td class="data-tab" style="color: #2d5265; padding: 30px; ">Full
+                                        Names
+                                    </td>
+                                    <td class="data-tab" style="color: #2d5265; padding: 30px; ">Date of
+                                        Birth
+                                    </td>
+                                    <td class="data-tab" style="color: #2d5265; padding: 30px; ">Age</td>
+
+
+                                <tbody id="children_td_table">
+                                {% for form in children.forms %}
+                                                <tr class="">
+                                                    {% for field in form.visible_fields %}
+                                                        <td>
+                                                            {# Include the hidden fields in the form #}
+                                                            {% if forloop.first %}
+                                                                {% for hidden in form.hidden_fields %}
+                                                                    {{ hidden }}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                            {{ field.errors.as_ul }}
+                                                            {{ field }}
+                                                        </td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% endfor %}
+
+                                </tbody>
+
+
                                 </td>
-                                <td>
-                                    <table>
-                                        <thead >
-                                        <tr>
-                                            <th class="data-tab" style="color: #2d5265; padding: 30px; ">Full Names</th>
-                                            <th class="data-tab"  style="color: #2d5265; padding: 30px; ">Date of Birth</th>
-                                            <th class="data-tab"  style="color: #2d5265; padding: 30px; ">Age</th>
-                                        </tr>
-                                        </thead>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                                        <tbody id="children_td_table">
-
-                                        </tbody>
-                                    </table>
-
-
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
-
-                </div>
                 </fieldset>
 
                 <fieldset name="health_hist">
