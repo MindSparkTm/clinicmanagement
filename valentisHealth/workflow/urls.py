@@ -14,7 +14,7 @@ urlpatterns = (
 
 urlpatterns += (
     # urls for Message
-    url(r'^message/$', views.MessageListView.as_view(), name='workflow_message_list'),
+    url(r'^$', views.MessageListView.as_view(), name='workflow_message_list'),
     url(r'^new/$', views.MessageCreateView.as_view(), name='workflow_message_create'),
     url(r'^message/detail/(?P<message_no>\S+)/$', views.MessageDetailView.as_view(), name='workflow_message_detail'),
     url(r'^workflow/message/update/(?P<message_no>\S+)/$', views.MessageUpdateView.as_view(), name='workflow_message_update'),
