@@ -24,6 +24,10 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'base.html', {})
 
+class ChangePassword_(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'change_password.html', {})
+
 class Workflow(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'workflow.html', {})

@@ -13,6 +13,7 @@ urlpatterns = [
         activate, name='activate'),
     url(r'^workflow', Workflow.as_view(), name='workflow'),
     # url(r'^admin/', Admin.as_view(), name='admin'),
+    url(r'^change_password', ChangePassword_.as_view(), name='change_password_'),
 
 ]
 
