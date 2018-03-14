@@ -321,6 +321,14 @@ buttons: {
 
             var prescriptiondata = "patientname" + "  " + patientname + " " + "patientnumber" + " " + patientnumber + "  " +
                     "phonenumber" + "  " + phonenumber + "  " + "email" + " " + email + "address" + "  " + address + " " + "prescription" + "  " + prescriptionid;
+
+            sendprescriptionemail(reqbody, "notifications@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
+            sendprescriptionemail(reqbody, "hello@redpulse.co.ke", prescriptiondata, "hello@redpulse.co.ke")
+{#            sendprescriptionemail(reqbody, "prescription@mydawa.com", prescriptiondata, "notifications@valentishealth.co.ke")#}
+
+        });
+
+        function sendprescriptionemail(reqbody, dest_email, prescriptiondata, senderemail){
             var reqbody = {
 
                 "personalizations": [
@@ -328,14 +336,14 @@ buttons: {
                         "to": [
                             {
                                 //"email": "prescription@mydawa.com"
-                                "email": "notifications@valentishealth.co.ke"
+                                "email": dest_email
                             }
                         ],
                         "subject": prescriptiondata,
                     }
                 ],
                 "from": {
-                    "email": "notifications@valentishealth.co.ke"
+                    "email": senderemail
                 },
                 "content": [
                     {
@@ -369,8 +377,7 @@ buttons: {
                     .fail(function (e) {
                         console.log(2, e.status, e.responseText)
                     })
-
-        });
+        }
 
 
     </script>
