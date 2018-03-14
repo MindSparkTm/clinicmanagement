@@ -267,11 +267,7 @@
                                                                             style="font-family: 'Proxima Nova', -apple-system, 'Avenir Next', Helvetica, Arial, sans-serif; font-weight: bold; font-size: 16px; line-height: 24px; background: #42BC85; color: white; border-bottom: 2px #3fb17d solid; text-align: center; vertical-align: middle; padding: 0 !important;"
                                                                             valign="middle" rowspan="1" colspan="1">
                                                                             <a style="color: white; text-decoration: none; outline: none; border: none; display: inline-block; width: 195px; height: 30px; padding-top: 8px; vertical-align: middle; text-align: center;"
-                                                                               shape="rect" href="http://
-
-
-
-                                                                                    {{ domain }}{% url "activate" email=email token=token %}">Activate
+                                                                               shape="rect" href="http://{{ domain }}{% url "activate" email=email token=token %}">Activate
                                                                                 email</a>
                                                                         </td>
                                                                     </tr>
@@ -289,7 +285,7 @@
                                                         <tr>
                                                             <td style="font-family: 'Proxima Nova', -apple-system, 'Avenir Next', Helvetica, Arial, sans-serif; color: #4A4A4A; font-size: 14px; padding: 0 40px 20px; line-height: 20px;"
                                                                 rowspan="1" colspan="1">Please confirm your email
-                                                                address, to activate your account. If you received this
+                                                                address to activate your account. If you received this
                                                                 by mistake or weren't expecting it, please disregard
                                                                 this email.
 

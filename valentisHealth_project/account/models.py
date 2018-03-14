@@ -219,15 +219,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         current_site = get_current_site(request)
         mail_subject = 'Activate your ValentisHealth clinic account.'
         token = account_activation_token.make_token(self)
+
         self.activation_key = token
-
-        print("created and assigned token")
         self.activation_key_expires = self.one_day_hence()
-
-        print("set expiration date for token")
         self.save()
-
-        print("sent token", token)
 
         d = {
             'user': self,
@@ -236,61 +231,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             'token': token,
         }
 
-        print("made context")
-
         msg_plain = render_to_string('activate_email.txt', d)
         msg_html = render_to_string('activate_email.html', d)
 
-        print("Got the templates")
-        #
-        # subject, from_email, to = mail_subject, 'notifications@valentis.co.ke', self.email
-        #
-        # print("about to render templates")
-        # text_content = msg_plain.render(d)
-        # print("about to render html")
-        # html_content = msg_html.render(d)
-        # print("Rendered the templates")
-        #
-        # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-        # msg.attach_alternative(html_content, "text/html")
-        #
-        # print("attached the the html")
-        # msg.send()
-        #
-        # print("sent the email")
-
         send_mail(
-            'Your valentishealth activation email',
+            mail_subject,
             msg_plain,
             'notifications@valentis.co.ke',
             [self.email],
             html_message=msg_html,
         )
-
-
-        # EmailLog.send('expense_notification_to_admin', {
-        #     # context object that email template will be rendered with
-        #     'expense': expense_request,
-        # })
-
-        # invoice_pdf = invoice.pdf_file.pdf_file_data
-
-
-        # send_email(
-        #     # a string such as 'invoice_to_customer'
-        #     template_name,
-        #
-        #     # context that contains Customer, Invoice and other objects
-        #     ctx,
-        #
-        #     # list of receivers i.e. ['customer1@example.com', 'customer2@example.com]
-        #     emails=emails,
-        #
-        #     # attached PDF file of the invoice
-        #     attachments=[(invoice.reference, invoice_pdf, 'application/pdf')]
-        # )
-        #
-
 
     def activate(self, request):
         self.is_active = True
