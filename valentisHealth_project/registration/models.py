@@ -141,12 +141,22 @@ class Patient(models.Model):
                                              first_name=self.first_name, last_name=self.last_name)
             user = CustomUser.objects.get(email=self.email)
             print(user,"++++ user", request)
-            user.send_confirmation(request)
+
+            try:
+                user.send_confirmation(request)
+            except:
+                errors['others'] = "Unable to send confirmation email.\n<br>"
+                raise UnableToSendEmail
             token = Token.objects.create(user=user)
             token.save()
             print(token)
-        except:
-            errors['others'] = 'Something went wrong while creating an account for this patient. Try again. If this persist contact the admin.'
+        except UnableToSendEmail:
+            try:
+                user = CustomUser.objects.get(email=self.email)
+                user.delete()
+            except CustomUser.DoesNotExist:
+                user = None
+            errors['others'] += 'Something went wrong while creating an account for this patient. Try again. If this persists, contact the admin.'
 
         return errors
 
@@ -219,3 +229,8 @@ class Medication(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.pk
+
+
+class UnableToSendEmail(Exception):
+    """ Easy to understand naming conventions work best! """
+    pass

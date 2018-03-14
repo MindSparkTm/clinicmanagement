@@ -19,7 +19,7 @@
                     {% endif %}
                     {% if errors.others %}
                         <div class="alert alert-danger">
-                            <i>{{ errors.others }}</i>
+                            <i>{{ errors.others|safe }}</i>
                         </div>
                     {% endif %}
                     <fieldset class="field-setter" name="personal">

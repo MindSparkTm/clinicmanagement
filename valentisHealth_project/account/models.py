@@ -1,25 +1,95 @@
 from __future__ import unicode_literals
-from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
-from django.core.mail import send_mail
 from django.core.validators import RegexValidator
-from django.contrib.auth.models import Group, Permission
 from django.urls import reverse
-from django.utils.crypto import get_random_string, salted_hmac
+from django.utils.crypto import get_random_string
 from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from django.core.mail import EmailMessage
+from django.template.loader import render_to_string, get_template
 from .tokens import account_activation_token
-from django.contrib.auth import authenticate, login, logout
-import unicodedata
+from django.contrib.auth import login
+import datetime
 
-from django.contrib.auth import password_validation
-from django.contrib.auth.hashers import (
-    check_password, is_password_usable, make_password,
-)
+from django import template
+from django.conf import settings
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.db import models
+from django.template import Context
+
+
+class EmailLog(models.Model):
+    """
+    Email templates get stored in database so that admins can
+    change emails on the fly
+    """
+    subject = models.CharField(max_length=255, blank=True, null=True)
+    to_email = models.CharField(max_length=255, blank=True, null=True)
+    from_email = models.CharField(max_length=255, blank=True, null=True)
+    html_template = models.TextField(blank=True, null=True)
+    plain_text = models.TextField(blank=True, null=True)
+    is_html = models.BooleanField(default=False)
+    is_text = models.BooleanField(default=False)
+
+    # unique identifier of the email template
+    template_key = models.CharField(max_length=255, unique=True)
+
+    def get_rendered_template(self, tpl, context):
+        return self.get_template(tpl).render(context)
+
+    def get_template(self, tpl):
+        return template.Template(tpl)
+
+    def get_subject(self, subject, context):
+        return subject or self.get_rendered_template(self.subject, context)
+
+    def get_body(self, body, context):
+        return body or self.get_rendered_template(self._get_body(), context)
+
+    def get_sender(self):
+        return self.from_email or settings.DEFAULT_FROM_EMAIL
+
+    def get_recipient(self, emails, context):
+        return emails or [self.get_rendered_template(self.to_email, context)]
+
+    @staticmethod
+    def send(*args, **kwargs):
+        EmailLog._send(*args, **kwargs)
+
+    @staticmethod
+    def _send(template_key, context, subject=None, body=None, sender=None,
+              emails=None, bcc=None, attachments=None):
+        mail_template = EmailLog.objects.get(template_key=template_key)
+        context = Context(context)
+
+        subject = mail_template.get_subject(subject, context)
+        body = mail_template.get_body(body, context)
+        sender = sender or mail_template.get_sender()
+        emails = mail_template.get_recipient(emails, context)
+
+        if mail_template.is_text:
+            return send_mail(subject, body, sender, emails, fail_silently=not
+            settings.DEBUG)
+
+        msg = EmailMultiAlternatives(subject, body, sender, emails,
+                                     alternatives=((body, 'text/html'),),
+                                     bcc=bcc
+                                     )
+        if attachments:
+            for name, content, mimetype in attachments:
+                msg.attach(name, content, mimetype)
+        return msg.send(fail_silently=not (settings.DEBUG or settings.TEST))
+
+    def _get_body(self):
+        if self.is_text:
+            return self.plain_text
+
+        return self.html_template
+
+    def __str__(self):
+        return "<{}> {}".format(self.template_key, self.subject)
+
 
 class CustomUserManager(BaseUserManager):
     def _create_user(self, email, password,
@@ -134,10 +204,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return None
 
     def random_password(self, length=10,
-                             allowed_chars='abcdefghjkmnpqrstuvwxyz'
-                                           'ABCDEFGHJKLMNPQRSTUVWXYZ'
-                                           '23456789'):
-
+                        allowed_chars='abcdefghjkmnpqrstuvwxyz'
+                                      'ABCDEFGHJKLMNPQRSTUVWXYZ'
+                                      '23456789'):
 
         """
         Generate a random password with the given length and given
@@ -149,22 +218,85 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def send_confirmation(self, request):
         current_site = get_current_site(request)
         mail_subject = 'Activate your ValentisHealth clinic account.'
-        message = render_to_string('activate_email.html', {
+        token = account_activation_token.make_token(self)
+        self.activation_key = token
+
+        print("created and assigned token")
+        self.activation_key_expires = self.one_day_hence()
+
+        print("set expiration date for token")
+        self.save()
+
+        print("sent token", token)
+
+        d = {
             'user': self,
             'domain': current_site.domain,
             'email': self.email,
-            'token': account_activation_token.make_token(self),
-        })
-        to_email = self.email
+            'token': token,
+        }
 
-        email = EmailMessage(
-            mail_subject, message, to=[to_email]
+        print("made context")
+
+        msg_plain = render_to_string('activate_email.txt', d)
+        msg_html = render_to_string('activate_email.html', d)
+
+        print("Got the templates")
+        #
+        # subject, from_email, to = mail_subject, 'notifications@valentis.co.ke', self.email
+        #
+        # print("about to render templates")
+        # text_content = msg_plain.render(d)
+        # print("about to render html")
+        # html_content = msg_html.render(d)
+        # print("Rendered the templates")
+        #
+        # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        # msg.attach_alternative(html_content, "text/html")
+        #
+        # print("attached the the html")
+        # msg.send()
+        #
+        # print("sent the email")
+
+        send_mail(
+            'Your valentishealth activation email',
+            msg_plain,
+            'notifications@valentis.co.ke',
+            [self.email],
+            html_message=msg_html,
         )
-        email.send()
+
+
+        # EmailLog.send('expense_notification_to_admin', {
+        #     # context object that email template will be rendered with
+        #     'expense': expense_request,
+        # })
+
+        # invoice_pdf = invoice.pdf_file.pdf_file_data
+
+
+        # send_email(
+        #     # a string such as 'invoice_to_customer'
+        #     template_name,
+        #
+        #     # context that contains Customer, Invoice and other objects
+        #     ctx,
+        #
+        #     # list of receivers i.e. ['customer1@example.com', 'customer2@example.com]
+        #     emails=emails,
+        #
+        #     # attached PDF file of the invoice
+        #     attachments=[(invoice.reference, invoice_pdf, 'application/pdf')]
+        # )
+        #
+
 
     def activate(self, request):
         self.is_active = True
+        self.account_verified_date = datetime.now()
         self.save()
+
         login(request, self)
         # return redirect('home')
         password = self.random_password()
@@ -174,3 +306,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         print(password)
         # user.is_active = True
         self.save()
+
+
+    def one_day_hence(self):
+        return timezone.now() + timezone.timedelta(days=1)

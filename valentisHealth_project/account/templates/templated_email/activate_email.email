@@ -1,4 +1,12 @@
+{% block subject %}Activation email for {{ user.email }}{% endblock %}
+{% block plain %}
+    Hi {{ user.username }},
+    Please click on the link to confirm your registration,
+    http://{{ domain }}{% url "activate" email=email token=token %}
 
+{% endblock %}
+
+{% block html %}
     {% load staticfiles %}
 
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
@@ -378,3 +386,5 @@
 
     </html>
 
+
+{% endblock %}

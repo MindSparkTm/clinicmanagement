@@ -18,6 +18,7 @@ from .forms import LoginForm
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
+import datetime as dt
 
 
 class Home(View):
@@ -59,9 +60,13 @@ def activate(request, email, token):
     except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
-        user.activate(request)
+        if user.account_verified_date < dt.datetime.now():
+            user.activate(request)
 
-        return render(request, 'success.html', {'user':user})
+            return render(request, 'success.html', {'user': user})
+        else:
+            return HttpResponse('Activation link has expired!')
+
     else:
         return HttpResponse('Activation link is invalid!')
 
