@@ -243,20 +243,28 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         )
 
     def activate(self, request):
-        self.is_active = True
-        self.account_verified_date = datetime.now()
-        self.save()
+        if self.activation_past_due():
+            self.is_active = True
+            self.account_verified_date = datetime.datetime.now()
+            self.save()
 
-        login(request, self)
-        # return redirect('home')
-        password = self.random_password()
-        self.set_password(password)
-        message = "Your password is: \n" + password + "\nYour username is: " + self.email
-        self.email_user("Your Valentis Health Clinic System Password", message, from_email=None)
-        print(password)
-        # user.is_active = True
-        self.save()
+            login(request, self)
+            # return redirect('home')
+            password = self.random_password()
+            self.set_password(password)
+            message = "Your password is: \n" + password + "\nYour username is: " + self.email
+            self.email_user("Your Valentis Health Clinic System Password", message, from_email=None)
+            print(password)
+            # user.is_active = True
+            self.save()
+
+            return {'status':True, 'message': 'succesful'}
+        else:
+            return {'status':False, 'message': 'Link expired'}
 
 
     def one_day_hence(self):
         return timezone.now() + timezone.timedelta(days=1)
+
+    def activation_past_due(self):
+        return self.activation_key_expires.replace(tzinfo=None) > datetime.datetime.now()

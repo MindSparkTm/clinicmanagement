@@ -60,9 +60,7 @@ def activate(request, email, token):
     except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
-        if user.account_verified_date < dt.datetime.now():
-            user.activate(request)
-
+        if user.activate(request)['status']:
             return render(request, 'success.html', {'user': user})
         else:
             return HttpResponse('Activation link has expired!')
