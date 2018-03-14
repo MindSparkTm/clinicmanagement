@@ -25,6 +25,17 @@ class ResendActivation(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'resend_activation.html', {})
 
+    def post(self, request, *args, **kwargs):
+        email = kwargs.get('email')
+
+        try:
+            user = CustomUser.objects.get(email=email)
+            user.send_confirmation(request)
+            render('resend_activation.html', {'message': 'We have resent the activation please check you mail. it should arrive with 10 minutes. <br><strong>The links EXPIRES in 24hrs.</strong>'})
+
+        except CustomUser.DoesNotExist:
+            render('resend_activation.html', {'message': 'We could find you in our email. Ask for a new registration via admin.'})
+
 
 class ResetPassword(View):
     def get(self, request, *args, **kwargs):
@@ -51,9 +62,6 @@ class ChangePassword(View):
                                                         "then try again."})
 
     def get(self, request, *args, **kwargs):
-
-
-
         user = self.request.user
         user.change_password()
         return render(request, 'change_password.html', {})
