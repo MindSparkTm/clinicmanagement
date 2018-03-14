@@ -19,15 +19,55 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
 import datetime as dt
+from django.contrib.auth import update_session_auth_hash
+
+class ResendActivation(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'resend_activation.html', {})
+
+
+class ResetPassword(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'reset_password.html', {})
+
+
+class ChangePassword(View):
+    def form_valid(self, form):
+        instance = form.save()
+        user = CustomUser.objects.get(email=self.request.user.email)
+        old_password = form.cleaned_data['old_password']
+        new_password = form.cleaned_data['new_password']
+
+        if user.check_password(old_password):
+            update_session_auth_hash(self.request, self.request.user)  # Important!
+            user.set_password(new_password)
+
+            return render('change_password.html', {'messages': "Succefully reset your password"})
+
+        else:
+            render('change_password.html', {'messages': "We were unable to match you old password"
+                                                        " with the one we have. <br>"
+                                                        "Please ensure you are entering your correct password"
+                                                        "then try again."})
+
+    def get(self, request, *args, **kwargs):
+
+
+
+        user = self.request.user
+        user.change_password()
+        return render(request, 'change_password.html', {})
 
 
 class Home(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'base.html', {})
 
+
 class Workflow(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'workflow.html', {})
+
 
 class AddUser(CreateView):
     model = CustomUser

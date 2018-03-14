@@ -12,7 +12,9 @@ urlpatterns = [
     url(r'^activate/(?P<email>[0-9A-Za-z_@\-.]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         activate, name='activate'),
     url(r'^workflow', Workflow.as_view(), name='workflow'),
-    # url(r'^admin/', Admin.as_view(), name='admin'),
+    url(r'^resend_activation/', ResendActivation.as_view(), name='resend_activation'),
+    url(r'^reset_password/', ResetPassword.as_view(), name='reset_password'),
+    url(r'^change_password/', ChangePassword.as_view(), name='change_password'),
 
 ]
 
