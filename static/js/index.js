@@ -357,7 +357,7 @@ function dynamic_children() {
                 $('max-children').hide()
             }, 3000);
         } else if(no<children_added){
-
+            
             no_to_remove = children_added-no
             for (i=0; i<no_to_remove; i++){
                 $('#children_td_table').children().last().remove();

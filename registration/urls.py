@@ -4,7 +4,7 @@ from . import api
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'models', api.modelsViewSet)
+router.register(r'patients', api.modelsViewSet)
 router.register(r'allergies', api.allergiesviewset)
 router.register(r'county', api.countyviewset)
 router.register(r'medicationhistory', api.medicationhistoryviewset)
