@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'css/material.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
- <link rel="stylesheet" href="{% static 'js/pushy.js' %}">
+    <link rel="stylesheet" href="{% static 'js/pushy.js' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/getmdl-select.min.css' %}">
     <link href='https://fonts.googleapis./ccomss?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en'
@@ -37,7 +37,7 @@
     <script src="{% static 'js/utils.js' %}"></script>
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
     {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>#}
@@ -53,15 +53,20 @@
     <div class="mdl-layout__header-row headstitle">
         <!-- Title -->
 
-<div class="sidebar-toggle-box" id="showLeft">
-    <i class="fa fa-bars"></i>
+        <div class="sidebar-toggle-box" id="showLeft">
+            <i class="fa fa-bars"></i>
 
-    <span class="mdl-layout-title logotwo" style="margin-bottom:20px; "> <img src="{% static '/img/logothree.jpg' %}">  </span>
-</div>
+            <span class="mdl-layout-title logotwo" style="margin-bottom:20px; "> <img
+                    src="{% static '/img/logothree.jpg' %}">  </span>
+        </div>
 
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
+        <div class="mdl-navigation">
+            {% if user.is_authenticated %}
+                <a class="btn-logout" href="{% url 'change_password' %}"></span>Change Password</a> {% endif %}
+        </div>
         <div class="mdl-navigation">
             {% if user.is_authenticated %}
                 <a class="btn-logout" href="{% url 'logout' %}"><span class="fa fa-home"></span>Logout</a> {% else %}
