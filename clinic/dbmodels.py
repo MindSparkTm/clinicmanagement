@@ -1,6 +1,6 @@
 import os, csv
 
-path ="/opt/valentisHealth"
+path ="/opt/valentisHealth/clinic"
 
 os.chdir(path)
 from clinic.models import Radiologylist
