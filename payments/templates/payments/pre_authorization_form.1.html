@@ -24,7 +24,9 @@
     </style>
 
 {#    <script defer src="path_to/getmdl-select/getmdl-select.min.js"></script>#}
-    <div class="mdl-grid">
+
+    <div id="content">
+     <div class="mdl-grid">
     <div>
     {% if messages %}
         <div >
@@ -60,12 +62,13 @@
             {#}#}
         </style>
 
+
         <div class="demo-card-square mdl-card  mdl-cell mdl-cell--3-col mdl-shadow--3dp">
               <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text">{{ member.get_full_name }}</h2>
               </div>
 
-             <div class="mdl-card__supporting-text">
+              <div class="mdl-card__supporting-text">
                   <input type="hidden" value={% if member.isUserActive%}Active {% else %}Inactive{% endif %} id="status"/>
                 Member status - {% if member.isUserActive %}Active {% else %}Inactive{% endif %}<br>
                 {{ member.get_aniversary_start }} - {{ member.get_aniversary_end }}
@@ -102,14 +105,7 @@
                                     </td>
                                 </tr>
                              {% endfor %}
-{#                         <tr>#}
-{#                             <td>Claim</td>#}
-{#                             <td>Ksh. 80,000</td>#}
-{#                        </tr>#}
-{#                         <tr>#}
-{#                             <td>Balance</td>#}
-{#                             <td>Ksh. 160,000</td>#}
-{#                        </tr>#}
+
 
                     </table>
               </div>
@@ -118,54 +114,14 @@
         <!-- end profile card -->
 
 <div class="mdl-shadow--3dp mdl-cell mdl-cell--8-col mdl-typography--text-right">
-    <form method="post" action="{% url 'payments_pre_authorization_new' member.member_no %}">
+    <form method="post" id ="preauth" action="{% url 'payments_pre_authorization_new' member.member_no %}">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <input type="hidden" name="action" value="login"/>
+
         <div class="mdl-grid ">
         <input type="text" name="name" value="{{ member.get_full_name }}">
-        <input type="text" name="member_no" value="{{ member.member_no }}">
-{##}
-{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">#}
-{#                                    <span class="mdl-textfield__error">{{ form.code.errors }}</span>#}
-{#                                    <label class="mdl-textfield__label mdl-color-text--grey"#}
-{#                                           for="textfield_code">Reference Number</label>#}
-{##}
-{#                                    <input type="number" class="mdl-textfield__input"#}
-{#                                           id="id_{{ form.code.name }}"#}
-{#                                           name="{{ form.code.name }}"#}
-{#                                           value="{% if form.code.value != None %}{{ form.code.value }}{% endif %}"#}
-{#                                           required>#}
-{##}
-{##}
-{#                                </divart dat>#}
-{##}
-{##}
-{#                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">#}
-{#                                    <span class="mdl-textfield__error">{{ form.auth_batch_no.errors }}</span>#}
-{#                                    <label class="mdl-textfield__label mdl-color-text--grey"#}
-{#                                           for="textfield_auth_batch_no">Batch number</label>#}
-{#                                    <input type="number" class="mdl-textfield__input"#}
-{#                                           id="id_{{ form.auth_batch_no.name }}"#}
-{#                                           name="{{ form.auth_batch_no.name }}" value="{% if form.auth_batch_no.value != None %}{{ form.auth_batch_no.value }}{% endif %}"#}
-{#                                           required>#}
-{#                                </div>#}
-
-            <div class="mdl-selectfield mdl-js-selectfield mdl-cell mdl-cell--3-col">
-{#                                    <input name="auth" type="text" value="" class="mdl-textfield__input"#}
-{#                                           id="authority_type" readonly>#}
-{#                                    <input type="hidden" value="" name="authority_typ">#}
-                <label class="mdl-selectfield__label" for="authority_type" >Authority Type</label>
-                {{ form.authority_type }}
-{#                <span class="mdl-textfield__error">{{ form.authority_type.errors }}</span>#}
-{#                                    <ul for="authority_type"#}
-{#                                        class="mdl-menu mdl-menu--bottom-left mdl-js-menu" id="benefits">#}
-{#                                        <li class="mdl-menu__item" data-val="1">In-Patient</li>#}
-{#                                        <li class="mdl-menu__item" data-val="2">Out-Patient</li>#}
-{#                                        <li class="mdl-menu__item" data-val="3">Marternity</li>#}
-{##}
-{#                                    </ul>#}
-{#                <select name="authority_type" class="mdl-selectfield__select" id="benefits">#}
+        <input type="text" id="member_no" name="member_no" value="{{ member.member_no }}">
 
 
                 </select>
@@ -336,11 +292,7 @@
                        for="textfield_notes">Extension/Notes</label>
                 <span class="mdl-textfield__error">{{ form.internal_notes.errors }}</span>
                 {{ form.internal_notes }}
-{#                <textarea class="mdl-textfield__input" id="id_{{ form.internal_notes.name }}"#}
-{#                          name="{{ form.internal_notes.name }}"#}
-{#                          rows="3" cols="100"#}
-{#                          required>{% if form.internal_notes.value != None %}#}
-{#                    {{ form.internal_notes.value }}{% else %} {% endif %}</textarea>#}
+
             </div>
         </div>
 
@@ -377,34 +329,42 @@
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary disabled">
                 Submit
             </button>
-             <button id="printbtn" type="submit"
-                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary disabled">
-                Print
-            </button>
+
+
         </div>
 
 
     </form>
 </div>
+    </div>
+
 
 </div>
+   <div id="editor"></div>
 
-    <script>
-     window.onload = onload();
-    function onload() {
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
+    <script type="text/javascript">
+
+
+    window.onload = onfuncload;
+    function onfuncload() {
     var bla = $('#status').val();
     if(bla==='Inactive'){
-        console.log('Entered');
+        console.log('hhjfjfEntered');
         $("#preauth :input").prop("disabled", true);
 
     }
-    console.log("bla",bla);
+    console.log("blahhh",bla);
 
     }
 
-    $('#printbtn').on('click',function () {
-        print();
-    })
+
+
+
+
         $('#id_authority_type').change(function() {
             var selection = $('#id_authority_type').val();
             $('.admitted').show();
