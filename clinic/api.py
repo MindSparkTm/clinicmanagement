@@ -21,3 +21,11 @@ class DiagnosisViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('code', 'name')
 
+
+class RadiologyResultsViewSet(viewsets.ModelViewSet):
+    """ViewSet for the LabResults class"""
+
+    queryset = models.Radiologylist.objects.all()
+    serializer_class = serializers.RadiologytestsSerializer
+    permission_classes = [permissions.IsAuthenticated]
+

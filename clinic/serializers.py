@@ -19,3 +19,18 @@ class DiagnosisSerializer(serializers.ModelSerializer):
             'name',
         )
 
+
+class RadiologytestsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Radiologylist
+        fields = (
+            'group',
+            'modality',
+            'tests',
+
+        )
+
+
+
+

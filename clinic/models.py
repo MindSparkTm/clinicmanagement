@@ -52,3 +52,10 @@ class Diagnosis(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     code = models.CharField(max_length=255)
     name = models.CharField(max_length=100)
+
+class Radiologylist(models.Model):
+    group = models.CharField(max_length=255,blank=True)
+    modality = models.CharField(max_length=255,blank=True)
+    tests = models.CharField(max_length=300,blank=True)
+
+

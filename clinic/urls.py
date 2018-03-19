@@ -6,6 +6,8 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'patientvisit', api.PatientVisitViewSet)
 router.register(r'icd10', api.DiagnosisViewSet)
+router.register(r'radiologytests', api.RadiologyResultsViewSet)
+
 
 
 urlpatterns = (
