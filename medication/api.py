@@ -3,10 +3,10 @@ from . import serializers
 from rest_framework import viewsets, permissions
 from rest_framework import filters
 
-class modelsViewSet(viewsets.ModelViewSet):
+class MedicationViewSet(viewsets.ModelViewSet):
     """ViewSet for the models class"""
 
-    queryset = models.models.objects.all()
+    queryset = models.Medication.objects.all()
     serializer_class = serializers.modelsSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -26,7 +26,7 @@ class myDawaModelSet(viewsets.ModelViewSet):
    search_fields = ('brand', 'size', 'price')
 
 class myDawaPrescriptionsModelSet(viewsets.ModelViewSet):
-    queryset = models.models.objects.all()
+    queryset = models.Medication.objects.all()
     serializer_class = serializers.mydawaprescriptions
     permission_classes = [permissions.IsAuthenticated]
 

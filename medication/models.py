@@ -22,7 +22,7 @@ class MyDawa(models.Model):
         return self.brand + " : " + self.size + ":" + self.price
 
 
-class models(models.Model):
+class Medication(models.Model):
 
     # Fields
     slug = extension_fields.AutoSlugField(populate_from='patient_no', blank=True)

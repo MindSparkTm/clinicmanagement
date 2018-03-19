@@ -5,31 +5,31 @@ from valentisHealth.authenticator import *
 
 register = Library()
 
-
-
 def nav_active(request, url):
     """
     In template: {% nav_active request "url_name_here" %}
     """
-    path_object = request.path.split('/')[:3]
-    url_name = resolve(request.path).url_name
-    # if url_name == url:
-    #     return 'active'
-    if url == 'labs':
-        path_object = path_object[1:]
+    # we are interested in the first two parts of the path
+    path_object = request.path.split('/')[1:3]
 
-    if url in request.path.split('/')[:3]:
+    # both the labs and radiology have 'labs' in the path. Ensure that labs is not active when radiology is clicked
+    # get urls for paths with 'lab': either radiolgy or labs
+    if 'labs' in path_object:
+        #dont return active for labs link if request has radiology path
+        if 'radiology' in path_object and url == 'labs':
+            return ''
+    if url in path_object:
         return 'active'
+
     return ''
 
 
 @register.simple_tag()
 def has_group(request):
-
     all_links = {
         "registration": """<a href="/registration/" class=\""""+nav_active(request,"registration")+"""\"  ><i class="fa fa-user-plus spav"> </i> Registration   </a>""",
 
-        "triage": """<a href="/nurse/models/create/"  class=\""""+nav_active(request,"nurse")+"""\" > <i class="fa fa-address-book spav"> </i>  Triage  </a>""",
+        "triage": """<a href="/nurse/nurse"  class=\""""+nav_active(request,"nurse")+"""\" > <i class="fa fa-address-book spav"> </i>  Triage  </a>""",
         "clinic": """<a href="/clinic/patientvisit/create/"  class=\""""+nav_active(request,'clinic')+"""\"  > <i class="fa fa-clipboard spav"> </i> Clinic</a>""",
         "labs": """<a href="/labs/" class=\""""+nav_active(request,'labs')+"""\"> <i class="fa fa-flask spav"> </i>  Labs  </a>""",
         "radiology": """<a href="/labs/radiology/" class=\""""+nav_active(request,'radiology')+""""> <i class="fa fa-bolt spav"> </i> Radiology </a>""",

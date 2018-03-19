@@ -1,10 +1,10 @@
 from django import forms
-from .models import models
+from .models import Medication
 
 
-class modelsForm(forms.ModelForm):
+class MedicationForm(forms.ModelForm):
     class Meta:
-        model = models
+        model = Medication
         fields = ['patient_no', 'patient_name', 'address', 'phone_number', 'prescription','physical_address']
 
 

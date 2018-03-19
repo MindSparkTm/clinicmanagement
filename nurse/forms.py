@@ -1,10 +1,10 @@
 from django import forms
-from .models import models
+from .models import Nurse
 
 
-class modelsForm(forms.ModelForm):
+class ModelsForm(forms.ModelForm):
     class Meta:
-        model = models
+        model = Nurse
         fields = ['systolic', 'diastolic', 'temperature', 'oxygen_saturation', 'urinalysis', 'heart_rate', 'others', 'attending_nurse', 'patient_no', 'first_name', 'last_name', 'middle_name', 'height', 'weight', 'random_glucose']
 
 

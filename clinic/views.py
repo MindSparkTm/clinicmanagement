@@ -1,20 +1,16 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
-from .models import PatientVisit, Diagnosis
+from .models import PatientVisit
 from .forms import PatientVisitForm
 from registration.models import Patient
 from django.http import HttpResponseRedirect
-from django.http import HttpResponse, Http404
-from nurse.models import models as Triage
-from django.db.models import Q
-from rest_framework import generics
-from labs.serializers import LabResultsSerializer, RadiologyResultSerializer
+from django.http import Http404
+from nurse.models import Nurse
 from labs.models import Labs, Radiology, RadiologyResult, LabResults
-from labs.forms import labsForm, radiologyForm, RadiologyResultForm, LabResultsForm
+from labs.forms import labsForm, radiologyForm
 from django.forms.models import model_to_dict
 from medication.models import models as Medication
 from django.contrib.auth.mixins import UserPassesTestMixin
 from valentisHealth.authenticator import *
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 
 class PatientVisitListView(UserPassesTestMixin, ListView):
@@ -131,7 +127,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super(DoctorVisit, self).get_context_data(**kwargs)
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
-        triage = Triage.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0]
+        triage = Nurse.objects.filter(Q(patient_no=self.kwargs['patient_no']))[0]
 
         try:
             labresult = LabResults.objects.filter(Q(triage_id=patient_object.session_id))
@@ -192,7 +188,7 @@ class ClinicReport(ListView):
             except:
                 pass
             try:
-                triage = Triage.objects.get(triage_id=visit_obj.triage_id)
+                triage = Nurse.objects.get(triage_id=visit_obj.triage_id)
                 context['triage'] = triage
             except:
                 pass

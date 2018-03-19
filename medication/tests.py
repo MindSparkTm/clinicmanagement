@@ -1,7 +1,7 @@
 import unittest
 from django.core.urlresolvers import reverse
 from django.test import Client
-from .models import models
+from .models import Medication
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
@@ -38,7 +38,7 @@ def create_models(**kwargs):
     defaults["signature"] = "signature"
     defaults["prescription"] = "prescription"
     defaults.update(**kwargs)
-    return models.objects.create(**defaults)
+    return Medication.objects.create(**defaults)
 
 
 class modelsViewTest(unittest.TestCase):

@@ -6,7 +6,7 @@ from rest_framework import serializers
 class modelsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.models
+        model = models.Medication
         fields = (
             'slug', 
             'created', 

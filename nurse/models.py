@@ -10,7 +10,7 @@ from django.db import models as models
 from django_extensions.db import fields as extension_fields
 import uuid
 
-class models(models.Model):
+class Nurse(models.Model):
 
     # Fields
     slug = extension_fields.AutoSlugField(populate_from='patient_no',null=True, blank=True)

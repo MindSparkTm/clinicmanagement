@@ -170,7 +170,7 @@
                         //string must not be empty or less than two characters
                         if (/\S/.test(str) && str.length > 1) {
                             $.ajax({
-                                url: "/registration/api/v1/models/",
+                                url: "/registration/api/v1/patients/",
                                 type: "get",
                                 data: {
 
@@ -193,7 +193,7 @@
                                         var tbody = $('#search_table tbody'),
                                             props = ["patient_no", "first_name", "last_name", "ss_number", "dob"]
                                         $.each(json, function(i, reservation) {
-                                            var tr = $("<tr onclick=\"window.location.href='/medication/models/new/" + json[i].patient_no + "/'\">");
+                                            var tr = $("<tr onclick=\"window.location.href='/medication/medication/new/" + json[i].patient_no + "/'\">");
                                             $.each(props, function(i, prop) {
                                                 $('<td class="mdl-data-table__cell--non-numeric">').html(reservation[prop]).appendTo(tr);
                                             });
@@ -218,10 +218,8 @@
 
                     <div class="mdh-expandable-search mdl-cell--hide-phone">
                         <i class="material-icons">search</i>
-                        <form method="get" action="/members/search">
                             <input type="text" id="search" placeholder="Search" size="1"
                                    onkeyup="searchMembers(this.value)">
-                        </form>
                     </div>
 
 

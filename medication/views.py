@@ -3,18 +3,18 @@ from django.shortcuts import render
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, View
 from registration.models import Patient
 from valentisHealth.authenticator import *
-from .forms import modelsForm
-from .models import models
+from .forms import MedicationForm
+from .models import Medication
 from valentisHealth.authenticator import *
 from django.contrib.auth.mixins import UserPassesTestMixin
 
-class modelsListView(ListView):
-    model = models
+class MedicationListView(ListView):
+    model = Medication
 
 
-class modelsCreateView(UserPassesTestMixin, CreateView):
-    model = models
-    form_class = modelsForm
+class MedicationCreateView(UserPassesTestMixin, CreateView):
+    model = Medication
+    form_class = MedicationForm
 
     def test_func(self):
         return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
@@ -40,7 +40,7 @@ class modelsCreateView(UserPassesTestMixin, CreateView):
         return HttpResponseRedirect("/medication/search")
 
     def get_context_data(self, **kwargs):
-        context = super(modelsCreateView, self).get_context_data(**kwargs)
+        context = super(MedicationCreateView, self).get_context_data(**kwargs)
 
         try:
             patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
@@ -53,32 +53,32 @@ class modelsCreateView(UserPassesTestMixin, CreateView):
         return context
 
 
-class modelsDetailView(UserPassesTestMixin, DetailView):
-    model = models
+class MedicationDetailView(UserPassesTestMixin, DetailView):
+    model = Medication
 
     def test_func(self):
         return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
 
 
-class modelsUpdateView(UserPassesTestMixin, UpdateView):
-    model = models
-    form_class = modelsForm
+class MedicationUpdateView(UserPassesTestMixin, UpdateView):
+    model = Medication
+    form_class = Medication
 
     def test_func(self):
         return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
 
-class ModelSearchView(UserPassesTestMixin, View):
-    model = models
+class MedicationSearchView(UserPassesTestMixin, View):
+    model = Medication
 
     def test_func(self):
         return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
     # def get_template_names(self):
-    #     return 'medication/models_search.html'
+    #     return 'medication/medication_search.html'
 
     def get(self, request):
 
-        return render(request, 'medication/models_search.html')
+        return render(request, 'medication/medication_search.html')
 

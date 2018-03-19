@@ -1,7 +1,7 @@
 import unittest
 from django.core.urlresolvers import reverse
 from django.test import Client
-from .models import models
+from .models import Nurse
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
@@ -43,12 +43,12 @@ def create_models(**kwargs):
     defaults["last_name"] = "last_name"
     defaults["middle_name"] = "middle_name"
     defaults.update(**kwargs)
-    return models.objects.create(**defaults)
+    return Nurse.objects.create(**defaults)
 
 
 class modelsViewTest(unittest.TestCase):
     '''
-    Tests for models
+    Tests for Nurse
     '''
     def setUp(self):
         self.client = Client()

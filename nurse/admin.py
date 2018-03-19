@@ -1,18 +1,18 @@
 from django.contrib import admin
 from django import forms
-from .models import models
+from .models import Nurse
 
-class modelsAdminForm(forms.ModelForm):
+class ModelsAdminForm(forms.ModelForm):
 
     class Meta:
-        model = models
+        model = Nurse
         fields = '__all__'
 
 
-class modelsAdmin(admin.ModelAdmin):
-    form = modelsAdminForm
+class ModelsAdmin(admin.ModelAdmin):
+    form = ModelsAdminForm
     list_display = ['slug', 'created', 'last_updated', 'systolic', 'diastolic', 'temperature', 'oxygen_saturation', 'urinalysis', 'heart_rate', 'others', 'attending_nurse', 'patient_no', 'first_name', 'last_name', 'middle_name','triage_id', 'height', 'weight','random_glucose']
 
-admin.site.register(models, modelsAdmin)
+admin.site.register(Nurse, ModelsAdmin)
 
 
