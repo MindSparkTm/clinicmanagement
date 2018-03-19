@@ -167,7 +167,7 @@
 
         //ensure to remove previous prepended results to avoid duplicity
         $('#searchresult tbody').children().remove();
-        if (/\S/.test(str) && str.length > 5) {
+        if (/\S/.test(str) && str.length > 2) {
             $.ajax({
                 url: "/payments/api/v1/member_info/",
                 type: "get",
