@@ -2148,7 +2148,7 @@ ul, ol {
   color: rgb(0,150,136) !important; }
 
 .mdl-color--teal-500 {
-  background-color: rgb(0,150,136) !important; }
+  background-color:#84D6F7 !important; }
 
 .mdl-color-text--teal-600 {
   color: rgb(0,137,123) !important; }
@@ -4278,7 +4278,7 @@ input.mdl-button[type="submit"] {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 300;
   line-height: normal;
   overflow: hidden;
@@ -10180,11 +10180,13 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .mdl-textfield.is-focused .mdl-textfield__input {
     outline: none; }
   .mdl-textfield.is-invalid .mdl-textfield__input {
+    font-size: 12px;
     border-color:#3f51b5;
     box-shadow: none; }
   fieldset[disabled] .mdl-textfield .mdl-textfield__input,
   .mdl-textfield.is-disabled .mdl-textfield__input {
     background-color: transparent;
+    font-size: 12px;
     border-bottom: 1px dotted rgba(0,0,0, 0.12);
     color: rgba(0,0,0, 0.26); }
 

@@ -1,8 +1,9 @@
+
 {% load staticfiles %}
 {% load nav_state %}
 
 <!DOCTYPE html>
-<html lang="en" xml:lang="en" xmlns= "http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,13 +11,14 @@
     <meta http-equiv="Content-Language" content="en">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Valentis Health</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'css/material.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'js/pushy.js' %}">
+ <link rel="stylesheet" href="{% static 'js/pushy.js' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/getmdl-select.min.css' %}">
     <link href='https://fonts.googleapis./ccomss?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en'
@@ -38,8 +40,7 @@
     <script src="{% static 'js/tokenize2.min.js' %}"></script>
     <script src="{% static 'js/utils.js' %}"></script>
 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
     {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>#}
@@ -55,12 +56,12 @@
     <div class="mdl-layout__header-row headstitle">
         <!-- Title -->
 
-        <div class="sidebar-toggle-box" id="showLeft">
-            <i class="fa fa-bars"></i>
+<div class="sidebar-toggle-box" id="showLeft">
 
-            <span class="mdl-layout-title logotwo" style="margin-bottom:20px; "> <img
-                    src="{% static '/img/logothree.jpg' %}">  </span>
-        </div>
+
+
+    <span class="mdl-layout-title logotwo" style="margin-bottom:20px; ">   </span>
+</div>
 
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
@@ -72,9 +73,19 @@
         <div class="mdl-navigation">
             {% if user.is_authenticated %}
                 <a class="btn-logout" href="{% url 'logout' %}"><span class="fa fa-home"></span>Logout</a> {% else %}
+
                 <a class="mdl-navigation__link" href="">login</a> {% endif %}
+
+
+
+
+
+
         </div>
     </div>
+
+
+
 </header>
 
 {% include 'session_security/all.html' %}

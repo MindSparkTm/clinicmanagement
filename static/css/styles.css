@@ -1,3 +1,4 @@
+
 /**
  * Copyright 2015 Google Inc. All Rights Reserved.
  *
@@ -41,7 +42,7 @@ body {
 nav {
     padding-top: 20px;
     min-height: 70em;
-    background: #37647b;
+    background: #1498E2;
     position: relative;
 }
 
@@ -81,16 +82,26 @@ nav a {
     text-decoration: none;
     padding: 15px 20px;
     font-size: 14px;
+
 }
 
 .active {
     border-left: 5px solid #a7cbe4;
-    background: #00243e;
+    background:#56ccf2;
+    background: -webkit-linear-gradient(to right, #56ccf2, #2f80ed); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #56ccf2, #2f80ed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 nav a:hover {
-    background: #1a3847;
-    border-left: 5px solid #64b4eb;
+    background: #b3d4fc;
+    border-left: 10px solid #64b4eb;
+       -webkit-transition: all 400ms linear;
+    -moz-transition: all 400ms linear;
+    -o-transition: all 400ms linear;
+    -ms-transition: all 400ms linear;
+    transition: all 400ms linear;
+
 }
 
 .sidebar-toggle-box {
@@ -407,12 +418,11 @@ fieldset {
 }
 
 .mdl-color--teal-500 {
-    background: #3c5d73 !important;
+    background: #84D6F7 !important;
 }
 
 .mdl-textfield {
-    margin: 0px 4px;
-
+    margin: 30px 4px;
 }
 
 .accordion {
@@ -428,8 +438,11 @@ body {
 }
 
 .mdl-color--teal-500 {
-    background: #2d5265 !important;
+    background: #84D6F7 !important;
 
+}
+.mdl-color-variation {
+    background: #70BF44 !important;
 }
 
 .mdl-card__title {
@@ -437,7 +450,10 @@ body {
 }
 
 .headstitle {
-    background: #2d5265 !important;
+    background: #56CCF2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     box-shadow: rgba(0, 0, 0, 0.2) 0 8px 16px 0px, rgba(0, 0, 0, 0.19) 0 6px 20px 0;
     position: fixed;
     z-index: 999;
@@ -450,7 +466,10 @@ body {
 }
 
 .btn-over {
-    background: #2d5265;
+    background: #56CCF2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     color: #fff;
     font-size: 14px;
     text-align: center;
@@ -462,7 +481,7 @@ body {
 }
 
 .btn-over:hover {
-    background: #558fad;
+    background:#2F80ED;
 }
 
 .flow-page {
@@ -471,7 +490,7 @@ body {
 }
 
 .btn-logout {
-    background: #2d5265;
+
     color: #fff;
     font-size: 14px;
     text-align: center;
@@ -517,9 +536,15 @@ legend {
     width: 100%;
     margin: 10px 0;
     float: left;
-    color: #525356;
-    font-size: 12px;
-    padding-left: 10px;
+    color: #fff !important;
+    border-radius: 3px;
+    box-shadow: 2px 2px #ccc;
+    font-weight: bold; font-size: 16px; padding: 17px;
+    font-size: 20px;
+
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+
+
 }
 
 .data-tab {
@@ -733,13 +758,4 @@ legend {
   color: #1b1e21;
   background-color: #d6d8d9;
   border-color: #c6c8ca;
-}
-
-.text-green {
-    color: green;
-
-}
-
-.text-red{
-    color:red;
 }
