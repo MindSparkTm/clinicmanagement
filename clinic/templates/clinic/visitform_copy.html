@@ -2,7 +2,9 @@
 {% block content %}
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-<script>
+<script type="text/javascript">
+     var radiologytsts = [];
+
     $("#clinic_tab").addClass("current").siblings().removeClass("current")
     $("#waiting_list_table").hide()
 
@@ -15,6 +17,38 @@
 
         $("#textfield_last_name").val(last_name).parent().addClass("is-dirty")
     }
+
+     $.ajax({
+        url: "/labs/api/v1/radiologytests/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            console.log("s",response);
+            for (var i = 0; i < response.length; ++i) {
+                    radiologytsts.push(response[i].modality + "----"+response[i].tests);
+
+            }
+             console.log("radiologttsts",radiologytsts);
+        $('#tblists').autocomplete({
+            source: radiologytsts,
+            minLength: 0,
+            scroll: true
+        }).focus(function() {
+            $(this).autocomplete("search", "");
+        });
+
+
+
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
 </script>
 
 <script>
@@ -324,7 +358,7 @@
         <div class="mdl-grid full-width">
 
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#examination').val($('#examination_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="examination_" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea>
+                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Examination</label>
             </div>
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
