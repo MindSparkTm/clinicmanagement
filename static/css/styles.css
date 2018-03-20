@@ -42,7 +42,7 @@ body {
 nav {
     padding-top: 20px;
     min-height: 70em;
-    background: #1498E2;
+    background: #2a475f;
     position: relative;
 }
 
@@ -87,14 +87,11 @@ nav a {
 
 .active {
     border-left: 5px solid #a7cbe4;
-    background:#56ccf2;
-    background: -webkit-linear-gradient(to right, #56ccf2, #2f80ed); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #56ccf2, #2f80ed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background:#00A79D;
 }
 
 nav a:hover {
-    background: #b3d4fc;
+    background: #00AEEF;
     border-left: 10px solid #64b4eb;
        -webkit-transition: all 400ms linear;
     -moz-transition: all 400ms linear;
@@ -438,8 +435,8 @@ body {
 }
 
 .mdl-color--teal-500 {
-    background: #84D6F7 !important;
 
+    background: ##00A79D !important;  /* fallback for old browsers */
 }
 .mdl-color-variation {
     background: #70BF44 !important;
@@ -450,9 +447,8 @@ body {
 }
 
 .headstitle {
-    background: #56CCF2;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #3D8BC1;  /* fallback for old browsers */
+
 
     box-shadow: rgba(0, 0, 0, 0.2) 0 8px 16px 0px, rgba(0, 0, 0, 0.19) 0 6px 20px 0;
     position: fixed;
@@ -536,13 +532,13 @@ legend {
     width: 100%;
     margin: 10px 0;
     float: left;
-    color: #fff !important;
+    color: #105659 !important;
     border-radius: 3px;
     box-shadow: 2px 2px #ccc;
     font-weight: bold; font-size: 16px; padding: 17px;
     font-size: 20px;
 
-    background: linear-gradient(to right, #2F80ED, #56CCF2);
+ background:#BFF4F7;
 
 
 }
