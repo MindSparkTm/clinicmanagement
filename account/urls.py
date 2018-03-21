@@ -1,8 +1,8 @@
 from django.conf.urls import url
-
 from .views import *
-from rest_framework.authtoken import views
-# from rest_framework_jwt.views import refresh_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import refresh_jwt_token
+from rest_framework_jwt.views import verify_jwt_token
 
 urlpatterns = [
     url('^log-in/$', LoginPage.as_view(), name='login'),
@@ -19,6 +19,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^api-token-auth/', views.obtain_auth_token),
-    # url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api-token-verify/', verify_jwt_token)
 ]

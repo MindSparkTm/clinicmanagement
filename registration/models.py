@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db import models as models
 from account.models import CustomUser
 from rest_framework.authtoken.models import Token
+from rest_framework_jwt.settings import api_settings
 import datetime
 
 
@@ -151,9 +152,15 @@ class Patient(models.Model):
             except:
                 errors['others'] = "Unable to send confirmation email.\n<br>"
                 raise UnableToSendEmail
-            token = Token.objects.create(user=user)
-            token.save()
+
+            jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+            jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+            payload = jwt_payload_handler(user)
+            token = jwt_encode_handler(payload)
+
             print(token)
+
         except UnableToSendEmail:
             try:
                 user = CustomUser.objects.get(email=self.email)
