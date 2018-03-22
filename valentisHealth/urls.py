@@ -33,5 +33,4 @@ urlpatterns = [
                   url(r'^account/', include('account.urls')),
                   url(r'^workflow/', include('workflow.urls')),
                   url(r'^$', include('registration.urls')),
-                  url(r'session_security/', include('session_security.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -81,8 +81,6 @@ class CustomJWTSerializer(JSONWebTokenSerializer,ModelBackend):
             msg = msg.format(username_field=self.username_field)
             raise serializers.ValidationError(msg)
 
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
