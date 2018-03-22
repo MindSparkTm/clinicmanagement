@@ -27,7 +27,7 @@ urlpatterns = [
                   url(r'^registration/', include('registration.urls')),
                   url(r'^nurse/', include('nurse.urls')),
                   url(r'^medication/', include('medication.urls')),
-                  url(r'^labs/', include('labs.urls')),
+                  url(r'^tests/', include('tests.urls')),
                   url(r'^clinic/', include('clinic.urls')),
                   url(r'^payments/', include('payments.urls')),
                   url(r'^account/', include('account.urls')),

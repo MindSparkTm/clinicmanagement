@@ -40,10 +40,10 @@ class Message(models.Model):
         return "from {0} to {1}:\nsubject {2}".format(self.sender, self.recipient, self.subject)
 
     def get_absolute_url(self):
-        return reverse('workflow_message_detail', args=(self.pk,))
+        return reverse('workflow_message_list')
 
     def get_update_url(self):
-        return reverse('workflow_message_update', args=(self.pk,))
+        return reverse('workflow_message_list')
 
 
 class WorkflowManager:
@@ -51,8 +51,8 @@ class WorkflowManager:
         """
         Return accepted messages received by a user but not marked as archived or deleted.
         """
-        return Message.objects.filter(Q(recipient=user)).exclude(sender_archived=True).filter(
-            recipient_deleted_at__isnull=True)
+        print("getting your messages")
+        return Message.objects.filter(Q(recipient=user)).exclude(sender_archived=True).filter(sender_deleted_at__isnull=True)
 
     def inbox_unread_count(self, user):
         """
@@ -67,5 +67,4 @@ class WorkflowManager:
         """
         Return all messages sent by a user but not marked as archived or deleted.
         """
-        return Message.objects.filter(Q(sender=user)).exclude(sender_archived=True).filter(
-            sender_deleted_at__isnull=True)
+        return Message.objects.filter(Q(sender=user)).exclude(sender_archived=True) #.filter(sender_deleted_at__isnull=True)

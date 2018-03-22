@@ -12,7 +12,14 @@ class Uploads(models.Model):
     patient_no = models.AutoField(primary_key=True)
     file = models.FileField(upload_to='documents/')
 
+
 class Patient(models.Model):
+    user = models.OneToOneField(
+        CustomUser,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
 
     # Fields
     patient_no = models.AutoField(primary_key=True)
@@ -25,13 +32,13 @@ class Patient(models.Model):
     street_name = CharField(max_length=30, null=True, blank=True)
     apartment_name = CharField(max_length=30, null=True, blank=True)
     postal_code = CharField(max_length=30, null=True, blank=True)
-    postal_address = TextField(max_length=100,null=True, blank=True)
-    physical_address = TextField(max_length=100,null=True, blank=True)
-    city = CharField(max_length=30,null=True, blank=True)
-    country = CharField(max_length=30,null=True, blank=True)
+    postal_address = TextField(max_length=100, null=True, blank=True)
+    physical_address = TextField(max_length=100, null=True, blank=True)
+    city = CharField(max_length=30, null=True, blank=True)
+    country = CharField(max_length=30, null=True, blank=True)
     age = IntegerField(null=True, blank=True)
-    next_of_kin = TextField(max_length=100,null=True, blank=True)
-    n_of_kin_rel = TextField(max_length=100,null=True, blank=True)
+    next_of_kin = TextField(max_length=100, null=True, blank=True)
+    n_of_kin_rel = TextField(max_length=100, null=True, blank=True)
     email = EmailField(null=True, blank=True)
     phone = CharField(max_length=30, null=True, blank=True)
     primary_insurance = TextField(max_length=255, null=True, blank=True)
@@ -43,23 +50,23 @@ class Patient(models.Model):
     sub_address = TextField(max_length=100, null=True, blank=True)
     ss_number = TextField(max_length=100, null=True, blank=True)
     id_type = TextField(max_length=100, null=True, blank=True)
-    sub_ss_number = TextField(max_length=100,null=True, blank=True)
+    sub_ss_number = TextField(max_length=100, null=True, blank=True)
     alt_phone = CharField(max_length=30, null=True, blank=True)
     sub_work_phone = TextField(max_length=100, null=True, blank=True)
     dob = DateField(null=True, blank=True)
     sub_dob = DateField(null=True, blank=True)
     id_type = TextField(max_length=100, null=True, blank=True)
-    sub_id_type=TextField(max_length=100, null=True, blank=True)
-    sub_employer = TextField(max_length=100,null=True, blank=True)
+    sub_id_type = TextField(max_length=100, null=True, blank=True)
+    sub_employer = TextField(max_length=100, null=True, blank=True)
     status = IntegerField(null=True, blank=True)
     session_id = TextField(max_length=400, null=True, blank=True)
     emergency_contact = TextField(max_length=100, null=True, blank=True)
     e_contact_address = TextField(max_length=100, null=True, blank=True)
-    e_phone_number =TextField(max_length=100, null=True, blank=True)
+    e_phone_number = TextField(max_length=100, null=True, blank=True)
 
     uploaded_file = models.FileField(upload_to='media/users/', null=True, blank=True)
 
-    #history
+    # history
     occupation = models.CharField(max_length=255, default="None", null=True, blank=True)
     marital_status = models.CharField(max_length=255, default="Single", null=True, blank=True)
     spouse = models.CharField(max_length=255, null=True, blank=True)
@@ -109,7 +116,6 @@ class Patient(models.Model):
     fam_hist = models.TextField(max_length=400, null=True, blank=True)
     e_relationship = models.TextField(max_length=400, null=True, blank=True)
 
-
     class Meta:
         ordering = ('last_updated',)
 
@@ -143,9 +149,12 @@ class Patient(models.Model):
         if email_exist or id_exist:
             return errors
         try:
-            user = CustomUser.objects.create(email=self.email, is_patient=True, id_number=self.ss_number, phone_number=self.phone,
+            user = CustomUser.objects.create(email=self.email, is_patient=True, id_number=self.ss_number,
+                                             phone_number=self.phone,
                                              first_name=self.first_name, last_name=self.last_name)
-            print(user,"++++ user", request)
+            self.user = user
+            self.save()
+            print(user, "++++ user", request)
 
             try:
                 user.send_confirmation(request)
@@ -159,6 +168,9 @@ class Patient(models.Model):
             payload = jwt_payload_handler(user)
             token = jwt_encode_handler(payload)
 
+            # token = Token.objects.create(user=user)
+            # token.save()
+
             print(token)
 
         except UnableToSendEmail:
@@ -167,23 +179,21 @@ class Patient(models.Model):
                 user.delete()
             except CustomUser.DoesNotExist:
                 user = None
-            errors['others'] += 'Something went wrong while creating an account for this patient. Try again. If this persists, contact the admin.'
+            errors[
+                'others'] += 'Something went wrong while creating an account for this patient. Try again. If this persists, contact the admin.'
 
         return errors
 
 
-
 class Child(models.Model):
-
     patient_no = models.ForeignKey('Patient', on_delete=models.CASCADE,
-                             verbose_name='patient_no',
-                             related_name='children')
+                                   verbose_name='patient_no',
+                                   related_name='children')
     created = DateTimeField(auto_now_add=True, editable=False)
     last_updated = DateTimeField(auto_now=True, editable=False)
     child_name = models.CharField(max_length=255, null=True, blank=True)
     child_dob = models.DateField(null=True, blank=True)
-    child_age = models.CharField(max_length=255,  null=True, blank=True)
-
+    child_age = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = 'child'
@@ -193,35 +203,35 @@ class Child(models.Model):
     def __str__(self):
         return self.pk
 
-
     def __unicode__(self):
         return u'%s' % self.pk
 
 
 class Allergies(models.Model):
-        allergy_name = models.CharField(max_length=200)
+    allergy_name = models.CharField(max_length=200)
 
-        class Meta:
-            verbose_name = 'Allergy'
-            verbose_name_plural = 'Allergies'
+    class Meta:
+        verbose_name = 'Allergy'
+        verbose_name_plural = 'Allergies'
 
-        def __str__(self):
-            return self.pk
+    def __str__(self):
+        return self.pk
 
-        def __unicode__(self):
-            return u'%s' % self.pk
+    def __unicode__(self):
+        return u'%s' % self.pk
 
 
 class County(models.Model):
-        County = models.CharField(max_length=2550)
+    County = models.CharField(max_length=2550)
 
 
 class MedicationHistory(models.Model):
-        Disease = models.CharField(max_length=2550)
+    Disease = models.CharField(max_length=2550)
 
 
 class InsuranceCompanies(models.Model):
     Name = models.CharField(max_length=2550)
+
 
 #
 # class Medication(models.Model):

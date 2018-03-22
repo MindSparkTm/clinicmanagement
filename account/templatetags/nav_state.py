@@ -12,12 +12,6 @@ def nav_active(request, url):
     # we are interested in the first two parts of the path
     path_object = request.path.split('/')[1:3]
 
-    # both the labs and radiology have 'labs' in the path. Ensure that labs is not active when radiology is clicked
-    # get urls for paths with 'lab': either radiolgy or labs
-    if 'labs' in path_object:
-        #dont return active for labs link if request has radiology path
-        if 'radiology' in path_object and url == 'labs':
-            return ''
     if url in path_object:
         return 'active'
 
@@ -31,8 +25,8 @@ def has_group(request):
 
         "triage": """<a href="/nurse/nurse"  class=\""""+nav_active(request,"nurse")+"""\" > <i class="fa fa-address-book spav"> </i>  Triage  </a>""",
         "clinic": """<a href="/clinic/patientvisit/create/"  class=\""""+nav_active(request,'clinic')+"""\"  > <i class="fa fa-clipboard spav"> </i> Clinic</a>""",
-        "labs": """<a href="/labs/" class=\""""+nav_active(request,'labs')+"""\"> <i class="fa fa-flask spav"> </i>  Labs  </a>""",
-        "radiology": """<a href="/labs/radiology/" class=\""""+nav_active(request,'radiology')+""""> <i class="fa fa-bolt spav"> </i> Radiology </a>""",
+        "labs": """<a href="/tests/labs" class=\""""+nav_active(request,'labs')+"""\"> <i class="fa fa-flask spav"> </i>  Labs  </a>""",
+        "radiology": """<a href="/tests/radiology/" class=\""""+nav_active(request,'radiology')+""""> <i class="fa fa-bolt spav"> </i> Radiology </a>""",
         "prescription": """<a href="/medication/search/" class=\""""+nav_active(request,'medication')+"""\"> <i class="fa fa-book spav"> </i> Prescriptions </a>""",
         "payments": """<a href="/payments/search_member/" class=\""""+nav_active(request,'payments')+""""> <i class="fa fa-book spav"> </i> Authorization </a>""",
         "admin": """<a href="/account/admin/adduser" class=\""""+nav_active(request,'account')+""""> <i class="fa fa-book spav"> </i> Admin </a>""",

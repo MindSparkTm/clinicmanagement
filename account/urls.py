@@ -3,6 +3,9 @@ from .views import *
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
+from rest_framework_jwt.views import ObtainJSONWebToken
+from valentisHealth.backends import CustomJWTSerializer
+
 
 urlpatterns = [
     url('^log-in/$', LoginPage.as_view(), name='login'),
@@ -19,7 +22,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^api-token-refresh/', refresh_jwt_token),
-    url(r'^api-token-verify/', verify_jwt_token)
+    url(r'^api/auth/token', ObtainJSONWebToken.as_view(serializer_class=CustomJWTSerializer)),
+    url(r'^api/auth/refresh/', refresh_jwt_token),
+    url(r'^api/auth/verify/', verify_jwt_token)
 ]

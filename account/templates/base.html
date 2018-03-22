@@ -18,12 +18,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'css/material.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
- <link rel="stylesheet" href="{% static 'js/pushy.js' %}">
+ <link rel="stylesheet" href="{% static 'js/pushy.min.js' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/getmdl-select.min.css' %}">
-    <link href='https://fonts.googleapis./ccomss?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en'
-          rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'css/intlTelInput.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/intlTelInput.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,20 +32,15 @@
     <script defer src=" {% static 'js/getmdl-select.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script defer src="{% static 'js/index.js' %}"></script>
-    <script defer src="{% static 'js/material-datepicker.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
     <script src="{% static 'js/intlTelInput.min.js' %}"></script>
-    <script src="{% static 'js/tokenize2.min.js' %}"></script>
-    <script src="{% static 'js/utils.js' %}"></script>
+{#    <script src="{% static 'js/utils.js' %}"></script>#}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
     {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>#}
     {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>#}
-
-    <!--datetome picker -->
-
 
 </head>
 
@@ -162,7 +155,7 @@
                         </thead>
                         <tbody>
                         {% for patient in from_labs %}
-                            <tr onclick="window.location.href='/clinic/patientvisit/doctor/{{ patient.patient_no }}/'">
+                            <tr onclick="window.location.href='{% url 'doctor_visit' patient.patient_no %}'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>
@@ -191,7 +184,7 @@
                         </thead>
                         <tbody>
                         {% for patient in from_radiology %}
-                            <tr onclick="window.location.href='{% url 'doctor_visit' %}{{ patient.patient_no }}/'">
+                            <tr onclick="window.location.href='{% url 'doctor_visit' patient.patient_no %}'">
                                 <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>

@@ -5,8 +5,8 @@ from registration.models import Patient
 from django.http import HttpResponseRedirect
 from django.http import Http404
 from nurse.models import Nurse
-from labs.models import Labs, Radiology, RadiologyResult, LabResults
-from labs.forms import labsForm, radiologyForm
+from tests.models import Labs, Radiology, RadiologyResult, LabResults
+from tests.forms import labsForm, radiologyForm
 from django.forms.models import model_to_dict
 from medication.models import models as Medication
 from django.contrib.auth.mixins import UserPassesTestMixin
@@ -37,6 +37,7 @@ class PatientVisitListView(UserPassesTestMixin, ListView):
 class PatientVisitCreateView(UserPassesTestMixin, CreateView):
     model = PatientVisit
     form_class = PatientVisitForm
+    template_name = "clinic/clinic_landing.html"
 
     def test_func(self):
         return is_doctor(self.request)
@@ -116,7 +117,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
             return visit_object
 
     def get_template_names(self):
-        return 'clinic/visitform_copy.html'
+        return 'clinic/visitform_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -152,7 +153,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
             context['waiting_list'] = Patient.objects.filter(status="3")
             context['triage'] = triage
 
-            #-4 out of labs, -5 out of radiology
+            #-4 out of tests, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
             context['prev_visit'] = PatientVisit.objects.filter(Q(patient_no=self.kwargs['patient_no']))
             # print(context['prev_visit'])
