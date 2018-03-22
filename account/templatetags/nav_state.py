@@ -30,7 +30,7 @@ def has_group(request):
         "prescription": """<a href="/medication/search/" class=\""""+nav_active(request,'medication')+"""\"> <i class="fa fa-book spav"> </i> Prescriptions </a>""",
         "payments": """<a href="/payments/search_member/" class=\""""+nav_active(request,'payments')+""""> <i class="fa fa-book spav"> </i> Authorization </a>""",
         "admin": """<a href="/account/admin/adduser" class=\""""+nav_active(request,'account')+""""> <i class="fa fa-book spav"> </i> Admin </a>""",
-        "workflow": """<a href="/workflow" class=\""""+nav_active(request,'workflow')+""""> <i class="fa fa-comments"></i> Workflow </a>""",
+        "workflow": """<a href="/workflow" class=\""""+nav_active(request,'workflow')+""""> <i class="fa fa-comments spav"></i> Workflow </a>""",
         }
 
     if is_admin(request):
