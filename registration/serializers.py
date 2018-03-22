@@ -3,12 +3,13 @@ from . import models
 from rest_framework import serializers
 
 
-class modelsSerializer(serializers.ModelSerializer):
+class PatientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Patient
         fields = (
-            'pk', 
+            'pk',
+            'user',
             'patient_no', 
             'created', 
             'last_updated', 

@@ -39,7 +39,7 @@ class Patient(models.Model):
     age = IntegerField(null=True, blank=True)
     next_of_kin = TextField(max_length=100, null=True, blank=True)
     n_of_kin_rel = TextField(max_length=100, null=True, blank=True)
-    email = EmailField(null=True, blank=True)
+    email = EmailField(unique=True)
     phone = CharField(max_length=30, null=True, blank=True)
     primary_insurance = TextField(max_length=255, null=True, blank=True)
     secondary_insurance = TextField(max_length=100, null=True, blank=True)

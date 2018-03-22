@@ -7,7 +7,7 @@ class modelsViewSet(viewsets.ModelViewSet):
     """ViewSet for the models class"""
 
     queryset = models.Patient.objects.all()
-    serializer_class = serializers.modelsSerializer
+    serializer_class = serializers.PatientSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     filter_backends = (filters.SearchFilter,)

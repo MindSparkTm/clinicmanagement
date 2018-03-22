@@ -7,9 +7,10 @@ from rest_framework_jwt.serializers import JSONWebTokenSerializer
 from django.utils.translation import ugettext as _
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
+from registration.serializers import PatientSerializer
+from registration.models import Patient
 
 User = get_user_model()
-
 
 class EmailAuthBackend(ModelBackend):
     """
@@ -79,3 +80,18 @@ class CustomJWTSerializer(JSONWebTokenSerializer,ModelBackend):
             msg = _('Must include "{username_field}" and "password".')
             msg = msg.format(username_field=self.username_field)
             raise serializers.ValidationError(msg)
+
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'email')
+
+def jwt_response_payload_handler(token, user=None, request=None):
+    patient = Patient.objects.get(user=user)
+    return {
+        'token': token,
+        'user': UserSerializer(user, context={'request': request}).data,
+        'patient': PatientSerializer(patient, context={'request': request}).data,
+    }
