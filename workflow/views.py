@@ -47,7 +47,6 @@ class MessageCreateView(CreateView):
         context = {}
         manager = WorkflowManager()
         context['inbox'] = manager.inbox(self.request.user)
-        print(context['inbox'][0].body, "we got your messages")
         context['sent'] = manager.sent(self.request.user)
         context['unread_count'] = manager.inbox_unread_count(self.request.user)
         context['users'] = CustomUser.objects.all()
