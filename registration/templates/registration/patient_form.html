@@ -66,7 +66,7 @@
                                    for="textfield_phone">Phone </label>
                             <input class="phone_input mdl-textfield__input" type='tel'
                                    id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
-                                   name="phone" required/>
+                                   name="phone"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.phone.errors|striptags }}</span>
                         </div>
@@ -142,8 +142,7 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_dob">Date of Birth</label>
-                            <input class="mdl-textfield__input" type="date"
-                                   id="textfield_dob" value="{{ form.dob.value|default_if_none:"" }}" name="dob"/>
+                            {{ form.dob }}
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.dob.errors|striptags }}</span>
                         </div>
@@ -169,21 +168,10 @@
                                   class="mdl-textfield__error">{{ form.age.errors|striptags }}</span>
                         </div>
 
-
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.gender.value }}"
-                                   id="gender" readonly/>
-                            <input value="{{ form.gender.value }}" type="hidden" name="gender"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="gender">Sex</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="gender">
-                                <li class="mdl-menu__item" data-val="male">Male</li>
-                                <li class="mdl-menu__item" data-val="female">Female</li>
-                                <li class="mdl-menu__item" data-val="other">Other</li>
-
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.gender.errors|striptags }}</span>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Gender</label>
+                            {{ form.gender }}
                             </div>
 
                         <script>
@@ -207,23 +195,11 @@
                         </div>
 
                     <div class="mdl-grid">
-
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
-                                   id="id_type" readonly/>
-                            <input value="{{ form.id_type.value|default_if_none:"" }}" type="hidden" name="id_type"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="id_type">Identification Documents</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="id_type">
-                                <li class="mdl-menu__item" data-val="id">ID</li>
-                                <li class="mdl-menu__item" data-val="ps">Passport</li>
-                                <li class="mdl-menu__item" data-val="otherd">Other Documents</li>
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
-                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_id_type">ID Type</label>
+                        {{ form.id_type }}
+                            </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_ss_number">Identification No</label>
