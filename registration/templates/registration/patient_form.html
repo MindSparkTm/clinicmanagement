@@ -787,21 +787,15 @@
                     </div>
 
                     <fieldset name="scans">
-                        <legend  style="font-weight: bold; font-size: 16px; ">Social information</legend>
-                          <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:""}}" id="id_type" readonly/>
-                                <input value="{{ form.if_smoker.value|default_if_none:""}}" type="hidden" name="if_smoker"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_smoker">Do you smoke</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_smoker">
-                                    <li class="mdl-menu__item" data-val="id">Yes</li>
-                                    <li class="mdl-menu__item" data-val="ps">No</li>
+                        <legend  style="font-weight: bold; font-size: 16px; ">Socials information</legend>
 
+                        <div>  <span>Do you smoke </span>
+  <select name=" ">
+  <option value="yes">Yes</option>
+  <option value="no">No </option>
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_smoker.errors|striptags }}</span>
-                            </div>
+</select>
+    </div>
 
 
 
