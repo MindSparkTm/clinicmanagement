@@ -10,7 +10,16 @@ class PatientForm(forms.ModelForm):
         ('Passport', 'Passport Number'),
     )
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
-        'class': 'mdl-textfield custom-dropdown large',
+        'class': 'select-box',
+    }))
+
+    YESNO = (
+        ('Yes', 'Yes'),
+        ('No','No')
+    )
+
+    if_smoker = forms.CharField(widget=forms.Select(choices=YESNO, attrs={
+        'class': 'select-box',
     }))
 
     GENDERCHOICES = (
@@ -20,7 +29,7 @@ class PatientForm(forms.ModelForm):
     )
     gender = forms.CharField(widget=forms.Select(choices=GENDERCHOICES,
                                                  attrs={
-                                                     'class': 'mdl-textfield custom-dropdown large',
+                                                     'class': 'select-box',
                                                  }
                                                  ))
     dob = forms.CharField(widget=forms.TextInput(attrs={
