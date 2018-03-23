@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{% static 'css/material.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
- <link rel="stylesheet" href="{% static 'js/pushy.min.js' %}">
+    <link rel="stylesheet" href="{% static 'js/pushy.min.js' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/getmdl-select.min.css' %}">
 
@@ -223,7 +223,7 @@
 
         $('.phone_input').on('keyup', function () {
             var number = $(this).intlTelInput("getNumber");
-            $(this).val(number)
+{#            $(this).val(number)#}
 
         });
     })

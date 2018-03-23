@@ -5,18 +5,43 @@ from django.forms.formsets import BaseFormSet
 
 
 class PatientForm(forms.ModelForm):
+    IDCHOICES = (
+        ('ID', 'ID Number'),
+        ('Passport', 'Passport Number'),
+    )
+    id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
+        'class': 'mdl-textfield custom-dropdown large',
+    }))
+
+    GENDERCHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
+    )
+    gender = forms.CharField(widget=forms.Select(choices=GENDERCHOICES,
+                                                 attrs={
+                                                     'class': 'mdl-textfield custom-dropdown large',
+                                                 }
+                                                 ))
+    dob = forms.CharField(widget=forms.TextInput(attrs={
+                                                     'class': 'mdl-textfield__input',
+        'type':'date'
+                                                 }
+                                                 ))
+
     class Meta:
         model = Patient
-        exclude = ('patient_no','created')
+
+        exclude = ('patient_no', 'created')
 
 
 class MedicationForm(forms.Form):
     medication = forms.CharField(
-                    max_length=100,
-                    widget=forms.TextInput(attrs={
-                        'placeholder': 'Medication',
-                    }),
-                    required=False)
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Medication',
+        }),
+        required=False)
     dosage = forms.CharField(
         max_length=30,
         widget=forms.TextInput(attrs={

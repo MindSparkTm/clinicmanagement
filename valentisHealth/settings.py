@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'tests',
     'payments',
     'workflow',
-    'session_security',
+    # 'session_security',
 
 ]
 
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'valentisHealth.middleware.LoginRequiredMiddleware',
-    'session_security.middleware.SessionSecurityMiddleware',
+    # 'session_security.middleware.SessionSecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'valentisHealth.urls'
@@ -171,13 +171,13 @@ EMAIL_DEBUG = True
 #
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-TIME = 120*60 #
-SESSION_COOKIE_AGE = TIME    #change expired session
-SESSION_IDLE_TIMEOUT = TIME  #logout
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+#
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# TIME = 120*60 #
+# SESSION_COOKIE_AGE = TIME    #change expired session
+# SESSION_IDLE_TIMEOUT = TIME  #logout
 
 
 REST_FRAMEWORK = {
