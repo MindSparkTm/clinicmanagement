@@ -11,7 +11,7 @@ class PatientForm(forms.ModelForm):
     )
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
         'class': 'mdl-textfield custom-dropdown large',
-    }))
+    }), required=False,)
 
     GENDERCHOICES = (
         ('Male', 'Male'),
@@ -23,11 +23,15 @@ class PatientForm(forms.ModelForm):
                                                      'class': 'mdl-textfield custom-dropdown large',
                                                  }
                                                  ))
-    dob = forms.CharField(widget=forms.TextInput(attrs={
-                                                     'class': 'mdl-textfield__input',
-        'type':'date'
-                                                 }
-                                                 ))
+    dob = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'mdl-textfield__input',
+            'type': 'date',
+            'onkeyup': 'setDob($(this).val())',
+            'onchange': 'setDob($(this).val())'
+
+        }
+    ))
 
     class Meta:
         model = Patient

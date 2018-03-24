@@ -1,89 +1,110 @@
-
 {% extends "base.html" %}
 {% load static %}
 {% static  'css/style.css' %}
 {% block content %}
 
 
-        <div class="mdl-cell mdl-cell--12-col mdl-grid" style="">
+    <div class="mdl-cell mdl-cell--12-col mdl-grid" style="">
 
-            <div class="mdl-card__supporting-text mdl-grid">
+        <div class="mdl-card__supporting-text mdl-grid">
 
-                <form method="POST" action="" class="full-width" enctype="multipart/form-data" >
-                    {% csrf_token %}
-                    {% if success %}
-                        <div class="alert alert-success">
-                            <strong>Success!</strong> {{ success }}
-                        </div>
-                    {% endif %}
-                    {% if errors.others %}
+            <form method="POST" action="" class="full-width" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if success %}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{ success }}
+                    </div>
+                {% endif %}
+                {% if errors.others %}
+                    <div class="alert alert-danger">
+                        <i>{{ errors.others|safe }}</i>
+                    </div>
+                {% endif %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <i>{{ error|escape }}</i>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
                         <div class="alert alert-danger">
-                            <i>{{ errors.others|safe }}</i>
+                            <i>{{ error|escape }}</i>
                         </div>
-                    {% endif %}
-                    <fieldset class="field-setter" name="personal" >
-                        <legend  style="font-weight: bold; font-size: 16px; padding: 17px;  ">Personal Information</legend>
+                    {% endfor %}
+                {% endif %}
+                <fieldset class="field-setter" name="personal">
+                    <legend style="font-weight: bold; font-size: 16px; padding: 17px;  ">Personal Information</legend>
+                {% if not new %}
+                <script>
+                $(function(){
+                    readonly_personal()
+                })
 
-                        <fieldset {% if not new %}style="background: #f9e7e714;" disabled{% endif %}>
+                </script>
+                {% endif %}
+
+                    <fieldset id="personal_information" {% if not new %}style="background: #f9e7e714;" readonly{% endif %}>
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey forminput"
                                        for="textfield_first_name">First Name</label>
 
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_first_name" name="first_name"
-                                   value="{{ form.first_name.value|default_if_none:"" }}"/>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_first_name" name="first_name"
+                                       value="{{ form.first_name.value|default_if_none:"" }}"/>
                             <span style="visibility: visible; "
                                   class="mdl-textfield__error">{{ form.first_name.errors|striptags }}</span>
 
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_middle_name">Middle Name</label>
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_middle_name" name="middle_name"
-                                   value="{{ form.middle_name.value|default_if_none:"" }}"/>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_middle_name">Middle Name</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_middle_name" name="middle_name"
+                                       value="{{ form.middle_name.value|default_if_none:"" }}"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.middle_name.errors|striptags }}</span>
-                        </div>
+                            </div>
 
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_last_name">Last Name</label>
-                            <input class="mdl-textfield__input" type="text"
-                                   id="textfield_last_name" value="{{ form.last_name.value|default_if_none:"" }}"
-                                   name="last_name" required/>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_last_name">Last Name</label>
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_last_name" value="{{ form.last_name.value|default_if_none:"" }}"
+                                       name="last_name" required/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.last_name.errors|striptags }}</span>
-                        </div>
+                            </div>
 
                         </div>
 
                         <div class="mdl-grid ">
 
-                        <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_phone">Phone </label>
-                            <input class="phone_input mdl-textfield__input" type='tel'
-                                   id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
-                                   name="phone"/>
+                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_phone">Phone </label>
+                                <input class="phone_input mdl-textfield__input" type='tel'
+                                       id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
+                                       name="phone"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.phone.errors|striptags }}</span>
-                        </div>
+                            </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <label class="mdl-textfield__label mdl-color-text--grey"
-                                   for="textfield_email">Email Address</label>
-                            <input class="mdl-textfield__input" type="email"
-                                   id="textfield_email"
-                                   value="{{ form.email.value|default_if_none:"" }}" name="email"/>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey"
+                                       for="textfield_email">Email Address</label>
+                                <input class="mdl-textfield__input" type="email"
+                                       id="textfield_email"
+                                       value="{{ form.email.value|default_if_none:"" }}" name="email"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.email.errors|striptags }}{{ errors.email }}</span>
-                        </div>
+                            </div>
 
                         </div>
-                        </fieldset>
+                    </fieldset>
 
                     <div class="mdl-grid ">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -98,7 +119,7 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_postal_code">Postal Code</label>
-                            <input class="mdl-textfield__input" type="Number"
+                            <input class="mdl-textfield__input" type="text"
                                    id="textfield_postal_code"
                                    value="{{ form.postal_code.value|default_if_none:"" }}" name="postal_code" required/>
                             <span style="visibility: visible;"
@@ -106,13 +127,14 @@
                         </div>
 
 
-                        </div>
+                    </div>
 
-                        <div class="mdl-grid ">
+                    <div class="mdl-grid ">
 
-							 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
 
-                                 <span style="font-size: 12px; "> County  </span> <select style="width: 150px;font-size: 12px; " id="county">
+                            <span style="font-size: 12px; "> County  </span> <select
+                                style="width: 150px;font-size: 12px; " id="county">
 
                         </select>
                         </div>
@@ -134,9 +156,9 @@
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.country.errors|striptags }}</span>
 
-                            </div>
-
                         </div>
+
+                    </div>
 
                     <div class="mdl-grid ">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -172,7 +194,7 @@
                             <label class=""
                                    for="textfield_gender">Gender</label>
                             {{ form.gender }}
-                            </div>
+                        </div>
 
                         <script>
                             //Toggle the hiding of the female section
@@ -185,21 +207,23 @@
                                     else {
                                         $('#females_').hide();
 
-                                }
+                                    }
 
 
-                            });
+                                });
                             })
 
                         </script>
-                        </div>
+                    </div>
 
                     <div class="mdl-grid">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_id_type">ID Type</label>
-                        {{ form.id_type }}
-                            </div>
+                            {{ form.id_type }}
+                            <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
+                        </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_ss_number">Identification No</label>
@@ -220,7 +244,7 @@
 
                 {% if not new %}
                     <fieldset name="insurance" class="fieldset">
-                        <legend style="font-weight: bold; font-size: 16px;padding: 17px; " >Emergency contact</legend>
+                        <legend style="font-weight: bold; font-size: 16px;padding: 17px; ">Emergency contact</legend>
                         <div class="mdl-grid ">
                             <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -269,7 +293,8 @@
 
 
                     <fieldset name="insurance" class="fieldset">
-                        <legend style="font-weight: bold; font-size: 16px;padding: 17px;  " >Insurance information</legend>
+                        <legend style="font-weight: bold; font-size: 16px;padding: 17px;  ">Insurance information
+                        </legend>
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -285,14 +310,16 @@
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
                                 <input class="mdl-textfield__input" value="" id="other_ins_subscriber" readonly/>
                                 <input value="" type="hidden" name="other_ins_subscriber"/>
-                                <label class="mdl-textfield__label" for="other_ins_subscriber">Are You the Policy Holder?</label>
+                                <label class="mdl-textfield__label" for="other_ins_subscriber">Are You the Policy
+                                    Holder?</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="other_ins_subscriber">
                                     <li class="mdl-menu__item" data-val="yes">Yes</li>
                                     <li class="mdl-menu__item" data-val="no">No</li>
 
                                 </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.other_ins_subcriber.errors|striptags }}</span>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.other_ins_subcriber.errors|striptags }}</span>
 
 
                             </div>
@@ -300,7 +327,7 @@
                                 $(function () {
                                     $("#other_ins_subscriber").on('change', function (e) {
                                         if ($('#other_ins_subscriber').val() != "Male") {
-{#                                            $('#').show();#}
+                                            {#                                            $('#').show();#}
 
                                         }
 
@@ -361,6 +388,7 @@
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_subscriber_relationship" value="
 
+
                                         {% if form.subscriber_relationship.value != None %}{{ form.subscriber_relationship.value }}{% endif %}"
                                        name="subscriber_relationship"/>
                             <span style="visibility: visible;"
@@ -371,7 +399,7 @@
                         </div>
 
                         <div class="mdl-grid ">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_sub_dob">Date of Birth</label>
                                 <input class="mdl-textfield__input" type="date"
@@ -383,7 +411,8 @@
 
 
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.sub_id_type.value }}" id="sub_id_type" readonly/>
+                                <input class="mdl-textfield__input" value="{{ form.sub_id_type.value }}"
+                                       id="sub_id_type" readonly/>
                                 <input value="{{ form.sub_id_type.value }}" type="hidden" name="sub_id_type"/>
                                 <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                                 <label class="mdl-textfield__label" for="sub_id_type">Identification Documents</label>
@@ -394,7 +423,8 @@
                                     <li class="mdl-menu__item" data-val="otherd">Other Documents</li>
 
                                 </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.sub_id_type.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
@@ -407,28 +437,27 @@
                             </div>
 
 
-
                         </div>
 
                         <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_postal_code">Address</label>
+                                       for="textfield_sub_address">Address</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_code"
-                                       value="{{ form.postal_code.value|default_if_none:"" }}"
-                                       name="postal_code"/>
+                                       id="textfield_sub_address"
+                                       value="{{ form.sub_address.value|default_if_none:"" }}"
+                                       name="sub_address"/>
                             <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.postal_code.errors|striptags }}</span>
+                                  class="mdl-textfield__error">{{ form.sub_address.errors|striptags }}</span>
                             </div>
-
 
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_sub_employer">Employer</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_sub_employer" value="{{ form.sub_employer.value|default_if_none:"" }}"
+                                       id="textfield_sub_employer"
+                                       value="{{ form.sub_employer.value|default_if_none:"" }}"
                                        name="sub_employer"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.sub_employer.errors|striptags }}</span>
@@ -446,10 +475,10 @@
 
                         </div>
                     </fieldset>
-                <br><br>
+                    <br><br>
 
-                <fieldset name="personal">
-                        <legend >Other Personal info</legend>
+                    <fieldset name="personal">
+                        <legend>Other Personal info</legend>
 
                         <div class="mdl-grid">
 
@@ -460,7 +489,8 @@
                                        id="textfield_occupation"
                                        value="{{ form.occupation.value|default_if_none:"" }}"
                                        name="occupation"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.occupation.errors|striptags }}</span>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.occupation.errors|striptags }}</span>
                             </div>
 
                         </div>
@@ -471,36 +501,48 @@
                                 <input class="mdl-textfield__input"
                                        value="{{ form.marital_status.value|default_if_none:"" }}" id="marital_status"
                                        readonly/>
-                                <input value="{{ form.marital_status.value|default_if_none:"" }}" type="hidden" name="marital_status"/>
+                                <input value="{{ form.marital_status.value|default_if_none:"" }}" type="hidden"
+                                       name="marital_status"/>
                                 <label class="mdl-textfield__label" for="marital_status">marital Status</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
                                     for="marital_status">
-                                    <li class="mdl-menu__item" data-val="single"><div class="full-width" onclick="hide_element('parter_div')">Single</div></li>
-                                    <li class="mdl-menu__item" data-val="married"><div class="full-width" onclick="show_element('parter_div')">Married</div></li>
-                                    <li class="mdl-menu__item" data-val="divorced"><div class="full-width" onclick="hide_element('parter_div')">Divorced</div></li>
+                                    <li class="mdl-menu__item" data-val="single">
+                                        <div class="full-width" onclick="hide_element('parter_div')">Single</div>
+                                    </li>
+                                    <li class="mdl-menu__item" data-val="married">
+                                        <div class="full-width" onclick="show_element('parter_div')">Married</div>
+                                    </li>
+                                    <li class="mdl-menu__item" data-val="divorced">
+                                        <div class="full-width" onclick="hide_element('parter_div')">Divorced</div>
+                                    </li>
 
                                 </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.marital_status.errors|striptags }}</span>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.marital_status.errors|striptags }}</span>
                             </div>
-                            <div id="parter_div" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <div id="parter_div"
+                                 class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_spouse"
                                        value="{{ form.spouse.value|default_if_none:"" }}"
                                        name="spouse"/>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.spouse.errors|striptags }}</span>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.spouse.errors|striptags }}</span>
                             </div>
                         </div>
 
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="rev_docs"></textarea>
-                                <label class="mdl-textfield__label" for="rev_docs">Names/Specialties/Locations of Other Physicians Caring for You, including previous primary care doctor:</label>
-                        <span style="visibility: visible;" class="mdl-textfield__error">{{ form.rev_docs.errors|striptags }}</span>
+                                <label class="mdl-textfield__label" for="rev_docs">Names/Specialties/Locations of Other
+                                    Physicians Caring for You, including previous primary care doctor:</label>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.rev_docs.errors|striptags }}</span>
                             </div>
-                </div>
+                        </div>
 
                         <div class="mdl-grid">
                             <div id=''>
@@ -532,7 +574,7 @@
                                     <tbody id="children_td_table">
                                     {% for form in child_formset.forms %}
                                         <tr>
-                                        <td></td>
+                                            <td></td>
                                             <td>{{ form.child_name }}</td>
                                             <td>{{ form.child_dob }}</td>
                                             <td>{{ form.child_age }}
@@ -540,18 +582,18 @@
                                         </tr>
                                     {% endfor %}
 
-                                </tbody>
+                                    </tbody>
 
                                 </table>
                             </div>
 
-                    </div>
-                </fieldset>
+                        </div>
+                    </fieldset>
 
-                <fieldset name="health_hist">
-                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >Health History</legend>
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
+                    <fieldset name="health_hist">
+                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; ">Health History</legend>
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input hidden" type="text" rows="8"
                                                               id="allergies"></textarea>
                                 <label class="mdl-textfield__label" for="allergies">Allergies to Medication or
@@ -562,34 +604,35 @@
                                   id="other_allergies"></textarea>
 
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
 
-                   <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input hidden" type="text" rows="8"
                                                               id="fam_history"
                                                               name="fam_history">{{ form.familyhistory.value|default_if_none:"" }}</textarea>
                                 <label class="mdl-textfield__label" for="fam_history">Family History</label>
-                        <div style="padding-top: 20px" id="familyhistory"></div>
-                        <span style="visibility: visible;" class="mdl-textfield__error">{{ form.familyhistory.errors|striptags }}</span>
+                                <div style="padding-top: 20px" id="familyhistory"></div>
+                                <span style="visibility: visible;"
+                                      class="mdl-textfield__error">{{ form.familyhistory.errors|striptags }}</span>
                             </div>
-                </div>
+                        </div>
 
 
-                   <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="allergies">{{ form.social_hist.value|default_if_none:"" }}</textarea>
                                 <label class="mdl-textfield__label" for="social_hist">Social History</label>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.social_hist.errors|striptags }}</span>
                             </div>
-                </div>
+                        </div>
 
 
-                <div class="mdl-grid ">
+                        <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_phys_examination">Date of Last Physical Exam</label>
@@ -611,7 +654,7 @@
                                   class="mdl-textfield__error">{{ form.last_blood_work.errors|striptags }}</span>
                             </div>
                         </div>
-                <div class="mdl-grid ">
+                        <div class="mdl-grid ">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_colonoscopy">Date of Last Colonoscopy</label>
@@ -633,11 +676,11 @@
                                   class="mdl-textfield__error">{{ form.last_tetanus_shot.errors|striptags }}</span>
                             </div>
                         </div>
-                </fieldset>
+                    </fieldset>
 
-                <div id="females_">
-                    <fieldset id="for_females" name="for_females">
-                        <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >For females</legend>
+                    <div id="females_">
+                        <fieldset id="for_females" name="for_females">
+                            <legend style="font-weight: bold; font-size: 16px; padding: 17px; ">For females</legend>
 
                             <div class="mdl-grid ">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
@@ -735,8 +778,8 @@
                                 </div>
                             </div>
 
-                <div class="mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                            <div class="mdl-grid">
+                                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="method_of_contraception">{{ form.method_of_contraception.value|default_if_none:"" }}</textarea>
                                     <label class="mdl-textfield__label" for="method_of_contraception">Method/s of
@@ -746,8 +789,8 @@
                                 </div>
                             </div>
 
-                    </fieldset>
-                </div>
+                        </fieldset>
+                    </div>
 
 
 
@@ -763,200 +806,239 @@
                     </div>
 
                     <fieldset name="scans">
-                        <legend  style="font-weight: bold; font-size: 16px; ">Social information</legend>
-                          <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:""}}" id="id_type" readonly/>
-                                <input value="{{ form.if_smoker.value|default_if_none:""}}" type="hidden" name="if_smoker"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_smoker">Do you smoke</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_smoker">
-                                    <li class="mdl-menu__item" data-val="id">Yes</li>
-                                    <li class="mdl-menu__item" data-val="ps">No</li>
+                        <legend style="font-weight: bold; font-size: 16px; ">Social information</legend>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
+                                   id="id_type" readonly/>
+                            <input value="{{ form.if_smoker.value|default_if_none:"" }}" type="hidden"
+                                   name="if_smoker"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_smoker">Do you smoke</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_smoker">
+                                <li class="mdl-menu__item" data-val="id">Yes</li>
+                                <li class="mdl-menu__item" data-val="ps">No</li>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_smoker.errors|striptags }}</span>
-                            </div>
-
-
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_smoker.errors|striptags }}</span>
+                        </div>
 
 
                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input name="thought_quiting" class="mdl-textfield__input" value="{{ form.thought_quiting.value|default_if_none:""}}" id="thought_quiting" readonly/>
-                                <input value="{{ form.thought_quiting.value|default_if_none:""}}" type="hidden" name="thought_quiting"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="thought_quiting">Do you Chew Tobacco</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="id_type">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                            <input name="thought_quiting" class="mdl-textfield__input"
+                                   value="{{ form.thought_quiting.value|default_if_none:"" }}" id="thought_quiting"
+                                   readonly/>
+                            <input value="{{ form.thought_quiting.value|default_if_none:"" }}" type="hidden"
+                                   name="thought_quiting"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="thought_quiting">Do you Chew Tobacco</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="id_type">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.thought_quiting.errors|striptags }}</span>
-                            </div>
-
-
-
-
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.if_quit_before.value|default_if_none:""}}" id="if_quit_before" readonly/>
-                                <input value="{{ form.if_quit_before.value|default_if_none:""}}" type="hidden" name="if_quit_before"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_quit_before">Have you thought quitting</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_quit_before">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
-
-
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_quit_before.errors|striptags }}</span>
-                            </div>
-
-
-
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.if_quit_before.value|default_if_none:""}}" id="if_quit_before" readonly/>
-                                <input value="{{ form.if_quit_before.value|default_if_none:""}}" type="hidden" name="if_quit_before"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_quit_before">Have you quit before ?</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_quit_before">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_quit_before.errors|striptags }}</span>
-                            </div>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.thought_quiting.errors|striptags }}</span>
+                        </div>
 
 
                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.if_drink_alcohol.value|default_if_none:""}}" id="if_drink_alcohol" readonly/>
-                                <input value="{{ form.if_drink_alcohol.value|default_if_none:""}}" type="hidden" name="if_drink_alcohol"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_drink_alcohol">Do you drink alcohol</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_drink_alcohol">
-                                    <li class="mdl-menu__item" data-val="id">Yes</li>
-                                    <li class="mdl-menu__item" data-val="ps">No</li>
+                            <input class="mdl-textfield__input"
+                                   value="{{ form.if_quit_before.value|default_if_none:"" }}" id="if_quit_before"
+                                   readonly/>
+                            <input value="{{ form.if_quit_before.value|default_if_none:"" }}" type="hidden"
+                                   name="if_quit_before"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_quit_before">Have you thought quitting</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_quit_before">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_drink_alcohol.errors|striptags }}</span>
-                            </div>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_quit_before.errors|striptags }}</span>
+                        </div>
 
 
-
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.if_drug_used.value|default_if_none:""}}" id="if_drug_used" readonly/>
-                                <input value="{{ form.if_drug_used.value|default_if_none:""}}" type="hidden" name="if_drug_used"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_drug_used">Any illegal history of drug use</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_drug_used">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
-
-
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_drug_used.errors|striptags }}</span>
-                            </div>
-
-
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.v.value|default_if_none:""}}" id="if_exercise" readonly/>
-                                <input value="{{ form.if_exercise.value|default_if_none:""}}" type="hidden" name="id_type"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_exercise">Do you exercise</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_exercise">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input"
+                                   value="{{ form.if_quit_before.value|default_if_none:"" }}" id="if_quit_before"
+                                   readonly/>
+                            <input value="{{ form.if_quit_before.value|default_if_none:"" }}" type="hidden"
+                                   name="if_quit_before"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_quit_before">Have you quit before ?</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_quit_before">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_quit_before.errors|striptags }}</span>
+                        </div>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_exercise.errors|striptags }}</span>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input"
+                                   value="{{ form.if_drink_alcohol.value|default_if_none:"" }}" id="if_drink_alcohol"
+                                   readonly/>
+                            <input value="{{ form.if_drink_alcohol.value|default_if_none:"" }}" type="hidden"
+                                   name="if_drink_alcohol"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_drink_alcohol">Do you drink alcohol</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_drink_alcohol">
+                                <li class="mdl-menu__item" data-val="id">Yes</li>
+                                <li class="mdl-menu__item" data-val="ps">No</li>
 
 
-                       <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:""}}" id="if_special_diet" readonly/>
-                                <input value="{{ form.if_special_diet.value|default_if_none:""}}" type="hidden" name="if_special_diet"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_special_diet">Are you on any special diet</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="id_type">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_drink_alcohol.errors|striptags }}</span>
+                        </div>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_special_diet.errors|striptags }}</span>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.if_drug_used.value|default_if_none:"" }}"
+                                   id="if_drug_used" readonly/>
+                            <input value="{{ form.if_drug_used.value|default_if_none:"" }}" type="hidden"
+                                   name="if_drug_used"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_drug_used">Any illegal history of drug
+                                use</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_drug_used">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:""}}" id="if_use_caffein" readonly/>
-                                <input value="{{ form.if_use_caffein.value|default_if_none:""}}" type="hidden" name="if_use_caffein"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_use_caffein">Do you consume any caffeinated drink</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="if_use_caffein">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_drug_used.errors|striptags }}</span>
+                        </div>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_use_caffein.errors|striptags }}</span>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.v.value|default_if_none:"" }}"
+                                   id="if_exercise" readonly/>
+                            <input value="{{ form.if_exercise.value|default_if_none:"" }}" type="hidden"
+                                   name="id_type"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_exercise">Do you exercise</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_exercise">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.is_sadder.value|default_if_none:""}}" id="is_sadder" readonly/>
-                                <input value="{{ form.is_sadder.value|default_if_none:""}}" type="hidden" name="is_sadder"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="is_sadder">Have you recently noticed any increase in sadness or gloominess</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="is_sadder">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_exercise.errors|striptags }}</span>
+                        </div>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
+                                   id="if_special_diet" readonly/>
+                            <input value="{{ form.if_special_diet.value|default_if_none:"" }}" type="hidden"
+                                   name="if_special_diet"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_special_diet">Are you on any special
+                                diet</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="id_type">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                         <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.if_lost_interest.value|default_if_none:""}}" id="if_lost_interest" readonly/>
-                                <input value="{{ form.if_lost_interest.value|default_if_none:""}}" type="hidden" name="if_lost_interest"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="if_lost_interest">Have you lost interest in enjoyable activities </label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="id_type">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_special_diet.errors|striptags }}</span>
+                        </div>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.if_lost_interest.errors|striptags }}</span>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
+                                   id="if_use_caffein" readonly/>
+                            <input value="{{ form.if_use_caffein.value|default_if_none:"" }}" type="hidden"
+                                   name="if_use_caffein"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_use_caffein">Do you consume any caffeinated
+                                drink</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="if_use_caffein">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
- <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.have_will.value|default_if_none:""}}" id="have_will" readonly/>
-                                <input value="{{ form.have_will.value|default_if_none:""}}" type="hidden" name="have_will"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="have_will">Do you have a living will</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="have_will">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.have_will.errors|striptags }}</span>
-                            </div>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_use_caffein.errors|striptags }}</span>
+                        </div>
 
+
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.is_sadder.value|default_if_none:"" }}"
+                                   id="is_sadder" readonly/>
+                            <input value="{{ form.is_sadder.value|default_if_none:"" }}" type="hidden"
+                                   name="is_sadder"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="is_sadder">Have you recently noticed any increase
+                                in sadness or gloominess</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="is_sadder">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
+
+
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
+                        </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input"
+                                   value="{{ form.if_lost_interest.value|default_if_none:"" }}" id="if_lost_interest"
+                                   readonly/>
+                            <input value="{{ form.if_lost_interest.value|default_if_none:"" }}" type="hidden"
+                                   name="if_lost_interest"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="if_lost_interest">Have you lost interest in
+                                enjoyable activities </label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="id_type">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
+
+
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.if_lost_interest.errors|striptags }}</span>
+                        </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" value="{{ form.have_will.value|default_if_none:"" }}"
+                                   id="have_will" readonly/>
+                            <input value="{{ form.have_will.value|default_if_none:"" }}" type="hidden"
+                                   name="have_will"/>
+                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                            <label class="mdl-textfield__label" for="have_will">Do you have a living will</label>
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                                for="have_will">
+                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
+                                <li class="mdl-menu__item" data-val="No">No</li>
+                            </ul>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.have_will.errors|striptags }}</span>
+                        </div>
 
 
                     </fieldset>
@@ -974,230 +1056,228 @@
                 {% endif %}
 
 
-                    <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+                <div class="mdl-cell mdl-cell--12-col send-button" align="center">
 
-                        <button type="submit"
-                                class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
-                            Submit
-                        </button>
-                    </div>
+                    <button type="submit"
+                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                        Submit
+                    </button>
+                </div>
 
-                </form>
+            </form>
 
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script type="text/javascript">
-        window.onload = loadfunctionsonpage();
-        var allergiess=[];
-        var counties=[];
-        var familyhistory = [];
-        var insurancecomp=[];
+            <script type="text/javascript">
+                window.onload = loadfunctionsonpage();
+                var allergiess = [];
+                var counties = [];
+                var familyhistory = [];
+                var insurancecomp = [];
 
 
-        function loadfunctionsonpage(){
-            allergiess=[];
-            counties=[];
-            familyhistory=[]
-            insurancecomp=[]
-            getallergies();
-            getcounties();
-            getfamilyhistory();
-            getlistofinsurancecompanies();
-            BindControls();
+                function loadfunctionsonpage() {
+                    allergiess = [];
+                    counties = [];
+                    familyhistory = []
+                    insurancecomp = []
+                    getallergies();
+                    getcounties();
+                    getfamilyhistory();
+                    getlistofinsurancecompanies();
+                    BindControls();
 
-        }
+                }
 
-    function getallergies() {
-    $.ajax({
-        url: "/registration/api/v1/allergies/",
-        type: "GET",
-        success: function (response) {
-            s = response;
-            console.log("s",response);
-            for (var i = 0; i < response.length; ++i) {
-                //  brand.push(response[i].brand);
-                allergiess.push(response[i].allergy_name);
-            }
-             console.log("Response",allergiess);
-
-
-for (var i =0;i<allergiess.length;i++){
-    var li = $('<li><input onclick="addallergies(\'alergy_'+i+'\')" type="checkbox" name="' + allergiess[i] + '" id="alergy_' + i + '"/>' +
-               '<label for="alergy_' + i + '"></label></li>');
-    li.find('label').text(allergiess[i]);
-    $('#wkslist').append(li);
-}
+                function getallergies() {
+                    $.ajax({
+                        url: "/registration/api/v1/allergies/",
+                        type: "GET",
+                        success: function (response) {
+                            s = response;
+                            console.log("s", response);
+                            for (var i = 0; i < response.length; ++i) {
+                                //  brand.push(response[i].brand);
+                                allergiess.push(response[i].allergy_name);
+                            }
+                            console.log("Response", allergiess);
 
 
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-        }
-
-
-    });
-
-}
-        function addallergies(divid) {
-            if ($("#" + divid + " input:checked")) {
-                var old_val = $("#allergies").val()
-                $("#allergies").val(old_val + "," + $("#" + divid).attr('name'))
-                console.log($("#allergies").val() + '++++++++++')
-            }
-            else {
-                console.log($("#allergies").val() + '______')
-                var new_val = $("#allergies").replace($("#" + divid).attr('name'),'')
-                $("#allergies").val(new_val)
-            }
-
-        }
-
-        function addfamilyhist(divid) {
-            if ($("#" + divid + " input:checked")) {
-                var old_val = $("#fam_history").val()
-                $("#fam_history").val(old_val + "," + $("#" + divid).attr('name'))
-                console.log($("#fam_history").val() + '++++++++++')
-            }
-            else {
-                console.log($("#fam_history").val() + '______')
-                var new_val = $("#fam_history").replace($("#" + divid).attr('name'),'')
-                $("#fam_history").val(new_val)
-            }
+                            for (var i = 0; i < allergiess.length; i++) {
+                                var li = $('<li><input onclick="addallergies(\'alergy_' + i + '\')" type="checkbox" name="' + allergiess[i] + '" id="alergy_' + i + '"/>' +
+                                        '<label for="alergy_' + i + '"></label></li>');
+                                li.find('label').text(allergiess[i]);
+                                $('#wkslist').append(li);
+                            }
 
 
-        }
-function getcounties() {
-    $.ajax({
-        url: "/registration/api/v1/county/",
-        type: "GET",
-        success: function (response) {
-            s = response;
-            for (var i = 0; i < response.length-1; ++i) {
-                //  brand.push(response[i].brand);
-                counties.push(response[i].County);
-            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
 
 
-            console.log("Response",counties);
+                    });
 
-for (var i =0;i<counties.length;i++){
-    $('#county').append($('<option>', {
-        value: i,
-        text : counties[i]
-    }));
-}
+                }
+                function addallergies(divid) {
+                    if ($("#" + divid + " input:checked")) {
+                        var old_val = $("#allergies").val()
+                        $("#allergies").val(old_val + "," + $("#" + divid).attr('name'))
+                        console.log($("#allergies").val() + '++++++++++')
+                    }
+                    else {
+                        console.log($("#allergies").val() + '______')
+                        var new_val = $("#allergies").replace($("#" + divid).attr('name'), '')
+                        $("#allergies").val(new_val)
+                    }
 
+                }
 
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-        }
-
-
-    });
-
-}
-
-  function getfamilyhistory() {
-      $.ajax({
-          url: "/registration/api/v1/medicationhistory/",
-          type: "GET",
-          success: function (response) {
-              s = response;
-              console.log("s", response);
-              for (var i = 0; i < response.length; ++i) {
-                  //  brand.push(response[i].brand);
-                  familyhistory.push(response[i].Disease);
-              }
-              console.log("familyhistory", familyhistory);
+                function addfamilyhist(divid) {
+                    if ($("#" + divid + " input:checked")) {
+                        var old_val = $("#fam_history").val()
+                        $("#fam_history").val(old_val + "," + $("#" + divid).attr('name'))
+                        console.log($("#fam_history").val() + '++++++++++')
+                    }
+                    else {
+                        console.log($("#fam_history").val() + '______')
+                        var new_val = $("#fam_history").replace($("#" + divid).attr('name'), '')
+                        $("#fam_history").val(new_val)
+                    }
 
 
-              for (var i = 0; i < familyhistory.length; i++) {
-                  var li = $('<li><input onclick="addfamilyhist(\'fam_hist_'+ i + '\')" type="checkbox" name="' + familyhistory[i] + '" id="fam_hist_' + i + '"/>' +
-                      '<label for="' + i + '"></label></li>');
-                  li.find('label').text(familyhistory[i]);
-                  $('#familyhistory').append(li);
-              }
+                }
+                function getcounties() {
+                    $.ajax({
+                        url: "/registration/api/v1/county/",
+                        type: "GET",
+                        success: function (response) {
+                            s = response;
+                            for (var i = 0; i < response.length - 1; ++i) {
+                                //  brand.push(response[i].brand);
+                                counties.push(response[i].County);
+                            }
 
 
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-              console.log(textStatus, errorThrown);
-          }
+                            console.log("Response", counties);
+
+                            for (var i = 0; i < counties.length; i++) {
+                                $('#county').append($('<option>', {
+                                    value: i,
+                                    text: counties[i]
+                                }));
+                            }
 
 
-      });
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
 
 
-  }
+                    });
 
-  function getlistofinsurancecompanies() {
-    $.ajax({
-        url: "/registration/api/v1/insurance/",
-        type: "GET",
-        success: function (response) {
-            s = response;
-            console.log("s",response);
-            for (var i = 0; i < response.length; ++i) {
-                if (response[i].Name) {
-                    insurancecomp.push(response[i].Name);
+                }
+
+                function getfamilyhistory() {
+                    $.ajax({
+                        url: "/registration/api/v1/medicationhistory/",
+                        type: "GET",
+                        success: function (response) {
+                            s = response;
+                            console.log("s", response);
+                            for (var i = 0; i < response.length; ++i) {
+                                //  brand.push(response[i].brand);
+                                familyhistory.push(response[i].Disease);
+                            }
+                            console.log("familyhistory", familyhistory);
+
+
+                            for (var i = 0; i < familyhistory.length; i++) {
+                                var li = $('<li><input onclick="addfamilyhist(\'fam_hist_' + i + '\')" type="checkbox" name="' + familyhistory[i] + '" id="fam_hist_' + i + '"/>' +
+                                        '<label for="' + i + '"></label></li>');
+                                li.find('label').text(familyhistory[i]);
+                                $('#familyhistory').append(li);
+                            }
+
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+
+
+                    });
+
+
+                }
+
+                function getlistofinsurancecompanies() {
+                    $.ajax({
+                        url: "/registration/api/v1/insurance/",
+                        type: "GET",
+                        success: function (response) {
+                            s = response;
+                            console.log("s", response);
+                            for (var i = 0; i < response.length; ++i) {
+                                if (response[i].Name) {
+                                    insurancecomp.push(response[i].Name);
+                                }
+
+
+                            }
+                            $('#textfield_primary_insurance').autocomplete({
+                                source: insurancecomp,
+                                minLength: 0,
+                                max: 10,
+                                scroll: true
+                            }).focus(function () {
+                                $(this).autocomplete("search", "");
+                            });
+
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+
+
+                    });
+
+                }
+
+                function BindControls() {
+                    var countries = ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua And Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia, Plurinational State Of", "Bonaire, Sint Eustatius And Saba", "Bosnia And Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, The Democratic Republic Of The", "Cook Islands", "Costa Rica", "Côte D'ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-bissau", "Guyana", "Haiti", "Heard Island And Mcdonald Islands", "Holy See (vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran, Islamic Republic Of", "Iraq", "Ireland", "Isle Of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic Of", "Korea, Republic Of", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia, The Former Yugoslav Republic Of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States Of", "Moldova, Republic Of", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestine, State Of", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russian Federation", "Rwanda", "Saint Barthélemy", "Saint Helena, Ascension And Tristan Da Cunha", "Saint Kitts And Nevis", "Saint Lucia", "Saint Martin (french Part)", "Saint Pierre And Miquelon", "Saint Vincent And The Grenadines", "Samoa", "San Marino", "Sao Tome And Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (dutch Part)", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia And The South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard And Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province Of China", "Tajikistan", "Tanzania, United Republic Of", "Thailand", "Timor-leste", "Togo", "Tokelau", "Tonga", "Trinidad And Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks And Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela, Bolivarian Republic Of", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.s.", "Wallis And Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
+
+                    $('#tbCountries').autocomplete({
+                        source: countries,
+                        minLength: 0,
+                        max: 10,
+                        scroll: true
+                    }).focus(function () {
+                        $(this).autocomplete("search", "");
+                    });
                 }
 
 
-            }
-            $('#textfield_primary_insurance').autocomplete({
-                source: insurancecomp,
-                minLength: 0,
-                max: 10,
-                scroll: true
-            }).focus(function () {
-                $(this).autocomplete("search", "");
-            });
-
-
-
-
-
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(textStatus, errorThrown);
-        }
-
-
-    });
-
-}
-
-    function BindControls() {
-      var countries = ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua And Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia, Plurinational State Of", "Bonaire, Sint Eustatius And Saba", "Bosnia And Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, The Democratic Republic Of The", "Cook Islands", "Costa Rica", "Côte D'ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-bissau", "Guyana", "Haiti", "Heard Island And Mcdonald Islands", "Holy See (vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran, Islamic Republic Of", "Iraq", "Ireland", "Isle Of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic Of", "Korea, Republic Of", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia, The Former Yugoslav Republic Of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States Of", "Moldova, Republic Of", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestine, State Of", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russian Federation", "Rwanda", "Saint Barthélemy", "Saint Helena, Ascension And Tristan Da Cunha", "Saint Kitts And Nevis", "Saint Lucia", "Saint Martin (french Part)", "Saint Pierre And Miquelon", "Saint Vincent And The Grenadines", "Samoa", "San Marino", "Sao Tome And Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten (dutch Part)", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia And The South Sandwich Islands", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard And Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province Of China", "Tajikistan", "Tanzania, United Republic Of", "Thailand", "Timor-leste", "Togo", "Tokelau", "Tonga", "Trinidad And Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks And Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela, Bolivarian Republic Of", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.s.", "Wallis And Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
-
-       $('#tbCountries').autocomplete({
-           source: countries,
-           minLength: 0,
-           max: 10,
-           scroll: true
-       }).focus(function() {
-           $(this).autocomplete("search", "");
-       });
-   }
-
-
-    </script>
+            </script>
             <style>
-                .ui-autocomplete { max-height: 200px; overflow-y: scroll; overflow-x: hidden;}
+                .ui-autocomplete {
+                    max-height: 200px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
             </style>
 
 
-            </div>
         </div>
+    </div>
 
 
 
-    	<div class="mdl-cell mdl-cell--2-col mdl-grid">
-	</div>
+    <div class="mdl-cell mdl-cell--2-col mdl-grid">
+    </div>
     </div>
 
 {% endblock %}
