@@ -17,9 +17,8 @@
 
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_first_name" name="first_name"
-                                   value="{{ form.first_name.value|default_if_none:"" }}"/>
-                            <span style="visibility: visible; "
-                                  class="mdl-textfield__error">{{ form.first_name.errors|striptags }}</span>
+                                   value="{{ patient.first_name }}"/>
+
 
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -27,19 +26,17 @@
                                    for="textfield_middle_name">Middle Name</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_middle_name" name="middle_name"
-                                   value="{{ form.middle_name.value|default_if_none:"" }}"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.middle_name.errors|striptags }}</span>
+                                   value="{{ patient.middle_name }}"/>
+
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_last_name">Last Name</label>
                             <input class="mdl-textfield__input" type="text"
-                                   id="textfield_last_name" value="{{ form.last_name.value|default_if_none:"" }}"
+                                   id="textfield_last_name" value="{{ patient.last_name }}"
                                    name="last_name" required/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.last_name.errors|striptags }}</span>
+
                         </div>
 
                     </div>
@@ -50,10 +47,9 @@
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_phone">Phone </label>
                             <input class="phone_input mdl-textfield__input" type='tel'
-                                   id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
+                                   id="textfield_phone_input" value="{{ patien.phone }}"
                                    name="phone"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.phone.errors|striptags }}</span>
+
                         </div>
 
 
@@ -62,9 +58,8 @@
                                    for="textfield_email">Email Address</label>
                             <input class="mdl-textfield__input" type="email"
                                    id="textfield_email"
-                                   value="{{ form.email.value|default_if_none:"" }}" name="email"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.email.errors|striptags }}{{ errors.email }}</span>
+                                   value="{{ patient.email }}" name="email"/>
+
                         </div>
 
                     </div>
@@ -75,18 +70,16 @@
                                    for="textfield_postal_address">Postal Address</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_postal_address"
-                                   value="{{ form.postal_address.value|default_if_none:"" }}" name="postal_address"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.postal_address.errors|striptags }}</span>
+                                   value="{{ patient.postal_address }}" name="postal_address"/>
+
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_postal_code">Postal Code</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_postal_code"
-                                   value="{{ form.postal_code.value|default_if_none:"" }}" name="postal_code" required/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.postal_code.errors|striptags }}</span>
+                                   value="{{ patient.postal_code }}" name="postal_code" required/>
+
                         </div>
 
 
@@ -106,18 +99,16 @@
                                    for="textfield_physical_address">Physical Address</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_physical_address"
-                                   value="{{ form.physical_address.value|default_if_none:'' }}"
+                                   value="{{ patient.physical_address}}"
                                    name="physical_address"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.physical_address.errors|striptags }}</span>
+
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <input class="mdl-textfield__input" id="tbCountries" name="country" type="text"
-                                   value="{{ form.country.value|default_if_none:"" }}"
+                                   value="{{ form.country }}"
                                    name="country">
                             <label for="country" class="mdl-textfield__label">Country</label>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.country.errors|striptags }}</span>
+
 
                         </div>
 
@@ -128,8 +119,7 @@
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_dob">Date of Birth</label>
                             {{ form.dob }}
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.dob.errors|striptags }}</span>
+
                         </div>
                         <script>
                             $('#textfield_dob').on('change', function (e) {
@@ -147,16 +137,15 @@
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_age">Age</label>
                             <input class="mdl-textfield__input" type="text"
-                                   id="textfield_age" value="{{ form.age.value|default_if_none:"" }}" name="age"
+                                   id="textfield_age" value="{{ patient.age }}" name="age"
                                    readonly/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.age.errors|striptags }}</span>
+
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Gender</label>
-                            {{ form.gender }}
+                            {{ patient.gender }}
                         </div>
 
                         <script>
@@ -183,18 +172,17 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_id_type">ID Type</label>
-                            {{ form.id_type }}
+                            {{ patient.id_type }}
                             <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
+                                  class="mdl-textfield__error">{{ patient.id_type.errors|striptags }}</span>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_ss_number">Identification No</label>
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_ss_number"
-                                   value="{{ form.ss_number.value|default_if_none:"" }}" name="ss_number"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.ss_number.errors|striptags }}{{ errors.id_number }}</span>
+                                   value="{{ patient.ss_number }}" name="ss_number"/>
+
                         </div>
                     </div>
                     </div>
@@ -210,17 +198,16 @@
                                for="textfield_emergency_contact">Emergency Contact</label>
                         <input class="mdl-textfield__input" type="text"
                                id="textfield_emergency_contact"
-                               value="{{ form.emergency_contact.value|default_if_none:"" }}"
+                               value="{{ patient.emergency_contact }}"
                                name="emergency_contact"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.e_relationship.errors|striptags }}</span>
+
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                         <label class="mdl-textfield__label mdl-color-text--grey"
                                for="textfield_e_relationship">Relationship to patient</label>
                         <input class="mdl-textfield__input" type="text"
                                id="textfield_e_relationship"
-                               value="{{ form.e_relationship.value|default_if_none:"" }}"
+                               value="{{ patient.e_relationship }}"
                                name="e_relationship"/>
                     </div>
                 </div>
@@ -231,20 +218,18 @@
                                for="textfield_e_contact_address">Address</label>
                         <input class="mdl-textfield__input" type="text"
                                id="textfield_e_contact_address"
-                               value="{{ form.e_contact_address.value|default_if_none:"" }}"
+                               value="{{ patient.e_contact_address }}"
                                name="e_contact_address"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.e_contact_address.errors|striptags }}</span>
+
                     </div>
                     <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                         <label class="mdl-textfield__label mdl-color-text--grey"
                                for="textfield_e_phone_number">Phone Number</label>
                         <input class="phone_input mdl-textfield__input" type="text"
                                id="textfield_e_phone_number"
-                               value="{{ form.e_phone_number.value|default_if_none:"" }}"
+                               value="{{ patient.e_phone_number }}"
                                name="e_phone_number"/>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.e_phone_number.errors|striptags }}</span>
+
                     </div>
 
                 </div>
