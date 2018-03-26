@@ -111,6 +111,97 @@ class PatientForm(forms.ModelForm):
                                                               ))
 
 
+    sub_dob = forms.DateField(label='Date of Birth',
+                              required=False,
+                              widget=forms.DateInput(
+                                  attrs={
+                                      'class': 'mdl-textfield__input',
+                                      'type': 'date'
+                                  }
+                              ))
+    last_phys_examination = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_blood_work = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_colonoscopy = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_tetanus_shot = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_menstrual = forms.DateField(
+        input_formats=['m-d-Y'],
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_pap_smear = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    abnormal_pap = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_mammogram = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    dexa = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+
     class Meta:
         model = Patient
 
