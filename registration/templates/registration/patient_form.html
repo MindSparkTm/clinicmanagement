@@ -190,7 +190,7 @@
                                   class="mdl-textfield__error">{{ form.age.errors|striptags }}</span>
                         </div>
 
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                        <div class="">
                             <label class=""
                                    for="textfield_gender">Gender</label>
                             {{ form.gender }}
@@ -806,242 +806,149 @@
                     </div>
 
                     <fieldset name="scans">
+           <div class = "mdl-grid">
+
+
                         <legend style="font-weight: bold; font-size: 16px; ">Social information</legend>
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
-                                   id="id_type" readonly/>
-                            <input value="{{ form.if_smoker.value|default_if_none:"" }}" type="hidden"
-                                   name="if_smoker"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_smoker">Do you smoke</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_smoker">
-                                <li class="mdl-menu__item" data-val="id">Yes</li>
-                                <li class="mdl-menu__item" data-val="ps">No</li>
-
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_smoker.errors|striptags }}</span>
+                      <div class="">
+                            <label class=""
+                                   for="textfield_gender">Do you smoke</label>
+                            {{ form.gender }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input name="thought_quiting" class="mdl-textfield__input"
-                                   value="{{ form.thought_quiting.value|default_if_none:"" }}" id="thought_quiting"
-                                   readonly/>
-                            <input value="{{ form.thought_quiting.value|default_if_none:"" }}" type="hidden"
-                                   name="thought_quiting"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="thought_quiting">Do you Chew Tobacco</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="id_type">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
 
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.thought_quiting.errors|striptags }}</span>
+                      <div class="">
+                            <label class="mdl-cell mdl-cell--2-col graybox"
+                                   for="textfield_gender">Do you Chew Tobacco</label>
+                            {{ form.if_chew }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input"
-                                   value="{{ form.if_quit_before.value|default_if_none:"" }}" id="if_quit_before"
-                                   readonly/>
-                            <input value="{{ form.if_quit_before.value|default_if_none:"" }}" type="hidden"
-                                   name="if_quit_before"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_quit_before">Have you thought quitting</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_quit_before">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
-
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_quit_before.errors|striptags }}</span>
+ <div class="">
+                            <label class="mdl-cell mdl-cell--4-col graybox"
+                                   for="textfield_gender">Have you quit before</label>
+                            {{ form.if_quit_before }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input"
-                                   value="{{ form.if_quit_before.value|default_if_none:"" }}" id="if_quit_before"
-                                   readonly/>
-                            <input value="{{ form.if_quit_before.value|default_if_none:"" }}" type="hidden"
-                                   name="if_quit_before"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_quit_before">Have you quit before ?</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_quit_before">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_quit_before.errors|striptags }}</span>
+
+
+ </div> <!-- mdl section grid ends here -->
+
+                        <div class="mdl-grid">
+
+       <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Have you quit before</label>
+                            {{ form.if_quit }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input"
-                                   value="{{ form.if_drink_alcohol.value|default_if_none:"" }}" id="if_drink_alcohol"
-                                   readonly/>
-                            <input value="{{ form.if_drink_alcohol.value|default_if_none:"" }}" type="hidden"
-                                   name="if_drink_alcohol"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_drink_alcohol">Do you drink alcohol</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_drink_alcohol">
-                                <li class="mdl-menu__item" data-val="id">Yes</li>
-                                <li class="mdl-menu__item" data-val="ps">No</li>
-
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_drink_alcohol.errors|striptags }}</span>
+                             <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Do you drink alcohol</label>
+                            {{ form.if_drink_alcohol }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.if_drug_used.value|default_if_none:"" }}"
-                                   id="if_drug_used" readonly/>
-                            <input value="{{ form.if_drug_used.value|default_if_none:"" }}" type="hidden"
-                                   name="if_drug_used"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_drug_used">Any illegal history of drug
-                                use</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_drug_used">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
 
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_drug_used.errors|striptags }}</span>
+                                <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Any illegal history of drug use</label>
+                            {{ form.if_drug_use }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.v.value|default_if_none:"" }}"
-                                   id="if_exercise" readonly/>
-                            <input value="{{ form.if_exercise.value|default_if_none:"" }}" type="hidden"
-                                   name="id_type"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_exercise">Do you exercise</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_exercise">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
-
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_exercise.errors|striptags }}</span>
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
-                                   id="if_special_diet" readonly/>
-                            <input value="{{ form.if_special_diet.value|default_if_none:"" }}" type="hidden"
-                                   name="if_special_diet"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_special_diet">Are you on any special
-                                diet</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="id_type">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_special_diet.errors|striptags }}</span>
+
+
+
+
+
+<!---mdl grid -starts--->
+
+                        <div class="mdl-grid">
+
+                           <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Do you exercise</label>
+                            {{ form.if_exercise }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.id_type.value|default_if_none:"" }}"
-                                   id="if_use_caffein" readonly/>
-                            <input value="{{ form.if_use_caffein.value|default_if_none:"" }}" type="hidden"
-                                   name="if_use_caffein"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_use_caffein">Do you consume any caffeinated
-                                drink</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="if_use_caffein">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
-
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_use_caffein.errors|striptags }}</span>
+                            <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Are you on any special diet</label>
+                            {{ form.if_special_diet }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.is_sadder.value|default_if_none:"" }}"
-                                   id="is_sadder" readonly/>
-                            <input value="{{ form.is_sadder.value|default_if_none:"" }}" type="hidden"
-                                   name="is_sadder"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="is_sadder">Have you recently noticed any increase
-                                in sadness or gloominess</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="is_sadder">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
 
-
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
+                             <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Do you consume any caffeinated drink</label>
+                            {{ form.if_caffenated_drink }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input"
-                                   value="{{ form.if_lost_interest.value|default_if_none:"" }}" id="if_lost_interest"
-                                   readonly/>
-                            <input value="{{ form.if_lost_interest.value|default_if_none:"" }}" type="hidden"
-                                   name="if_lost_interest"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="if_lost_interest">Have you lost interest in
-                                enjoyable activities </label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="id_type">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
 
 
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.if_lost_interest.errors|striptags }}</span>
+
+                            <!---mdl-section three-->
+                            <div class="mdl-grid">
+
+                                      <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Have you recently noticed any increase in sadness</label>
+                            {{ form.if_increase_sadness }}
+                        </div>
+
+          <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Have you lost interest in enjoyable activities</label>
+                            {{ form.if_enjoy_activities }}
                         </div>
 
 
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" value="{{ form.have_will.value|default_if_none:"" }}"
-                                   id="have_will" readonly/>
-                            <input value="{{ form.have_will.value|default_if_none:"" }}" type="hidden"
-                                   name="have_will"/>
-                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                            <label class="mdl-textfield__label" for="have_will">Do you have a living will</label>
-                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                for="have_will">
-                                <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                <li class="mdl-menu__item" data-val="No">No</li>
-                            </ul>
-                            <span style="visibility: visible;"
-                                  class="mdl-textfield__error">{{ form.have_will.errors|striptags }}</span>
+                                 <div class="mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Do you have a living will</label>
+                            {{ form.if_living_will }}
                         </div>
+
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                     </fieldset>
+
 
                     <fieldset name="scans">
                         <legend>Scanned Documents</legend>

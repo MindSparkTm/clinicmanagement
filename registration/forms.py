@@ -10,7 +10,7 @@ class PatientForm(forms.ModelForm):
         ('Passport', 'Passport Number'),
     )
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
-        'class': 'mdl-textfield custom-dropdown large',
+        'class': 'select-box',
     }), required=False,)
 
     GENDERCHOICES = (
@@ -20,9 +20,10 @@ class PatientForm(forms.ModelForm):
     )
     gender = forms.CharField(widget=forms.Select(choices=GENDERCHOICES,
                                                  attrs={
-                                                     'class': 'mdl-textfield custom-dropdown large',
+                                                     'class': 'select-box',
                                                  }
                                                  ))
+
     dob = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'mdl-textfield__input',
@@ -32,6 +33,83 @@ class PatientForm(forms.ModelForm):
 
         }
     ))
+
+    YESNOCHOICES = (
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    )
+
+    if_smoker = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                 attrs={
+                                                     'class': 'select-box',
+                                                 }
+                                                 ))
+    if_quit_before = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                 attrs={
+                                                     'class': 'select-box',
+                                                 }
+                                                 ))
+
+    if_chew = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                    attrs={
+                                                        'class': 'select-box',
+                                                    }
+                                                    ))
+
+    if_quit = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                  attrs={
+                                                      'class': 'select-box',
+                                                  }
+                                                  ))
+
+    if_drink_alcohol = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                  attrs={
+                                                      'class': 'select-box',
+                                                  }
+                                                  ))
+
+    if_drug_use = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                           attrs={
+                                                               'class': 'select-box',
+                                                           }
+                                                           ))
+
+    if_exercise = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                      attrs={
+                                                          'class': 'select-box',
+                                                      }
+                                                      ))
+
+    if_special_diet = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                      attrs={
+                                                          'class': 'select-box',
+                                                      }
+                                                      ))
+
+    if_caffenated_drink = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                          attrs={
+                                                              'class': 'select-box',
+                                                          }
+                                                          ))
+
+    if_increase_sadness = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
+
+    if_enjoy_activities = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
+
+    if_living_will = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
+
 
     class Meta:
         model = Patient
