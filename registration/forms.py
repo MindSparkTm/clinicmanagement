@@ -35,48 +35,44 @@ class PatientForm(forms.ModelForm):
     ))
 
     sub_dob = forms.DateField(label='Date of Birth',
-                              input_formats=['m-d-Y'],
+                              required=False,
                               widget=forms.DateInput(
                                   attrs={
-                                      'format': 'm-d-Y',
                                       'class': 'mdl-textfield__input',
                                       'type': 'date'
                                   }
                               ))
     last_phys_examination = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
+
     last_blood_work = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
 
     last_colonoscopy = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
 
     last_tetanus_shot = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
@@ -84,49 +80,45 @@ class PatientForm(forms.ModelForm):
 
     last_menstrual = forms.DateField(
         input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
 
     last_pap_smear = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
 
     abnormal_pap = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
 
     last_mammogram = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
         ))
 
     dexa = forms.DateField(
-        input_formats=['m-d-Y'],
+        required=False,
         widget=forms.DateInput(
             attrs={
-                'format': 'm-d-Y',
                 'class': 'mdl-textfield__input',
                 'type': 'date'
             }
