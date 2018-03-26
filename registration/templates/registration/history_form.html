@@ -3,117 +3,136 @@
     <div class="mdl-grid">
 
 
-
         <div class="mdl-shadow--16dp util-center full-width">
             <div class="mdl-card__title mdl-color--teal-500">
                 <h2 class="mdl-card__title-text mdl-color-text--white">Registration Form</h2>
             </div>
             <fieldset disabled>
                 <div class="mdl-card__supporting-text full-width">
-                <fieldset name="personal">
-                        <legend>Personal Information</legend>
-                        <input type="hidden" name="action" value="login"/>
-                        <div class="mdl-grid ">
+                    <fieldset id="personal_information" {% if not new %}style="background: #f9e7e714;"
+                              readonly{% endif %}>
+                        <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                                <label class="mdl-textfield__label mdl-color-text--grey forminput"
+                                       for="textfield_first_name">First Name</label>
+
+                                <input class="mdl-textfield__input" type="text"
+                                       id="textfield_first_name" name="first_name"
+                                       value="{{ form.first_name.value|default_if_none:"" }}"/>
+                            <span style="visibility: visible; "
+                                  class="mdl-textfield__error">{{ form.first_name.errors|striptags }}</span>
+
+                            </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_first_name">First Name</label>
+                                       for="textfield_middle_name">Middle Name</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_first_name" name="first_name" value="{% if patient.first_name != None %}{{ patient.first_name }}{% endif %}" required/>
+                                       id="textfield_middle_name" name="middle_name"
+                                       value="{{ form.middle_name.value|default_if_none:"" }}"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.middle_name.errors|striptags }}</span>
                             </div>
-
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_name">Last Name</label>
                                 <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_name" value="{% if patient.last_name != None %}{{ patient.last_name }}{% endif %}" name="last_name" required/>
+                                       id="textfield_last_name" value="{{ form.last_name.value|default_if_none:"" }}"
+                                       name="last_name" required/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.last_name.errors|striptags }}</span>
                             </div>
 
                         </div>
 
                         <div class="mdl-grid ">
 
-
                             <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_phone">Phone </label>
-                                <input class="mdl-textfield__input" type='tel'
-                                       id="textfield_phone" value="{% if patient.phone != None %}{{ patient.phone }}{% else %}{% endif %}" name="phone"/>
+                                <input class="phone_input mdl-textfield__input" type='tel'
+                                       id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
+                                       name="phone"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.phone.errors|striptags }}</span>
                             </div>
 
-                            <script>
-                                $('.phone').addClass('is-dirty')
-
-                                $('#textfield_phone').on('keyup', function (e) {
-                                    $('.phone').addClass('is-dirty')
-                                    var number = $("#textfield_phone").intlTelInput("getNumber");
-                                    $("#textfield_phone").val(number)
-
-
-                                    console.log(number)
-                                });
-
-
-                                $("#textfield_phone").intlTelInput();
-
-                            </script>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_email">Email Address</label>
                                 <input class="mdl-textfield__input" type="email"
                                        id="textfield_email"
-                                       value="{% if patient.email != None %}{{ patient.email }}{% endif %}" name="email"/>
+                                       value="{{ form.email.value|default_if_none:"" }}" name="email"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.email.errors|striptags }}{{ errors.email }}</span>
                             </div>
 
                         </div>
+                    </fieldset>
 
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_postal_address">Address </label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_address" value="{% if patient.postal_address != None %}{{ patient.postal_address }}{% endif %}-{% if patient.postal_code != None %}{{ patient.postal_code }}{% endif %} {% if patient.street_name != None %}{{ patient.street_name }}{% endif %} {% if patient.apartment_name != None %}{{ patient.apartment_name }}{% endif %}" name="postal_address"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_apartment_name">Physical Address</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_apartment_name" value="{% if patient.apartment_name != None %}{{ patient.apartment_name }}{% endif %}" name="apartment_name"/>
-                            </div>
+                    <div class="mdl-grid ">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_postal_address">Postal Address</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_postal_address"
+                                   value="{{ form.postal_address.value|default_if_none:"" }}" name="postal_address"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.postal_address.errors|striptags }}</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_postal_code">Postal Code</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_postal_code"
+                                   value="{{ form.postal_code.value|default_if_none:"" }}" name="postal_code" required/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.postal_code.errors|striptags }}</span>
+                        </div>
 
+
+                    </div>
+
+                    <div class="mdl-grid ">
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+
+                            <span style="font-size: 12px; "> County  </span> <select
+                                style="width: 150px;font-size: 12px; " id="county">
+
+                        </select>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_physical_address">Physical Address</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_physical_address"
+                                   value="{{ form.physical_address.value|default_if_none:'' }}"
+                                   name="physical_address"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.physical_address.errors|striptags }}</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <input class="mdl-textfield__input" id="tbCountries" name="country" type="text"
+                                   value="{{ form.country.value|default_if_none:"" }}"
+                                   name="country">
+                            <label for="country" class="mdl-textfield__label">Country</label>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.country.errors|striptags }}</span>
 
                         </div>
 
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_city">City </label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_city" value="{% if patient.city != None %}{{ patient.city }}{% endif %}" name="city"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_postal_code">Postal Code</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_postal_code" value="{% if patient.postal_code != None %}{{ patient.postal_code }}{% endif %}" name="postal_code"/>
-                            </div>
-                            <div class=" getmdl-select__fix-height mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select mdl-cell mdl-cell--4-col">
-                                <input type="text" value="" class="mdl-textfield__input"
-                                       id="country" readonly>
-                                <input type="hidden" value="{% if patient.country != None %}{{ patient.country }}{% endif %}" name="country">
-                                <label for="country" class="mdl-textfield__label">Country</label>
-                            </div>
+                    </div>
 
+                    <div class="mdl-grid ">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_dob">Date of Birth</label>
+                            {{ form.dob }}
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.dob.errors|striptags }}</span>
                         </div>
-
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_dob">Date of Birth</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_dob" value="{% if patient.dob != None %}{{ patient.dob }}{% endif %}" name="dob"/>
-                            </div>
                         <script>
                             $('#textfield_dob').on('change', function (e) {
 
@@ -124,137 +143,143 @@
                                 $('#textfield_age').val(age).parent().addClass("is-dirty");
                             });
 
-                            $(function(){
-                            var dtToday = new Date();
-                                var month = dtToday.getMonth() + 1;
-                                var day = dtToday.getDate();
-                                var year = dtToday.getFullYear();
-
-                                if (month < 10)
-                                    month = '0' + month.toString();
-                                if (day < 10)
-                                    day = '0' + day.toString();
-
-                                var maxDate = year + '-' + month + '-' + day;
-                                $('[type="date"]').attr('max', maxDate);
-
-                            })
 
                         </script>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_age">Age</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_age" value="{{ form.age.value|default_if_none:"" }}" name="age"
+                                   readonly/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.age.errors|striptags }}</span>
+                        </div>
 
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_age">Age</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_age" value="{% if patient.age != None %}{{ patient.age }}{% endif %}" name="age" readonly/>
-                            </div>
-
-                        <script>
-
-                        </script>
-
-                            <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--3-col">
-                                <input class="mdl-textfield__input" value="" id="gender" readonly/>
-                                <input value="" type="hidden" name="gender"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="gender">Sex</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="gender">
-                                    <li class="mdl-menu__item" data-val="male">Male</li>
-                                    <li class="mdl-menu__item" data-val="female">Female</li>
-                                    <li class="mdl-menu__item" data-val="other">Other</li>
-
-                                </ul>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_gender">Gender</label>
+                            {{ form.gender }}
+                        </div>
 
                         <script>
                             //Toggle the hiding of the female section
-                            $(function(){
+                            $(function () {
                                 $("#gender").on('change', function (e) {
-                                if ($('#gender').val()!="Male"){
-                                    $('#females_').show();
+                                    if ($('#gender').val() != "Male") {
+                                        $('#females_').show();
 
-                                }
-                                else {
-                                    $('#females_').hide();
+                                    }
+                                    else {
+                                        $('#females_').hide();
 
-                                }
+                                    }
 
-                            });
+
+                                });
                             })
 
                         </script>
+                    </div>
 
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_ss_number">ID Number</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_ss_number" value="{% if patient.ss_number != None %}{{ patient.ss_number }}{% endif %}" name="ss_number"/>
-                            </div>
-
+                    <div class="mdl-grid">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class=""
+                                   for="textfield_id_type">ID Type</label>
+                            {{ form.id_type }}
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.id_type.errors|striptags }}</span>
                         </div>
-                    </fieldset>
-
-
-                    <fieldset name="insurance" class="fieldset">
-                        <legend>Emergency contact</legend>
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_e_relationship">Emergency Contact</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_e_relationship" value="{% if patient.e_relationship != None %}{{ patient.e_contact }}{% endif %}" name="e_relationship"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_e_relationship">Relationship to patient</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_e_relationship" value="{% if patient.e_relationship != None %}{{ patient.e_relationship }}{% endif %}" name="e_relationship"/>
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_ss_number">Identification No</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_ss_number"
+                                   value="{{ form.ss_number.value|default_if_none:"" }}" name="ss_number"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.ss_number.errors|striptags }}{{ errors.id_number }}</span>
                         </div>
+                    </div>
 
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_e_contact_address">Address</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_e_contact_address" value="{% if patient.e_contact_address != None %}{{ patient.e_contact_address }}{% endif %}" name="e_contact_address"/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_phone_number">Phone Number</label>
-                                <input class="mdl-textfield__input" type="number"
-                                       id="textfield_phone_number" value="{% if patient.phone_name != None %}{{ patient.phone }}{% endif %}" name="phone_number"/>
-                            </div>
-                        </div>
-                    </fieldset>
-
-            </div>
 
             </fieldset>
 
-            <div class="mdl-cell mdl-cell--12-col send-button" align="center">
-                {% if patient.status == 0 %}
 
-                    <button type="submit"
-                            onclick="window.location.href='/registration/models/update/{{ patient.patient_no }}'"
-                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
-                        Send to Triage
-                    </button>
-                {% else %}
-                    <button type="submit"
-                            class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--grey disabled">
-                        Patient is still under treatment
-                    </button>
-                {% endif %}
+            {% if not new %}
+            <fieldset name="insurance" class="fieldset">
+                <legend style="font-weight: bold; font-size: 16px;padding: 17px; ">Emergency contact</legend>
+                <div class="mdl-grid ">
+                    <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey"
+                               for="textfield_emergency_contact">Emergency Contact</label>
+                        <input class="mdl-textfield__input" type="text"
+                               id="textfield_emergency_contact"
+                               value="{{ form.emergency_contact.value|default_if_none:"" }}"
+                               name="emergency_contact"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.e_relationship.errors|striptags }}</span>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey"
+                               for="textfield_e_relationship">Relationship to patient</label>
+                        <input class="mdl-textfield__input" type="text"
+                               id="textfield_e_relationship"
+                               value="{{ form.e_relationship.value|default_if_none:"" }}"
+                               name="e_relationship"/>
+                    </div>
+                </div>
 
-            <button type="button" onclick="window.location.href='/registration/patient/update/{{ patient.patient_no }}/'"
-                                class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
-                            Edit Patient
-                        </button>
-            </div>
+                <div class="mdl-grid ">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey"
+                               for="textfield_e_contact_address">Address</label>
+                        <input class="mdl-textfield__input" type="text"
+                               id="textfield_e_contact_address"
+                               value="{{ form.e_contact_address.value|default_if_none:"" }}"
+                               name="e_contact_address"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.e_contact_address.errors|striptags }}</span>
+                    </div>
+                    <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                        <label class="mdl-textfield__label mdl-color-text--grey"
+                               for="textfield_e_phone_number">Phone Number</label>
+                        <input class="phone_input mdl-textfield__input" type="text"
+                               id="textfield_e_phone_number"
+                               value="{{ form.e_phone_number.value|default_if_none:"" }}"
+                               name="e_phone_number"/>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.e_phone_number.errors|striptags }}</span>
+                    </div>
+
+                </div>
+            </fieldset>
 
         </div>
+
+        </fieldset>
+
+        <div class="mdl-cell mdl-cell--12-col send-button" align="center">
+            {% if patient.status == 0 %}
+
+                <button type="submit"
+                        onclick="window.location.href='/registration/models/update/{{ patient.patient_no }}'"
+                        class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                    Send to Triage
+                </button>
+            {% else %}
+                <button type="submit"
+                        class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--grey disabled">
+                    Patient is still under treatment
+                </button>
+            {% endif %}
+
+            <button type="button"
+                    onclick="window.location.href='/registration/patient/update/{{ patient.patient_no }}/'"
+                    class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
+                Edit Patient
+            </button>
+        </div>
+
+    </div>
     </div>
 
 {% endblock %}
