@@ -308,8 +308,8 @@
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
-                                <input class="mdl-textfield__input" value="" id="other_ins_subscriber" readonly/>
-                                <input value="" type="hidden" name="other_ins_subscriber"/>
+                                <input class="mdl-textfield__input" value="{{ form.secondary_insurance.value|default_if_none:"" }}" id="other_ins_subscriber" readonly/>
+                                <input value="{{ form.secondary_insurance.value|default_if_none:"" }}" type="hidden" name="other_ins_subscriber"/>
                                 <label class="mdl-textfield__label" for="other_ins_subscriber">Are You the Policy
                                     Holder?</label>
                                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
@@ -536,11 +536,11 @@
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="rev_docs"></textarea>
-                                <label class="mdl-textfield__label" for="rev_docs">Names/Specialties/Locations of Other
+                                                              id="prev_docs">{{ form.prev_docs.value|default_if_none:"" }}</textarea>
+                                <label class="mdl-textfield__label" for="prev_docs">Names/Specialties/Locations of Other
                                     Physicians Caring for You, including previous primary care doctor:</label>
                                 <span style="visibility: visible;"
-                                      class="mdl-textfield__error">{{ form.rev_docs.errors|striptags }}</span>
+                                      class="mdl-textfield__error">{{ form.prev_docs.errors|striptags }}</span>
                             </div>
                         </div>
 
