@@ -624,7 +624,7 @@
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="allergies">{{ form.social_hist.value|default_if_none:"" }}</textarea>
+                                                              id="allergies" name="social_hist">{{ form.social_hist.value|default_if_none:"" }}</textarea>
                                 <label class="mdl-textfield__label" for="social_hist">Social History</label>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.social_hist.errors|striptags }}</span>
@@ -758,13 +758,13 @@
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
-                                           for="textfield_last_colonoscopy">Terminations</label>
+                                           for="textfield_terminations">Terminations</label>
                                     <input class="mdl-textfield__input" type="text"
-                                           id="textfield_last_colonoscopy"
-                                           value="{{ form.e_contact.value|default_if_none:"" }}"
-                                           name="last_colonoscopy"/>
+                                           id="textfield_terminations"
+                                           value="{{ form.terminations.value|default_if_none:"" }}"
+                                           name="terminations"/>
                                 <span style="visibility: visible;"
-                                      class="mdl-textfield__error">{{ form.last_colonoscopy.errors|striptags }}</span>
+                                      class="mdl-textfield__error">{{ form.terminations.errors|striptags }}</span>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
@@ -781,11 +781,11 @@
                             <div class="mdl-grid">
                                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
-                                                              id="method_of_contraception">{{ form.method_of_contraception.value|default_if_none:"" }}</textarea>
-                                    <label class="mdl-textfield__label" for="method_of_contraception">Method/s of
+                                                              id="methods_of_contraception">{{ form.methods_of_contraception.value|default_if_none:"" }}</textarea>
+                                    <label class="mdl-textfield__label" for="methods_of_contraception">Method/s of
                                         Contraception</label>
                                 <span style="visibility: visible;"
-                                      class="mdl-textfield__error">{{ form.method_of_contraception.errors|striptags }}</span>
+                                      class="mdl-textfield__error">{{ form.methods_of_contraception.errors|striptags }}</span>
                                 </div>
                             </div>
 
