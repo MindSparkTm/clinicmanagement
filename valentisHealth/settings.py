@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'tests',
     'payments',
     'workflow',
-    'session_security',
 
 ]
 
@@ -75,7 +74,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'valentisHealth.middleware.LoginRequiredMiddleware',
-    'session_security.middleware.SessionSecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'valentisHealth.urls'
