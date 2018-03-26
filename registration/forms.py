@@ -11,7 +11,7 @@ class PatientForm(forms.ModelForm):
     )
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
         'class': 'mdl-textfield custom-dropdown large',
-    }), required=False,)
+    }), required=False, )
 
     GENDERCHOICES = (
         ('Male', 'Male'),
@@ -23,6 +23,7 @@ class PatientForm(forms.ModelForm):
                                                      'class': 'mdl-textfield custom-dropdown large',
                                                  }
                                                  ))
+
     dob = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'mdl-textfield__input',
@@ -32,6 +33,105 @@ class PatientForm(forms.ModelForm):
 
         }
     ))
+
+    sub_dob = forms.DateField(label='Date of Birth',
+                              input_formats=['m-d-Y'],
+                              widget=forms.DateInput(
+                                  attrs={
+                                      'format': 'm-d-Y',
+                                      'class': 'mdl-textfield__input',
+                                      'type': 'date'
+                                  }
+                              ))
+    last_phys_examination = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+    last_blood_work = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_colonoscopy = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_tetanus_shot = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_menstrual = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_pap_smear = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    abnormal_pap = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_mammogram = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    dexa = forms.DateField(
+        input_formats=['m-d-Y'],
+        widget=forms.DateInput(
+            attrs={
+                'format': 'm-d-Y',
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
 
     class Meta:
         model = Patient

@@ -399,12 +399,12 @@
                         </div>
 
                         <div class="mdl-grid ">
+
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_sub_dob">Date of Birth</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_sub_dob" value="{{ form.sub_dob.value|default_if_none:"" }}"
-                                       name="sub_dob"/>
+                                       for="textfield_sub_dob">Date of Birth </label>
+                                {{ form.sub_dob }}
+
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.sub_dob|striptags }}</span>
                             </div>
@@ -636,20 +636,14 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_phys_examination">Date of Last Physical Exam</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_last_phys_examination"
-                                       value="{{ form.e_contact.value|default_if_none:"" }}"
-                                       name="last_phys_examination"/>
+                                {{ form.last_phys_examination }}
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.last_phys_examination.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_blood_work">Date of Last Blood Work</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_last_blood_work"
-                                       value="{{ form.last_blood_work.value|default_if_none:"" }}"
-                                       name="last_blood_work"/>
+                                {{ form.last_blood_work }}
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.last_blood_work.errors|striptags }}</span>
                             </div>
@@ -658,20 +652,14 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_colonoscopy">Date of Last Colonoscopy</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_last_colonoscopy"
-                                       value="{{ form.e_contact.value|default_if_none:"" }}"
-                                       name="last_colonoscopy"/>
+                                {{ form.last_colonoscopy }}
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.last_colonoscopy.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_last_tetanus_shot">Date of Last Tetenus Shot</label>
-                                <input class="mdl-textfield__input" type="date"
-                                       id="textfield_last_tetanus_shot"
-                                       value="{{ form.last_tetanus_shot.value|default_if_none:"" }}"
-                                       name="ast_tetanus_shot"/>
+                                {{ form.last_tetanus_shot }}
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.last_tetanus_shot.errors|striptags }}</span>
                             </div>
@@ -686,20 +674,14 @@
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
                                            for="textfield_last_menstrual">Date of Last Menstrual Period</label>
-                                    <input class="mdl-textfield__input" type="date"
-                                           id="textfield_last_menstrual"
-                                           value="{{ form.last_menstrual.value|default_if_none:"" }}"
-                                           name="last_menstrual"/>
+                                    {{ form.last_menstrual }}
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.last_menstrual.errors|striptags }}</span>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
                                            for="textfield_last_pap_smear">Date of Last Pap Smear</label>
-                                    <input class="mdl-textfield__input" type="date"
-                                           id="textfield_last_pap_smear"
-                                           value="{{ form.last_pap_smear.value|default_if_none:"" }}"
-                                           name="last_pap_smear"/>
+                                    {{ form.last_pap_smear }}
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.last_pap_smear.errors|striptags }}</span>
                                 </div>
@@ -708,29 +690,22 @@
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
                                            for="textfield_abnormal_pap">History of Abnormal pap(list date/s)?</label>
-                                    <input class="mdl-textfield__input" type="date"
-                                           id="textfield_abnormal_pap"
-                                           value="{{ form.abnormal_pap.value|default_if_none:"" }}"
-                                           name="abnormal_pap"/>
+                                    {{ form.abnormal_pap }}
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.abnormal_pap.errors|striptags }}</span>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
                                            for="textfield_last_mammogram">Date of Last Mammogram</label>
-                                    <input class="mdl-textfield__input" type="date"
-                                           id="textfield_last_mammogram"
-                                           value="{{ form.last_mammogram.value|default_if_none:"" }}"
-                                           name="ast_tetanus_shot"/>
+                                    {{ form.last_mammogram }}
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.last_mammogram.errors|striptags }}</span>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                     <label class="mdl-textfield__label mdl-color-text--grey"
                                            for="textfield_dexa">DEXA</label>
-                                    <input class="mdl-textfield__input" type="date"
-                                           id="textfield_dexa" value="{{ form.dexa.value|default_if_none:"" }}"
-                                           name="ast_tetanus_shot"/>
+                                    {{ form.dexa }}
+
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.dexa.errors|striptags }}</span>
                                 </div>
