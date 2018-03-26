@@ -548,3 +548,42 @@ function deleteForm(btn, prefix) {
     }
     return false;
 }
+
+
+function calculateAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return (age<0 || isNaN(age))?0:age;
+}
+
+function setDob(birthday){
+    age = calculateAge(birthday)
+    console.log(age," is the age for ", birthday)
+    $('#textfield_age').val(age)
+}
+
+
+$(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+    $('input[type="date"]').attr('max', maxDate);
+});
+
+function readonly_personal(){
+    $("#personal_information :input").attr("readonly", true);
+}
