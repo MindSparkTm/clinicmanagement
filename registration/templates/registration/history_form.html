@@ -47,7 +47,7 @@
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_phone">Phone </label>
                             <input class="phone_input mdl-textfield__input" type='tel'
-                                   id="textfield_phone_input" value="{{ patien.phone }}"
+                                   id="textfield_phone_input" value="{{ patient.phone }}"
                                    name="phone"/>
 
                         </div>
@@ -88,11 +88,10 @@
                     <div class="mdl-grid ">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-
-                            <span style="font-size: 12px; "> County  </span> <select
-                                style="width: 150px;font-size: 12px; " id="county">
-
-                        </select>
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_postal_code">County</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   value="{{ patient.county }}" />
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
@@ -104,8 +103,8 @@
 
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                            <input class="mdl-textfield__input" id="tbCountries" name="country" type="text"
-                                   value="{{ form.country }}"
+                            <input class="mdl-textfield__input" type="text"
+                                   value="{{ patient.country }}"
                                    name="country">
                             <label for="country" class="mdl-textfield__label">Country</label>
 
@@ -118,21 +117,12 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_dob">Date of Birth</label>
-                            {{ form.dob }}
+                            <input class="mdl-textfield__input" type="text"
+                                   value="{{ patient.dob }}"
+                                   name="dob">
 
                         </div>
-                        <script>
-                            $('#textfield_dob').on('change', function (e) {
 
-
-                                d = new Date($(this).val());
-                                var before = moment($(d, 'YYYY-MM-DD'));
-                                var age = moment().diff(d, 'years');
-                                $('#textfield_age').val(age).parent().addClass("is-dirty");
-                            });
-
-
-                        </script>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
                                    for="textfield_age">Age</label>
@@ -145,34 +135,22 @@
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Gender</label>
-                            {{ patient.gender }}
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_gender" value="{{ patient.gender }}"
+                                   readonly/>
+
                         </div>
 
-                        <script>
-                            //Toggle the hiding of the female section
-                            $(function () {
-                                $("#gender").on('change', function (e) {
-                                    if ($('#gender').val() != "Male") {
-                                        $('#females_').show();
-
-                                    }
-                                    else {
-                                        $('#females_').hide();
-
-                                    }
-
-
-                                });
-                            })
-
-                        </script>
                     </div>
 
                     <div class="mdl-grid">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_id_type">ID Type</label>
-                            {{ patient.id_type }}
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_id_type"
+                                   value="{{ patient.id_type }}"/>
+
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ patient.id_type.errors|striptags }}</span>
                         </div>
