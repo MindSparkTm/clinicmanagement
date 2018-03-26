@@ -9,67 +9,65 @@
             </div>
             <fieldset disabled>
                 <div class="mdl-card__supporting-text full-width">
-                    <fieldset id="personal_information" {% if not new %}style="background: #f9e7e714;"
-                              readonly{% endif %}>
-                        <div class="mdl-grid">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey forminput"
-                                       for="textfield_first_name">First Name</label>
 
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_first_name" name="first_name"
-                                       value="{{ form.first_name.value|default_if_none:"" }}"/>
+                    <div class="mdl-grid">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey forminput"
+                                   for="textfield_first_name">First Name</label>
+
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_first_name" name="first_name"
+                                   value="{{ form.first_name.value|default_if_none:"" }}"/>
                             <span style="visibility: visible; "
                                   class="mdl-textfield__error">{{ form.first_name.errors|striptags }}</span>
 
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_middle_name">Middle Name</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_middle_name" name="middle_name"
-                                       value="{{ form.middle_name.value|default_if_none:"" }}"/>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_middle_name">Middle Name</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_middle_name" name="middle_name"
+                                   value="{{ form.middle_name.value|default_if_none:"" }}"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.middle_name.errors|striptags }}</span>
-                            </div>
+                        </div>
 
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_last_name">Last Name</label>
-                                <input class="mdl-textfield__input" type="text"
-                                       id="textfield_last_name" value="{{ form.last_name.value|default_if_none:"" }}"
-                                       name="last_name" required/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_last_name">Last Name</label>
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_last_name" value="{{ form.last_name.value|default_if_none:"" }}"
+                                   name="last_name" required/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.last_name.errors|striptags }}</span>
-                            </div>
-
                         </div>
 
-                        <div class="mdl-grid ">
+                    </div>
 
-                            <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_phone">Phone </label>
-                                <input class="phone_input mdl-textfield__input" type='tel'
-                                       id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
-                                       name="phone"/>
+                    <div class="mdl-grid ">
+
+                        <div class="phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_phone">Phone </label>
+                            <input class="phone_input mdl-textfield__input" type='tel'
+                                   id="textfield_phone_input" value="{{ form.phone.value|default_if_none:"" }}"
+                                   name="phone"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.phone.errors|striptags }}</span>
-                            </div>
+                        </div>
 
 
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey"
-                                       for="textfield_email">Email Address</label>
-                                <input class="mdl-textfield__input" type="email"
-                                       id="textfield_email"
-                                       value="{{ form.email.value|default_if_none:"" }}" name="email"/>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey"
+                                   for="textfield_email">Email Address</label>
+                            <input class="mdl-textfield__input" type="email"
+                                   id="textfield_email"
+                                   value="{{ form.email.value|default_if_none:"" }}" name="email"/>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.email.errors|striptags }}{{ errors.email }}</span>
-                            </div>
-
                         </div>
-                    </fieldset>
+
+                    </div>
 
                     <div class="mdl-grid ">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
@@ -199,12 +197,11 @@
                                   class="mdl-textfield__error">{{ form.ss_number.errors|striptags }}{{ errors.id_number }}</span>
                         </div>
                     </div>
-
+                    </div>
 
             </fieldset>
 
 
-            {% if not new %}
             <fieldset name="insurance" class="fieldset">
                 <legend style="font-weight: bold; font-size: 16px;padding: 17px; ">Emergency contact</legend>
                 <div class="mdl-grid ">
