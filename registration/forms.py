@@ -22,6 +22,10 @@ class PatientForm(forms.ModelForm):
         'class': 'select-box',
     }))
 
+
+
+
+
     GENDERCHOICES = (
         ('Male', 'Male'),
         ('Female', 'Female'),

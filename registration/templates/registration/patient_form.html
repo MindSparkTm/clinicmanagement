@@ -771,21 +771,11 @@
 
 
 
-
-                        <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input name="thought_quiting" class="mdl-textfield__input" value="{{ form.thought_quiting.value|default_if_none:""}}" id="thought_quiting" readonly/>
-                                <input value="{{ form.thought_quiting.value|default_if_none:""}}" type="hidden" name="thought_quiting"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="thought_quiting">Do you Chew Tobacco</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="id_type">
-                                    <li class="mdl-menu__item" data-val="Yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="No">No</li>
+                  <div>  <span>Do you chew Tobacco </span>
+                           {{ form.thought_quiting.value|default_if_none:""}}
+    </div>
 
 
-                                </ul>
-                                <span style="visibility: visible;" class="mdl-textfield__error">{{ form.thought_quiting.errors|striptags }}</span>
-                            </div>
 
 
 
