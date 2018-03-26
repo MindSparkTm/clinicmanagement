@@ -49,13 +49,12 @@ class Patient(models.Model):
     subscriber_relationship = TextField(max_length=100, null=True, blank=True)
     sub_address = TextField(max_length=100, null=True, blank=True)
     ss_number = TextField(max_length=100, null=True, blank=True)
-    id_type = TextField(max_length=100, null=True, blank=True)
+    id_type = CharField(max_length=100, null=True, blank=True)
     sub_ss_number = TextField(max_length=100, null=True, blank=True)
     alt_phone = CharField(max_length=30, null=True, blank=True)
     sub_work_phone = TextField(max_length=100, null=True, blank=True)
     dob = DateField(null=True, blank=True)
     sub_dob = DateField(null=True, blank=True)
-    id_type = TextField(max_length=100, null=True, blank=True)
     sub_id_type = TextField(max_length=100, null=True, blank=True)
     sub_employer = TextField(max_length=100, null=True, blank=True)
     status = IntegerField(null=True, blank=True)
@@ -115,6 +114,7 @@ class Patient(models.Model):
     social_hist = models.TextField(max_length=400, null=True, blank=True)
     fam_hist = models.TextField(max_length=400, null=True, blank=True)
     e_relationship = models.TextField(max_length=400, null=True, blank=True)
+    terminations = models.CharField(max_length=3, default="0", null=True, blank=True)
 
     class Meta:
         ordering = ('last_updated',)

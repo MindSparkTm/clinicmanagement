@@ -10,21 +10,8 @@ class PatientForm(forms.ModelForm):
         ('Passport', 'Passport Number'),
     )
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
-        'class': 'select-box',
-    }))
-
-    YESNO = (
-        ('Yes', 'Yes'),
-        ('No','No')
-    )
-
-    if_smoker = forms.CharField(widget=forms.Select(choices=YESNO, attrs={
-        'class': 'select-box',
-    }))
-
-
-
-
+        'class': 'mdl-textfield custom-dropdown large',
+    }), required=False,)
 
     GENDERCHOICES = (
         ('Male', 'Male'),
@@ -33,14 +20,18 @@ class PatientForm(forms.ModelForm):
     )
     gender = forms.CharField(widget=forms.Select(choices=GENDERCHOICES,
                                                  attrs={
-                                                     'class': 'select-box',
+                                                     'class': 'mdl-textfield custom-dropdown large',
                                                  }
                                                  ))
-    dob = forms.CharField(widget=forms.TextInput(attrs={
-                                                     'class': 'mdl-textfield__input',
-        'type':'date'
-                                                 }
-                                                 ))
+    dob = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'mdl-textfield__input',
+            'type': 'date',
+            'onkeyup': 'setDob($(this).val())',
+            'onchange': 'setDob($(this).val())'
+
+        }
+    ))
 
     class Meta:
         model = Patient
