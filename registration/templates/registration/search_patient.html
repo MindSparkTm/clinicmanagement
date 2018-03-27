@@ -9,8 +9,19 @@
 
     <div class="mdl-grid ">
         <div class="mdl-layout-spacer"></div>
+            {% if success %}
+            <div class="alert alert-success full-width">
+                <strong>Success!</strong> {{ success }}
+            </div>
+        {% endif %}
+        {% if errors %}
+            <div class="alert alert-danger full-width">
+                <i>{{ errors|safe }}</i>
+            </div>
+        {% endif %}
+        <div class="mdl-card mdl-shadow--16dp util-center mdl-cell mdl-cell--6-col"
 
-        <div class="mdl-card mdl-shadow--16dp util-center mdl-cell mdl-cell--6-col" style="width: 700px !important; margin-bottom:600px; ">
+             style="width: 700px !important; margin-bottom:600px; ">
             <style>
                 .mdl-card__title-text {
                     display: flex;
@@ -97,8 +108,8 @@
 
                     <div class="mdh-expandable-search mdl-cell--hide-phone">
                         <i class="material-icons">search</i>
-                            <input type="text" id="search" placeholder="Search existing patient" size="1"
-                                   onkeyup="searchMembers(this.value)">
+                        <input type="text" id="search" placeholder="Search existing patient" size="1"
+                               onkeyup="searchMembers(this.value)">
 
 
                     </div>
@@ -138,7 +149,7 @@
                 </div>
                 <div class=" mdl-card" style="width:100%;">
                     <button type="submit"
-                            onclick="window.location.href='{%  url 'registration_patient_create' %}{{ patient.patient_no }}'"
+                            onclick="window.location.href='{% url 'registration_patient_create' %}{{ patient.patient_no }}'"
                             class="btn-over">
                         Create New Patient
                     </button>

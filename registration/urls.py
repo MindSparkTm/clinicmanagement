@@ -24,5 +24,6 @@ urlpatterns += (
     url(r'^patient/create/$', views.PatientCreateView.as_view(), name='registration_patient_create'),
     url(r'^patient/existing/(?P<patient_no>\S+)/$', views.PatientDetailView.as_view(), name='registration_patients_detail'),
     url(r'^patient/update/(?P<patient_no>\S+)/$', views.PatientUpdateView.as_view(), name='registration_update'),
+    url(r'^patient/send-to-triage/(?P<patient_no>\S+)/$', views.SendToTriageView.as_view(), name='registration_sent_to_triage'),
 )
 

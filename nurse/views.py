@@ -51,7 +51,7 @@ class NurseCreateView(UserPassesTestMixin, CreateView):
             print(404)
             raise Http404('Requested user not found.')
 
-        return HttpResponseRedirect("/nurse/models/create/?sucess=true")
+        return HttpResponseRedirect("/nurse/nurse")
 
 
 class NurseDetailView(UserPassesTestMixin, DetailView):

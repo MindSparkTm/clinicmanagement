@@ -221,7 +221,7 @@
             {% if patient.status == 0 %}
 
                 <button type="submit"
-                        onclick="window.location.href='/registration/models/update/{{ patient.patient_no }}'"
+                        onclick="window.location.href='{%  url 'registration_sent_to_triage' patient.patient_no %}'"
                         class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary">
                     Send to Triage
                 </button>
