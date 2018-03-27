@@ -14,6 +14,11 @@
                 <strong>Success!</strong> {{ success }}
             </div>
         {% endif %}
+    {% if message %}
+            <div class="alert alert-success full-width">
+                <strong>Success!</strong> {{ message }}
+            </div>
+        {% endif %}
         {% if errors %}
             <div class="alert alert-danger full-width">
                 <i>{{ errors|safe }}</i>

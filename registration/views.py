@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.forms import inlineformset_factory
 # from django.contrib.auth.mixins import UserPassesTestMixin
 # from valentisHealth.authenticator import *
+from django.contrib import messages
 
 class LandingView(ListView):
     model = Patient
@@ -41,9 +42,12 @@ class PatientCreateView(CreateView):
             return render(self.request, 'registration/patient_form.html', {'errors': errors_check,'new':True, 'form':form})
         instance.save()
 
+
         message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
 
-        return render(self.request, 'registration/patient_form.html', {'success': message, 'new':True, 'form':form})
+        messages.add_message(self.request, messages.INFO, message)
+
+        return HttpResponseRedirect('/registration')
 
 
 class PatientDetailView(DetailView):
