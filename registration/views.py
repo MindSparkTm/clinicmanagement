@@ -43,7 +43,7 @@ class PatientCreateView(CreateView):
 
         message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
 
-        return render(self.request, 'registration/patient_form.html', {'success': message})
+        return render(self.request, 'registration/', {'success': message})
         # return HttpResponseRedirect("/registration/models/create/?sucess=true")
 
 
