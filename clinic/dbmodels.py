@@ -3,11 +3,11 @@ import os, csv
 path ="/opt/demovalentisHealth"
 
 os.chdir(path)
-from clinic.models import Radiologylist
+from clinic.models import Diagnosis
 
-with open('radiology.csv') as csvfile:
+with open('icd.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         print(row)
-        p = Radiologylist.objects.create(group=row['Group'],modality=row['Modality'], tests=row['Tests '])
+        p = Diagnosis.objects.create(code=row['CODE'],name=row['NAME'])
         p.save()
