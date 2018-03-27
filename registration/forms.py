@@ -10,7 +10,7 @@ class PatientForm(forms.ModelForm):
         ('Passport', 'Passport Number'),
     )
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
-        'class': 'mdl-textfield custom-dropdown large',
+        'class': 'select-box',
     }), required=False,)
 
     GENDERCHOICES = (
@@ -20,9 +20,10 @@ class PatientForm(forms.ModelForm):
     )
     gender = forms.CharField(widget=forms.Select(choices=GENDERCHOICES,
                                                  attrs={
-                                                     'class': 'mdl-textfield custom-dropdown large',
+                                                     'class': 'select-box',
                                                  }
                                                  ))
+
     dob = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'mdl-textfield__input',
@@ -32,6 +33,174 @@ class PatientForm(forms.ModelForm):
 
         }
     ))
+
+    YESNOCHOICES = (
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    )
+
+    if_smoker = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                 attrs={
+                                                     'class': 'select-box',
+                                                 }
+                                                 ))
+    if_quit_before = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                 attrs={
+                                                     'class': 'select-box',
+                                                 }
+                                                 ))
+
+    if_chew = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                    attrs={
+                                                        'class': 'select-box',
+                                                    }
+                                                    ))
+
+    if_quit = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                  attrs={
+                                                      'class': 'select-box',
+                                                  }
+                                                  ))
+
+    if_drink_alcohol = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                  attrs={
+                                                      'class': 'select-box',
+                                                  }
+                                                  ))
+
+    if_drug_use = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                           attrs={
+                                                               'class': 'select-box',
+                                                           }
+                                                           ))
+
+    if_exercise = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                      attrs={
+                                                          'class': 'select-box',
+                                                      }
+                                                      ))
+
+    if_special_diet = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                      attrs={
+                                                          'class': 'select-box',
+                                                      }
+                                                      ))
+
+    if_caffenated_drink = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                          attrs={
+                                                              'class': 'select-box',
+                                                          }
+                                                          ))
+
+    if_increase_sadness = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
+
+    if_enjoy_activities = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
+
+    if_living_will = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
+
+
+    sub_dob = forms.DateField(label='Date of Birth',
+                              required=False,
+                              widget=forms.DateInput(
+                                  attrs={
+                                      'class': 'mdl-textfield__input',
+                                      'type': 'date'
+                                  }
+                              ))
+    last_phys_examination = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_blood_work = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_colonoscopy = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_tetanus_shot = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_menstrual = forms.DateField(
+        input_formats=['m-d-Y'],
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_pap_smear = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    abnormal_pap = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    last_mammogram = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
+    dexa = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'mdl-textfield__input',
+                'type': 'date'
+            }
+        ))
+
 
     class Meta:
         model = Patient

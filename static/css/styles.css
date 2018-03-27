@@ -532,13 +532,16 @@ legend {
     width: 100%;
     margin: 10px 0;
     float: left;
-    color: #105659 !important;
+    color: #fff !important;
     border-radius: 3px;
     box-shadow: 2px 2px #ccc;
     font-weight: bold; font-size: 16px; padding: 17px;
     font-size: 20px;
 
- background:#BFF4F7;
+ background: #4B79A1;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #283E51, #4B79A1);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 
 }
