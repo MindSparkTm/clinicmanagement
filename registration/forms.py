@@ -68,7 +68,7 @@ class PatientForm(forms.ModelForm):
                                                   }
                                                   ))
 
-    if_drug_use = forms.CharField(widget=forms.Select(choices=YESNOCHOICES,
+    if_drug_use = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
                                                            attrs={
                                                                'class': 'select-box',
                                                            }
