@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.forms import inlineformset_factory
 # from django.contrib.auth.mixins import UserPassesTestMixin
 # from valentisHealth.authenticator import *
+from django.contrib import messages
 
 class LandingView(ListView):
     model = Patient
@@ -35,16 +36,18 @@ class PatientCreateView(CreateView):
         instance = form.save(commit=False)
         instance.status = 2
         errors_check = instance.create_patient_account(self.request)
-        print('error detected are', errors_check)
+
         if errors_check:
             print('error occurred', errors_check)
-            return render(self.request, 'registration/patient_form.html', {'errors': errors_check, 'form':form})
+            return render(self.request, 'registration/patient_form.html', {'errors': errors_check,'new':True, 'form':form})
         instance.save()
+
 
         message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
 
-        return render(self.request, 'registration/patient_form.html', {'success': message})
-        # return HttpResponseRedirect("/registration/models/create/?sucess=true")
+        messages.add_message(self.request, messages.INFO, message)
+
+        return HttpResponseRedirect('/registration')
 
 
 class PatientDetailView(DetailView):
@@ -70,6 +73,18 @@ class PatientDetailView(DetailView):
 
         return context
 
+class SendToTriageView(View):
+    template_name = 'registration/search_patient.html'
+    def get(self, request, *args, **kwargs):
+        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
+        if int(patient_object.status)>1:
+            return render(self.request, self.template_name, {"errors":"This patient ("+patient_object.full_name()+") is still under treatment", "patient":patient_object})
+        else:
+            patient_object.status = 2
+            patient_object.save()
+            print("Sending to triage")
+
+            return render(self.request, self.template_name, {"success":"Patient has been sent to triage", "patient":patient_object})
 
 class PatientUpdateView(UpdateView):
     model = Patient

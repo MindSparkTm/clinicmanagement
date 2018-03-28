@@ -198,3 +198,5 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'valentisHealth.backends.jwt_response_payload_handler',
 
 }
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

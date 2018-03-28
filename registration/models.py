@@ -128,6 +128,9 @@ class Patient(models.Model):
     def get_update_url(self):
         return reverse('registration_models_update', args=(self.patient_no,))
 
+    def full_name(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
     def create_patient_account(self, request):
 
         errors = {}
