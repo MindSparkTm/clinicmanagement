@@ -360,7 +360,7 @@
         <div class="mdl-grid full-width">
 
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea>
+                <textarea onkeyup="$('#examination').val($(this).val())" class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Examination</label>
             </div>
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
