@@ -1628,7 +1628,7 @@
 
             </legend>
 
-                <button name="visit_form" onclick="window.location.href='/medication/models/new/{{ patient.patient_no }}/'"
+                <button name="visit_form" onclick="window.location.href='{% url 'medication_models_create' patient.patient_no %}'"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
                     type="button">Add Prescription
             </button>
