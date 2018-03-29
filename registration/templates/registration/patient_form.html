@@ -137,9 +137,14 @@
                         <div class="">
                             <label class=""
                                    for="textfield_gender">Gender</label>
+                            {% if new %}
+
+                            {{ form.gender }}
+                            {% else %}
                             <input class="mdl-textfield__input" type="text"
                                    id="textfield_gender" value="{{ form.gender.value|default_if_none:"" }}" name="gender"
                                    readonly/>
+                            {% endif %}
                         </div>
 
                         <script>
