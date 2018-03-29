@@ -393,22 +393,16 @@
                             </div>
 
 
-                            <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--4-col">
-                                <input class="mdl-textfield__input" value="{{ form.sub_id_type.value }}"
-                                       id="sub_id_type" readonly/>
-                                <input value="{{ form.sub_id_type.value }}" type="hidden" name="sub_id_type"/>
-                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
-                                <label class="mdl-textfield__label" for="sub_id_type">Identification Documents</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="sub_id_type">
-                                    <li class="mdl-menu__item" data-val="id">ID</li>
-                                    <li class="mdl-menu__item" data-val="ps">Passport</li>
-                                    <li class="mdl-menu__item" data-val="otherd">Other Documents</li>
 
-                                </ul>
-                                <span style="visibility: visible;"
-                                      class="mdl-textfield__error">{{ form.sub_id_type.errors|striptags }}</span>
-                            </div>
+
+                            <div class="">
+                            <label class=""
+                                   for="textfield_gender ">Identification Documents</label>
+                            {{ form.id_type }}
+                        </div>
+
+
+
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey"
                                        for="textfield_sub_ss_number">Identification No</label>
