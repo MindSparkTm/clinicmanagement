@@ -468,6 +468,13 @@ textarea {
  * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
 
+
+.cloz{
+   padding: 20px;
+
+
+}
+
 .select-box{
 height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
