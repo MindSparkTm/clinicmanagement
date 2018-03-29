@@ -137,7 +137,9 @@
                         <div class="">
                             <label class=""
                                    for="textfield_gender">Gender</label>
-                            {{ form.gender }}
+                            <input class="mdl-textfield__input" type="text"
+                                   id="textfield_gender" value="{{ form.gender.value|default_if_none:"" }}" name="gender"
+                                   readonly/>
                         </div>
 
                         <script>
@@ -646,6 +648,7 @@
                         </div>
                     </fieldset>
 
+                    {% if form.gender.value == "Female" %}
                     <div id="females_">
                         <fieldset id="for_females" name="for_females">
                             <legend style="font-weight: bold; font-size: 16px; padding: 17px; ">For females</legend>
@@ -747,6 +750,7 @@
 
                         </fieldset>
                     </div>
+                        {% endif %}
 
 
 
