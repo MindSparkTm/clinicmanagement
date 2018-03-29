@@ -63,7 +63,7 @@ class PatientForm(forms.ModelForm):
                                                  }
                                                  ))
 
-    if_chew = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
+    if_chew_tobacco = forms.CharField(required=False,widget=forms.Select(choices=YESNOCHOICES,
                                                     attrs={
                                                         'class': 'select-box',
                                                     }
