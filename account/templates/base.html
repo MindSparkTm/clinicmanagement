@@ -60,7 +60,14 @@
 
         </div>
     </div>
-
+    <script>
+        $(function () {
+            if ($('[type="date"]').prop('type') != 'date') {
+                $('[type="date"]').datepicker();
+                console.log("checking date")
+            }
+        })
+    </script>
 
 </header>
 

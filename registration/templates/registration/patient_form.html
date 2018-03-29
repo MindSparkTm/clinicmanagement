@@ -484,7 +484,7 @@
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_spouse"
-                                       value="{{ form.spouse.value|default_if_none:"" }}"
+                                       value="{{ form.spouse.value|default_if_none:"    " }}"
                                        name="spouse"/>
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.spouse.errors|striptags }}</span>
