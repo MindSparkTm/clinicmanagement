@@ -80,15 +80,12 @@
 <div class="mdl-grid">
 
     {% if show_waiting_list %}
-
-        <div class="mdl-cell mdl-cell--2-col" style="
-        z-index: -1; background: transparent; "></div>
-
+        <div class="mdl-layout-spacer"></div>
         <div id="waiting_list_table" class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--6-col">
             <div class="mdl-card__title mdl-color--teal-500">
                 <h2 class="mdl-card__title-text mdl-color-text--white">Waiting List</h2>
             </div>
-            <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col" style="overflow: auto">
                 <script>
                     function timeDiff(then) {
                         var now = moment().format("DD/MM/YYYY HH:mm:ss")
@@ -117,7 +114,7 @@
                     <thead>
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric full-width">Patient Name</th>
-                        <th>Patient's Age</th>
+                        <th>Age</th>
                         <th>Patient Id.</th>
                         <th>Arrival Time.</th>
                         <th>Wait duration</th>
@@ -161,9 +158,15 @@
 
             </div>
         </div>
+
+    {% endif %}
+    <!-- center the waiting list above if not in the clinic page otherwise align right(check spacer above waiting list)-->
+    {% if not clinic %}
+        <div class="mdl-layout-spacer"></div>
     {% endif %}
 
     {% if clinic %}
+
         <div class="mdl-cell mdl-cell--4-col">
             <div id="from_labs" class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--12-col waiting_table">
                 <div class="mdl-card__title mdl-color--teal-500">
@@ -175,14 +178,14 @@
                         <thead>
                         <tr>
                             <th class="mdl-data-table__cell--non-numeric full-width">Patient Name</th>
-                            <th>Patient's Age</th>
-                            <th>Patient Id.</th>
+                            <th>Age</th>
+                            <th>Patient No.</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for patient in from_labs %}
                             <tr onclick="window.location.href='{% url 'doctor_visit' patient.patient_no %}'">
-                                <td class="mdl-data-table__cell--non-numeric">{{ patient.first_name }} {{ patient.last_name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ patient.full_name }} </td>
                                 <td style="text-align:left;">{{ patient.age }}</td>
                                 <td style="text-align:left;">{{ patient.patient_no }}</td>
                             </tr>

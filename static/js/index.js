@@ -356,10 +356,10 @@ function dynamic_children() {
             setTimeout(function () {
                 $('max-children').hide()
             }, 3000);
-        } else if(no<children_added){
-            
-            no_to_remove = children_added-no
-            for (i=0; i<no_to_remove; i++){
+        } else if (no < children_added) {
+
+            no_to_remove = children_added - no
+            for (i = 0; i < no_to_remove; i++) {
                 $('#children_td_table').children().last().remove();
             }
 
@@ -558,32 +558,271 @@ function calculateAge(dateString) {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
-    return (age<0 || isNaN(age))?0:age;
+    return (age < 0 || isNaN(age)) ? 0 : age;
 }
 
-function setDob(birthday){
+function setDob(birthday) {
     age = calculateAge(birthday)
-    console.log(age," is the age for ", birthday)
+    console.log(age, " is the age for ", birthday)
     $('#textfield_age').val(age)
 }
 
 
-$(function(){
+$(function () {
     var dtToday = new Date();
 
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
     var year = dtToday.getFullYear();
 
-    if(month < 10)
+    if (month < 10)
         month = '0' + month.toString();
-    if(day < 10)
+    if (day < 10)
         day = '0' + day.toString();
 
     var maxDate = year + '-' + month + '-' + day;
     $('input[type="date"]').attr('max', maxDate);
 });
 
-function readonly_personal(){
+function readonly_personal() {
     $("#personal_information :input").attr("readonly", true);
 }
+
+
+// ###################################Prescription form handling################################
+
+
+var brand = [];
+var data = [];
+var results = [];
+var s;
+var clicked = 0;
+var sr = "";
+
+$(window).on("load", getdata());
+var patient_id = $("#id_patient_no").val();
+
+var tablets = '--'
+var days = '--'
+var freq = '--'
+
+
+//update the search result list function
+function getsearch(str) {
+    drugs = brand
+
+    if (/\S/.test(str) && str.length > 1) {
+        var options = {
+            keys: ['brand'],
+        }
+        var fuse = new Fuse(drugs, options)
+
+        //fuse to do the text search on the array
+        json = fuse.search(str)
+
+        //if there are not result show "no result" message
+        if (json.length === 0) {
+            $("#no_result").show()
+            $('#searchresult').hide()
+
+        } else {
+            console.log(json, drugs)
+            $("#no_result").hide()
+            $('#searchresult').show()
+
+            //remove existing search result
+            $('#search_table tbody').children().remove();
+            var tbody = $('#search_table tbody'),
+                brand_key = "brand"
+            $.each(json, function (i, brand_key) {
+
+                var tr = $("<tr>");
+                //append new results to the search result list
+                $('<td class="mdl-data-table__cell--non-numeric">').html(brand[brand_key]).appendTo(tr);
+                tbody.append(tr);
+            });
+
+        }
+    } else {
+
+        $("#no_result").hide()
+        $('#searchresult').hide()
+
+    }
+}
+
+///here we create a pop up to allow the specifying of the dosage
+$(function () {
+    $('#livesearch').on('click', 'td', function () {
+        that = this
+
+        var dialog = bootbox.dialog({
+            title: 'Dosage for ' + $(this).text(),
+            message: "<input onkeyup='tablets=$(this).val()' class='form-control' id='tablets' placeholder='No of Tablets/ML'><br><input  onkeyup='freq=$(this).val()' class='form-control' id='freq' placeholder='No of time per day'><br><input onkeyup='days=$(this).val()' class='form-control' id='days' placeholder='No of Days'>",
+            buttons: {
+                cancel: {
+                    label: "cancel",
+                    className: 'btn-danger',
+                    callback: function () {
+
+                    }
+                },
+
+                ok: {
+                    label: "ok",
+                    className: 'btn-info',
+                    callback: function () {
+
+                        console.log("sr", sr);
+
+
+                        var dosage = '(tablets:' + tablets + ' ' + ' times per day:' + freq + ' ' + 'days:' + days + ')'
+
+                        sr = sr + $(that).text() + ' ' + dosage + "\n";
+                        genericTagify($(that).text() + ' ' + dosage, 'prescription_tags', 'id_prescription')
+
+                        $('#id_prescription').val(sr)
+
+                        tablets = '--'
+                        days = '--'
+                        freq = '--'
+
+
+                    }
+                }
+            }
+        });
+
+
+    });
+
+
+    //Handle email button clicked
+    $("#sendemail").click(function (e) {
+
+        id_patient_no
+        id_patient_name
+        textfield_phone_number
+        textfield_email
+        id_address
+        id_prescription
+        var patientnumber = $("#id_patient_no").val();
+        var patientname = $("#id_patient_name").val();
+        var phonenumber = $("#textfield_phone_number").val();
+        var email = $("#textfield_email").val();
+        var address = $("#id_physical_address").val();
+        var prescriptionid = $("#id_prescription").val();
+
+        var prescriptiondata = "patientname" + "  " + patientname + " " + "patientnumber" + " " + patientnumber + "  " +
+            "phonenumber" + "  " + phonenumber + "  " + "email" + " " + email + "address" + "  " + address + " " + "prescription" + "  " + prescriptionid;
+
+        sendprescriptionemail("notifications@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
+        sendprescriptionemail("hello@redpulse.co.ke", prescriptiondata, "hello@redpulse.co.ke")
+//           sendprescriptionemail("prescription@mydawa.com", prescriptiondata, "notifications@valentishealth.co.ke")
+
+
+    });
+
+})
+
+
+var cb = $("input#check");
+
+if (cb.is(":checked")) {
+    console.log("checkbox is checked ");
+} else {
+    console.log("checkbox is not checked");
+}
+
+function clearprescriptionarea() {
+    $("#clrbtn").val("");
+}
+
+
+//generic emailing function implementation
+function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
+    var reqbody = {
+
+        "personalizations": [
+            {
+                "to": [
+                    {
+                        "email": dest_email
+                    }
+                ],
+                "subject": prescriptiondata,
+            }
+        ],
+        "from": {
+            "email": senderemail
+        },
+        "content": [
+            {
+                "type": "text/plain",
+                "value": "Prescription"
+            }
+        ]
+
+    }
+    reqbody = JSON.stringify(reqbody);
+    // console.log('requestbody', reqbody);
+
+
+    $.ajax({
+            method: 'POST',
+            url: "https://cors-anywhere.herokuapp.com/https://api.sendgrid.com/v3/mail/send",
+            data: reqbody,
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Bearer ' + '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',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+            crossDomain: true,
+            success: function (res) {
+                alert("email was sent successfully")
+                console.log(1, res)
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+
+        })
+        .done(function (res) {
+            alert("email was sent successfully")
+            console.log(1, res)
+        })
+        .fail(function (e) {
+            console.log(2, e.status, e.responseText)
+        })
+}
+
+
+function getdata() {
+    $.ajax({
+        url: "/medication/api/v1/MyDawa/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            for (var i = 0; i < response.length; ++i) {
+
+                brand.push(response[i].brand);
+            }
+
+            console.log("loaded", patient_id);
+            //getprescriptiondata(patient_id);
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+}
+
+
+// ###################################End of rescription form handling################################

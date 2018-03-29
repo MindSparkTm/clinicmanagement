@@ -312,19 +312,10 @@
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
-                                <input class="mdl-textfield__input" value="{{ form.secondary_insurance.value|default_if_none:"" }}" id="other_ins_subscriber" readonly/>
-                                <input value="{{ form.secondary_insurance.value|default_if_none:"" }}" type="hidden" name="other_ins_subscriber"/>
-                                <label class="mdl-textfield__label" for="other_ins_subscriber">Are You the Policy
-                                    Holder?</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="other_ins_subscriber">
-                                    <li class="mdl-menu__item" data-val="yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="no">No</li>
+                                {{ form.pri_ins_sub }}
 
-                                </ul>
                                 <span style="visibility: visible;"
-                                      class="mdl-textfield__error">{{ form.other_ins_subcriber.errors|striptags }}</span>
-
+                                      class="mdl-textfield__error">{{ form.pri_ins_sub.errors|striptags }}</span>
 
                             </div>
                             <script>
@@ -353,15 +344,7 @@
                                   class="mdl-textfield__error">{{ form.secondary_insurance.errors|striptags }}</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
-                                <input class="mdl-textfield__input" value="" id="sec_ins_sub"
-                                       readonly/>
-                                <input value="" type="hidden" name="sec_ins_sub"/>
-                                <label class="mdl-textfield__label" for="sec_ins_sub">Are You the Policy Holder?</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="sec_ins_sub">
-                                    <li class="mdl-menu__item" data-val="yes">Yes</li>
-                                    <li class="mdl-menu__item" data-val="no">No</li>
-                                </ul>
+                                {{ form.sec_ins_sub }}
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.sec_ins_sub.errors|striptags }}</span>
                             </div>
@@ -630,7 +613,7 @@
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
 
-                                <div> <p>Social History</p> </div>
+                                <div> <p>Others</p> </div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="allergies" name="social_hist">{{ form.social_hist.value|default_if_none:"" }}</textarea>
                                 <label class="mdl-textfield__label" for="social_hist"></label>
@@ -763,10 +746,11 @@
 
                             <div class="mdl-grid">
                                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                    <div> <p>Method/s of
+                                        Contraception</p> </div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="methods_of_contraception">{{ form.methods_of_contraception.value|default_if_none:"" }}</textarea>
-                                    <label class="mdl-textfield__label" for="methods_of_contraception">Method/s of
-                                        Contraception</label>
+                                    <label class="mdl-textfield__label" for="methods_of_contraception"></label>
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.methods_of_contraception.errors|striptags }}</span>
                                 </div>
@@ -779,10 +763,12 @@
 
                     <div class="mdl-grid">
                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+
+                            <div><p>Add past surgeries/Medications</p></div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="surgeries"
                                                               name="surgeries">{{ form.surgeries.value|default_if_none:"" }}</textarea>
-                            <label class="mdl-textfield__label" for="surgeries">Add past surgeries/Medications</label>
+                            <label class="mdl-textfield__label" for="surgeries"></label>
                         <span style="visibility: visible;"
                               class="mdl-textfield__error">{{ form.surgeries.errors|striptags }}</span>
                         </div>
@@ -794,8 +780,8 @@
 
                         <legend style="font-weight: bold; font-size: 16px; ">Social information</legend>
                       <div class="">
-                            <label class=""
-                                   for="textfield_gender">Do you smoke</label>
+                            <label class="cloz"
+                                   for="textfield_gender ">Do you smoke</label>
                             {{ form.if_smoker }}
                         </div>
 
@@ -804,7 +790,7 @@
                       <div class="">
                             <label class="mdl-cell mdl-cell--2-col graybox"
                                    for="textfield_gender">Do you Chew Tobacco</label>
-                            {{ form.if_chew }}
+                            {{ form.if_chew_tobacco }}
                         </div>
 
 
@@ -821,13 +807,6 @@
 
                         <div class="mdl-grid">
 
-       <div class="mdl-cell mdl-cell--4-col">
-                            <label class=""
-                                   for="textfield_gender">Have you quit before</label>
-                            {{ form.if_quit }}
-                        </div>
-
-
                              <div class="mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Do you drink alcohol</label>
@@ -839,7 +818,7 @@
                                 <div class="mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Any illegal history of drug use</label>
-                            {{ form.if_drug_use }}
+                            {{ form.if_drug_used }}
                         </div>
 
 
@@ -875,7 +854,7 @@
                              <div class="mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Do you consume any caffeinated drink</label>
-                            {{ form.if_caffenated_drink }}
+                            {{ form.if_use_caffein }}
                         </div>
 
 
@@ -888,20 +867,20 @@
                                       <div class="mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Have you recently noticed any increase in sadness</label>
-                            {{ form.if_increase_sadness }}
+                            {{ form.is_sadder }}
                         </div>
 
           <div class="mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Have you lost interest in enjoyable activities</label>
-                            {{ form.if_enjoy_activities }}
+                            {{ form.if_lost_interest }}
                         </div>
 
 
                                  <div class="mdl-cell mdl-cell--4-col">
                             <label class=""
                                    for="textfield_gender">Do you have a living will</label>
-                            {{ form.if_living_will }}
+                            {{ form.have_will }}
                         </div>
 
 
