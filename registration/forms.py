@@ -21,6 +21,7 @@ class PatientForm(forms.ModelForm):
     gender = forms.CharField(widget=forms.Select(choices=GENDERCHOICES,
                                                  attrs={
                                                      'class': 'select-box',
+                                                     'onclick': 'genderHandle($(this))'
                                                  }
                                                  ))
 
