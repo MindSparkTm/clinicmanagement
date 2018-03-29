@@ -759,10 +759,11 @@
 
                             <div class="mdl-grid">
                                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                                    <div> <p>Method/s of
+                                        Contraception</p> </div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="methods_of_contraception">{{ form.methods_of_contraception.value|default_if_none:"" }}</textarea>
-                                    <label class="mdl-textfield__label" for="methods_of_contraception">Method/s of
-                                        Contraception</label>
+                                    <label class="mdl-textfield__label" for="methods_of_contraception"></label>
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.methods_of_contraception.errors|striptags }}</span>
                                 </div>
@@ -775,10 +776,12 @@
 
                     <div class="mdl-grid">
                         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+
+                            <div><p>Add past surgeries/Medications</p></div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="surgeries"
                                                               name="surgeries">{{ form.surgeries.value|default_if_none:"" }}</textarea>
-                            <label class="mdl-textfield__label" for="surgeries">Add past surgeries/Medications</label>
+                            <label class="mdl-textfield__label" for="surgeries"></label>
                         <span style="visibility: visible;"
                               class="mdl-textfield__error">{{ form.surgeries.errors|striptags }}</span>
                         </div>
@@ -790,8 +793,8 @@
 
                         <legend style="font-weight: bold; font-size: 16px; ">Social information</legend>
                       <div class="">
-                            <label class=""
-                                   for="textfield_gender">Do you smoke</label>
+                            <label class="cloz"
+                                   for="textfield_gender ">Do you smoke</label>
                             {{ form.if_smoker }}
                         </div>
 
