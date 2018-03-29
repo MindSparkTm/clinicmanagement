@@ -9,9 +9,19 @@ class PatientForm(forms.ModelForm):
         ('ID', 'ID Number'),
         ('Passport', 'Passport Number'),
     )
+
+    IDOCCHOICES = (
+        ('ID', 'ID Number'),
+        ('Passport', 'Passport Number'),
+    )
+
     id_type = forms.CharField(widget=forms.Select(choices=IDCHOICES, attrs={
         'class': 'select-box',
     }), required=False,)
+
+    id_type_sub = forms.CharField(widget=forms.Select(choices=IDOCCHOICES, attrs={
+        'class': 'select-box',
+    }), required=False, )
 
     GENDERCHOICES = (
         ('Male', 'Male'),
