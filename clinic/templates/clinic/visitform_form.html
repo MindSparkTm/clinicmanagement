@@ -3,7 +3,7 @@
 
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/W3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
 <script type="text/javascript">
      var radiologytsts = [];
 
@@ -364,7 +364,7 @@
                 <label class="mdl-textfield__label" for="notes_">Examination</label>
             </div>
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">}{{ form.query_diagnosis.value|default_if_none:"" }}</textarea>
+                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">{{ form.query_diagnosis.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Query Diagnosis</label>
             </div>
         </div>
@@ -1899,17 +1899,4 @@
 </div>
 
 
-
-
-
-<dialog class="mdl-dialog">
-    <div class="mdl-dialog__content">
-        <p>
-            Prescriptions Added
-        </p>
-    </div>
-    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-        <button onclick="closePopUp()" type="button" class="mdl-button close">OK</button>
-    </div>
-</dialog>
 {% endblock %}

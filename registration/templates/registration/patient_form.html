@@ -6,7 +6,7 @@
 
     <div class="mdl-cell mdl-cell--12-col mdl-grid" style="">
 
-        <div class="mdl-card__supporting-text mdl-grid">
+        <div class="mdl-card__supporting-text mdl-grid" >
 
             <form method="POST" action="" class="full-width" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -472,28 +472,9 @@
 
                         </div>
                         <div class="mdl-grid">
-                            <div class="mdl-textfield mdl-js-textfield getmdl-select mdl-cell mdl-cell--6-col">
-
-
-                                <input class="mdl-textfield__input"
-                                       value="{{ form.marital_status.value|default_if_none:"" }}" id="marital_status"
-                                       readonly/>
-                                <input value="{{ form.marital_status.value|default_if_none:"" }}" type="hidden"
-                                       name="marital_status"/>
-                                <label class="mdl-textfield__label" for="marital_status">marital Status</label>
-                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
-                                    for="marital_status">
-                                    <li class="mdl-menu__item" data-val="single">
-                                        <div class="full-width" onclick="hide_element('parter_div')">Single</div>
-                                    </li>
-                                    <li class="mdl-menu__item" data-val="married">
-                                        <div class="full-width" onclick="show_element('parter_div')">Married</div>
-                                    </li>
-                                    <li class="mdl-menu__item" data-val="divorced">
-                                        <div class="full-width" onclick="hide_element('parter_div')">Divorced</div>
-                                    </li>
-
-                                </ul>
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <span style="display: block">marital Status</span>
+                                {{ form.marital_status }}
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.marital_status.errors|striptags }}</span>
                             </div>
@@ -503,7 +484,7 @@
                                        for="textfield_spouse">Name of Partner</label>
                                 <input class="mdl-textfield__input" type="text"
                                        id="textfield_spouse"
-                                       value="{{ form.spouse.value|default_if_none:"" }}"
+                                       value="{{ form.spouse.value|default_if_none:"    " }}"
                                        name="spouse"/>
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.spouse.errors|striptags }}</span>
@@ -524,18 +505,19 @@
                         </div>
 
                         <div class="mdl-grid">
-                            <div id=''>
+                            <div >
+
                                 <div id='max-children' style="display:none" class=" alert alert-danger">
                                     <i>The maximum no of children is four.</i>
                                 </div>
                                 <table class='mdl-data-table mdl-js-data-table full-width'
-                                       style='background: rgb(238, 238, 238); '>
+                                       style="background: rgb(238, 238, 238);">
                                     {{ child_formset.management_form }}
 
                                     <thead data-bind="children_td" style="color: #000;">
                                     <tr>
                                         <td>
-                                            <label for="number_children">Number of children</label>
+                                            <label for="number_children" style="display: block">N0. of children</label>
 
                                             <input name="number_children" style="width: 30px; " class="Input-text"
                                                    onkeyup="dynamic_children()" value=1 id='number_children'/>
@@ -561,7 +543,10 @@
                                         </tr>
                                     {% endfor %}
 
+
                                     </tbody>
+                                <td><input type="button" class="w3-button" value="+">
+                                            </td>
 
                                 </table>
                             </div>
