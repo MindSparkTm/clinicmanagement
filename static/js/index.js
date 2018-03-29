@@ -856,6 +856,7 @@ function loadfunctionsonpage() {
     getfamilyhistory();
     getlistofinsurancecompanies();
     BindControls();
+    getcountiess()
 
 }
 
@@ -1029,6 +1030,30 @@ function BindControls() {
         $(this).autocomplete("search", "");
     });
 }
+
+
+//Loading counties
+
+function getcountiess() {
+    var counties = ['Mombasa', 'Kwale', 'Kilifi', 'Tana River', 'Lamu',
+        'Taita–Taveta', 'Garissa', 'Wajir', 'Mandera', 'Marsabit', 'Isiolo',
+        'Meru', 'Tharaka-Nithi', 'Embu', 'Kitui', 'Machakos', 'Makueni',
+        'Nyandarua', 'Nyeri', 'Kirinyaga', 'Kiambu', 'Muranga', 'Turkana',
+        'West Pokot', 'Samburu', 'Trans-Nzoia', 'Uasin Gishu', 'Elgeyo-Marakwet',
+        'Nandi', 'Baringo', 'Laikipia', 'Nakuru', 'Narok', 'Kajiado', 'Kericho',
+        'Bomet', 'Kakamega', 'Vihiga', 'Bungoma', 'Busia', 'Siaya', 'Kisumu',
+        'Homa Bay', 'Migori', 'Kisii', 'Nyamira', 'Nairobi'];
+
+    $('#tbCounties').autocomplete({
+        source: counties,
+        minLength: 0,
+        max: 10,
+        scroll: true
+    }).focus(function () {
+        $(this).autocomplete("search", "");
+    });
+}
+
 // ###################################End of Registration form handling#########################
 
 

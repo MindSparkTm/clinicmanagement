@@ -176,10 +176,14 @@
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
 
-                            <span style="font-size: 12px; "> County  </span> <select
-                                style="width: 150px;font-size: 12px; " id="county" name="county">
+                           <input class="mdl-textfield__input" id="tbCounties" name="county" type="text"
+                                   value="{{ form.county.value|default_if_none:"" }}"
+                                   name="county">
+                            <label for="county" class="mdl-textfield__label">County</label>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.county.errors|striptags }}</span>
 
-                        </select>
+
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                             <label class="mdl-textfield__label mdl-color-text--grey"
