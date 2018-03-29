@@ -529,14 +529,16 @@ form .mdl-textfield.is-invalid .mdl-textfield__input {
 }
 
 legend {
-    width: 100%;
+    width: 96%;
     margin: 10px 0;
     float: left;
     color: #fff !important;
     border-radius: 3px;
     box-shadow: 2px 2px #ccc;
     font-weight: bold; font-size: 16px; padding: 17px;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
 
  background: #4B79A1;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #283E51, #4B79A1);  /* Chrome 10-25, Safari 5.1-6 */
@@ -602,6 +604,11 @@ background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, F
 
 .para {
     color: #fff;
+}
+p{
+    font-size: 12px;
+    line-spacing: 1px;
+
 }
 
 .mdl-cell--6-col-desktop.mdl-cell--6-col-desktop {

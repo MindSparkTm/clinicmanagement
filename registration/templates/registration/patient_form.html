@@ -535,10 +535,12 @@
 
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+
+                                <div><p>Names/Specialties/Locations of Other
+                                    Physicians Caring for You, including previous primary care doctor</p></div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="prev_docs">{{ form.prev_docs.value|default_if_none:"" }}</textarea>
-                                <label class="mdl-textfield__label" for="prev_docs">Names/Specialties/Locations of Other
-                                    Physicians Caring for You, including previous primary care doctor:</label>
+                                <label class="mdl-textfield__label" for="prev_docs"></label>
                                 <span style="visibility: visible;"
                                       class="mdl-textfield__error">{{ form.prev_docs.errors|striptags }}</span>
                             </div>
@@ -623,9 +625,11 @@
 
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
+
+                                <div> <p>Social History</p> </div>
                                                     <textarea class="mdl-textfield__input" type="text" rows="8"
                                                               id="allergies" name="social_hist">{{ form.social_hist.value|default_if_none:"" }}</textarea>
-                                <label class="mdl-textfield__label" for="social_hist">Social History</label>
+                                <label class="mdl-textfield__label" for="social_hist"></label>
                             <span style="visibility: visible;"
                                   class="mdl-textfield__error">{{ form.social_hist.errors|striptags }}</span>
                             </div>
