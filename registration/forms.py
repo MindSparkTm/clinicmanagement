@@ -35,6 +35,7 @@ class PatientForm(forms.ModelForm):
     ))
 
     YESNOCHOICES = (
+        ('--', '--'),
         ('Yes', 'Yes'),
         ('No', 'No'),
     )
