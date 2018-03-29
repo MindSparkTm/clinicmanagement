@@ -117,6 +117,17 @@ class PatientForm(forms.ModelForm):
                                                                   'class': 'select-box',
                                                               }
                                                               ))
+    MARITALSTATUS = (
+        ('Single','Single'),
+        ('Married','Married'),
+        ('Divorced','Divorced'),
+    )
+
+    marital_status = forms.CharField(required=False,widget=forms.Select(choices=MARITALSTATUS,
+                                                              attrs={
+                                                                  'class': 'select-box',
+                                                              }
+                                                              ))
 
 
     sub_dob = forms.DateField(label='Date of Birth',
