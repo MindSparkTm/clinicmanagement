@@ -437,6 +437,7 @@ body {
 .mdl-color--teal-500 {
 
     background: #00A79D !important;  /* fallback for old browsers */
+    border-radius: 2px;
 }
 .mdl-color-variation {
     background: #70BF44 !important;

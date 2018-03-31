@@ -5100,6 +5100,7 @@ input.mdl-button[type="submit"] {
   .mdl-data-table td {
     position: relative;
     vertical-align: middle;
+    text-align: left;
     height: 48px;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -5111,7 +5112,8 @@ input.mdl-button[type="submit"] {
     position: relative;
     vertical-align: bottom;
     text-overflow: ellipsis;
-    font-size: 14px;
+    font-size: 12px;
+    text-align: left;
     font-weight: bold;
     line-height: 24px;
     letter-spacing: 0;
