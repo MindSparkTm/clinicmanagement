@@ -4611,8 +4611,9 @@ input.mdl-button[type="submit"] {
 .mdl-checkbox__label {
   position: relative;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 24px;
+  padding: 20px;
   margin: 0; }
   fieldset[disabled] .mdl-checkbox .mdl-checkbox__label,
   .mdl-checkbox.is-disabled .mdl-checkbox__label {
@@ -5101,7 +5102,7 @@ input.mdl-button[type="submit"] {
     position: relative;
     vertical-align: middle;
     text-align: left;
-    height: 48px;
+    height: 18px;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     padding-top: 12px;
