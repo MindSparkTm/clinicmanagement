@@ -34,7 +34,7 @@ class PatientCreateView(CreateView):
     def form_valid(self, form):
 
         instance = form.save(commit=False)
-        instance.status = 2
+        # instance.status = 2
         errors_check = instance.create_patient_account(self.request)
 
         if errors_check:
