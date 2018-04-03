@@ -70,9 +70,7 @@ class modelsViewTest(unittest.TestCase):
             "others": "others",
             "attending_nurse": "attending_nurse",
             "patient_no": "patient_no",
-            "first_name": "first_name",
-            "last_name": "last_name",
-            "middle_name": "middle_name",
+
         }
         response = self.client.post(url, data=data)
         self.assertEqual(response.status_code, 302)
@@ -95,9 +93,7 @@ class modelsViewTest(unittest.TestCase):
             "others": "others",
             "attending_nurse": "attending_nurse",
             "patient_no": "patient_no",
-            "first_name": "first_name",
-            "last_name": "last_name",
-            "middle_name": "middle_name",
+
         }
         url = reverse('nurse_models_update', args=[models.slug,])
         response = self.client.post(url, data)
