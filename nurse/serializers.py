@@ -7,26 +7,6 @@ class modelsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Nurse
-        fields = (
-            'slug', 
-            'created', 
-            'last_updated', 
-            'systolic', 
-            'diastolic', 
-            'temperature', 
-            'oxygen_saturation', 
-            'urinalysis', 
-            'heart_rate', 
-            'others', 
-            'attending_nurse', 
-            'patient_no', 
-            'first_name', 
-            'last_name', 
-            'middle_name',
-            'triage_id',
-            'weight',
-            'height',
-            'random_glucose',
-        )
+        exclude = ('patient_no', 'created', 'triage_id', 'last_updated', 'slug')
 
 

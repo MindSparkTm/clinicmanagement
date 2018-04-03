@@ -9,6 +9,7 @@ from django.contrib.auth import models as auth_models
 from django.db import models as models
 from django_extensions.db import fields as extension_fields
 import uuid
+from registration.models import Patient
 
 class Nurse(models.Model):
 
@@ -28,10 +29,10 @@ class Nurse(models.Model):
     height = models.CharField(max_length=100)
     others = models.TextField(max_length=200, null=True, blank=True)
     attending_nurse = models.CharField(max_length=255, null=True, blank=True)
-    patient_no = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=255)
-    middle_name = models.CharField(max_length=255, null=True, blank=True)
+    patient_no = models.CharField(max_length=30, null=True, blank=True)
+    patient_data = models.ForeignKey(Patient, blank=True, null=True, on_delete=models.CASCADE, verbose_name='patient_no',
+                                   related_name='nurse'
+                                   )
 
     class Meta:
         ordering = ('-last_updated',)
