@@ -13,31 +13,29 @@
 
     <title>Valentis Health</title>
 
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_box.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
 
-
         {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"/>#}
         {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>#}
 
-    <!--datetome picker -->
-
-
-
 </head>
-
-
     <div class="mdl-grid">
 
         {#<div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--2-col"></div>#}
 
-
         <div id="triage" class="mdl-grid">
             <div class="mdl-card mdl-shadow--4dp util-center mdl-cell mdl-cell--8-col">
+
+            <fieldset>
+                        <legend style="font-weight: bold; font-size: 16px; padding: 17px;color:#879399; "> Confirm
+                            Patients Details
+                        </legend>
+
+                    </fieldset>
                 <form method="post">
                     {% csrf_token %}
             <span>{% if form.errors %}
@@ -60,30 +58,12 @@
                                type="text"
                                value="{{ patient.patient_no }}"
                                readonly/></div>
-                    <fieldset>
-                        <legend style="font-weight: bold; font-size: 16px; padding: 17px;color:#879399; "> Confirm
-                            Patients Details
-                        </legend>
-                        <div class="mdl-grid ">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey" for="first_name">First
-                                    Name</label>
-                                <input class="mdl-textfield__input" type="text" id="first_name" name="first_name"
-                                       value="{{ patient.first_name }}" readonly/>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
-                                <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_last_name">Last
-                                    Name</label>
-                                <input class="mdl-textfield__input" type="text" id="textfield_last_name"
-                                       name="last_name" value="{{ patient.last_name }}" readonly/>
-                            </div>
-                        </div>
-                    </fieldset>
+
 
             <fieldset>
-                <legend style="font-weight: bold; font-size: 16px; padding: 17px; " >Triage</legend>
+                <legend >Triage</legend>
 
-                        <div class="mdl-grid ">
+                        <div class="">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                                 <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_systolic">systolic</label>
                                 <input class="mdl-textfield__input" type="text" id="textfield_systolic" name="systolic"
@@ -94,7 +74,6 @@
                                 <input class="mdl-textfield__input" type="text" id="textfield_diastolic"
                                        name="diastolic" value="{{ form.diastolic.value|default_if_none:"" }}" required/>
                             </div>
-
                         </div>
 
                         <div class="mdl-grid ">
