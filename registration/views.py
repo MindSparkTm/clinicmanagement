@@ -36,11 +36,12 @@ class PatientCreateView(CreateView):
         instance = form.save(commit=False)
         instance.status = 0
         errors_check = instance.create_patient_account(self.request)
+        instance.save()
 
         if errors_check:
             print('error occurred', errors_check)
             return render(self.request, 'registration/patient_form.html', {'errors': errors_check,'new':True, 'form':form})
-        instance.save()
+
 
 
         message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
