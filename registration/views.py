@@ -98,7 +98,9 @@ class PatientUpdateView(UpdateView):
         return patient_object
 
     def form_valid(self, form):
+        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
         instance = form.save(commit=False)
+        instance.status = patient_object.status
         instance.save()
 
         context = self.get_context_data()
