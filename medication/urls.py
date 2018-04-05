@@ -20,6 +20,7 @@ urlpatterns = (
 urlpatterns += (
     # urls for models
     url(r'^medication/$', views.MedicationListView.as_view(), name='medication_models_list'),
+    url(r'^prescription-pdf/$', views.PrescriptionPdf.as_view(), name='medication_prescription_pdf'),
     url(r'^search/$', views.MedicationSearchView.as_view(), name='medication_models_search'),
     url(r'^medication/new/(?P<patient_no>\S+)/$', views.MedicationCreateView.as_view(), name='medication_models_create'),
     url(r'^medication/detail/(?P<slug>\S+)/$', views.MedicationDetailView.as_view(), name='medication_models_detail'),

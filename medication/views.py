@@ -82,3 +82,13 @@ class MedicationSearchView(UserPassesTestMixin, View):
 
         return render(request, 'medication/medication_search.html')
 
+class PrescriptionPdf(ListView):
+
+    def test_func(self):
+        return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
+
+    # def get_template_names(self):
+    #     return 'medication/medication_search.html'
+
+    def get(self, request):
+        return render(request, 'prescription_receipt.html')
