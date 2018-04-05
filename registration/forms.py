@@ -34,7 +34,7 @@ class PatientForm(forms.ModelForm):
                                                  }
                                                  ))
 
-    dob = forms.DateField(input_formats=['%d/%m/%Y',], widget=forms.TextInput(
+    dob = forms.DateField(widget=forms.TextInput(
         attrs={
             'class': 'mdl-textfield__input',
             'type': 'date',

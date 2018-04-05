@@ -83,7 +83,6 @@ class SendToTriageView(View):
         else:
             patient_object.status = 2
             patient_object.save()
-            print("Sending to triage")
 
             return render(self.request, self.template_name, {"success":"Patient has been sent to triage", "patient":patient_object})
 
@@ -101,6 +100,8 @@ class PatientUpdateView(UpdateView):
         patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
         instance = form.save(commit=False)
         instance.status = patient_object.status
+        instance.user = patient_object.user
+        instance.session_id = patient_object.session_id
         instance.save()
 
         context = self.get_context_data()
