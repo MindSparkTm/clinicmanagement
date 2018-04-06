@@ -36,11 +36,12 @@ class PatientCreateView(CreateView):
         instance = form.save(commit=False)
         instance.status = 0
         errors_check = instance.create_patient_account(self.request)
+        instance.save()
 
         if errors_check:
             print('error occurred', errors_check)
             return render(self.request, 'registration/patient_form.html', {'errors': errors_check,'new':True, 'form':form})
-        instance.save()
+
 
 
         message = "Successfully created patient and patient account. Login detail for the mobile app are sent to their email"
@@ -82,7 +83,6 @@ class SendToTriageView(View):
         else:
             patient_object.status = 2
             patient_object.save()
-            print("Sending to triage")
 
             return render(self.request, self.template_name, {"success":"Patient has been sent to triage", "patient":patient_object})
 
@@ -97,7 +97,11 @@ class PatientUpdateView(UpdateView):
         return patient_object
 
     def form_valid(self, form):
+        patient_object = Patient.objects.get(patient_no=self.kwargs['patient_no'])
         instance = form.save(commit=False)
+        instance.status = patient_object.status
+        instance.user = patient_object.user
+        instance.session_id = patient_object.session_id
         instance.save()
 
         context = self.get_context_data()

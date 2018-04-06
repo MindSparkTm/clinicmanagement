@@ -34,7 +34,7 @@ class PatientForm(forms.ModelForm):
                                                  }
                                                  ))
 
-    dob = forms.CharField(widget=forms.TextInput(
+    dob = forms.DateField(widget=forms.TextInput(
         attrs={
             'class': 'mdl-textfield__input',
             'type': 'date',
@@ -43,6 +43,7 @@ class PatientForm(forms.ModelForm):
 
         }
     ))
+
 
     YESNOCHOICES = (
         ('--', '--'),

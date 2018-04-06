@@ -530,7 +530,7 @@ form .mdl-textfield.is-invalid .mdl-textfield__input {
 }
 
 legend {
-    width: 96%;
+    width: 100%;
     margin: 10px 0;
     float: left;
     color: #fff !important;

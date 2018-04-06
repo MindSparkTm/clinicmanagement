@@ -63,7 +63,8 @@
     <script>
         $(function () {
             if ($('[type="date"]').prop('type') != 'date') {
-                $('[type="date"]').datepicker();
+                $('[type="date"]').datepicker({dateFormat: 'yy-mm-dd'});
+
                 console.log("checking date")
             }
         })
