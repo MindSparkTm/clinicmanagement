@@ -1548,24 +1548,7 @@
             <fieldset>
                 <legend class="colide">Doctor</legend>
 
-                <style>
-                    .search {
-                        position: relative;
-                    }
 
-                    .results {
-                        position: absolute;
-                        top: -10px;
-                        left: 0;
-                        right: 0;
-                        z-index: 10;
-                        padding: 0;
-                        margin: 0;
-                        color: #3c5d73;
-                        overflow-x: auto;
-                        overflow-y: auto;
-                    }
-                </style>
                 <div class="mdl-grid ">
                     <div id="diag_sect">
                         {%  for diagn in form.diagnosis.value|split:"," %}
