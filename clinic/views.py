@@ -106,6 +106,8 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
             visit_object.triage_id = session_id
             visit_object.save()
             print("exists -----------------------", session_id)
+            print("exists -----------------------", visit_object.diag_search)
+
             return visit_object
 
         except:
@@ -120,6 +122,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
         return 'clinic/visitform_form.html'
 
     def form_valid(self, form):
+        print ('form save')
         instance = form.save(commit=False)
         instance.save()
 
@@ -156,7 +159,8 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
             #-4 out of tests, -5 out of radiology
             context['from_labs'] = Patient.objects.filter(Q(status="-4") | Q(status="-45"))
             context['prev_visit'] = PatientVisit.objects.filter(Q(patient_no=self.kwargs['patient_no']))
-            # print(context['prev_visit'])
+            print ('Entered')
+            print(context['prev_visit'])
             context['from_radiology'] = Patient.objects.filter(Q(status="-5") | Q(status="-54"))
             context['patient'] = patient_object
 
