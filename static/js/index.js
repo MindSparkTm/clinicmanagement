@@ -164,14 +164,14 @@ function populatePrevVisit(uuid, triage_id) {
                 $("#prev_examination").text(visit.examination)
                 $("#prev_query_diag").text(visit.query_diagnosis)
                 $.ajax({
-                    url: "/medication/api/v1/models/",
+                    url: "/medication/api/v1/medication/",
                     type: "get",
                     data: {
                         search: visit.triage_id
                     },
 
                     success: function (prescription) {
-                        // console.log(prescription
+                        console.log(prescription);
 
                         if (prescription.length != 0) {
                             $("#prev_prescription").text(prescription.prescription)
@@ -186,7 +186,7 @@ function populatePrevVisit(uuid, triage_id) {
                 })
 
                 $.ajax({
-                    url: "/nurse/api/v1/models/" + triage_id,
+                    url: "/nurse/api/v1/nurse/" + triage_id,
                     type: "get",
 
                     success: function (triage) {
