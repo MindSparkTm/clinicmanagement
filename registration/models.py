@@ -116,6 +116,10 @@ class Patient(models.Model):
     e_relationship = models.TextField(max_length=400, null=True, blank=True)
     terminations = models.CharField(max_length=3, default="0", null=True, blank=True)
     county = models.CharField(max_length=255, null=True, blank=True)
+    patient_allergies = models.CharField(max_length=255, null=True, blank=True)
+    social_allergies = models.CharField(max_length=255, null=True, blank=True)
+
+
 
     class Meta:
         ordering = ('last_updated',)

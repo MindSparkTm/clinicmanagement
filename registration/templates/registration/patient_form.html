@@ -568,181 +568,33 @@
                         <div class="mdl-grid">
                             <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
 
-                                <table>
-        <span> Allergies to medication or food</span>
+                         <span> Allergies to medication or food</span>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
 
+                           <select style="height:25px;"id="tbpatientallergies" name="tbpatientallergies" onchange="patientdropdownchange()">
+                    </select>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.patientallergies.errors|striptags }}</span>
 
-         <tr>
-            <td>
-               <label class = "mdl-checkbox mdl-js-checkbox" for = "checkbox1">
-                  <input type = "checkbox" id = "checkbox1"
-                     class = "mdl-checkbox__input" checked>
-                  <span>Antibiotics</span>
-               </label>
-            </td>
+                        <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="patient_allergies"
+                                                              name="patient_allergies">{{ form.patient_allergies.value|default_if_none:"" }}</textarea>
+                        </div>
+ <div class="mdl-grid">
+                            <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--8-col">
 
-            <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox2">
-                  <input type = "checkbox" id = "checkbox2" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">NSAIDS</span>
-               </label>
-            </td>
+                         <span> Social History</span>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
 
-            <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox3">
-                  <input type = "checkbox" id = "checkbox3" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Aspirin</span>
-               </label>
+                           <select style="height:25px;"id="tbsocialallergies" name="tbsocialallergies" onchange="socialallergiesdropdownchange()">
+                    </select>
+                            <span style="visibility: visible;"
+                                  class="mdl-textfield__error">{{ form.socialallergies.errors|striptags }}</span>
 
-            </td>
-
-                <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox4">
-                  <input type = "checkbox" id = "checkbox4" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Insulin</span>
-               </label>
-
-            </td>
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox5">
-                  <input type = "checkbox" id = "checkbox5" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Anti-Seizure drugs</span>
-               </label>
-
-            </td>
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox5a">
-                  <input type = "checkbox" id = "checkbox5a" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Sickle Cell</span>
-               </label>
-
-            </td>
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox6">
-                  <input type = "checkbox" id = "checkbox6" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Sickle cell</span>
-               </label>
-
-            </td>
-
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox7">
-                  <input type = "checkbox" id = "checkbox7" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Sulphur drugs</span>
-               </label>
-
-            </td>
-
-
-
-
-
-         </tr>
-      </table>
-
-
-                                 <table>
-                                     <span> Family History</span>
-
-
-         <tr>
-            <td>
-               <label class = "mdl-checkbox mdl-js-checkbox" for = "checkbox8">
-                  <input type = "checkbox" id = "checkbox8"
-                     class = "mdl-checkbox__input" checked>
-                  <span class = "mdl-checkbox__label">Osteoporosis</span>
-               </label>
-            </td>
-
-            <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox9">
-                  <input type = "checkbox" id = "checkbox9" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Skin Condition</span>
-               </label>
-            </td>
-
-            <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox10">
-                  <input type = "checkbox" id = "checkbox10" class = "mdl-checkbox__input">
-                  <span >Mental illness</span>
-               </label>
-
-            </td>
-
-                <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox11">
-                  <input type = "checkbox" id = "checkbox11" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Hypertension</span>
-               </label>
-
-            </td>
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox12">
-                  <input type = "checkbox" id = "checkbox12" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Heart diseases</span>
-               </label>
-
-            </td>
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox13">
-                  <input type = "checkbox" id = "checkbox13" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Diabetes</span>
-               </label>
-
-            </td>
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox14">
-                  <input type = "checkbox" id = "checkbox14" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Asthma</span>
-               </label>
-
-            </td>
-
-
-
- <td>
-               <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                  for = "checkbox15">
-                  <input type = "checkbox" id = "checkbox15" class = "mdl-checkbox__input">
-                  <span class = "mdl-checkbox__label">Allergies</span>
-               </label>
-
-            </td>
-
-
-
-
-
-         </tr>
-      </table>
-
+                        <textarea class="mdl-textfield__input" type="text" rows="8"
+                                                              id="social_allergies"
+                                                              name="social_allergies">{{ form.social_allergies.value|default_if_none:"" }}</textarea>
+                        </div>
 
 
 
@@ -1064,7 +916,59 @@
         </div>
     </div>
 
+<script type="text/javascript">
 
+$(window).on('load', function() {
+    getallergiestomedicationorfood();
+    getsocialallergies();
+});
+
+function getsocialallergies(){
+        var socialallergies = ['Osteoporosis','Skin Condition','Mental Illness','Hypertension','Heart Disease', 'Diabetes','Asthma','Allergies'];
+let dropdown = $('#tbsocialallergies');
+    dropdown.empty();
+
+dropdown.append('<option selected="true" disabled>Social Allergies</option>');
+dropdown.prop('selectedIndex', 0);
+
+
+// Populate dropdown with list of provinces
+
+  for(var i=0; i<socialallergies.length;i++) {
+      dropdown.append($('<option></option>').text(socialallergies[i]));
+
+  }
+
+}
+function getallergiestomedicationorfood() {
+    var patientallergies = ['Antibiotics','NSAIDS','Aspirin','Insulin','AntiSeizure Drugs', 'Sickle Cell','Sulphur'];
+    let dropdown = $('#tbpatientallergies');
+    dropdown.empty();
+
+dropdown.append('<option selected="true" disabled>Patient Allergies</option>');
+dropdown.prop('selectedIndex', 0);
+
+
+// Populate dropdown with list of provinces
+
+  for(var i=0; i<patientallergies.length;i++) {
+      dropdown.append($('<option></option>').text(patientallergies[i]));
+
+  }
+
+
+
+}
+  function patientdropdownchange(){
+    console.log("Called");
+             $('#patient_allergies').val($('#patient_allergies').val()+"\n"+$('#tbpatientallergies option:selected').text());
+      }
+
+function socialallergiesdropdownchange(){
+                 $('#social_allergies').val($('#social_allergies').val()+"\n"+$('#tbsocialallergies option:selected').text());
+
+}
+</script>
 
     <div class="mdl-cell mdl-cell--2-col mdl-grid">
     </div>
