@@ -5,10 +5,24 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
     <script type="text/javascript" src="{% static 'js/choosen.js' %}"></script>
+    <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/15.1.1/autocomplete-lhc_jQueryUI.min.css' rel="stylesheet">
+    <script type="text/javascript" src ="https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/10.2.1/autocomplete-lhc.min.js"></script>
     <script type="text/javascript">
+
+
     $(".chosen").chosen();
 
-     window.onload= loadjsontoselectbox;
+     window.onload= loadata;
+     function loadata (){
+         loadjsontoselectbox();
+         icd10val();
+     }
+
+     function icd10val(){
+         new Def.Autocompleter.Search('icd10', 'https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name',
+ {tableFormat: true, valueCols: [1], colHeaders: ['Code', 'Name']});
+
+     }
      var radiologytsts = [];
 
     $("#clinic_tab").addClass("current").siblings().removeClass("current")
@@ -24,6 +38,9 @@
         $("#textfield_last_name").val(last_name).parent().addClass("is-dirty")
     }
 
+    function removetextfromicd10searchbox(){
+        $("#icd10").val("");
+    }
      $.ajax({
         url: "/clinic/api/v1/radiologytests/",
         type: "GET",
@@ -1074,9 +1091,19 @@ function expandtextarea(){
 
 }
       function dropdownchange(){
-             $('#diag_search').val($('#diag_search').val()+"\n"+$('#locality-dropdown option:selected').text());
+         var icd10textbox = $("#icd10").val();
+         var val = $("#diag_search").val();
+             var btn= $('<input/>').attr({ type: 'button', name:'btn1', value:'delete'});
+
+
+                  $("#diag_search").val(val + "\n"+icd10textbox);
+
+
+
 
       }
+
+
 
 </script>
 
@@ -2614,8 +2641,15 @@ function expandtextarea(){
 
                     <div id="div_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
 
-                    <select class ="chosen" style="height:25px;"id="locality-dropdown" name="locality" onchange="dropdownchange()">
-                    </select>
+                  <!--  <select class ="chosen" style="height:25px;"id="locality-dropdown" name="locality" onchange="dropdownchange()">
+                    </select>-->
+
+                    <div style="overflow: hidden; padding-right: .5em;">
+                        <input type="text" id="icd10" placeholder="Code or name" style="width: 60%" onclick="removetextfromicd10searchbox()"/>
+
+                    <button type="button" onclick="dropdownchange()">Add</button>
+                    </div>
+
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                 <textarea class="mdl-textfield__input bordered" type="text" rows="8"  id="diag_search" name="diag_search">{% if form.diag_search.value != None %}{{ form.diag_search.value }}{% endif %}</textarea>
