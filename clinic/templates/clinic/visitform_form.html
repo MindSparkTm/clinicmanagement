@@ -1413,10 +1413,7 @@ function expandtextarea(){
 
         <div class="mdl-grid full-width">
 
-        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#examination').val($(this).val())" class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea>
-                <label class="mdl-textfield__label" for="notes_">Examination</label>
-            </div>
+
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                 <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">{{ form.query_diagnosis.value|default_if_none:"" }}</textarea>
                 <label class="mdl-textfield__label" for="notes_">Query Diagnosis</label>
@@ -2432,9 +2429,10 @@ function expandtextarea(){
                             <label for="id_examination" class="mdl-textfield__label mdl-color-text--grey ">
                                     Examination Required
                                 </label>
-                            <div class="controls"><textarea class="mdl-textfield__input bordered" cols="80" id="id_examination" maxlength="20" name="examination" rows="3">{{ patient.examination|default_if_none:"" }}</textarea></div>
-                        </div>
-                    </div>
+                           
+                            <div class="controls">
+                                <textarea onkeyup="$('#examination').val($(this).val())" class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea></div>
+                           </div>
 
                     <div class="mdl-grid full-width">
                         <div id="div_id_could_b_pregrant" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
