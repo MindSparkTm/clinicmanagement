@@ -46,6 +46,7 @@
     function showresultstype(str){
         vall="";
         let dropdown = $('#radiology_teststype');
+        var radiologylists=[];
 
         dropdown.empty();
 
@@ -79,17 +80,17 @@
             s = response;
             console.log("s",response);
             for (var i = 0; i < response.length; ++i) {
-                     dropdown.append($('<option></option>', {
-                         value: i,
-                         text: response[i].modality + "----" + response[i].tests
-                     }));
-
+                     radiologylists.push(response[i].modality + "----" + response[i].tests);
             }
 
 
+       for(var i=0;i<radiologylists.length;i++) {
+           dropdown.append($('<option></option>', {
+               value: i,
+               text: radiologylists[i]
+           }));
 
-
-
+       }
 
 
 
