@@ -1,6 +1,6 @@
-Group,Modality,Tests 
+Group,Modality,Tests
 HEAD & NECK,Ultrasound,Head
-HEAD & NECK,Ultrasound,Middle Cerebral Doppler
+HEAD & NECK,Ultrasound,MiddleCerebralDoppler
 HEAD & NECK,Ultrasound,Neck (Thyroid)
 BREAST ,Ultrasound,Breast Lesion Localization
 BREAST ,Ultrasound,Breast

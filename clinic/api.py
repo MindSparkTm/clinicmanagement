@@ -29,3 +29,6 @@ class RadiologyResultsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.RadiologytestsSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('modality', 'tests')
+

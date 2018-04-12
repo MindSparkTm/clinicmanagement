@@ -41,24 +41,56 @@
     function removetextfromicd10searchbox(){
         $("#icd10").val("");
     }
-     $.ajax({
+
+
+    function showresultstype(str){
+        vall="";
+        let dropdown = $('#radiology_teststype');
+
+        dropdown.empty();
+
+        dropdown.append('<option selected="true" disabled>List of tests type</option>');
+        dropdown.prop('selectedIndex', 0);
+
+        if(str==="1"){
+            vall= "MRI";
+        }
+        else if(str==="2"){
+            vall="CT +3D"
+        }
+        else if(str==="3"){
+            vall ="Ultrasound"
+        }
+        else if(str==="4"){
+            vall="Mammography"
+        }
+        else if(str==="5"){
+            vall= "X-RAY"
+        }
+        console.log(str);
+        $.ajax({
         url: "/clinic/api/v1/radiologytests/",
         type: "GET",
+            data: {
+                search: vall,
+
+            },
         success: function (response) {
             s = response;
             console.log("s",response);
             for (var i = 0; i < response.length; ++i) {
-                    radiologytsts.push(response[i].modality + "----"+response[i].tests);
+                     dropdown.append($('<option>', {
+                         value: i,
+                         text: response[i].modality + "----" + response[i].tests
+                     }));
 
             }
-             console.log("radiologttsts",radiologytsts);
-        $('#tblists').autocomplete({
-            source: radiologytsts,
-            minLength: 0,
-            scroll: true
-        }).focus(function() {
-            $(this).autocomplete("search", "");
-        });
+
+
+
+
+
+
 
 
 
@@ -72,7 +104,27 @@
 
 
     });
+    }
 
+
+    function onradiologytypetestsdropdownchange(){
+         var radiologytests = $("#tblists").val();
+         var res = $("#radiology_teststype").val();
+
+        var index =$("#radiology_teststype option:selected").text();
+
+
+                  $("#tblists").val(radiologytests + "\n"+index);
+
+
+    }
+
+    function testdropdownchange(){
+var index =$("#radiology_teststype option:selected").text();
+
+        console.log("sss",index);
+
+    }
     function loadjsontoselectbox(){
         var icd10list = [
     {
@@ -2426,13 +2478,32 @@ function expandtextarea(){
 
                     <div class="mdl-grid full-width">
                         <div id="div_id_could_b_pregrant" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                         <div class="controls">
+                               <label style="font-weight: bold;">Choose a Radiology Type </label> <select id ="radiology_tests" style="width: 50%;height: 30px" onchange="showresultstype(this.value)">
+                                    <option>Choose Radiology Type</option>
+                                    <option value="1">MRI</option>
+                                    <option value="2">CT SCAN</option>
+                                    <option value="3">Ultrasound</option>
+                                    <option value="4">Mammography</option>
+                                    <option value="5">X-RAY</option>
+
+
+                                </select>
+                             <br/><br/>
+
+
+                              <label  style="font-weight: bold;">Choose a Radiology Test</label>  <select id ="radiology_teststype" style="width: 50%;height: 30px" onchange="onradiologytypetestsdropdownchange()">
+
+
+                                </select>
+                                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea></div>
+
+                           </div>
                             <label for="id_examination" class="mdl-textfield__label mdl-color-text--grey ">
                                     Examination Required
                                 </label>
-                           
-                            <div class="controls">
-                                <textarea onkeyup="$('#examination').val($(this).val())" class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea></div>
-                           </div>
+
+
 
                     <div class="mdl-grid full-width">
                         <div id="div_id_could_b_pregrant" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
