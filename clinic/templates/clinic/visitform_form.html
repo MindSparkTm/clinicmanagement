@@ -79,7 +79,7 @@
             s = response;
             console.log("s",response);
             for (var i = 0; i < response.length; ++i) {
-                     dropdown.append($('<option>', {
+                     dropdown.append($('<option></option>', {
                          value: i,
                          text: response[i].modality + "----" + response[i].tests
                      }));
@@ -1159,8 +1159,7 @@ function expandtextarea(){
 
 </script>
 
-<script>
-</script>
+
 
 <div id="doctor" class="mdl-grid full-width">
 
@@ -2355,7 +2354,7 @@ function expandtextarea(){
                                             <input
                                                     class="mdl-checkbox__input" id="id_oestradiol_menopausal_screen"
                                                     name="oestradiol_menopausal_screen"
-                                                    type="checkbox">Oestradiol</span>
+                                                    type="checkbox">Oestradiol
                                         </label></div>
                             </div>
                             <div id="div_id_albumin_menopausal_screen" class="mdl-cell mdl-cell--12-col">
@@ -2795,6 +2794,7 @@ function expandtextarea(){
         <br><br>
 
     </div>
+</div>
 
 
     <div class="util-center mdl-cell mdl-cell--4-col">
@@ -2939,7 +2939,6 @@ function expandtextarea(){
 
                     </div>
 
-                    </ul>
 
                 </div>
             </div>
@@ -3035,6 +3034,7 @@ function expandtextarea(){
         </div>
     </div>
 </div>
+
 
 
 {% endblock %}
