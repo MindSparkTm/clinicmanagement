@@ -118,6 +118,8 @@ class Patient(models.Model):
     county = models.CharField(max_length=255, null=True, blank=True)
     patient_allergies = models.CharField(max_length=255, null=True, blank=True)
     social_allergies = models.CharField(max_length=255, null=True, blank=True)
+    child_info = models.CharField(max_length=255,null=True,blank=True)
+
 
 
 

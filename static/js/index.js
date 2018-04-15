@@ -373,7 +373,14 @@ function dynamic_children() {
                         .append($('<td>')
                             .append($('<input>')
                                 .addClass('Input-text')
-                                .attr('name', 'children-' + i + '-child_name')))
+                                .attr('name', 'children-' + i + '-child_name')
+                                .attr('id', 'children-' + i + '-child_name')
+
+                            )
+
+
+
+                        )
                         .append($('</td>'))
                         .append($('<td>')
                             .append($('<input>')

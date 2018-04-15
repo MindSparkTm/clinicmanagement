@@ -3,6 +3,18 @@
 {% static  'css/style.css' %}
 {% block content %}
 
+    <style>
+
+
+    #div1 {
+    display: inline-block;
+}
+
+    #div2 {
+    display: inline-block;
+}
+
+    </style>
 
     <div class="mdl-cell mdl-cell--12-col mdl-grid" style="">
 
@@ -504,6 +516,7 @@
                             </div>
                         </div>
 
+                    <div id="div1">
                         <div class="mdl-grid">
                             <div >
 
@@ -520,7 +533,7 @@
                                             <label for="number_children" style="display: block">N0. of children</label>
 
                                             <input name="number_children" style="width: 30px; " class="Input-text"
-                                                   onkeyup="dynamic_children()" value=1 id='number_children'/>
+                                                   onkeyup="dynamic_children()" value=0 id='number_children'/>
                                         </td>
                                         <td class="data-tab" style="color: #2d5265; padding: 30px; ">Full
                                             Names
@@ -545,13 +558,31 @@
 
 
                                     </tbody>
-                                <td><input type="button" class="w3-button" value="+">
+                                <td><input type="button" class="w3-button" value="+" onclick="savechildinfo()">
                                             </td>
 
                                 </table>
                             </div>
 
                         </div>
+
+                    </div>
+                    <div id="div2">
+                        <div class="mdl-grid">
+
+                          <textarea class="mdl-textfield__input" type="text" rows="8" cols="40" name="child_info"
+                                                              id="child_info">{{ form.child_info.value|default_if_none:"" }}</textarea>
+                                <label class="mdl-textfield__label" for="child_info"></label>
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+
                     </fieldset>
 
                     <fieldset name="health_hist">
@@ -921,6 +952,7 @@
 $(window).on('load', function() {
     getallergiestomedicationorfood();
     getsocialallergies();
+
 });
 
 function getsocialallergies(){
@@ -966,6 +998,53 @@ dropdown.prop('selectedIndex', 0);
 
 function socialallergiesdropdownchange(){
                  $('#social_allergies').val($('#social_allergies').val()+"\n"+$('#tbsocialallergies option:selected').text());
+
+}
+
+function savechildinfo(){
+    var numofchildren = $("#number_children").val();
+    console.log("CHildrennumber",numofchildren);
+    var childrenname=[];
+    var childrendob =[];
+    var childrenage=[];
+
+
+
+
+
+      var tr = $("#children_td_table");
+  // remove closest
+
+  for (var i = 0; i < numofchildren; i++) {
+    var c = "#children-" + i + "-child_name";
+    // -----^ add #
+    var d = tr.find("#children-" + i + "-child_name").val();
+    childrenname.push(d);
+    var e = tr.find("#children-" + i + "-child_dob").val();
+    childrendob.push(e);
+    var f = tr.find("#children-" + i + "-child_age").val();
+    childrenage.push(f);
+    console.log("childrenage",e);
+
+    console.log("childrenname", d);
+
+    var child_box = $("#child_info").val();
+
+
+
+
+  }
+
+   for(var i=0;i<numofchildren;i++){
+      if(child_box.length==0){
+          $("#child_info").append(childrenname[i]+"\t"+childrenage[i]+"\n");
+
+      }
+      else{
+          $("#child_info").append("\n");
+          $("#child_info").append(childrenname[i]+"\t"+childrenage[i]+"\n");
+      }
+      }
 
 }
 </script>
