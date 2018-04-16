@@ -756,7 +756,7 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
                         "email": dest_email
                     }
                 ],
-                "subject": prescriptiondata,
+                "subject": "prescriptions",
             }
         ],
         "from": {
@@ -765,7 +765,7 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
         "content": [
             {
                 "type": "text/plain",
-                "value": "Prescription"
+                "value": prescriptiondata
             }
         ]
 
