@@ -723,9 +723,8 @@ $(function () {
         var prescriptiondata = "patientname" + "  " + patientname + " " + "patientnumber" + " " + patientnumber + "  " +
             "phonenumber" + "  " + phonenumber + "  " + "email" + " " + email + "address" + "  " + address + " " + "prescription" + "  " + prescriptionid;
 
-        sendprescriptionemail("notifications@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
-        sendprescriptionemail("hello@redpulse.co.ke", prescriptiondata, "hello@redpulse.co.ke")
-//           sendprescriptionemail("prescription@mydawa.com", prescriptiondata, "notifications@valentishealth.co.ke")
+        sendprescriptionemail("prescriptions@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
+        sendprescriptionemail("prescription@mydawa.com", prescriptiondata, "notifications@valentishealth.co.ke")
 
 
     });
@@ -771,18 +770,17 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
         ]
 
     }
+
     reqbody = JSON.stringify(reqbody);
-    // console.log('requestbody', reqbody);
+    console.log('requestbody', reqbody);
 
 
     $.ajax({
             method: 'POST',
             url: "https://cors-anywhere.herokuapp.com/https://api.sendgrid.com/v3/mail/send",
             data: reqbody,
-            dataType: 'json',
             headers: {
                 'Authorization': 'Bearer ' + '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',
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
 
@@ -796,13 +794,7 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
             }
 
         })
-        .done(function (res) {
-            alert("email was sent successfully")
-            console.log(1, res)
-        })
-        .fail(function (e) {
-            console.log(2, e.status, e.responseText)
-        })
+
 }
 
 
