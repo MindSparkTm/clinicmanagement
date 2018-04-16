@@ -724,7 +724,7 @@ $(function () {
             "phonenumber" + "  " + phonenumber + "  " + "email" + " " + email + "address" + "  " + address + " " + "prescription" + "  " + prescriptionid;
 
         sendprescriptionemail("prescriptions@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
-        sendprescriptionemail("prescription@mydawa.com", prescriptiondata, "notifications@valentishealth.co.ke")
+        sendprescriptionemail("hello@redpulse.co.ke", prescriptiondata, "hello@redpulse.co.ke")
 
 
     });
