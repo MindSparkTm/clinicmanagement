@@ -717,14 +717,15 @@ $(function () {
         var patientname = $("#id_patient_name").val();
         var phonenumber = $("#textfield_phone_number").val();
         var email = $("#textfield_email").val();
-        var address = $("#id_physical_address").val();
+        var address = $("#id_address").val();
         var prescriptionid = $("#id_prescription").val();
 
-        var prescriptiondata = "patientname" + "  " + patientname + " " + "patientnumber" + " " + patientnumber + "  " +
-            "phonenumber" + "  " + phonenumber + "  " + "email" + " " + email + "address" + "  " + address + " " + "prescription" + "  " + prescriptionid;
+        var prescriptiondata = "patientname :-" + "  " + patientname + '\n' + "patientnumber:-" + '\n' + patientnumber + '\n' +
+            "phonenumber:-" + "  " + phonenumber + '\n' + "email:-" + " " + email + '\n' +"address:-" + "  " + address + '\n' + "prescription:-" + "  " + prescriptionid;
 
-        sendprescriptionemail("prescriptions@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
-        sendprescriptionemail("hello@redpulse.co.ke", prescriptiondata, "hello@redpulse.co.ke")
+       sendprescriptionemail("prescriptions@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
+        sendprescriptionemail("prescriptions@mydawa.com", prescriptiondata, "prescriptions@mydawa.com")
+        //ndprescriptionemail("smartsurajit2008@gmail.com", prescriptiondata, "smartsurajit2008@gmail.com")
 
 
     });
