@@ -4537,6 +4537,11 @@ input.mdl-button[type="submit"] {
   .mdl-checkbox.is-upgraded {
     padding-left: 24px; }
 
+  .print{
+    background: #0d47a1;
+
+  }
+
 .mdl-checkbox__input {
   line-height: 24px; }
   .mdl-checkbox.is-upgraded .mdl-checkbox__input {

@@ -91,4 +91,4 @@ class PrescriptionPdf(ListView):
     #     return 'medication/medication_search.html'
 
     def get(self, request):
-        return render(request, 'prescription_receipt.html')
+        return render(request, 'prescription_receipt_copy.html')
