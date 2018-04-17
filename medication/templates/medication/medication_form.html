@@ -146,6 +146,10 @@
                             type="button" id="sendemail">Send Prescription
                     </button>
 
+                     <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
+                            type="button" id="sendprescription" onclick="generatepdf()">Print Prescription
+                    </button>
+
                 </div>
                 <div class="mdl-grid">
 
@@ -166,6 +170,28 @@
         <div class="mdl-layout-spacer"></div>
     </div>
     <script type="text/javascript">
+function generatepdf(){
+    var url = window.location.href;
+    var reqbody = {
+	"url": url,
+    "type": "htmlToPdf"};
+     $.ajax({
+            method: 'POST',
+            url:"https://cors-anywhere.herokuapp.com/https://api.sejda.com/v1/tasks",
+            data: JSON.stringify(reqbody),
+            contentType: "application/json",
+            crossDomain: true,
 
+            success: function (res) {
+
+                console.log(typeof(res))
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+
+        })
+
+}
     </script>
 {% endblock %}
