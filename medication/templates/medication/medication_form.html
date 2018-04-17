@@ -49,13 +49,13 @@
                                for="textfield_phone_number">Phone </label>
                         <input class="mdl-textfield__input" type='tel'
                                id="textfield_phone_number" value="{% if form.phone_number.value != None %}{{ form.phone_number.value }}{% else %}{% if patient.phone != None %}{{ patient.phone }}{% endif %}{% endif %}"
-                               name="phone_number" readonly />
+                               name="phone_number"/>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--4-col">
                         <label class="mdl-textfield__label mdl-color-text--grey"
                                for="textfield_email">Email Address</label>
                         <input class="mdl-textfield__input" type="email"
-                               id="textfield_email" readonly
+                               id="textfield_email"
                                value="{% if form.email.value != None %}{{ form.email.value }}{% else %}{% if patient.email != None %}{{ patient.email }}{% endif %}{% endif %}"
                                name="email" required/>
                     </div>
@@ -82,7 +82,7 @@
                         <label for="id_address" class="mdl-textfield__label mdl-color-text--grey">
                             Physical Address</label>
                             <textarea class="mdl-textfield__input" cols="40" id="id_address"
-                                      maxlength="400" name="id_address" rows="4"
+                                      maxlength="400" name="address" rows="4"
                                       required="">{% if form.address.value != None %}{{ form.address.value }}{% else %}{{ patient.postal_address|default_if_none:"" }}{% endif %}</textarea>
                     </div>
                 </div>
@@ -144,6 +144,9 @@
                     &nbsp;
                     <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
                             type="button" id="sendemail">Send Prescription
+                    </button>
+                         <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
+                            type="button" id="sendpres" onclick="generatepdf()">Print
                     </button>
 
                 </div>
