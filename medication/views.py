@@ -7,6 +7,13 @@ from .forms import MedicationForm
 from .models import Medication
 from valentisHealth.authenticator import *
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.http import HttpResponse
+import xhtml2pdf.pisa as pisa
+from .render import Render
+
+
+
+
 
 class MedicationListView(ListView):
     model = Medication
@@ -82,13 +89,26 @@ class MedicationSearchView(UserPassesTestMixin, View):
 
         return render(request, 'medication/medication_search.html')
 
-class PrescriptionPdf(ListView):
+class PrescriptionPdf(View):
 
-    def test_func(self):
-        return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
-
-    # def get_template_names(self):
-    #     return 'medication/medication_search.html'
 
     def get(self, request):
+        params = {
+            'today': "03/21/1990",
+            'sales': "2",
+            'request': "3"
+        }
+        print ("hello entered here")
+        return Render.render('prescription_receipt.html', params)
+
+
+    def post(self, request, *args, **kwargs):
+        print("called me")
+
+        template_name = 'prescription_receipt.html'
+
+
+
+
+
         return render(request, 'prescription_receipt_copy.html')
