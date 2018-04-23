@@ -1,6 +1,6 @@
 import os, csv
 
-path ="//home//Music//bug//master"
+path = "/opt/valentisHealth"
 
 os.chdir(path)
 from clinic.models import Radiologylist

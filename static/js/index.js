@@ -720,15 +720,15 @@ $(function () {
         var patientname = $("#id_patient_name").val();
         var phonenumber = $("#textfield_phone_number").val();
         var email = $("#textfield_email").val();
-        var address = $("#id_physical_address").val();
+        var address = $("#id_address").val();
         var prescriptionid = $("#id_prescription").val();
 
-        var prescriptiondata = "patientname" + "  " + patientname + " " + "patientnumber" + " " + patientnumber + "  " +
-            "phonenumber" + "  " + phonenumber + "  " + "email" + " " + email + "address" + "  " + address + " " + "prescription" + "  " + prescriptionid;
+        var prescriptiondata = "patientname :-" + "  " + patientname + '\n' + "patientnumber:-" + '\n' + patientnumber + '\n' +
+            "phonenumber:-" + "  " + phonenumber + '\n' + "email:-" + " " + email + '\n' +"address:-" + "  " + address + '\n' + "prescription:-" + "  " + prescriptionid;
 
-        sendprescriptionemail("notifications@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
-        sendprescriptionemail("hello@redpulse.co.ke", prescriptiondata, "hello@redpulse.co.ke")
-//           sendprescriptionemail("prescription@mydawa.com", prescriptiondata, "notifications@valentishealth.co.ke")
+       sendprescriptionemail("prescriptions@valentishealth.co.ke", prescriptiondata, "notifications@valentishealth.co.ke")
+        sendprescriptionemail("prescriptions@mydawa.com", prescriptiondata, "prescriptions@mydawa.com")
+        //ndprescriptionemail("smartsurajit2008@gmail.com", prescriptiondata, "smartsurajit2008@gmail.com")
 
 
     });
@@ -760,7 +760,7 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
                         "email": dest_email
                     }
                 ],
-                "subject": prescriptiondata,
+                "subject": "prescriptions",
             }
         ],
         "from": {
@@ -769,23 +769,22 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
         "content": [
             {
                 "type": "text/plain",
-                "value": "Prescription"
+                "value": prescriptiondata
             }
         ]
 
     }
+
     reqbody = JSON.stringify(reqbody);
-    // console.log('requestbody', reqbody);
+    console.log('requestbody', reqbody);
 
 
     $.ajax({
             method: 'POST',
             url: "https://cors-anywhere.herokuapp.com/https://api.sendgrid.com/v3/mail/send",
             data: reqbody,
-            dataType: 'json',
             headers: {
                 'Authorization': 'Bearer ' + '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',
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
 
@@ -799,13 +798,7 @@ function sendprescriptionemail(dest_email, prescriptiondata, senderemail) {
             }
 
         })
-        .done(function (res) {
-            alert("email was sent successfully")
-            console.log(1, res)
-        })
-        .fail(function (e) {
-            console.log(2, e.status, e.responseText)
-        })
+
 }
 
 
