@@ -12,7 +12,7 @@ class MedicationViewSet(viewsets.ModelViewSet):
 
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('patient_no', 'patient_name','triage_id')
+    search_fields = ('patient_no', 'patient_name')
 
 
 class myDawaModelSet(viewsets.ModelViewSet):
@@ -25,12 +25,8 @@ class myDawaModelSet(viewsets.ModelViewSet):
    filter_backends = (filters.SearchFilter,)
    search_fields = ('brand', 'size', 'price')
 
-class myDawaPrescriptionsModelSet(viewsets.ModelViewSet):
-    queryset = models.Medication.objects.all()
-    serializer_class = serializers.mydawaprescriptions
-    permission_classes = [permissions.IsAuthenticated]
 
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ('patient_no','patient_name')
+
+
 
 

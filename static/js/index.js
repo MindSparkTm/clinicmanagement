@@ -225,6 +225,7 @@ function populatePrevVisit(uuid, triage_id) {
 }
 
 function saveDiagnosis() {
+    console.log("I have been called")
     console.log($('#clinicPrescriptionForm').serialize())
 
     var prescription_url = "/medication/models/new/" + $('#pres_id_patient_no').val() + "/";
@@ -242,6 +243,8 @@ function saveDiagnosis() {
 }
 
 function savePrescription() {
+        console.log("I have been called")
+
     $.ajax({
         type: "POST",
         url: clinic_url,

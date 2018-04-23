@@ -15,7 +15,8 @@ class modelsSerializer(serializers.ModelSerializer):
             'patient_no',
             'patient_name', 
             'address', 
-            'phone_number', 
+            'phone_number',
+            'pharmacy',
             'signature', 
             'prescription',
             'email'
@@ -33,10 +34,3 @@ class mydawaserializer(serializers.ModelSerializer):
 
         )
 
-class mydawaprescriptions(serializers.ModelSerializer):
-    class Meta:
-        model = models.models
-        fields = (
-            'prescription',
-            'created',
-        )

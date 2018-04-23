@@ -7,6 +7,9 @@ from .forms import MedicationForm
 from .models import Medication
 from valentisHealth.authenticator import *
 from django.contrib.auth.mixins import UserPassesTestMixin
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+
 
 class MedicationListView(ListView):
     model = Medication
@@ -20,6 +23,7 @@ class MedicationCreateView(UserPassesTestMixin, CreateView):
         return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
     def form_valid(self, form):
+        print ('Prescription details')
         instance = form.save(commit=False)
         # status 4 means patient's in lab
         instance.status = 0
@@ -87,8 +91,24 @@ class PrescriptionPdf(ListView):
     def test_func(self):
         return is_nurse(self.request) or is_doctor(self.request) or is_callcenter(request)
 
-    # def get_template_names(self):
-    #     return 'medication/medication_search.html'
+    def get_template_names(self):
+        return 'medication/medication_search.html'
 
     def get(self, request):
-        return render(request, 'prescription_receipt.html')
+        print('eeeeeeeee')
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+
+        # Create the PDF object, using the response object as its "file."
+        p = canvas.Canvas(response)
+
+        # Draw things on the PDF. Here's where the PDF generation happens.
+        # See the ReportLab documentation for the full list of functionality.
+        p.drawString(50, 50, "Hello world.")
+
+        # Close the PDF object cleanly, and we're done.
+        p.showPage()
+        p.save()
+        return response
+
+

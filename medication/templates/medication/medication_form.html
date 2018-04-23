@@ -96,6 +96,22 @@
                                placeholder="Enter Your Delivery Address" />
                     </div>
                 </div>
+
+             <div class="mdl-grid">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--8-col">
+                        <label for="id_forpharmacy" class="mdl-textfield__label mdl-color-text--grey">
+                            Select Pharmacy</label>
+                          <label style="font-weight: bold;">Choose Pharmacy </label> <select id ="pharmacy_name" style="width: 50%;height: 30px" onchange="showresultstype(this.value)">
+                                    <option>Choose Pharmacy</option>
+                                    <option value="1">MyDawa</option>
+
+
+
+                                </select>
+                        <textarea class="mdl-textfield__input bordered" type="text" rows="4" id="pharmacy" name="pharmacy">{{ form.pharmacy.value|default_if_none:"" }}</textarea>
+
+                    </div>
+                </div>
                 <div class="mdl-grid ">
                     <div class="mdl-cell mdl-cell--12-col">
                         <div id="div_id_prescription"
@@ -166,6 +182,12 @@
         <div class="mdl-layout-spacer"></div>
     </div>
     <script type="text/javascript">
+    function showresultstype(str){
+        var val = $("#pharmacy_name").val();
+        if(str=="1"){
+            $("#pharmacy").val("MyDawa");
+        }
+    }
 
     </script>
 {% endblock %}

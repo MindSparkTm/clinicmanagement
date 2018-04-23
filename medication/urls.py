@@ -4,9 +4,8 @@ from . import api
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'medication', api.MedicationViewSet)
+router.register(r'prescriptiondetails', api.MedicationViewSet)
 router.register(r'MyDawa', api.myDawaModelSet)
-router.register(r'MyDawaPrescriptions', api.myDawaPrescriptionsModelSet)
 
 
 

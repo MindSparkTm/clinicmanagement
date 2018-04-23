@@ -1,6 +1,6 @@
 import os, csv
 
-path = "/opt/valentisHealth/medication/"
+path = "/home/surajit/Music/bug/master/medication/"
 os.chdir(path)
 from medication.models import MyDawa
 
