@@ -2,7 +2,6 @@ from . import models
 from . import serializers
 from rest_framework import viewsets, permissions
 from rest_framework import filters
-from rest_framework.permissions import AllowAny
 
 class MedicationViewSet(viewsets.ModelViewSet):
     """ViewSet for the models class"""
