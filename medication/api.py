@@ -3,6 +3,7 @@ from . import serializers
 from rest_framework import viewsets, permissions
 from rest_framework import filters
 
+
 class MedicationViewSet(viewsets.ModelViewSet):
     """ViewSet for the models class"""
 
@@ -12,7 +13,8 @@ class MedicationViewSet(viewsets.ModelViewSet):
 
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('patient_no', 'patient_name','pharmacy'),
+    search_fields = ('patient_no', 'patient_name','pharmacy')
+
 
 class myDawaModelSet(viewsets.ModelViewSet):
 
