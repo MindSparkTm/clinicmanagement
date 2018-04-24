@@ -179,6 +179,13 @@ EMAIL_DEBUG = True
 # SESSION_COOKIE_AGE = TIME    #change expired session
 # SESSION_IDLE_TIMEOUT = TIME  #logout
 
+REST_FRAMEWORK = {
+    # other settings...
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+}
+
 
 #REST_FRAMEWORK = {
 # 'DEFAULT_PERMISSION_CLASSES': (
@@ -191,12 +198,12 @@ EMAIL_DEBUG = True
 #),
 #}
 
-JWT_AUTH = {
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'valentisHealth.backends.jwt_response_payload_handler',
+#JWT_AUTH = {
+   # 'JWT_ALLOW_REFRESH': True,
+   # 'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
+   # 'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+   # 'JWT_RESPONSE_PAYLOAD_HANDLER': 'valentisHealth.backends.jwt_response_payload_handler',
 
-}
+#}
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
