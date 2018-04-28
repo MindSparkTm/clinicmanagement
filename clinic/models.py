@@ -59,3 +59,10 @@ class Radiologylist(models.Model):
     group = models.CharField(max_length=255,blank=True)
     modality = models.CharField(max_length=255,blank=True)
     tests = models.CharField(max_length=300,blank=True)
+class Testsresults(models.Model):
+    testid = models.CharField(max_length=255,blank=True)
+    status = models.CharField(max_length=255,blank=True)
+    resulturl = models.CharField(max_length=255,blank=True)
+    uploaded_on= models.DateTimeField(auto_now=True, editable=False)
+
+

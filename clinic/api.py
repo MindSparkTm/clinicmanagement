@@ -32,3 +32,12 @@ class RadiologyResultsViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('modality', 'tests')
 
+class TestresultsViewSet(viewsets.ModelViewSet):
+    queryset = models.Testsresults.objects.all()
+    serializer_class = serializers.TestResultsSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('testid', 'uploaded_on')
+
+

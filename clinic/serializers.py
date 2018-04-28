@@ -31,6 +31,15 @@ class RadiologytestsSerializer(serializers.ModelSerializer):
 
         )
 
+class TestResultsSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = models.Testsresults
+        fields = (
+            'testid',
+            'status',
+            'resulturl',
+            'uploaded_on',
+        )
 
 
