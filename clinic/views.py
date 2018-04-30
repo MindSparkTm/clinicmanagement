@@ -122,7 +122,7 @@ class DoctorVisit(UserPassesTestMixin, UpdateView):
         return 'clinic/visitform_form.html'
 
     def form_valid(self, form):
-        print ('form save')
+        print ('formmmmmmm save')
         instance = form.save(commit=False)
         instance.save()
 

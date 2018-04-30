@@ -1274,25 +1274,22 @@ function expandtextarea(){
         </div>
         </div>
 
-        <div id="presenting_illness" class="">
-            <fieldset id="triage">
-                <legend style="font-size:12px;">
-                    History of Presenting Illness
-                </legend>
 
-                <div class="mdl-grid">
+      <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea onkeyup="$('#his_presenting_illness').val($('#presenting_illness_').val())"class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illness_" name="presenting_illness_">{{ form.current_diagnosis.value|default_if_none:"" }}</textarea>
+                <label class="mdl-textfield__label" for="notes_">Presenting illness</label>
 
-                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#his_presenting_illness').val($('#presenting_illness_').val())"
-                          class="mdl-textfield__input bordered"
-                          type="text" rows="8" id="presenting_illness_"
-                          name="presenting_illness_">{{ form.his_presenting_illness.value|default_if_none:"" }}</textarea>
-                <label class="mdl-textfield__label" for="notes_">History of Presenting Illness</label>
-            </div>
-                </div>
-
-            </fieldset>
         </div>
+
+
+
+
+
+
+
+
+
+
 
         <button style="background:#609ab8; color:#fff;  " onclick="toggleView('medication_')" class="mdl-button w3-block w3-left-align accordion">View Medical
                 History
@@ -1461,6 +1458,16 @@ function expandtextarea(){
                 </div>
 
             </fieldset>
+        </div>
+
+
+     <div class="mdl-grid full-width">
+
+
+        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                <textarea onkeyup="$('#current_diagnosis').val($('#current_diagnosis_').val())"class="mdl-textfield__input bordered" type="text" rows="8" id="current_diagnosis_" name="current_diagnosis_">{{ form.current_diagnosis.value|default_if_none:"" }}</textarea>
+                <label class="mdl-textfield__label" for="notes_">Current Diagnosis</label>
+            </div>
         </div>
 
         <div class="mdl-grid full-width">
@@ -2706,6 +2713,8 @@ function expandtextarea(){
                     <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{{ form.hist_presenting_illness.value|default_if_none:"" }}" id="his_presenting_illness">
                     <input type="text" class="hidden mdl-textfield__input" name="examination" value="{{ form.examination.value|default_if_none:"" }}" id="examination">
                     <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{{ form.query_diagnosis.value|default_if_none:"" }}" id="query_diagnosis">
+                    <input type="text" class="hidden mdl-textfield__input" name="current_diagnosis" value="{{ form.current_diagnosis.value|default_if_none:"" }}" id="current_diagnosis">
+
                     <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" style="display:none;" name="diagnosis">{{ form.diagnosis.value|default_if_none:"" }}</textarea>
 
                     <div id="div_diagnosis" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">

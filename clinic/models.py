@@ -31,6 +31,7 @@ class PatientVisit(models.Model):
     his_presenting_illness = models.CharField(max_length=255, null=True, blank=True)
     attending_doctor = models.CharField(max_length=255, null=True, blank=True)
     diag_search = models.CharField(max_length=255, null=True, blank=True)
+    current_diagnosis = models.CharField(max_length=255, null=True, blank=True)
 
 
 
