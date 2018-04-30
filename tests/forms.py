@@ -11,7 +11,7 @@ class labsForm(forms.ModelForm):
 class radiologyForm(forms.ModelForm):
     class Meta:
         model = Radiology
-        fields = ['triage_id','lpm_date', 'could_b_pregrant', 'examination', 'clinical_indication', 'intra_orbital_fb_hist', 'intracranial_clip', 'pacemaker', 'cochlear_implants', 'prosthetic_hrt_valve', 'pregnancy', 'recent_surgery', 'patient_info', 'diabetic_metformin', 'allergic_contrast', 'other_allergies', 'kidney_problems', 'anticoagulant_drugs', 'egfr_result', 'date', 'patient_no']
+        fields = ['triage_id','lab_name','test_info','lpm_date', 'could_b_pregrant', 'examination', 'clinical_indication', 'intra_orbital_fb_hist', 'intracranial_clip', 'pacemaker', 'cochlear_implants', 'prosthetic_hrt_valve', 'pregnancy', 'recent_surgery', 'patient_info', 'diabetic_metformin', 'allergic_contrast', 'other_allergies', 'kidney_problems', 'anticoagulant_drugs', 'egfr_result', 'date', 'patient_no']
 
 
 

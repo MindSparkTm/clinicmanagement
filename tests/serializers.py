@@ -112,7 +112,8 @@ class RadiologySerializer(serializers.ModelSerializer):
         fields = (
             'slug', 
             'created', 
-            'last_updated', 
+            'last_updated',
+            'lab_name',
             'lpm_date', 
             'could_b_pregrant', 
             'examination', 
@@ -134,6 +135,7 @@ class RadiologySerializer(serializers.ModelSerializer):
             'date', 
             'patient_no',
             'triage_id',
+            'test_info',
         )
 
 

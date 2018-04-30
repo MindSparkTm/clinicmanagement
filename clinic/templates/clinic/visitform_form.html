@@ -109,13 +109,25 @@
 
 
     function onradiologytypetestsdropdownchange(){
-         var radiologytests = $("#tblists").val();
+         var radiologytests = $("#test_info").val();
          var res = $("#radiology_teststype").val();
 
         var index =$("#radiology_teststype option:selected").text();
 
 
-                  $("#tblists").val(radiologytests + "\n"+index);
+                  $("#test_info").val(radiologytests + "\n"+index);
+
+
+    }
+
+     function lablistchanged(){
+         var lab = $("#lab_name").val();
+         var res = $("#radiology_lab").val();
+
+        var index =$("#radiology_lab option:selected").text();
+
+
+                  $("#lab_name").val(lab + "\n"+index);
 
 
     }
@@ -1525,6 +1537,7 @@ function expandtextarea(){
             <script>
                 function submitLabs() {
                     var labs_data = $('form[name=labs_form]').serialize();
+                    console.log('labs_data',labs_data)
                     $.ajax({
                         url: '/tests/labs/create/',
                         type: 'post',
@@ -1540,6 +1553,7 @@ function expandtextarea(){
 
                 function submitRadiology() {
                     var radiology_data = $('form[name=radiology_form]').serialize();
+                    console.log('data',radiology_data);
                     $.ajax({
                         url: '/tests/radiology/create/',
                         type: 'post',
@@ -2438,11 +2452,21 @@ function expandtextarea(){
                     </div>
                 </div>
 
+             <label  style="font-weight: bold;">Choose a Lab </label>  <select  id ="radiology_lab" style="width: 50%;height: 30px;margin-left: 75px" onchange="lablistchanged()">
+                                    <option>Choose Lab</option>
+                                    <option value="1">Medanta</option>
+
+
+                                </select>
+                             <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="lab_name" name="lab_name">{{ form.lab_name.value|default_if_none:"" }}</textarea>
+
+
+
                 <div class="mdl-grid">
                     <div id="div_id_other" class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                         <label for="id_other" class="mdl-textfield__label">
                                 Other Test </label>
-                        <div class="controls"><textarea class="mdl-textfield__input bordered" cols="20" id="id_other" maxlength="100" name="other" rows="2"></textarea></div>
+                        <div class="controls"><textarea class="mdl-textfield__input bordered" cols="20" id="id_other" maxlength="100" name="other" rows="2"></textarea>
                     </div>
 
                 </div>
@@ -2503,12 +2527,27 @@ function expandtextarea(){
 
 
                                 </select>
-                                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="tblists" name="examination_">{{ form.examination.value|default_if_none:"" }}</textarea></div>
+                             <br/><br/>
 
-                           </div>
+                              <label  style="font-weight: bold;">Choose a Lab </label>  <select  id ="radiology_lab" style="width: 50%;height: 30px;margin-left: 75px" onchange="lablistchanged()">
+                                    <option>Choose Radiology Lab</option>
+                                    <option value="1">Medanta</option>
+
+
+                                </select>
+                             <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="lab_name" name="lab_name">{{ form.lab_name.value|default_if_none:"" }}</textarea>
+
+
+                                <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="test_info" name="test_info">{{ form.test_info.value|default_if_none:"" }}</textarea>
+
                             <label for="id_examination" class="mdl-textfield__label mdl-color-text--grey ">
                                     Examination Required
                                 </label>
+                         </div>
+                        </div>
+                    </div>
+
+
 
 
 

@@ -25,7 +25,7 @@ class radiologyAdminForm(forms.ModelForm):
 
 class radiologyAdmin(admin.ModelAdmin):
     form = radiologyAdminForm
-    list_display = ['slug', 'created', 'last_updated','triage_id', 'lpm_date', 'could_b_pregrant', 'examination', 'clinical_indication', 'intra_orbital_fb_hist', 'intracranial_clip', 'pacemaker', 'cochlear_implants', 'prosthetic_hrt_valve', 'pregnancy', 'recent_surgery', 'patient_info', 'diabetic_metformin', 'allergic_contrast', 'other_allergies', 'kidney_problems', 'anticoagulant_drugs', 'egfr_result', 'date', 'patient_no']
+    list_display = ['slug', 'created', 'last_updated','lab_name','triage_id', 'lpm_date', 'could_b_pregrant', 'examination', 'clinical_indication', 'intra_orbital_fb_hist', 'intracranial_clip', 'pacemaker', 'cochlear_implants', 'prosthetic_hrt_valve', 'pregnancy', 'recent_surgery', 'patient_info', 'diabetic_metformin', 'allergic_contrast', 'other_allergies', 'kidney_problems', 'anticoagulant_drugs', 'egfr_result', 'date', 'patient_no','test_info']
 
 admin.site.register(Radiology, radiologyAdmin)
 
@@ -39,7 +39,7 @@ class RadiologyResultAdminForm(forms.ModelForm):
 
 class RadiologyResultAdmin(admin.ModelAdmin):
     form = RadiologyResultAdminForm
-    list_display = ['slug', 'created', 'last_updated', 'patient_no', 'results', 'tests_done','uploaded_file','triage_id','radiologyresult_id']
+    list_display = ['slug', 'created', 'last_updated','patient_no', 'results', 'tests_done','uploaded_file','triage_id','radiologyresult_id']
 
 admin.site.register(RadiologyResult, RadiologyResultAdmin)
 

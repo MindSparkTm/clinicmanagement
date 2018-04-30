@@ -109,6 +109,7 @@ class Labs(models.Model):
     i03_menopausal_screen = models.TextField(max_length=100, null=True, blank=True)
     patient_no = models.CharField(max_length=100, null=True, blank=True)
 
+
     class Meta:
         ordering = ('last_updated',)
 
@@ -149,6 +150,9 @@ class Radiology(models.Model):
     egfr_result = models.CharField(max_length=255, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     patient_no = models.CharField(max_length=30, null=True, blank=True)
+    lab_name = models.TextField(max_length=100, null=True, blank=True)
+    test_info= models.TextField(max_length=100, null=True, blank=True)
+
 
     class Meta:
         ordering = ('last_updated',)
