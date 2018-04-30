@@ -2475,6 +2475,7 @@ function expandtextarea(){
                 <button onclick="submitLabs()" name="radiology_btn" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="button">Submit
                     </button>
             </form>
+        </div>
 
             <form id="radiology" style="display:none;" method="post" name="radiology_form">
                 {% csrf_token %}
@@ -2520,6 +2521,7 @@ function expandtextarea(){
 
 
                                 </select>
+
                              <br/><br/>
 
 
@@ -2543,9 +2545,11 @@ function expandtextarea(){
                             <label for="id_examination" class="mdl-textfield__label mdl-color-text--grey ">
                                     Examination Required
                                 </label>
-                         </div>
-                        </div>
                     </div>
+                        </div>
+
+                    </div>
+
 
 
 
