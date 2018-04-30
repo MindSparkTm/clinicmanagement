@@ -11,7 +11,8 @@ class LabsSerializer(serializers.ModelSerializer):
             'slug', 
             'created', 
             'last_updated', 
-            'lab_name', 
+            'lab_name',
+            'lab_id',
             'h01', 
             'h02', 
             'h03', 
@@ -136,6 +137,7 @@ class RadiologySerializer(serializers.ModelSerializer):
             'patient_no',
             'triage_id',
             'test_info',
+            'radiology_id',
         )
 
 

@@ -4,8 +4,8 @@ from . import api
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'tests', api.LabResultsViewSet)
-router.register(r'radiology', api.RadiologyResultViewSet)
+router.register(r'tests', api.LabsViewSet)
+router.register(r'radiology', api.RadiologyViewSet)
 
 
 urlpatterns = (

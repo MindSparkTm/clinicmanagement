@@ -1,6 +1,7 @@
 from . import models
 from . import serializers
 from rest_framework import viewsets, permissions
+from rest_framework import filters
 
 
 class LabsViewSet(viewsets.ModelViewSet):
@@ -11,12 +12,21 @@ class LabsViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('lab_name', 'lab_id')
+
+
 class RadiologyViewSet(viewsets.ModelViewSet):
     """ViewSet for the radiology class"""
 
     queryset = models.Radiology.objects.all()
     serializer_class = serializers.RadiologySerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('lab_name','radiology_id')
+
+
 
 
 
