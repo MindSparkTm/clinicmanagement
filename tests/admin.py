@@ -56,3 +56,4 @@ class LabResultsAdmin(admin.ModelAdmin):
     list_display = ['slug', 'created', 'last_updated', 'patient_no', 'tests_done', 'test_results','uploaded_file','triage_id','labresult_id']
 
 admin.site.register(LabResults, LabResultsAdmin)
+

@@ -2,7 +2,51 @@
 <script>
     $("#radiology_tab").addClass("current").siblings().removeClass("current")
 </script>
+    <body>
+    </body>
 <table class="table">
 
 </table>
+
+    <script type="text/javascript">
+     $.ajax({
+         url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/account/api/auth/token/",
+         type: "POST",
+         data: {
+             "email": "stephen@redpulse.co.ke", "password": "P5sAg5UMSt"
+         },
+         success: function (json) {
+             console.log(json.token)
+
+             $.ajax({
+
+                 url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/medication/api/v1/prescriptiondetails/",
+                 type: "get",
+                 headers: {
+                     "Authorization": 'jwt' + " " + json.token
+                 },
+
+                 data: {
+                     search: companyname,
+                 },
+                 success: function (json) {
+                     // console.log(json)
+
+
+                 }
+
+
+             });
+
+         }
+
+     });
+
+
+
+
+
+
+
+    </script>
 {% endblock %}

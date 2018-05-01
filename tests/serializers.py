@@ -103,6 +103,7 @@ class LabsSerializer(serializers.ModelSerializer):
             'i03_menopausal_screen', 
             'patient_no',
             'triage_id',
+            'other',
         )
 
 

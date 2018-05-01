@@ -31,15 +31,28 @@ class RadiologytestsSerializer(serializers.ModelSerializer):
 
         )
 
-class TestResultsSerializer(serializers.ModelSerializer):
+class RadiologyTestResultsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.Testsresults
+        model = models.RadiologyTestsresults
         fields = (
-            'testid',
+            'radiologytestid',
             'status',
             'resulturl',
             'uploaded_on',
         )
+
+
+class LabTestResultsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.LabTestsresults
+        fields = (
+            'labtestid',
+            'status',
+            'resulturl',
+            'uploaded_on',
+        )
+
 
 

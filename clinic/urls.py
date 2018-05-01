@@ -7,7 +7,9 @@ router = routers.DefaultRouter()
 router.register(r'patientvisit', api.PatientVisitViewSet)
 router.register(r'icd10', api.DiagnosisViewSet)
 router.register(r'radiologytests', api.RadiologyResultsViewSet)
-router.register(r'testresults', api.TestresultsViewSet)
+router.register(r'radiologytestresults', api.RadiologyTestresultsViewSet)
+router.register(r'labtestresults', api.LabTestresultsViewSet)
+
 
 
 
