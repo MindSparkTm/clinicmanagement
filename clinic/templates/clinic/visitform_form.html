@@ -132,6 +132,21 @@
 
     }
 
+
+    function lablistschanged(){
+                console.log('changed')
+
+         var lab = $("#radiologylab_name").val();
+         var res = $("#radiology_lab").val();
+
+        var index =$("#radiology_lab option:selected").text();
+
+
+                  $("#radiologylab_name").val(lab + "\n"+index);
+
+
+    }
+
     function testdropdownchange(){
 var index =$("#radiology_teststype option:selected").text();
 
@@ -2452,7 +2467,7 @@ function expandtextarea(){
                     </div>
                 </div>
 
-             <label  style="font-weight: bold;">Choose a Lab </label>  <select  id ="radiology_lab" style="width: 50%;height: 30px;margin-left: 75px" onchange="lablistchanged()">
+             <label  style="font-weight: bold;">Choose a Lab </label>  <select  id ="radiologys_lab" style="width: 50%;height: 30px;margin-left: 75px" onchange="lablistchanged()">
                                     <option>Choose Lab</option>
                                     <option value="1">Medanta</option>
 
@@ -2531,13 +2546,13 @@ function expandtextarea(){
                                 </select>
                              <br/><br/>
 
-                              <label  style="font-weight: bold;">Choose a Lab </label>  <select  id ="radiology_lab" style="width: 50%;height: 30px;margin-left: 75px" onchange="lablistchanged()">
+                              <label  style="font-weight: bold;">Choose a Lab </label>  <select  id ="radiology_lab" style="width: 50%;height: 30px;margin-left: 75px" onchange="lablistschanged()">
                                     <option>Choose Radiology Lab</option>
                                     <option value="1">Medanta</option>
 
 
                                 </select>
-                             <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="lab_name" name="lab_name">{{ form.lab_name.value|default_if_none:"" }}</textarea>
+                             <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="radiologylab_name" name="radiologylab_name">{{ form.lab_name.value|default_if_none:"" }}</textarea>
 
 
                                 <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="test_info" name="test_info">{{ form.test_info.value|default_if_none:"" }}</textarea>
@@ -2546,7 +2561,9 @@ function expandtextarea(){
                                     Examination Required
                                 </label>
                     </div>
+                        </div>
 
+                    </div>
 
 
 
@@ -2845,7 +2862,6 @@ function expandtextarea(){
         <br><br>
 
     </div>
-</div>
 
 
     <div class="util-center mdl-cell mdl-cell--4-col">

@@ -1,7 +1,94 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<script>
-    $("#labs_tab").addClass("current").siblings().removeClass("current")
-</script>
+{% extends "base.html" %}  {% block content %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
 
 
+
+    <body>
+
+
+
+    <table id="demotbl" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>LabId</th>
+             <th>Status</th>
+            <th>Uploaded On</th>
+
+
+
+
+
+
+
+
+        </tr>
+    </thead>
+</table>
+    <script type="text/javascript">
+     $.ajax({
+         url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/account/api/auth/token/",
+         type: "POST",
+         data: {
+             "email": "stephen@redpulse.co.ke", "password": "P5sAg5UMSt"
+         },
+         success: function (json) {
+             console.log(json.token)
+
+             $.ajax({
+
+                 url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/clinic/api/v1/labtestresults/",
+                 type: "get",
+                 headers: {
+                     "Authorization": 'jwt' + " " + json.token
+                 },
+
+
+                 success: function (json) {
+                     console.log(json)
+                        var data = jQuery.map(json, function(el, i) {
+                            if(el.status=='success'){
+                                return [[el.labtestid, el.status, el.uploaded_on]];
+
+                            }
+                        });
+
+                 $('#demotbl').DataTable( {
+      "aaData": data,
+      "aoColumns": [
+          { "sTitle": "LabTestId" },
+          { "sTitle": "Status" },
+          { "sTitle": "Uploaded On" },
+
+
+
+
+      ]
+
+    })
+
+
+
+
+                 }
+
+             })
+         }
+
+     });
+
+
+
+
+
+
+
+    </script>
 {% endblock %}
+</body>
+

@@ -1,13 +1,34 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<script>
-    $("#radiology_tab").addClass("current").siblings().removeClass("current")
-</script>
+{% extends "base.html" %} {% block content %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+
+
+
     <body>
-    </body>
-<table class="table">
 
+
+
+    <table id="demotbl" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>RadiologyId</th>
+             <th>Status</th>
+            <th>Uploaded On</th>
+
+
+
+
+
+
+
+
+        </tr>
+    </thead>
 </table>
-
     <script type="text/javascript">
      $.ajax({
          url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/account/api/auth/token/",
@@ -20,24 +41,42 @@
 
              $.ajax({
 
-                 url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/medication/api/v1/prescriptiondetails/",
+                 url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/clinic/api/v1/radiologytestresults/",
                  type: "get",
                  headers: {
                      "Authorization": 'jwt' + " " + json.token
                  },
 
-                 data: {
-                     search: companyname,
-                 },
+
                  success: function (json) {
-                     // console.log(json)
+                     console.log(json)
+                        var data = jQuery.map(json, function(el, i) {
+                            if(el.status=='success') {
+
+                                return [[el.radiologytestid, el.status, el.uploaded_on]];
+                            }
+                        });
+
+                 $('#demotbl').DataTable( {
+      "aaData": data,
+      "aoColumns": [
+          { "sTitle": "RadiologyId" },
+          { "sTitle": "Status" },
+          { "sTitle": "Uploaded On" },
+
+
+
+
+      ]
+
+    })
+
+
 
 
                  }
 
-
-             });
-
+             })
          }
 
      });
@@ -50,3 +89,4 @@
 
     </script>
 {% endblock %}
+</body>
