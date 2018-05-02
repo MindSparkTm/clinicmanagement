@@ -31,7 +31,7 @@
 </table>
     <script type="text/javascript">
      $.ajax({
-         url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/account/api/auth/token/",
+         url: "/account/api/auth/token/",
          type: "POST",
          data: {
              "email": "stephen@redpulse.co.ke", "password": "P5sAg5UMSt"
@@ -41,7 +41,7 @@
 
              $.ajax({
 
-                 url: "https://cors-anywhere.herokuapp.com/http://34.227.113.66:9000/clinic/api/v1/radiologytestresults/",
+                 url: "/clinic/api/v1/radiologytestresults/",
                  type: "get",
                  headers: {
                      "Authorization": 'jwt' + " " + json.token
