@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'tests',
     'payments',
     'workflow',
+    'billing',
+    'cashier',
     # 'session_security',
 
 ]

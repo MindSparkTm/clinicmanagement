@@ -31,7 +31,11 @@ def has_group(request):
         "payments": """<a href="/payments/search_member/" class=\""""+nav_active(request,'payments')+""""> <i class="fa fa-book spav"> </i> Authorization </a>""",
         "admin": """<a href="/account/admin/adduser" class=\""""+nav_active(request,'account')+""""> <i class="fa fa-book spav"> </i> Admin </a>""",
         "workflow": """<a href="/workflow" class=\""""+nav_active(request,'workflow')+""""> <i class="fa fa-comments spav"></i> Workflow </a>""",
-        }
+        "billing": """<a href="/billing/service" class=\"""" + nav_active(request,'billing') + """"> <i class="fa fa-comments spav"></i> Billing </a>""",
+        "cashier": """<a href="/cashier/patientbill" class=\"""" + nav_active(request,
+                                                                          'patientbill') + """"> <i class="fa fa-comments spav"></i> Cashier </a>""",
+
+    }
 
     if is_admin(request):
         return "".join([all_links[link] for link in all_links.keys()])

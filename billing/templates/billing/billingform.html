@@ -1,0 +1,19 @@
+<html>
+{% extends "base.html" %} {% load static %} {% block content %}
+<body>
+ <form method="post">
+    {% csrf_token %}
+    {{ form.service }}
+      <br>
+
+      {{ form.price }}
+    <br>
+
+
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored subtn">Add Service</button>
+  </form>
+
+</body>
+{% endblock %}
+
+</html>
