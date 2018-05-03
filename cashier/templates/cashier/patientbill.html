@@ -49,6 +49,18 @@
     <br>
 
 
+   <label  style="font-weight: bold;">Choose a service </label>  <select  id ="service" style="width: 50%;height: 30px;margin-left: 75px" >
+
+
+
+<option disabled selected> -- select an option -- </option>
+
+
+
+
+  </select><button id ="addbtn" name="addbtn">Add</button>
+
+
     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored subtn">Calculate</button>
   </form>
 
@@ -70,11 +82,68 @@
 
 </body>
 <script type="text/javascript">
+$(document).ready(function(){
+$.ajax({
+        url: "/billing/api/v1/billingservice/",
+        type: "GET",
+        success: function (response) {
+            s = response;
+            console.log("s", response);
+          $.each(response, function (i, item) {
+    $('#service').append($('<option>', {
+        value: i,
+        text : item.service
+    }));
+});
+            console.log("Response", response);
+
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
 
 
 
 
 
+})
+
+
+
+function getpriceperservice(servicedata){
+    $.ajax({
+        url: "/billing/api/v1/billingservice/",
+        type: "GET",
+         data: {
+             search: servicedata
+                    },
+        success: function (response) {
+            s = response;
+            console.log("s", response);
+
+});
+            console.log("Response", response);
+
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+
+    });
+
+
+
+}
 
 
 </script>
