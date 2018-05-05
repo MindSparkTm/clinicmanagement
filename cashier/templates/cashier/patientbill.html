@@ -1,23 +1,27 @@
 
 {% extends "base.html" %} {% load static %}
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
     <script type="text/javascript" src="{% static 'js/choosen.js' %}"></script>
        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
+
      <link rel="stylesheet" href="{% static 'css/materialite.css' %}">
          <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
+
+
+
 
  <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
       <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
@@ -49,7 +53,7 @@
     <br>
 
 
-   <label  style="font-weight: bold;">Choose a service </label>  <select  id ="service" style="width: 50%;height: 30px;margin-left: 75px" >
+   <label  style="font-weight: bold;">Choose a service </label>  <select  id ="service" style="width: 50%;height: 30px;margin-left: 75px" onchange="getpriceperservice(this.value)">
 
 
 
@@ -58,11 +62,42 @@
 
 
 
-  </select><button id ="addbtn" name="addbtn">Add</button>
+  </select>
+<div>
+
+    Total Amount<input type="text" id ="total_bill" name="total_bill">
 
 
-    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored subtn">Calculate</button>
+
+</div>
+
+
+
+
+
+
   </form>
+              <div>
+   <table id="demotbl" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Service Type</th>
+            <th>Price</th>
+            <th>Delete</th>
+
+
+
+
+
+
+
+
+
+        </tr>
+    </thead>
+</table>
+
+</div>
 
 
 
@@ -72,34 +107,96 @@
 
       </main>
     </div>
+
     <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/article/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-<script
 
-  src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-  </body>
+
 
 </body>
 <script type="text/javascript">
+    var total =0;
 $(document).ready(function(){
+   var tbl=  $('#demotbl').DataTable({
+
+
+                    "aoColumns": [
+                        {"sTitle": "Service"},
+                        {"sTitle": "Price"},
+
+                        {
+                            "targets": -3,
+                            "data": null,
+                            "defaultContent": "<button id='btn' name='btn'>Delete</button>"
+                        },
+
+
+
+                        ]
+
+                });
+
+    $('#demotbl tbody').on( 'click', 'button', function (e) {
+            var table = $('#demotbl').DataTable();
+
+        e.preventDefault();
+        console.log('selected')
+        var tr = $(this).closest('tr');
+        var rows = table.row(tr);
+
+        var info = rows.data();
+
+        var price= parseFloat(info[1]);
+        console.log('price',price)
+        var updatedamount = parseFloat($('#total_bill').val());
+        console.log('updatedamount',updatedamount)
+
+       updatedamount = updatedamount - price
+        if(updatedamount<=0){
+            $('#total_bill').val(0);
+
+        }
+        else{
+            $('#total_bill').val(updatedamount);
+
+        }
+
+    table
+        .row( $(this).parents('tr') )
+        .remove()
+        .draw();
+
+
+
+
+
+
+      // demoFromHTML(dat)
+
+
+
+
+
+
+    } );
+
+
+
+
+
 $.ajax({
         url: "/billing/api/v1/billingservice/",
         type: "GET",
         success: function (response) {
             s = response;
             console.log("s", response);
-          $.each(response, function (i, item) {
-    $('#service').append($('<option>', {
-        value: i,
-        text : item.service
-    }));
-});
-            console.log("Response", response);
-
-
-
-
+            $.each(response, function (i, item) {
+                $('#service').append($('<option>', {
+                    value: item.service,
+                    text: item.service,
+                }))
+            })
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
@@ -117,6 +214,7 @@ $.ajax({
 
 
 function getpriceperservice(servicedata){
+    console.log('I have been called')
     $.ajax({
         url: "/billing/api/v1/billingservice/",
         type: "GET",
@@ -125,10 +223,24 @@ function getpriceperservice(servicedata){
                     },
         success: function (response) {
             s = response;
-            console.log("s", response);
+            console.log('this',response)
+            for(var i=0;i<response.length;i++){
+                total = total + parseFloat(response[i].price)
+            }
 
-});
-            console.log("Response", response);
+            $('#total_bill').val(total)
+            var data = jQuery.map(response, function (el, i) {
+                return [[el.service, el.price, 'delete']];
+            });
+            var table = $('#demotbl').DataTable();
+
+            table.rows.add(data);
+            table.draw();
+
+            console.log('data',data);
+
+
+
 
 
 
@@ -139,13 +251,22 @@ function getpriceperservice(servicedata){
         }
 
 
-    });
 
+
+
+
+
+
+
+    });
 
 
 }
 
 
+
+
+
+
 </script>
-</html>
 {% endblock %}
