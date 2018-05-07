@@ -1487,14 +1487,14 @@ function expandtextarea(){
         </div>
 
 
-        <label  style="color: lightblue; font-size: 20px;">Current Diagnosis</label>
+        <label  style="color: lightblue; font-size: 20px;">Examination</label>
 
      <div class="mdl-grid full-width">
 
 
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                 <textarea onkeyup="$('#current_diagnosis').val($('#current_diagnosis_').val())"class="mdl-textfield__input bordered" type="text" rows="8" id="current_diagnosis_" name="current_diagnosis_">{{ form.current_diagnosis.value|default_if_none:"" }}</textarea>
-                <label class="mdl-textfield__label" for="notes_">Current Diagnosis</label>
+                <label class="mdl-textfield__label" for="notes_">Examination</label>
             </div>
         </div>
 
@@ -1583,6 +1583,11 @@ function expandtextarea(){
                         }
                     });
                 }
+
+
+
+
+
             </script>
 
             <form id="labs" style="display:none;" name="labs_form" method="post">
@@ -2840,16 +2845,16 @@ function expandtextarea(){
 
             </legend>
 
-                <button name="visit_form" onclick="window.location.href='{% url 'medication_models_create' patient.patient_no %}'"
+                <button name="visit_form" onclick="window.open('{% url 'medication_models_create' patient.patient_no %}')"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
-                    type="button">Add Prescription
+                    type="button" id="prescription_btn">Add Prescription
             </button>
         </fieldset>
 
         <div class="mdl-grid full-width">
             <button name="visit_form"
                     class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary w3-block"
-                    type="submit">Save
+                    type="submit" id ='btn_save'>Save
             </button>
         </div>
         <div class="mdl-grid full-width">
