@@ -1499,12 +1499,16 @@ function expandtextarea(){
         </div>
 
         <label  style="color: lightblue; font-size: 20px;">Query Diagnosis</label>
+          <div id ="qdiagnosis" style=" width: 80%;word-wrap:break-word;font-family:Arial,Helvetica, sans-serif;
+                font-size:      20px;
+                font-weight:    bold;">
+              </div>
 
         <div class="mdl-grid full-width">
 
 
         <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_">{{ form.query_diagnosis.value|default_if_none:"" }}</textarea>
+                <textarea onkeyup="$('#query_diagnosis').val($('#query_diagnosis_').val())" class="mdl-textfield__input bordered" type="text" rows="8" id="query_diagnosis_" name="query_diagnosis_"></textarea>
                 <label class="mdl-textfield__label" for="notes_">Query Diagnosis</label>
             </div>
         </div>
@@ -1534,6 +1538,7 @@ function expandtextarea(){
 
 
             <script>
+
                 function addRadiology() {
                     $("#radiology").toggle();
                     $("#labs").hide()
@@ -1552,7 +1557,13 @@ function expandtextarea(){
 
         <div>
 
-            <script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    var qd = $('#query_diagnosis').val()
+                    console.log('qd',qd)
+                   $('#qdiagnosis').append('Previous Diagnosis    '+qd)
+                });
+
                 function submitLabs() {
                     var labs_data = $('form[name=labs_form]').serialize();
                     console.log('labs_data',labs_data)
@@ -2778,7 +2789,7 @@ function expandtextarea(){
 
                     <input type="text" class="hidden mdl-textfield__input" name="his_presenting_illness" value="{{ form.hist_presenting_illness.value|default_if_none:"" }}" id="his_presenting_illness">
                     <input type="text" class="hidden mdl-textfield__input" name="examination" value="{{ form.examination.value|default_if_none:"" }}" id="examination">
-                    <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis" value="{{ form.query_diagnosis.value|default_if_none:"" }}" id="query_diagnosis">
+                    <input type="text" class="hidden mdl-textfield__input" name="query_diagnosis"  value="{{ form.query_diagnosis.value|default_if_none:"" }}" id="query_diagnosis">
                     <input type="text" class="hidden mdl-textfield__input" name="current_diagnosis" value="{{ form.current_diagnosis.value|default_if_none:"" }}" id="current_diagnosis">
 
                     <textarea class="hidden mdl-textfield__input bordered" type="text" rows="2" id="diagnosis" style="display:none;" name="diagnosis">{{ form.diagnosis.value|default_if_none:"" }}</textarea>
