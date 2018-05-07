@@ -8,12 +8,16 @@ class Billingform(forms.ModelForm):
             attrs={
                  'class': "mdl-textfield__input",
                  'placeholder': 'Enter Service Name',
+                 'required': "True",
+
             }))
     price = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 'class': "mdl-textfield__input",
                 'placeholder': 'Enter price',
+                'required': "True",
+
             }))
 
 

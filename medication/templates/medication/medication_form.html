@@ -162,6 +162,10 @@
                             type="button" id="sendemail">Send Prescription
                     </button>
 
+                     <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary"
+                            type="button" id="printprescription" onclick="printpdf()">Print Prescription
+                    </button>
+
                 </div>
                 <div class="mdl-grid">
 
@@ -189,6 +193,21 @@
         if(str=="1"){
             $("#pharmacy").val("MyDawa");
         }
+    }
+
+    function printpdf(){
+$.ajax({
+        url: "/medication/prescription-pdf/",
+        type: "get",
+
+        success: function (json) {
+            // console.log(json)
+
+
+        }
+
+    })
+
     }
 
     </script>

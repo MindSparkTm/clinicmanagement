@@ -1,7 +1,10 @@
 <html>
 {% extends "base.html" %} {% load static %} {% block content %}
 <body>
+<legend style="padding: 20px; ">Billing Service</legend>
+
  <form method="post">
+
     {% csrf_token %}
     {{ form.service }}
       <br>

@@ -1,8 +1,11 @@
+
+
 <!DOCTYPE html> {#{% load humanize %}#} {#{% load lpo_tags %}#} {% load static %}
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <head>
-    <title>Prescritpion Receipt</title>
+    <title>Invoice Receipt</title>
     <style type="text/css">
         body {
             font-size: 12px;
@@ -171,6 +174,24 @@ ul li {
 </head>
 
 <body>
+
+    <form>
+    {% csrf_token %}
+
+
+
+
+
+
+
+
+    <input type="hidden" id="patientid" name="patientid" value="{{ patient.patientid }}">
+        <input type="hidden" id="invoiceid" name="invoiceid" value="{{ patient.invoiceid }}">
+
+
+
+    </form>
+
     <div id="headerContent">
         <img src="{% static '/img/logo.png' %}" style="margin:auto; ">
         <div align="right" style="padding-top: 25px">
@@ -216,14 +237,12 @@ ul li {
             <td class="admission">
                 Name
             </td>
-            <td>
-                JACKLINE WANGUI MULANDI
+            <td id="patientname">
             </td>
             <td class="admission" style="width: 30%">
-                Day bed charges:
+                Contact Number
             </td>
-            <td>
-                CZ1-18256-01
+            <td id="phone">
             </td>
         </tr>
         <tr></tr>
@@ -231,8 +250,7 @@ ul li {
             <td class="admission">
               Age
             </td>
-            <td COLSPAN="3">
-                CHINA ZHONGTIAN
+            <td id ="patientage"COLSPAN="3">
             </td>
         </tr>
         <tr></tr>
@@ -240,8 +258,16 @@ ul li {
             <td class="admission">
                DOB
             </td>
-            <td COLSPAN="3">
+            <td COLSPAN="3" id="dob">
 
+            </td>
+        </tr>
+        <tr>
+            <td class="admission">
+               Invoice ID
+            </td>
+            <td COLSPAN="3" id="invoiceid">
+              {{ patient.invoiceid }}
             </td>
         </tr>
     </table>
@@ -253,25 +279,10 @@ ul li {
             <h3>Breakdown of charges</h3>
         </div>
 
-<ul>
+<ul id="charges">
 
 
 
-    <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-     <li>Paracetamol 500g </li>
-
-     <li>Paracetamol 500g </li>
 
 
 
@@ -287,5 +298,89 @@ ul li {
               Dr Don Othoro</p></strong>
     </div>
 </body>
+<script type="text/javascript">
+
+var invoiceid= $('#invoiceid').val();
+var patientid = $('#patientid').val();
+var patientname;
+console.log('patientid',patientid);
+    $(document).ready(function() {
+        $.ajax({
+            url: "/cashier/api/v1/cashierservice/",
+            type: "GET",
+            data: {
+                search: invoiceid
+            },
+            success: function (response) {
+                console.log('response',response)
+
+                s = response;
+                for(var i=0;i<response.length;i++){
+                    console.log('id',response[i].billbreakdown)
+                    $("#charges").append('<li>'+response[i].billbreakdown+'</li>');
+                    var totalbill = 'TotalBill'+"\t"+response[i].totalbill
+                    $("#charges").append('<li>'+totalbill+'</li>');
+                    $("#invoiceid").append(response[i].invoiceid);
+
+
+
+
+                }
+
+
+
+            }
+
+        })
+
+
+          $.ajax({
+            url: "/registration/api/v1/patientdetails/",
+            type: "GET",
+            data: {
+                search: patientid
+            },
+            success: function (response) {
+                console.log('response',response)
+
+                s = response;
+                for(var i=0;i<response.length;i++){
+                    console.log('nam',response[i].first_name)
+
+                    $('#patientname').append(response[i].first_name)
+                    $('#patientage').append(response[i].age)
+                    $('#dob').append(response[i].dob)
+                    $('#phone').append(response[i].phone)
+
+
+
+
+
+                }
+
+                print();
+
+
+
+            }
+
+        })
+
+    });
+
+
+
+ function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+
+</script>
 
 </html>

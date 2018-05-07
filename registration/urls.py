@@ -9,6 +9,7 @@ router.register(r'allergies', api.allergiesviewset)
 router.register(r'county', api.countyviewset)
 router.register(r'medicationhistory', api.medicationhistoryviewset)
 router.register(r'insurance', api.insurancecompanyviewset)
+router.register(r'patientdetails',api.patientregistrationdetails)
 
 
 

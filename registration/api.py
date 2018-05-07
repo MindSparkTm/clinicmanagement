@@ -11,7 +11,7 @@ class modelsViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('patient_no', 'first_name', 'last_name', 'ss_number', 'dob')
+    search_fields = ('first_name', 'last_name', 'ss_number', 'dob','patient_no')
 
 class allergiesviewset(viewsets.ModelViewSet):
     """ViewSet for the models class"""
@@ -48,4 +48,14 @@ class insurancecompanyviewset(viewsets.ModelViewSet):
 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('Name')
+
+class patientregistrationdetails(viewsets.ModelViewSet):
+    queryset = models.Patient.objects.all()
+    serializer_class = serializers.PatientSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('patient_no',)
+
+
 

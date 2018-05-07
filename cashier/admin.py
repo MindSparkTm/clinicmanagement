@@ -7,6 +7,5 @@ from .models import PatientBill
 
 
 class PatientBilladmin(admin.ModelAdmin):
-
-    list_display = ['patientid', 'totalbill']
+    list_display = ['created','patientid', 'totalbill','billbreakdown','invoiceid']
 admin.site.register(PatientBill, PatientBilladmin)

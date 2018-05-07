@@ -1,5 +1,6 @@
-
 {% extends "base.html" %} {% load static %}
+{% static  'css/style.css' %}
+
 {% block content %}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
@@ -14,59 +15,45 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 
 
-     <link rel="stylesheet" href="{% static 'css/materialite.css' %}">
-         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+                <legend style="padding: 20px; ">Cashier Form</legend>
 
 
 
 
-
-
-
- <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
-        <div class="mdl-layout__header-row">
-          <div class="mdl-layout-spacer"></div>
-
-        </div>
-      </header>
-      <div class="demo-ribbon"></div>
-      <main class="demo-main mdl-layout__content">
-        <div class="demo-container mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-
-
-            <div class="mdl-cell mdl-cell--4-col rebranded">
-            We have simplified  management of records, so you can focus on the things that matter through our Innovative Gateway
-            </div>
-          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--4-col">
-            <div class="demo-crumbs mdl-color-text--grey-500">
-              <p class="power">
-                Fill in your details below to login to the clinic management system.</p>
-            </div>
-  <form method="post">
+           <form method="post" action="/cashier/patientbill/">
     {% csrf_token %}
-    {{ form.patientid }}
+
+
+                {{ form.patientid }}
+      <br>
+      {{ form.totalbill }}
+      <br>
+      {{ form.invoiceid }}
+      <br>
+      {{ form.billbreakdown }}
       <br>
 
-      {{ form.totalbill }}
-    <br>
-
-
-   <label  style="font-weight: bold;">Choose a service </label>  <select  id ="service" style="width: 50%;height: 30px;margin-left: 75px" onchange="getpriceperservice(this.value)">
 
 
 
-<option disabled selected> -- select an option -- </option>
+
+
+   <label  style="font-weight: bold;">Choose a service </label>  <select  id ="service" style="width: 50%;height: 30px;margin-left: 75px" onchange="getpriceperservice(this.value)" >
+
+
+
+<option selected> -- select an option -- </option>
 
 
 
 
   </select>
-<div>
+      </br></br>
 
-    Total Amount<input type="text" id ="total_bill" name="total_bill">
+      <input type="submit" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" id="saveinfo" name="saveinfo" value="Generate Invoice">
 
+           </form>
+        </div>
 
 
 </div>
@@ -76,9 +63,11 @@
 
 
 
-  </form>
+
+
+
               <div>
-   <table id="demotbl" class="display" cellspacing="0" width="100%">
+   <table id="demotbl" class="display" cellspacing="0" width="50%">
     <thead>
         <tr>
             <th>Service Type</th>
@@ -117,7 +106,17 @@
 </body>
 <script type="text/javascript">
     var total =0;
+    var services =[]
+    var prices =[]
+    var patientid = $('#patientid').val();
+
 $(document).ready(function(){
+
+    var timestamp = new Date().getUTCMilliseconds();
+    console.log('invoiceid','IN-'+timestamp)
+    $('#invoiceid').val('IN-'+timestamp);
+
+
    var tbl=  $('#demotbl').DataTable({
 
 
@@ -149,16 +148,18 @@ $(document).ready(function(){
 
         var price= parseFloat(info[1]);
         console.log('price',price)
-        var updatedamount = parseFloat($('#total_bill').val());
+        var updatedamount = parseFloat($('#totalbill').val());
         console.log('updatedamount',updatedamount)
 
        updatedamount = updatedamount - price
+        total = total - price
+
         if(updatedamount<=0){
-            $('#total_bill').val(0);
+            $('#totalbill').val(0);
 
         }
         else{
-            $('#total_bill').val(updatedamount);
+            $('#totalbill').val(updatedamount);
 
         }
 
@@ -167,7 +168,23 @@ $(document).ready(function(){
         .remove()
         .draw();
 
+   if ( ! table.data().count() ) {
+       $('#service').val('Choose a service')
+}
 
+      $('#billbreakdown').val('');
+   var data = table
+    .rows()
+    .data();
+        var d = $('#billbreakdown').val();
+
+for(var i=0;i<data.length;i++){
+    for(var j=0;j<2;j++){
+        d = d + data[i][j]+";";
+        $('#billbreakdown').val(d);
+
+    }
+}
 
 
 
@@ -222,13 +239,25 @@ function getpriceperservice(servicedata){
              search: servicedata
                     },
         success: function (response) {
+
             s = response;
+            var breakdown = $('#billbreakdown').val();
+
             console.log('this',response)
             for(var i=0;i<response.length;i++){
                 total = total + parseFloat(response[i].price)
+                if(breakdown.length>0) {
+                    $('#billbreakdown').val(breakdown+'\n' + response[i].service + ';' + response[i].price+";")
+
+                }
+                else{
+                    $('#billbreakdown').val(response[i].service + ';' + response[i].price+";"+'\n')
+
+                }
+
             }
 
-            $('#total_bill').val(total)
+            $('#totalbill').val(total)
             var data = jQuery.map(response, function (el, i) {
                 return [[el.service, el.price, 'delete']];
             });
@@ -263,6 +292,31 @@ function getpriceperservice(servicedata){
 
 }
 
+function generatepdf(){
+        var columns = []
+
+
+// Only pt supported (not mm or in)
+    var table = $('#demotbl').DataTable();
+
+var data = table
+    .rows()
+    .data();
+
+for(var i=0;i<data.length;i++){
+    for(var j=0;j<2;j++){
+        console.log(data[i][j])
+
+    }
+}
+
+
+}
+$('#printinfo').click(function(e){
+    e.preventDefault();
+    window.open('invoicepdf')
+
+})
 
 
 
