@@ -1289,15 +1289,17 @@ function expandtextarea(){
                     Presenting Illness:
                 </legend>
 
+
              <div style=" width: 80%;word-wrap:break-word;">
                  {{ triage.others }}
 
               </div>
-                            
+
             </fieldset>
         </div>
         </div>
 
+                    <label  style="color: lightblue; font-size: 20px;">Presenting Illness</label>
 
       <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                 <textarea onkeyup="$('#his_presenting_illness').val($('#presenting_illness_').val())"class="mdl-textfield__input bordered" type="text" rows="8" id="presenting_illness_" name="presenting_illness_">{{ form.current_diagnosis.value|default_if_none:"" }}</textarea>
@@ -1485,6 +1487,8 @@ function expandtextarea(){
         </div>
 
 
+        <label  style="color: lightblue; font-size: 20px;">Current Diagnosis</label>
+
      <div class="mdl-grid full-width">
 
 
@@ -1493,6 +1497,8 @@ function expandtextarea(){
                 <label class="mdl-textfield__label" for="notes_">Current Diagnosis</label>
             </div>
         </div>
+
+        <label  style="color: lightblue; font-size: 20px;">Query Diagnosis</label>
 
         <div class="mdl-grid full-width">
 
@@ -2809,6 +2815,8 @@ function expandtextarea(){
                             </table>
                         </div>
                     </div>
+
+                    <label  style="color: lightblue; font-size: 20px;">Plan of Management</label>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
                 <textarea class="mdl-textfield__input bordered" type="text" rows="8" id="plan_of_managemnt" name="plan_of_managemnt">{% if form.plan_of_managemnt.value != None %}{{ form.plan_of_managemnt.value }}{% endif %}</textarea>
